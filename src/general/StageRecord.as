@@ -46,6 +46,8 @@ package general
 		{
 			stageStatus = ONGOING;
 			startTime = (new Date()).getTime();
+			currentStage = stageID.split("_")[0].toString();
+			currentSubStage = stageID.split("_")[1].toString();
 		}
 		
 		public function stageCleared():void
@@ -104,8 +106,6 @@ package general
 			{
 				if (stage.stageID == id) {
 					var stgID:Array = id.split("_");
-					currentStage = int(stgID[0]);
-					currentSubStage = int(stgID[1])
 					return stage;
 				}
 			}

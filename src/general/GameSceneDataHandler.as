@@ -14,9 +14,14 @@ package general
 		}
 		
 		public static function updateLevelPanels(levelPanelArray:Array):void {		
-			FlashConnect.trace(levelPanelArray);
-			for each(var lPanelRow:Array in levelPanelArray) {
-				for each (var lPanel:LevelPanel in lPanelRow) {
+			
+			for (var i:int; i < levelPanelArray.length; i++) {
+				updateLevelPanelsRow(levelPanelArray[i]);
+			}
+		}
+		
+		public static function updateLevelPanelsRow(lPanelRow:Array):void {
+			for each (var lPanel:LevelPanel in lPanelRow) {
 					
 					var rec:StageRecord = StageRecord.getStageRecordByID(lPanel.stageID);
 					if (rec.stageStatus == StageRecord.LOCKED) lPanel.lockStage();
@@ -32,7 +37,19 @@ package general
 					
 					if (star != null) lPanel.addChild(star);
 				}
-			}
+		}
+		
+		public static function displayScoreOnStageClearScene(scene:EndLevel_Movie, record:ScoreRecord):void
+		{
+			scene.lastScoreText.text = record.scoreBeforeStage.toString();
+			scene.scoreText.text = record.scoreInThisStage.toString();
+			scene.starBonusText.text = record.starBonus.toString();
+			scene.penaltyText.text = "-" + record.penalty.toString();
+			scene.totalText.text = ScoreRecord.totalScore.toString();
+			
+			scene.goldStarSymbol.visible = record.gotGoldStar;
+			scene.silverStarSymbol.visible = record.gotSilverStar;
+			scene.bronzeStarSymbol.visible = record.gotBronzeStar;
 		}
 	}
 

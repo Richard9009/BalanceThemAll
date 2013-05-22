@@ -5,6 +5,7 @@ package
 	import Box2D.Dynamics.b2Body;
 	import Box2D.Dynamics.b2DebugDraw;
 	import Box2D.Dynamics.b2World;
+	import flash.errors.IOError;
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 	import gameEvents.GameEvent;
@@ -15,6 +16,7 @@ package
 	import general.MousePhysic;
 	import general.MusicManager;
 	import general.GameSceneDataHandler;
+	import general.ScoreRecord;
 	import general.StageRecord;
 	import org.flashdevelop.utils.FlashConnect;
 	import stages.FirstStage;
@@ -106,21 +108,24 @@ package
 			MusicManager.getInstance().playSelectStageBGM();
 			currentScene = new SelectStage_Movie();
 			addChild(currentScene);
+			addEventListener(SelectStageEvent.STAGE_SELECTED, stageSelected);
 			
 			var delayTimer:Timer = new Timer(50, 1);
 			delayTimer.start();
 			delayTimer.addEventListener(TimerEvent.TIMER, function delayListener(e:TimerEvent):void{
 				e.target.stop();
 				e.target.removeEventListener(TimerEvent.TIMER, delayListener);
-				GameSceneDataHandler.updateLevelPanels((currentScene as SelectStage_Movie).cellArray);
+				GameSceneDataHandler.updateLevelPanels(SelectStage_Movie(currentScene).cellArray);
 			});
-			
-			addEventListener(SelectStageEvent.STAGE_SELECTED, stageSelected);
 		}
 		
 		private function stageSelected(e:Event):void 
 		{
-			var selectedStage:String = (currentScene as SelectStage_Movie).stageID;
+			var selectedStage:String;
+			if (currentScene is SelectStage_Movie) selectedStage = (currentScene as SelectStage_Movie).stageID;
+			else if (currentScene is EndLevel_Movie) selectedStage = (currentScene as EndLevel_Movie).stageID;
+			else throw new IOError("The scene doesn't have select level capability");
+			
 			changeScene();
 			createLevelByID(selectedStage);
 		}
@@ -176,15 +181,28 @@ package
 		
 		private function stageClear(e:GameEvent):void 
 		{
+			var scoreRecord:ScoreRecord = (currentScene as StageBaseClass).getStageRecord().scoreRecord;
 			destroyCurrentLevel();
 			
 			currentScene = new EndLevel_Movie();
+			var scene:EndLevel_Movie = currentScene as EndLevel_Movie;
 			addChild(currentScene);
 			
 			MusicManager.getInstance().playStageClearBGM();
+
+			var delayTimer:Timer = new Timer(100, 1);
+			delayTimer.start();
+			delayTimer.addEventListener(TimerEvent.TIMER, function delayListener(e:TimerEvent):void{
+				e.target.stop();
+				e.target.removeEventListener(TimerEvent.TIMER, delayListener);
+				GameSceneDataHandler.displayScoreOnStageClearScene(scene, scoreRecord);
+				GameSceneDataHandler.updateLevelPanelsRow(scene.panels);
+			});
+			
 			
 			addEventListener(GameEvent.GOTO_NEXT_STAGE, gotoNextStage);
 			addEventListener(GameEvent.REPLAY_THIS_STAGE, replayStage);
+			addEventListener(SelectStageEvent.STAGE_SELECTED, stageSelected);
 			blackFadeIn();
 		}
 		

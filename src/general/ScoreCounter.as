@@ -87,6 +87,7 @@ package general
 		public function addScore(howManyPoints:Number):void
 		{
 			currentScore += howManyPoints;
+			scoreRecord.scoreInThisStage += howManyPoints;
 		}
 		
 		public function breakPenalty():void
