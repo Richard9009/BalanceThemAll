@@ -1,6 +1,7 @@
 package general 
 {
 	import flash.display.Sprite;
+	import gameObjects.StarObject;
 	import stages.StageBaseClass;
 	/**
 	 * ...
@@ -8,18 +9,14 @@ package general
 	 */
 	public class ScoreCounter 
 	{
-		public static var totalScore:int = 0;
-		
-		public var gotGoldStar:Boolean = false;
-		public var gotSilverStar:Boolean = false;
-		public var gotBronzeStar:Boolean = false;
-		
 		private  var currentScore:int = 0;
 		private var scoreSegmentHeight:Number = 100;
 		private var scorePerSegment:Number = 20;
 		
 		private var objectBreakPenalty:int;
 		private var objectFallPenalty:int;
+		
+		public var scoreRecord:ScoreRecord;
 		
 		public function ScoreCounter() 
 		{
@@ -38,6 +35,7 @@ package general
 			 */
 			
 			 calcPenalty();
+			 scoreRecord = new ScoreRecord();
 		}
 		
 		public function setScoreRate(averageScorePerObject:int):void 
@@ -60,6 +58,7 @@ package general
 				var score:Number = scorePerSegment * segmentIndex;
 				score = Math.round(score * scoreRate(item, balanceBoard) / 10) * 10;
 				currentScore += score;
+				scoreRecord.scoreInThisStage += score;
 				
 				return score.toString();
 			}
@@ -93,11 +92,34 @@ package general
 		public function breakPenalty():void
 		{
 			currentScore -= objectBreakPenalty;
+			scoreRecord.penalty += objectBreakPenalty;
 		}
 		
 		public function fallPenalty():void
 		{
 			currentScore -= objectFallPenalty
+			scoreRecord.penalty += objectFallPenalty;
+		}
+		
+		public function getStarBonus(star:StarObject):String
+		{
+			var bonus:int = star.starValue * scorePerSegment * 10;
+			addScore(bonus);
+			scoreRecord.starBonus += bonus;
+			currentScore += bonus;
+			
+			switch(star.starType) {
+				case StarObject.GOLDEN: scoreRecord.gotGoldStar = true; break;
+				case StarObject.SILVER: scoreRecord.gotSilverStar = true; break;
+				case StarObject.BRONZE: scoreRecord.gotBronzeStar = true; break;
+			}
+			
+			return bonus.toString();
+		}
+		
+		public function sumUpScore():void
+		{
+			scoreRecord.sumUpScore();
 		}
 		
 		public function getBreakPenaltyString():String { return "-" + objectBreakPenalty.toString(); }

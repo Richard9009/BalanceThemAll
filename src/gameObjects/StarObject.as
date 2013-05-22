@@ -4,6 +4,7 @@ package gameObjects
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.media.Sound;
+	import flash.media.SoundTransform;
 	
 	/**
 	 * ...
@@ -23,6 +24,7 @@ package gameObjects
 		private var growSpd:Number = 2;
 		
 		public var starType:String;
+		public var starValue:int = 0;
 		
 		public function StarObject(starAsset:Class, type:String) 
 		{
@@ -33,16 +35,17 @@ package gameObjects
 			
 			starType = type
 			switch (type) {
-				case GOLDEN: points = 1000; color = 0xD9D919; break;
-				case SILVER: points = 500; color = 0x909090; break;
-				case BRONZE: points = 200; color = 0xCD7F32; break;
+				case GOLDEN: points = 1000; color = 0xD9D919; starValue = 3; break;
+				case SILVER: points = 500; color = 0x909090; starValue = 2; break;
+				case BRONZE: points = 200; color = 0xCD7F32; starValue = 1;  break;
 			}
 
 		}
 		
 		public function playSound():void
 		{
-			sound.play();
+			var sTrans:SoundTransform = new SoundTransform(0.3);
+			sound.play().soundTransform = sTrans;
 		}
 		
 		public function getPoints():Number

@@ -6,9 +6,9 @@ package general
 	 * ...
 	 * @author Herichard Stefanus Salim
 	 */
-	public class SelectStageScreen 
+	public class GameSceneDataHandler 
 	{
-		public function SelectStageScreen() 
+		public function GameSceneDataHandler() 
 		{
 			
 		}

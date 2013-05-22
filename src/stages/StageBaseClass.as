@@ -203,8 +203,9 @@ package stages
 		
 		private function levelClear():void 
 		{
+			sCounter.sumUpScore();
 			record.stageCleared();
-			record.score = sCounter.getScore();
+			record.scoreRecord = sCounter.scoreRecord;
 			
 			parent.dispatchEvent(new GameEvent(GameEvent.STAGE_CLEAR));
 		}
@@ -217,7 +218,7 @@ package stages
 				var star:StarObject = stars[i] as StarObject;
 				
 				if (star.hitTestObject(item)) {
-					var fText:FloatingText = new FloatingText(star.getPoints().toString(), 2, 3, star.getColor());
+					var fText:FloatingText = new FloatingText(sCounter.getStarBonus(star), 2, 3, star.getColor());
 					fText.x = star.x;
 					fText.y = star.y;
 					addChild(fText);
@@ -226,7 +227,8 @@ package stages
 					
 					star.startFadeOut();
 					stars.splice(i, 1);
-					i++;
+					updateScore();
+					break;
 				}
 			}
 		}

@@ -24,14 +24,13 @@ package general
 		
 		public var stageID:String; //"1_1", "1_2", "1_3", etc
 		public var stageStatus:String = "OPEN";
-		public var totalScore:int = 0;
-		public var score:int = 0;
 		public var bestStar:String = "NOTHING";
 		public var timeCleared:Date;
 		public var missedItemsCount:int = 0;
 		public var droppedItemsCount:int = 0;
 		public var totalItemsCount:int = 0;
 		public var itemList:Array = new Array();
+		public var scoreRecord:ScoreRecord;
 		
 		private var startTime:Number;
 		private var endTime:Number;

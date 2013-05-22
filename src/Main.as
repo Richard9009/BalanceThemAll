@@ -1,7 +1,6 @@
 package 
 {
 	import assets.movies.MovieCollection;
-	import assets.SoundCollection;
 	import Box2D.Common.Math.b2Vec2;
 	import Box2D.Dynamics.b2Body;
 	import Box2D.Dynamics.b2DebugDraw;
@@ -9,24 +8,17 @@ package
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 	import gameEvents.GameEvent;
-	import flash.display.Loader;
 	import flash.display.Sprite;
 	import flash.events.Event;
-	import flash.geom.Point;
-	import flash.media.Sound;
-	import flash.media.SoundChannel;
-	import flash.media.SoundTransform;
 	import gameEvents.SelectStageEvent;
 	import general.BreakContactListener;
-	import gameObjects.rigidObjects.RigidObjectBase;
 	import general.MousePhysic;
 	import general.MusicManager;
-	import general.SelectStageScreen;
+	import general.GameSceneDataHandler;
 	import general.StageRecord;
 	import org.flashdevelop.utils.FlashConnect;
 	import stages.FirstStage;
 	import stages.IPlayableStage;
-	import stages.MainMenu;
 	import stages.StageBaseClass;
 	
 	/**
@@ -120,7 +112,7 @@ package
 			delayTimer.addEventListener(TimerEvent.TIMER, function delayListener(e:TimerEvent):void{
 				e.target.stop();
 				e.target.removeEventListener(TimerEvent.TIMER, delayListener);
-				SelectStageScreen.updateLevelPanels((currentScene as SelectStage_Movie).cellArray);
+				GameSceneDataHandler.updateLevelPanels((currentScene as SelectStage_Movie).cellArray);
 			});
 			
 			addEventListener(SelectStageEvent.STAGE_SELECTED, stageSelected);
