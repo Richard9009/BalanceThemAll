@@ -41,10 +41,12 @@ package general
 		
 		public static function displayScoreOnStageClearScene(scene:EndLevel_Movie, record:ScoreRecord):void
 		{
+			var minusSign:String = (record.penalty > 0) ? "-" : "";
+			
 			scene.lastScoreText.text = record.scoreBeforeStage.toString();
 			scene.scoreText.text = record.scoreInThisStage.toString();
 			scene.starBonusText.text = record.starBonus.toString();
-			scene.penaltyText.text = "-" + record.penalty.toString();
+			scene.penaltyText.text = minusSign + record.penalty.toString();
 			scene.totalText.text = ScoreRecord.totalScore.toString();
 			
 			scene.goldStarSymbol.visible = record.gotGoldStar;

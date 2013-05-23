@@ -89,6 +89,7 @@ package general
 			for (var i:int = 0; i < howMany; i++)
 			{
 				obj = new NormalBoxObject(minStageLimit, maxStageLimit, true);
+				obj.durability = 0.3;
 				obj.createDisplayBody(collection.glassVaseAsset);
 				obj.setFixtureProperties(0.1, 0.1, 0.1);
 				obj.setSize(50 * scale, 100 * scale);

@@ -38,8 +38,6 @@ package gameObjects.rigidObjects
 		private var dropEvt:GrabObjectEvent;
 		private var stopEvt:GrabObjectEvent;
 		
-		private var bodyBelowMe:b2Body;
-		
 		public var handPosition:String = "bottom"; //bottom or side
 					
 		public function DraggableObject(minimumLimit:b2Vec2 = null, maximumLimit:b2Vec2 = null) 
@@ -86,14 +84,12 @@ package gameObjects.rigidObjects
 		protected function checkActivity(e:Event):void 
 		{
 			if (rigidBody.GetLinearVelocity().Length() == 0 && hasBeenRelocated) {
-				bodyBelowMe = checkObjectBelow();
 				
 				var evtType:String = (!hasBeenDropped) ? GrabObjectEvent.OBJECT_STOPS : GrabObjectEvent.OBJECT_RELOCATED;
 				var evt:GrabObjectEvent = new GrabObjectEvent(evtType);
 				evt.object = rigidBody;
 				parent.dispatchEvent(evt);
 
-				//removeEventListener(Event.ENTER_FRAME, checkActivity);
 				removeEventListener(Event.ENTER_FRAME, onEveryFrame);
 				
 				hasBeenDropped = true;
@@ -282,7 +278,7 @@ package gameObjects.rigidObjects
 			rigidBody.SetPosition(new b2Vec2(randomX / Main._physScale, randomY / Main._physScale));	
 		}
 		
-		private function checkObjectBelow():b2Body
+		public function getBodyBelowMe():b2Body
 		{
 			this.y += 10;
 			
@@ -300,23 +296,17 @@ package gameObjects.rigidObjects
 			return null;
 		}
 		
-		public function getBodyBelowMe():b2Body { return bodyBelowMe; }
-		
 		public function onWhichBalanceBoard():BalanceBoard
 		{
-			var board:BalanceBoard;
-			
 			if (getBodyBelowMe() == null) return null;
+			var board:RigidObjectBase = getBodyBelowMe().GetUserData();
 			
-			if (getBodyBelowMe().GetUserData() is BalanceBoard) return getBodyBelowMe().GetUserData();
-			
-			if (getBodyBelowMe().GetUserData() is DraggableObject) 
-			{
-				board = getBodyBelowMe().GetUserData().onWhichBalanceBoard();
-				return board;
+			if (board is DraggableObject) {			
+				board = DraggableObject(board).onWhichBalanceBoard();
 			}
 			
-			return null;
+			return board as BalanceBoard;
+			
 		}
 		
 		override public function destroyMe():void 
