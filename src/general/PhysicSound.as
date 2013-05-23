@@ -19,8 +19,8 @@ package general
 	 */
 	public class PhysicSound
 	{
-		private static const AVERAGE_MASS:Number = 1;
-		private static const AVERAGE_IMPULSE:Number = 3;
+		private static const AVERAGE_MASS:Number = 3;
+		private static const AVERAGE_IMPULSE:Number = 0.5;
 		private static const MAX_IMPULSE_VOLUME:Number = 10;
 		
 		private var body:b2Body;
