@@ -8,11 +8,11 @@ package Resources
 	{
 		private var defaultLocaleArray:Array;
 		
-		[Embed(source = "Chinese.txt", mimeType="application/octet-stream")]
+		[Embed(source = "fileSource/Chinese.txt", mimeType="application/octet-stream")]
 		private var chineseLocale:Class;
 		private var chineseLocaleArray:Array;
 		
-		[Embed(source="English.txt", mimeType="application/octet-stream")]
+		[Embed(source="fileSource/English.txt", mimeType="application/octet-stream")]
 		private var englishLocale:Class;
 		private var englishLocaleArray:Array;
 		
