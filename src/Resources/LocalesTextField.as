@@ -11,14 +11,14 @@ package Resources
 	public class LocalesTextField extends TextField 
 	{
 		private var textCode:String;
-		private var defaultTextFormat:TextFormat;
+		private var _textFormat:TextFormat;
 		
 		public function LocalesTextField(localeTextCode:String, textFormat:TextFormat = null) 
 		{
 			super();
 			
-			if (textFormat == null) defaultTextFormat = new TextFormat('Arial', 20, 0x000000, true);
-			else defaultTextFormat = textFormat;
+			if (textFormat == null) _textFormat = new TextFormat('Arial', 20, 0x000000, true);
+			else _textFormat = textFormat;
 			
 			setLocaleText(localeTextCode);
 			LocalesManager.getInstance().addEventListener(LocalesEvent.ON_LOCALE_CHANGE, updateLocale);
@@ -31,7 +31,7 @@ package Resources
 		
 		private function updateLocale(e:LocalesEvent = null):void {
 			text = LocalesManager.getInstance().getText(textCode);
-			this.setTextFormat(defaultTextFormat);
+			this.setTextFormat(_textFormat);
 		}
 		
 	}
