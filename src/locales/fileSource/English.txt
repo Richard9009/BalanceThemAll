@@ -1,0 +1,4 @@
+greeting1 = Hello
+greeting2 = How are you?
+longSentence = You must be new here, I've never seen you around here
+goodbye = It was nice meeting you, I'll see you around

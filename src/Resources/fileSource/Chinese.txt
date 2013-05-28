@@ -1,4 +1,0 @@
-greeting1 = 喂
-greeting2 = 你好嗎?
-longSentence = 我都沒看過你, 你剛來的嗎？
-goodbye = 很高興會認識你，下次再約

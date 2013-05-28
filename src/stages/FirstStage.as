@@ -42,9 +42,15 @@ package stages
 			//createStage1_1();
 		}
 		
+		public function createTutorialDialog():void {
+			var tutorial:Tutorial = new Tutorial();
+			addChildAt(tutorial, numChildren - 1);
+		}
+		
 		public function createLevelBySubStageID(subStageIndex:int):void {
 			switch(subStageIndex) {
 				case 1: createStage1_1(); break;
+				//case 1: createTutorialDialog(); break;
 				case 2: createStage1_2(); break;
 				case 3: createStage1_3(); break;
 				case 4: createStage1_4(); break;
