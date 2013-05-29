@@ -79,8 +79,8 @@ package stages
 			createFoundation(380, 420, 40, 80, -Math.PI / 2);
 			createBalanceBoard(380, 385, 500, 15);
 			stars = new Array();
-			stars.push(items.createGoldenStar(200, 175));
-			stars.push(items.createSilverStar(600, 225));
+			stars.push(items.createGoldenStar(150, 350));
+			stars.push(items.createSilverStar(600, 350));
 			for each(var star:StarObject in stars)
 			{
 				addChild(star);

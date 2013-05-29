@@ -199,21 +199,12 @@ package stages
 			checkStarCollision(item);
 			
 			updateScore();
-			
-			if (record.allItemsDropped()) {
-				var delayTimer:Timer = new Timer(2000);
-				delayTimer.start();
-				delayTimer.addEventListener(TimerEvent.TIMER, function delay(e:TimerEvent):void {
-					delayTimer.stop();
-					delayTimer.removeEventListener(TimerEvent.TIMER, delay);
-					levelClear();
-				});
-				
-			}
 		}
 		
 		private function levelClear():void 
 		{
+			FlashConnect.trace(sCounter);
+			FlashConnect.trace(record);
 			sCounter.sumUpScore();
 			record.stageCleared();
 			record.scoreRecord = sCounter.scoreRecord;
@@ -242,6 +233,18 @@ package stages
 					break;
 				}
 			}
+			
+			if (stars.length == 0) delayAction(2000, levelClear);
+		}
+		
+		private function delayAction(delay:Number, action:Function):void {
+			var delayTimer:Timer = new Timer(delay);
+				delayTimer.start();
+				delayTimer.addEventListener(TimerEvent.TIMER, function delay(e:TimerEvent):void {
+					delayTimer.stop();
+					delayTimer.removeEventListener(TimerEvent.TIMER, delay);
+					action();
+				});
 		}
 		
 		private function createScoreCounter():void
