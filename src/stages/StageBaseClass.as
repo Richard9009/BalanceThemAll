@@ -108,6 +108,17 @@ package stages
 			removeEventListener(BalanceLineEvent.START_DRAW_LINE, startDrawLine);
 			removeEventListener(BalanceLineEvent.STOP_DRAW_LINE, stopDrawLine);
 			removeEventListener(ObjectBreakEvent.GENERATE_PARTICLE, generateParticle);
+			
+			destroyAllObjects();
+		}
+		
+		private function destroyAllObjects():void {
+			
+			while (record.itemList.length > 0) {
+				var obj:DraggableObject = record.itemList[0] as DraggableObject;
+				obj.destroyMe();
+				record.itemList.splice(0, 1);
+			}
 		}
 		
 		private function createMenuButton():void 

@@ -222,8 +222,8 @@ package
 		
 		private function destroyCurrentLevel():void
 		{
-			destroyWorld();
 			StageBaseClass(currentScene).removeAllListeners();
+			destroyWorld();
 			changeScene();
 			MousePhysic.destroyStage();
 		}

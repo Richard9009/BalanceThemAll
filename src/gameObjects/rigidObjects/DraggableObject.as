@@ -312,7 +312,7 @@ package gameObjects.rigidObjects
 		override public function destroyMe():void 
 		{
 			super.destroyMe();
-			
+			itemsOnHands = 0;
 			removeEventListener(MouseEvent.MOUSE_OVER, onMouseHover);
 			removeEventListener(MouseEvent.MOUSE_OUT, onMouseOut);
 			removeEventListener(Event.ENTER_FRAME, onEveryFrame);
