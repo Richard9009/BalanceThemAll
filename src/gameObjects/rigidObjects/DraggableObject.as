@@ -124,7 +124,7 @@ package gameObjects.rigidObjects
 					if (MousePhysic.isDragging == false) {
 						MousePhysic.isDragging = true;
 						rigidBody.SetActive(false);
-						parent.setChildIndex(this, parent.numChildren - 3);
+						parent.setChildIndex(this, parent.numChildren - 4);
 					
 						startCollisionDetection();
 					}
