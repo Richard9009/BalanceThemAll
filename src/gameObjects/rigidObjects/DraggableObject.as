@@ -22,7 +22,7 @@ package gameObjects.rigidObjects
 	 */
 	public class DraggableObject extends RigidObjectBase
 	{	
-		protected static var itemsOnHands:int = 0;
+		protected static var itemsOnHands:Array = new Array();
 		
 		protected var redLayerClass:Class;
 		
@@ -119,7 +119,7 @@ package gameObjects.rigidObjects
 			
 			if (MousePhysic.pointedBody == this.rigidBody && isDraggable) 
 			{
-				if (MousePhysic.isDown && (itemsOnHands < 2 || !insideItemBox())) {
+				if (MousePhysic.isDown && (!handIsFull() || !insideItemBox())) {
 				
 					if (MousePhysic.isDragging == false) {
 						MousePhysic.isDragging = true;
@@ -143,12 +143,12 @@ package gameObjects.rigidObjects
 			
 			if (onHand && !MousePhysic.isHolding)
 			{
-				if (redLayer.visible) {
+				if (!clearToDrop()) {
 					MousePhysic.isHolding = true;
 				}
 				else {					
 					releaseObject();
-					itemsOnHands = 0;
+					removeThisItemFromHand(this);
 					isDraggable = false;
 					
 					dropEvt = new GrabObjectEvent(GrabObjectEvent.DROP_AN_OBJECT);
@@ -225,8 +225,8 @@ package gameObjects.rigidObjects
 					dropEvt.object = rigidBody;
 					parent.dispatchEvent(dropEvt);
 					
-					itemsOnHands--;
-					if (itemsOnHands == 0) MousePhysic.isHolding = false;
+					removeThisItemFromHand(this);
+					if (handIsEmpty()) MousePhysic.isHolding = false;
 				}
 			}
 			
@@ -240,9 +240,9 @@ package gameObjects.rigidObjects
 					grabEvt.object = rigidBody;
 					parent.dispatchEvent(grabEvt);
 					
-					itemsOnHands++;
+					itemsOnHands.push(this);
 				}
-				else if (itemsOnHands == 2 && isDraggable) {
+				else if (handIsFull() && isDraggable) {
 					redLayer.visible = true;
 				}
 				else if (redLayer.visible) {
@@ -312,12 +312,44 @@ package gameObjects.rigidObjects
 		override public function destroyMe():void 
 		{
 			super.destroyMe();
-			itemsOnHands = 0;
+			if (onHand) removeThisItemFromHand(this);
 			removeEventListener(MouseEvent.MOUSE_OVER, onMouseHover);
 			removeEventListener(MouseEvent.MOUSE_OUT, onMouseOut);
 			removeEventListener(Event.ENTER_FRAME, onEveryFrame);
 			removeEventListener(MouseEvent.MOUSE_WHEEL, onMouseWhell);
 			removeEventListener(GrabObjectEvent.DROP_AN_OBJECT, dropped);
+		}
+		
+		private static function removeThisItemFromHand(item:DraggableObject):void
+		{
+			for (var i:int = 0; i < itemsOnHands.length; i++) {
+				if (item == itemsOnHands[i]) itemsOnHands.splice(i, 1);
+			}
+		}
+		
+		private static function handIsFull():Boolean 
+		{
+			return itemsOnHands.length == 2;
+		}
+		
+		private static function handIsEmpty():Boolean
+		{
+			return itemsOnHands.length == 0;
+		}
+		
+		private static function releaseAllObjectsOnHands():void
+		{
+			itemsOnHands = new Array();
+		}
+		
+		private static function clearToDrop():Boolean
+		{
+			for (var i:int = 0; i < itemsOnHands.length; i++) {
+				var item:DraggableObject = itemsOnHands[i] as DraggableObject;
+				if (item.redLayer.visible) return false;
+			}
+			
+			return true;
 		}
 	}
 
