@@ -184,7 +184,7 @@ package gameObjects.rigidObjects
 			alpha -= fadeSpd;
 			if (alpha <= 0) {
 				removeEventListener(Event.ENTER_FRAME, fadingAway);
-				parent.removeChild(this);
+				if(parent) parent.removeChild(this);
 			}
 		}
 		

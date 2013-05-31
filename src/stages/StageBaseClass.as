@@ -199,17 +199,31 @@ package stages
 			checkStarCollision(item);
 			
 			updateScore();
+			
+			if (record.allItemsDropped()) delayAction(2000, levelClear);
 		}
 		
 		private function levelClear():void 
 		{
-			FlashConnect.trace(sCounter);
-			FlashConnect.trace(record);
 			sCounter.sumUpScore();
 			record.stageCleared();
 			record.scoreRecord = sCounter.scoreRecord;
 			
 			parent.dispatchEvent(new GameEvent(GameEvent.STAGE_CLEAR));
+		}
+		
+		private function countBonusPoints():void
+		{
+			if (record.allItemsDropped()) return;
+			
+			for each(var obj:DraggableObject in record.itemList) {
+				if (obj.insideItemBox()) {
+					var fText:FloatingText = new FloatingText(sCounter.getBonusPoints());
+					fText.x = obj.x;
+					fText.y = obj.y;
+					addChild(fText);
+				}
+			}
 		}
 		
 		protected function checkStarCollision(item:Sprite):void
@@ -234,17 +248,20 @@ package stages
 				}
 			}
 			
-			if (stars.length == 0) delayAction(2000, levelClear);
+			if (stars.length == 0) {
+				countBonusPoints();
+				delayAction(2000, levelClear);
+			}
 		}
 		
 		private function delayAction(delay:Number, action:Function):void {
 			var delayTimer:Timer = new Timer(delay);
-				delayTimer.start();
-				delayTimer.addEventListener(TimerEvent.TIMER, function delay(e:TimerEvent):void {
-					delayTimer.stop();
-					delayTimer.removeEventListener(TimerEvent.TIMER, delay);
-					action();
-				});
+			delayTimer.start();
+			delayTimer.addEventListener(TimerEvent.TIMER, function delay(e:TimerEvent):void {
+				delayTimer.stop();
+				delayTimer.removeEventListener(TimerEvent.TIMER, delay);
+				action();
+			});
 		}
 		
 		private function createScoreCounter():void

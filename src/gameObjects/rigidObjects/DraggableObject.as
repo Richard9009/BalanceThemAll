@@ -201,7 +201,7 @@ package gameObjects.rigidObjects
 			}
 		}
 		
-		private function insideItemBox():Boolean
+		public function insideItemBox():Boolean
 		{
 			return (this.y + this.height/2 > StageBaseClass.STAGE_HEIGHT - StageBaseClass.ITEMBOX_HEIGHT)
 		}
