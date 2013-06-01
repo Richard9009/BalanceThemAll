@@ -76,6 +76,10 @@ package stages.Tutorials
 													eventHandler.startWaitingForAnEvent(event);
 													removeEventListener(MouseEvent.MOUSE_DOWN, nextDialog); 
 													break;
+													
+				case DialogCommand.drawStarLines: 	var evtType:String = TutorialEvent.DRAW_STAR_LINE;
+													eventHandler.startWaitingForAnEvent(evtType);
+													eventHandler.dispatchEvent(new TutorialEvent(evtType)); break;
 				
 				case DialogCommand.stop: parent.removeChild(this); break;
 				

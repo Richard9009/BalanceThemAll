@@ -132,7 +132,6 @@ package gameObjects.rigidObjects
 					}
 					
 					this.rigidBody.SetPosition(MousePhysic.physMousePos);
-					checkTutorial();
 					checkLimit();
 				}
 			
@@ -160,13 +159,20 @@ package gameObjects.rigidObjects
 				}
 			}
 			
-			
+			checkTutorial();
 		}
 		
 		private function checkTutorial():void {
 			var evtHandler:TutorialEventDispatcher = TutorialEventDispatcher.getInstance();
-			if (insideItemBox()) {
+			
+			if (insideItemBox() && !onHand && MousePhysic.isDragging && MousePhysic.pointedBody == rigidBody) {
 				evtHandler.dispatchEvent(new TutorialEvent(TutorialEvent.DRAG_THE_BOOK));
+			} 
+			if (!insideItemBox() && onHand && MousePhysic.isDragging && MousePhysic.pointedBody == rigidBody) {
+				evtHandler.dispatchEvent(new TutorialEvent(TutorialEvent.GET_OUT_ITEMBOX));
+			}
+			if (!insideItemBox() && onHand && !MousePhysic.isDragging) {
+				evtHandler.dispatchEvent(new TutorialEvent(TutorialEvent.STOP_DRAG_BOOK));
 			}
 		}
 		

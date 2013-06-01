@@ -15,6 +15,7 @@ package stages.Tutorials
 		public static var waitingForEvent:DialogCommand = new DialogCommand(ENUM_PASS, "waiting for event");
 		public static var moveDialogBoxUp:DialogCommand = new DialogCommand(ENUM_PASS, "move dialog box up");
 		public static var moveToItemBox:DialogCommand = new DialogCommand(ENUM_PASS, "move to the middle of item box");
+		public static var drawStarLines:DialogCommand = new DialogCommand(ENUM_PASS, "draw star lines");
 		
 		private var command:String;
 		

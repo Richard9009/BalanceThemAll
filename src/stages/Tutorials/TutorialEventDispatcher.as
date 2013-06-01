@@ -48,7 +48,6 @@ package stages.Tutorials
 		
 		public function thisIsTheEventWeAreWaitingFor(type:String):Boolean
 		{
-			FlashConnect.trace(type + "______" + eventWeAreWaitingFor);
 			return type == eventWeAreWaitingFor;
 		}
 	}

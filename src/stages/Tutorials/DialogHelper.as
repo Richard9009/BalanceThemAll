@@ -12,7 +12,7 @@ package stages.Tutorials
 		private var _commands:Array = new Array();
 		private var _event:String = MouseEvent.MOUSE_DOWN;
 		
-		public function DialogHelper(code:String, isForNo:Boolean = false, commandArray:Array = null)
+		public function DialogHelper(code:String, commandArray:Array = null, isForNo:Boolean = false)
 		{
 			_code = code;
 			_noDialog = isForNo;

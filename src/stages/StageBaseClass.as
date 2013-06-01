@@ -283,7 +283,7 @@ package stages
 			addChild(scoreText);
 		}
 		
-		private function dropAll(e:GrabObjectEvent):void 
+		protected function dropAll(e:GrabObjectEvent):void 
 		{
 			bLine.stopDrawLine();
 			objectsOnHand = new Array();

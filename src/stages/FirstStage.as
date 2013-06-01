@@ -8,6 +8,9 @@ package stages
 	import Box2D.Dynamics.b2BodyDef;
 	import Box2D.Dynamics.b2FixtureDef;
 	import flash.display.Sprite;
+	import flash.events.Event;
+	import gameEvents.GrabObjectEvent;
+	import gameEvents.TutorialEvent;
 	import gameObjects.rigidObjects.BalanceBoard;
 	import gameObjects.rigidObjects.DraggableObject;
 	import gameObjects.rigidObjects.Foundation;
@@ -18,6 +21,7 @@ package stages
 	import general.StageRecord;
 	import org.flashdevelop.utils.FlashConnect;
 	import stages.Tutorials.Tutorial;
+	import stages.Tutorials.TutorialEventDispatcher;
 	
 	/**
 	 * ...
@@ -47,10 +51,77 @@ package stages
 		public function createTutorialDialog():void {
 			var tutorial:Tutorial = new Tutorial();
 			addChildAt(tutorial, numChildren - 1);
-		
+			TutorialEventDispatcher.getInstance().addEventListener(TutorialEvent.DRAW_STAR_LINE, drawStarLine);
 			isFirstTime = false;
 		}
 		
+		private var starLine:Sprite;
+		private function drawStarLine(e:TutorialEvent):void 
+		{
+			FlashConnect.trace("draw");
+			var lineLength:Number = 100;
+			starLine = new Sprite();
+			
+			for each(var star:StarObject in stars) {
+				starLine.graphics.lineStyle(2, 0xFF9999, 1);
+				starLine.graphics.moveTo(star.x, star.y);
+				starLine.graphics.lineTo(star.x, star.y - lineLength);
+			}
+			
+			addChild(starLine);
+			
+			addEventListener(Event.ENTER_FRAME, checkStarTutorial);
+			TutorialEventDispatcher.getInstance().startWaitingForAnEvent(TutorialEvent.READY_TO_DROP);
+			TutorialEventDispatcher.getInstance().removeEventListener(TutorialEvent.DRAW_STAR_LINE, drawStarLine);
+		}
+		
+		private function checkStarTutorial(e:Event):void 
+		{
+			var willGetAllStars:Boolean = true;
+		
+			for each(var item:Sprite in record.itemList) {
+				if (!willGetTheStar(item)) willGetAllStars = false;
+			}
+			
+			if (willGetAllStars) {
+				removeEventListener(Event.ENTER_FRAME, checkStarTutorial);
+				clearStarLine();
+				TutorialEventDispatcher.getInstance().dispatchEvent(new TutorialEvent(TutorialEvent.READY_TO_DROP));
+			}
+		}
+		
+		private function clearStarLine():void 
+		{
+			starLine.graphics.clear();
+			removeChild(starLine);
+		}
+		
+		private function willGetTheStar(obj:Sprite):Boolean
+		{
+			for each(var star:StarObject in stars) {
+				if (obj.y < star.y && obj.x > star.x - star.width / 2 && obj.x < star.x + star.width / 2) {
+					return true;
+				}
+			}
+			
+			return false;
+		}
+		
+		override protected function dropAll(e:GrabObjectEvent):void 
+		{
+			super.dropAll(e);
+			TutorialEventDispatcher.getInstance().dispatchEvent(new TutorialEvent(TutorialEvent.BOOKS_RELEASED));
+		}
+		
+		override protected function checkStarCollision(item:Sprite):void 
+		{
+			super.checkStarCollision(item);
+			
+			if (stars.length == 0) {
+				TutorialEventDispatcher.getInstance().dispatchEvent(new TutorialEvent(TutorialEvent.TUTORIAL_CLEAR));
+			}
+		}
+	
 		public function createLevelBySubStageID(subStageIndex:int):void {
 			
 			initiateStage("1_"+subStageIndex.toString());
