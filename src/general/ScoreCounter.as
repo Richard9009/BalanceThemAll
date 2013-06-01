@@ -15,6 +15,7 @@ package general
 		
 		private var objectBreakPenalty:int;
 		private var objectFallPenalty:int;
+		private var bonusPoint:int;
 		
 		public var scoreRecord:ScoreRecord;
 		
@@ -35,7 +36,11 @@ package general
 			 */
 			
 			 calcPenalty();
-			 scoreRecord = new ScoreRecord();
+		}
+		
+		public function setScoreRecord(rec:ScoreRecord):void
+		{
+			scoreRecord = rec;
 		}
 		
 		public function setScoreRate(averageScorePerObject:int):void 
@@ -48,6 +53,7 @@ package general
 		{
 			objectBreakPenalty = scorePerSegment * 10;
 			objectFallPenalty = scorePerSegment * 3;
+			bonusPoint = scorePerSegment * 5;
 		}
 		
 		public function countScore(item:Sprite, balanceBoard:Sprite):String 
@@ -116,6 +122,12 @@ package general
 			}
 			
 			return bonus.toString();
+		}
+		
+		public function getBonusPoints():String
+		{
+			currentScore += bonusPoint;
+			return bonusPoint.toString();
 		}
 		
 		public function sumUpScore():void

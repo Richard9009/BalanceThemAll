@@ -108,6 +108,24 @@ package stages
 			removeEventListener(BalanceLineEvent.START_DRAW_LINE, startDrawLine);
 			removeEventListener(BalanceLineEvent.STOP_DRAW_LINE, stopDrawLine);
 			removeEventListener(ObjectBreakEvent.GENERATE_PARTICLE, generateParticle);
+			
+			destroyAllObjects();
+		}
+		
+		protected function initiateStage(id:String):void
+		{
+			record = StageRecord.getStageRecordByID(id);
+			record.stageStarted();
+			sCounter.setScoreRecord(record.scoreRecord);
+		}
+		
+		private function destroyAllObjects():void {
+			
+			while (record.itemList.length > 0) {
+				var obj:DraggableObject = record.itemList[0] as DraggableObject;
+				obj.destroyMe();
+				record.itemList.splice(0, 1);
+			}
 		}
 		
 		private function createMenuButton():void 
@@ -174,8 +192,10 @@ package stages
 			
 			var item:DraggableObject =  e.object.GetUserData();
 			var fText:FloatingText;
-			if (item.onWhichBalanceBoard()) 
+			if (item.onWhichBalanceBoard()) {
 				fText = new FloatingText(sCounter.countScore(item, item.onWhichBalanceBoard()));
+				checkStarCollision(item);
+			}	
 			else {
 				fText = new FloatingText("Miss", 2, 2, RED_COLOR);
 				item.destroyMe();
@@ -185,29 +205,30 @@ package stages
 			fText.y = e.object.GetUserData().y;
 			addChild(fText);
 			
-			checkStarCollision(item);
-			
 			updateScore();
 			
-			if (record.allItemsDropped()) {
-				var delayTimer:Timer = new Timer(2000);
-				delayTimer.start();
-				delayTimer.addEventListener(TimerEvent.TIMER, function delay(e:TimerEvent):void {
-					delayTimer.stop();
-					delayTimer.removeEventListener(TimerEvent.TIMER, delay);
-					levelClear();
-				});
-				
-			}
+			if (record.allItemsDropped() && stars.length > 0) delayAction(2000, levelClear);
 		}
 		
 		private function levelClear():void 
 		{
 			sCounter.sumUpScore();
 			record.stageCleared();
-			record.scoreRecord = sCounter.scoreRecord;
-			
 			parent.dispatchEvent(new GameEvent(GameEvent.STAGE_CLEAR));
+		}
+		
+		private function countBonusPoints():void
+		{
+			if (record.allItemsDropped()) return;
+			
+			for each(var obj:DraggableObject in record.itemList) {
+				if (obj.insideItemBox()) {
+					var fText:FloatingText = new FloatingText(sCounter.getBonusPoints());
+					fText.x = obj.x;
+					fText.y = obj.y;
+					addChild(fText);
+				}
+			}
 		}
 		
 		protected function checkStarCollision(item:Sprite):void
@@ -231,6 +252,21 @@ package stages
 					break;
 				}
 			}
+			
+			if (stars.length == 0) {
+				countBonusPoints();
+				delayAction(2000, levelClear);
+			}
+		}
+		
+		private function delayAction(delay:Number, action:Function):void {
+			var delayTimer:Timer = new Timer(delay);
+			delayTimer.start();
+			delayTimer.addEventListener(TimerEvent.TIMER, function delay(e:TimerEvent):void {
+				delayTimer.stop();
+				delayTimer.removeEventListener(TimerEvent.TIMER, delay);
+				action();
+			});
 		}
 		
 		private function createScoreCounter():void
@@ -302,14 +338,6 @@ package stages
 				sCounter.fallPenalty();
 				updateScore();
 			}
-		}
-		
-		protected function scoreIsValid(obj:Sprite):Boolean {
-			return true;
-		}
-		
-		protected function scoreRate(obj:Sprite):Number {
-			return 1;
 		}
 		
 		protected function updateScore():void

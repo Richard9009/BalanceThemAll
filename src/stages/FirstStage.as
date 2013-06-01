@@ -48,6 +48,9 @@ package stages
 		}
 		
 		public function createLevelBySubStageID(subStageIndex:int):void {
+			
+			initiateStage("1_"+subStageIndex.toString());
+			
 			switch(subStageIndex) {
 				case 1: createStage1_1(); break;
 				//case 1: createTutorialDialog(); break;
@@ -63,14 +66,9 @@ package stages
 		
 		public function createStage1_1():void
 		{
-			record = StageRecord.getStageRecordByID("1_1");
-			record.stageStarted();
-			
 			var itemArray:Array = new Array();
 			var items:ObjectCollection = new ObjectCollection();
 			
-			itemArray.push(items.createBlueBook(2));
-			itemArray.push(items.createPhoto(4));
 			itemArray.push(items.createEncyclopedia(2));
 			
 			for each(var iArray:Array in itemArray)
@@ -85,8 +83,8 @@ package stages
 			createFoundation(380, 420, 40, 80, -Math.PI / 2);
 			createBalanceBoard(380, 385, 500, 15);
 			stars = new Array();
-			stars.push(items.createGoldenStar(200, 175));
-			stars.push(items.createSilverStar(600, 225));
+			stars.push(items.createGoldenStar(150, 350));
+			stars.push(items.createSilverStar(600, 350));
 			for each(var star:StarObject in stars)
 			{
 				addChild(star);
@@ -94,9 +92,6 @@ package stages
 		}
 		
 		public function createStage1_2():void {
-			record = StageRecord.getStageRecordByID("1_2");
-			record.stageStarted();
-			
 			var itemArray:Array = new Array();
 			var items:ObjectCollection = new ObjectCollection();
 			
@@ -127,9 +122,6 @@ package stages
 		}
 		
 		public function createStage1_3():void {
-			record = StageRecord.getStageRecordByID("1_3");
-			record.stageStarted();
-			
 			var itemArray:Array = new Array();
 			var items:ObjectCollection = new ObjectCollection();
 			
@@ -161,9 +153,6 @@ package stages
 		}
 		
 		public function createStage1_4():void {
-			record = StageRecord.getStageRecordByID("1_4");
-			record.stageStarted();
-			
 			var itemArray:Array = new Array();
 			var items:ObjectCollection = new ObjectCollection();
 			
@@ -197,9 +186,6 @@ package stages
 		}
 		
 		public function createStage1_5():void {
-			record = StageRecord.getStageRecordByID("1_5");
-			record.stageStarted();
-			
 			var itemArray:Array = new Array();
 			var items:ObjectCollection = new ObjectCollection();
 			
