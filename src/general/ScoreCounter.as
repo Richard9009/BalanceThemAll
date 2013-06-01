@@ -36,7 +36,11 @@ package general
 			 */
 			
 			 calcPenalty();
-			 scoreRecord = new ScoreRecord();
+		}
+		
+		public function setScoreRecord(rec:ScoreRecord):void
+		{
+			scoreRecord = rec;
 		}
 		
 		public function setScoreRate(averageScorePerObject:int):void 

@@ -77,7 +77,6 @@ package gameObjects.rigidObjects
 		override public function destroyMe():void 
 		{
 			super.destroyMe();
-			
 			removeEventListener(ObjectBreakEvent.OBJECT_BREAK, objectBreak);
 		}
 	}

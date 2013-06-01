@@ -43,6 +43,9 @@ package stages
 		}
 		
 		public function createLevelBySubStageID(subStageIndex:int):void {
+			
+			initiateStage("1_"+subStageIndex.toString());
+			
 			switch(subStageIndex) {
 				case 1: createStage1_1(); break;
 				case 2: createStage1_2(); break;
@@ -57,13 +60,10 @@ package stages
 		
 		public function createStage1_1():void
 		{
-			record = StageRecord.getStageRecordByID("1_1");
-			record.stageStarted();
-			
 			var itemArray:Array = new Array();
 			var items:ObjectCollection = new ObjectCollection();
 			
-			itemArray.push(items.createEncyclopedia(3));
+			itemArray.push(items.createEncyclopedia(2));
 			
 			for each(var iArray:Array in itemArray)
 			{
@@ -86,9 +86,6 @@ package stages
 		}
 		
 		public function createStage1_2():void {
-			record = StageRecord.getStageRecordByID("1_2");
-			record.stageStarted();
-			
 			var itemArray:Array = new Array();
 			var items:ObjectCollection = new ObjectCollection();
 			
@@ -119,9 +116,6 @@ package stages
 		}
 		
 		public function createStage1_3():void {
-			record = StageRecord.getStageRecordByID("1_3");
-			record.stageStarted();
-			
 			var itemArray:Array = new Array();
 			var items:ObjectCollection = new ObjectCollection();
 			
@@ -153,9 +147,6 @@ package stages
 		}
 		
 		public function createStage1_4():void {
-			record = StageRecord.getStageRecordByID("1_4");
-			record.stageStarted();
-			
 			var itemArray:Array = new Array();
 			var items:ObjectCollection = new ObjectCollection();
 			
@@ -189,9 +180,6 @@ package stages
 		}
 		
 		public function createStage1_5():void {
-			record = StageRecord.getStageRecordByID("1_5");
-			record.stageStarted();
-			
 			var itemArray:Array = new Array();
 			var items:ObjectCollection = new ObjectCollection();
 			

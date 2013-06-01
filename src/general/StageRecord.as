@@ -30,7 +30,7 @@ package general
 		public var droppedItemsCount:int = 0;
 		public var totalItemsCount:int = 0;
 		public var itemList:Array = new Array();
-		public var scoreRecord:ScoreRecord;
+		public var scoreRecord:ScoreRecord = new ScoreRecord();
 		
 		private var startTime:Number;
 		private var endTime:Number;
@@ -48,6 +48,8 @@ package general
 			startTime = (new Date()).getTime();
 			currentStage = stageID.split("_")[0].toString();
 			currentSubStage = stageID.split("_")[1].toString();
+			
+			scoreRecord.resetScore();
 		}
 		
 		public function stageCleared():void
@@ -57,7 +59,6 @@ package general
 			var miliTimeCleared:Number = endTime - startTime;
 			timeCleared = new Date(0, 0, 0, 0, 0, 0, 0);
 			timeCleared.seconds = Math.floor(miliTimeCleared / 1000);
-			FlashConnect.trace(timeCleared.minutes + "_" + timeCleared.seconds+"__"+miliTimeCleared);
 		}
 		
 		public function allItemsDropped():Boolean

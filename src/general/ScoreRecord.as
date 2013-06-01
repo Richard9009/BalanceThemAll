@@ -22,9 +22,27 @@ package general
 			scoreBeforeStage = totalScore;
 		}
 		
+		public function resetScore():void
+		{
+			totalScore -= totalScoreOfThisStage;
+			scoreBeforeStage = totalScore;
+			
+			penalty = 0;
+			starBonus = 0;
+			scoreInThisStage = 0;
+			gotGoldStar = false;
+			gotSilverStar = false;
+			gotBronzeStar = false;
+		}
+		
 		public function sumUpScore():void
 		{
-			totalScore = scoreBeforeStage + scoreInThisStage + starBonus - penalty;
+			totalScore = scoreBeforeStage + totalScoreOfThisStage;
+		}
+		
+		public function get totalScoreOfThisStage():Number
+		{
+			return scoreInThisStage + starBonus - penalty;
 		}
 	}
 

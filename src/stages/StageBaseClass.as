@@ -112,6 +112,13 @@ package stages
 			destroyAllObjects();
 		}
 		
+		protected function initiateStage(id:String):void
+		{
+			record = StageRecord.getStageRecordByID(id);
+			record.stageStarted();
+			sCounter.setScoreRecord(record.scoreRecord);
+		}
+		
 		private function destroyAllObjects():void {
 			
 			while (record.itemList.length > 0) {
@@ -185,8 +192,10 @@ package stages
 			
 			var item:DraggableObject =  e.object.GetUserData();
 			var fText:FloatingText;
-			if (item.onWhichBalanceBoard()) 
+			if (item.onWhichBalanceBoard()) {
 				fText = new FloatingText(sCounter.countScore(item, item.onWhichBalanceBoard()));
+				checkStarCollision(item);
+			}	
 			else {
 				fText = new FloatingText("Miss", 2, 2, RED_COLOR);
 				item.destroyMe();
@@ -196,19 +205,15 @@ package stages
 			fText.y = e.object.GetUserData().y;
 			addChild(fText);
 			
-			checkStarCollision(item);
-			
 			updateScore();
 			
-			if (record.allItemsDropped()) delayAction(2000, levelClear);
+			if (record.allItemsDropped() && stars.length > 0) delayAction(2000, levelClear);
 		}
 		
 		private function levelClear():void 
 		{
 			sCounter.sumUpScore();
 			record.stageCleared();
-			record.scoreRecord = sCounter.scoreRecord;
-			
 			parent.dispatchEvent(new GameEvent(GameEvent.STAGE_CLEAR));
 		}
 		
@@ -333,14 +338,6 @@ package stages
 				sCounter.fallPenalty();
 				updateScore();
 			}
-		}
-		
-		protected function scoreIsValid(obj:Sprite):Boolean {
-			return true;
-		}
-		
-		protected function scoreRate(obj:Sprite):Number {
-			return 1;
 		}
 		
 		protected function updateScore():void
