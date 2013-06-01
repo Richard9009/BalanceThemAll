@@ -87,6 +87,9 @@ package assets
 		[Embed (source = "AssetLibrary.swf", symbol = "ReplayButton_Asset")]
 		public var replayButtonAsset:Class;
 		
+		[Embed (source = "AssetLibrary.swf", symbol = "Gavin_Asset")]
+		public var gavinAsset:Class;
+		
 		public function AssetCollection() 
 		{
 			 
