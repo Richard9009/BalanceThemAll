@@ -1,6 +1,7 @@
 package stages.Tutorials 
 {
 	import flash.errors.IllegalOperationError;
+	import gameEvents.TutorialEvent;
 	import org.flashdevelop.utils.FlashConnect;
 	/**
 	 * ...
@@ -11,12 +12,9 @@ package stages.Tutorials
 		private static const SINGLETON_PASS:String = "uwhd8e2HYUA27476297JSN";
 		private static const INVALID:DialogHelper = new DialogHelper("INVALID DIALOG");
 		
+		private var dialogCol:DialogListCollection = DialogListCollection.getInstance();
 		private var currentDialogID:int = 0;
 		private var currentStageID:String = "1_1";
-		private var dialogList1_1:Array = [new DialogHelper("stage1_1.greeting", false, DialogCommand.promptYesNo),
-											new DialogHelper("stage1_1.beginTutorial"),
-											new DialogHelper("stage1_1.noTutorial", true),
-											new DialogHelper("", false, DialogCommand.stop) ];
 		
 		private static var instance:TutorialDialogHandler;
 										
@@ -30,7 +28,7 @@ package stages.Tutorials
 			var dialogArr:Array;
 			
 			switch(stageID) {
-				case "1_1": dialogArr = dialogList1_1; break;
+				case "1_1": dialogArr = dialogCol.dialogList1_1; break;
 				default: return INVALID;
 			}
 		

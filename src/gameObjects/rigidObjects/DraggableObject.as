@@ -10,11 +10,13 @@ package gameObjects.rigidObjects
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.geom.ColorTransform;
+	import gameEvents.TutorialEvent;
 	import general.collisions.CollisionGenerator;
 	import general.collisions.ICollisionObject;
 	import general.MousePhysic;
 	import org.flashdevelop.utils.FlashConnect;
 	import stages.StageBaseClass;
+	import stages.Tutorials.TutorialEventDispatcher;
 
 	/**
 	 * ...
@@ -130,7 +132,7 @@ package gameObjects.rigidObjects
 					}
 					
 					this.rigidBody.SetPosition(MousePhysic.physMousePos);
-					
+					checkTutorial();
 					checkLimit();
 				}
 			
@@ -159,6 +161,13 @@ package gameObjects.rigidObjects
 			}
 			
 			
+		}
+		
+		private function checkTutorial():void {
+			var evtHandler:TutorialEventDispatcher = TutorialEventDispatcher.getInstance();
+			if (insideItemBox()) {
+				evtHandler.dispatchEvent(new TutorialEvent(TutorialEvent.DRAG_THE_BOOK));
+			}
 		}
 		
 		private function onMouseOut(e:MouseEvent):void 

@@ -11,7 +11,11 @@ package stages.Tutorials
 		
 		public static var stop:DialogCommand = new DialogCommand(ENUM_PASS, "stop");
 		public static var promptYesNo:DialogCommand = new DialogCommand(ENUM_PASS, "yes no question");
-
+		public static var hideNPC:DialogCommand = new DialogCommand(ENUM_PASS, "hide npc");
+		public static var waitingForEvent:DialogCommand = new DialogCommand(ENUM_PASS, "waiting for event");
+		public static var moveDialogBoxUp:DialogCommand = new DialogCommand(ENUM_PASS, "move dialog box up");
+		public static var moveToItemBox:DialogCommand = new DialogCommand(ENUM_PASS, "move to the middle of item box");
+		
 		private var command:String;
 		
 		public function DialogCommand(pass:String, cmd:String)

@@ -47,15 +47,7 @@ package stages
 		public function createTutorialDialog():void {
 			var tutorial:Tutorial = new Tutorial();
 			addChildAt(tutorial, numChildren - 1);
-			
-			var scaleRatio:Number = 0.8;
-			var npc:Sprite = new collection.gavinAsset();
-			npc.width *= scaleRatio;
-			npc.height *= scaleRatio;
-			npc.x = npc.width / 2 + 50;
-			npc.y = tutorial.y - npc.height / 2 - tutorial.height / 2;
-			addChild(npc);
-			
+		
 			isFirstTime = false;
 		}
 		
