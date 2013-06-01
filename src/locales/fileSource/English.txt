@@ -1,4 +1,3 @@
-greeting1 = Hello
-greeting2 = How are you?
-longSentence = You must be new here, I've never seen you around here
-goodbye = It was nice meeting you, I'll see you around
+stage1_1.greeting = Hello, my name is Gavin. Are you new here?<br />Do you need me to show you how to play?
+stage1_1.noTutorial = Very well, I wish you luck.<br />See you later, mate
+stage1_1.beginTutorial = Great! Let's begin, shall we?

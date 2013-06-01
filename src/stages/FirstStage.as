@@ -17,6 +17,7 @@ package stages
 	import gameObjects.StarObject;
 	import general.StageRecord;
 	import org.flashdevelop.utils.FlashConnect;
+	import stages.Tutorials.Tutorial;
 	
 	/**
 	 * ...
@@ -24,6 +25,7 @@ package stages
 	 */
 	public class FirstStage extends StageBaseClass implements IPlayableStage
 	{
+		private static var isFirstTime:Boolean = true;
 		private var collection:AssetCollection;
 		private var asset:Class;
 		
@@ -53,6 +55,8 @@ package stages
 			npc.x = npc.width / 2 + 50;
 			npc.y = tutorial.y - npc.height / 2 - tutorial.height / 2;
 			addChild(npc);
+			
+			isFirstTime = false;
 		}
 		
 		public function createLevelBySubStageID(subStageIndex:int):void {
@@ -60,8 +64,7 @@ package stages
 			initiateStage("1_"+subStageIndex.toString());
 			
 			switch(subStageIndex) {
-				//case 1: createStage1_1(); break;
-				case 1: createTutorialDialog(); break;
+				case 1: createStage1_1(); break;
 				case 2: createStage1_2(); break;
 				case 3: createStage1_3(); break;
 				case 4: createStage1_4(); break;
@@ -97,6 +100,8 @@ package stages
 			{
 				addChild(star);
 			}
+			
+			if (isFirstTime) createTutorialDialog();
 		}
 		
 		public function createStage1_2():void {

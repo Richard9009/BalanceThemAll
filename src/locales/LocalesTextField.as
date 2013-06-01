@@ -13,14 +13,19 @@ package locales
 		private var textCode:String;
 		private var _textFormat:TextFormat;
 		
-		public function LocalesTextField(localeTextCode:String, textFormat:TextFormat = null) 
+		public function LocalesTextField(localeTextCode:String = "", textFormat:TextFormat = null) 
 		{
 			super();
 			selectable = false;
-			if (textFormat == null) _textFormat = new TextFormat('Arial', 20, 0x000000, true);
+			multiline = true;
+			
+			if (textFormat == null) {
+				_textFormat = new TextFormat('Arial', 20, 0x000000, true);
+				_textFormat.leading = 5;
+			}
 			else _textFormat = textFormat;
 			
-			setLocaleText(localeTextCode);
+			if(localeTextCode != "") setLocaleText(localeTextCode);
 			LocalesManager.getInstance().addEventListener(LocalesEvent.ON_LOCALE_CHANGE, updateLocale);
 		}
 		
@@ -30,7 +35,7 @@ package locales
 		}
 		
 		private function updateLocale(e:LocalesEvent = null):void {
-			text = LocalesManager.getInstance().getText(textCode);
+			htmlText = LocalesManager.getInstance().getText(textCode);
 			this.setTextFormat(_textFormat);
 		}
 		
