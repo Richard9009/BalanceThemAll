@@ -14,6 +14,7 @@ package stages.Tutorials
 		
 		private var dialogCol:DialogListCollection = DialogListCollection.getInstance();
 		private var currentDialogID:int = 0;
+		private var currentDialogPath:DialogPath = DialogPath.TUTORIAL;
 		private var currentStageID:String = "1_1";
 		
 		private static var instance:TutorialDialogHandler;
@@ -46,18 +47,16 @@ package stages.Tutorials
 			return getDialogCode(stageID, 0);
 		}
 		
-		public function getNextDialog(heSaidYes:Boolean = true):DialogHelper
+		public function getNextDialog(path:DialogPath):DialogHelper
 		{
+			currentDialogPath = path;
 			var dialog:DialogHelper = getDialogCode(currentStageID, currentDialogID + 1);
 			
 			if (dialog == INVALID) return dialog;
 			
-			if (heSaidYes && dialog.isForNoAnswer) {
-				dialog = getNextDialog();
-			} else if (!heSaidYes && !dialog.isForNoAnswer) {
-				 dialog = getNextDialog(false);
-			}
-			
+			if (!dialog.inThisPath(path)) {
+				dialog = getNextDialog(path);
+			} 
 			return dialog;
 		}
 		

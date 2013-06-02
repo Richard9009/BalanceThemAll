@@ -41,10 +41,10 @@ package stages.Tutorials
 					new DialogHelper("stage1_1.releaseBooks", [DialogCommand.waitingForEvent]).setEvent(TutorialEvent.BOOKS_RELEASED),
 					new DialogHelper("stage1_1.waitForIt", [DialogCommand.hideNPC, DialogCommand.promptSuccessFailed])
 									.setSuccessEvent(TutorialEvent.TUTORIAL_CLEAR).setFailedEvent(TutorialEvent.TUTORIAL_FAILED),
-					new DialogHelper("stage1_1.gotTheStars"),
-					new DialogHelper("stage1_1.didnotGetStars", null, true),
-					new DialogHelper("stage1_1.noTutorial", [DialogCommand.turnOffTutorial], true),
-					new DialogHelper("", [DialogCommand.stop]) 
+					new DialogHelper("stage1_1.gotTheStars", null, [DialogPath.SUCCESS]),
+					new DialogHelper("stage1_1.didnotGetStars", null, [DialogPath.FAILED]),
+					new DialogHelper("stage1_1.noTutorial", [DialogCommand.turnOffTutorial], [DialogPath.SKIP_TUTORIAL]),
+					new DialogHelper("", [DialogCommand.stop], [DialogPath.ALL_PATHS]) 
 				];
 	}
 

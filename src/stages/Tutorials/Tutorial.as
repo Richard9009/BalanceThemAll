@@ -41,12 +41,12 @@ package stages.Tutorials
 		
 		private function handleNo(e:MouseEvent):void 
 		{
-			displayDialog(dialogHandler.getNextDialog(false));
+			displayDialog(dialogHandler.getNextDialog(DialogPath.SKIP_TUTORIAL));
 		}
 		
 		private function nextDialog(e:MouseEvent):void 
 		{
-			displayDialog(dialogHandler.getNextDialog());
+			displayDialog(dialogHandler.getNextDialog(DialogPath.TUTORIAL));
 		}
 		
 		private function displayDialog(dialog:DialogHelper):void
@@ -98,13 +98,13 @@ package stages.Tutorials
 		private function handleFailed(e:Event):void 
 		{
 			eventHandler.forgetAllEvents();
-			handleNo(null);
+			displayDialog(dialogHandler.getNextDialog(DialogPath.FAILED));
 		}
 		
 		private function handleSuccess(e:Event):void 
 		{
 			eventHandler.forgetAllEvents();
-			nextDialog(null);
+			displayDialog(dialogHandler.getNextDialog(DialogPath.SUCCESS));
 		}
 		
 		private function handleCommandEvent(e:Event):void 

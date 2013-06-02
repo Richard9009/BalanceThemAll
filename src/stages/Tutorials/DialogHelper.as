@@ -8,21 +8,26 @@ package stages.Tutorials
 	 */
 	public class DialogHelper {
 		
+		private static const DEFAULT_PATH:Array = [DialogPath.TUTORIAL];
+		
 		private var _code:String;
-		private var _noDialog:Boolean;
+		private var _paths:Array = new Array();
 		private var _commands:Array = new Array();
 		private var _event:String = MouseEvent.MOUSE_DOWN;
 		private var _successEvent:String;
 		private var _failedEvent:String;
 		
-		public function DialogHelper(code:String, commandArray:Array = null, isForNo:Boolean = false)
+		public function DialogHelper(code:String, commandArray:Array = null, pathArray:Array = null)
 		{
 			_code = code;
-			_noDialog = isForNo;
+			_paths = (pathArray == null) ? DEFAULT_PATH : pathArray;
 			_commands = commandArray;
 			
 			if (_commands != null && _commands[0] is DialogCommand == false) 
 				throw new Error("The commandArray does not contain DialogCommand");
+				
+			if (_paths[0] is DialogPath == false)
+				throw new Error("The pathArrat does not contain DialogPath object");
 		}
 		
 		public function setEvent(type:String):DialogHelper {
@@ -40,7 +45,16 @@ package stages.Tutorials
 			return this;
 		}
 		
-		public function get isForNoAnswer():Boolean { return _noDialog; }
+		public function inThisPath(path:DialogPath):Boolean {
+			for each(var p:DialogPath in paths) {
+				if (p == DialogPath.ALL_PATHS) return true;
+				if (p == path) return true;
+			}
+			
+			return false;
+		}
+		
+		public function get paths():Array { return _paths; }
 		public function get commands():Array { return _commands; }
 		public function get code():String { return _code; }
 		public function get event():String { return _event; }
