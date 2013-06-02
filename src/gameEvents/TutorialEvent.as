@@ -7,6 +7,7 @@ package gameEvents
 	 */
 	public class TutorialEvent extends Event
 	{
+		public static const START_TUTORIAL:String = "START TUTORIAL";
 		public static const ANSWERED_YES:String = "ANSWERED YES";
 		public static const ANSWERED_NO:String = "ANSWERED NO";
 		public static const DRAG_THE_BOOK:String = "DRAG THE BOOK";
@@ -16,6 +17,8 @@ package gameEvents
 		public static const READY_TO_DROP:String = "ITEMS ARE READY TO DROP";
 		public static const BOOKS_RELEASED:String = "BOOKS ARE ALREADY RELEASED";
 		public static const TUTORIAL_CLEAR:String = "TUTORIAL CLEAR";
+		public static const TUTORIAL_FAILED:String = "TUTORIAL FAILED";
+		public static const CLOSE_TUTORIAL:String = "CLOSE TUTORIAL";
 		
 		public function TutorialEvent(type:String) 
 		{

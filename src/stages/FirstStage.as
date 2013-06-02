@@ -15,6 +15,7 @@ package stages
 	import gameObjects.rigidObjects.DraggableObject;
 	import gameObjects.rigidObjects.Foundation;
 	import gameObjects.IAudibleObject;
+	import general.MousePhysic;
 	import general.MusicManager;
 	import general.ObjectCollection;
 	import gameObjects.StarObject;
@@ -30,6 +31,7 @@ package stages
 	public class FirstStage extends StageBaseClass implements IPlayableStage
 	{
 		private static var isFirstTime:Boolean = true;
+		private var tutorialHandler:TutorialEventDispatcher = TutorialEventDispatcher.getInstance();
 		private var collection:AssetCollection;
 		private var asset:Class;
 		
@@ -51,14 +53,19 @@ package stages
 		public function createTutorialDialog():void {
 			var tutorial:Tutorial = new Tutorial();
 			addChildAt(tutorial, numChildren - 1);
-			TutorialEventDispatcher.getInstance().addEventListener(TutorialEvent.DRAW_STAR_LINE, drawStarLine);
+			tutorialHandler.addEventListener(TutorialEvent.START_TUTORIAL, handleStartTutorial);
+			tutorialHandler.addEventListener(TutorialEvent.DRAW_STAR_LINE, drawStarLine);
 			isFirstTime = false;
+		}
+		
+		private function handleStartTutorial(e:TutorialEvent):void 
+		{
+			MousePhysic.allowDoubleClick = false;
 		}
 		
 		private var starLine:Sprite;
 		private function drawStarLine(e:TutorialEvent):void 
 		{
-			FlashConnect.trace("draw");
 			var lineLength:Number = 100;
 			starLine = new Sprite();
 			
@@ -71,8 +78,7 @@ package stages
 			addChild(starLine);
 			
 			addEventListener(Event.ENTER_FRAME, checkStarTutorial);
-			TutorialEventDispatcher.getInstance().startWaitingForAnEvent(TutorialEvent.READY_TO_DROP);
-			TutorialEventDispatcher.getInstance().removeEventListener(TutorialEvent.DRAW_STAR_LINE, drawStarLine);
+			tutorialHandler.removeEventListener(TutorialEvent.DRAW_STAR_LINE, drawStarLine);
 		}
 		
 		private function checkStarTutorial(e:Event):void 
@@ -84,9 +90,10 @@ package stages
 			}
 			
 			if (willGetAllStars) {
+				MousePhysic.allowDoubleClick = true;
 				removeEventListener(Event.ENTER_FRAME, checkStarTutorial);
 				clearStarLine();
-				TutorialEventDispatcher.getInstance().dispatchEvent(new TutorialEvent(TutorialEvent.READY_TO_DROP));
+				tutorialHandler.dispatchEvent(new TutorialEvent(TutorialEvent.READY_TO_DROP));
 			}
 		}
 		
@@ -110,7 +117,7 @@ package stages
 		override protected function dropAll(e:GrabObjectEvent):void 
 		{
 			super.dropAll(e);
-			TutorialEventDispatcher.getInstance().dispatchEvent(new TutorialEvent(TutorialEvent.BOOKS_RELEASED));
+			tutorialHandler.dispatchEvent(new TutorialEvent(TutorialEvent.BOOKS_RELEASED));
 		}
 		
 		override protected function checkStarCollision(item:Sprite):void 
@@ -118,8 +125,30 @@ package stages
 			super.checkStarCollision(item);
 			
 			if (stars.length == 0) {
-				TutorialEventDispatcher.getInstance().dispatchEvent(new TutorialEvent(TutorialEvent.TUTORIAL_CLEAR));
+				tutorialHandler.dispatchEvent(new TutorialEvent(TutorialEvent.TUTORIAL_CLEAR));
 			}
+		}
+		
+		override protected function displayScore(e:GrabObjectEvent):void 
+		{
+			super.displayScore(e);
+			if (record.allItemsDropped() && stars.length > 0) {
+				tutorialHandler.dispatchEvent(new TutorialEvent(TutorialEvent.TUTORIAL_FAILED));
+			}
+		}
+		
+		override protected function levelClear():void 
+		{
+			if (Tutorial.tutorialOn) {
+				tutorialHandler.addEventListener(TutorialEvent.CLOSE_TUTORIAL, 
+					function closeTutorial(e:TutorialEvent):void {
+						Tutorial.tutorialOn = false;
+						tutorialHandler.removeEventListener(e.type, closeTutorial);
+						levelClear();
+					}
+				);
+			}
+			else super.levelClear();
 		}
 	
 		public function createLevelBySubStageID(subStageIndex:int):void {

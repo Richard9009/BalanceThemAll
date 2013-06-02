@@ -24,8 +24,8 @@ package stages.Tutorials
 		public function get dialogList1_1():Array { return _dialogList1_1; } 
 		private var _dialogList1_1:Array = 	
 				[	
-					new DialogHelper("stage1_1.greeting", [DialogCommand.promptYesNo, DialogCommand.moveToItemBox]),
-					new DialogHelper("stage1_1.beginTutorial"),
+					new DialogHelper("stage1_1.greeting", [DialogCommand.promptYesNo]),
+					new DialogHelper("stage1_1.beginTutorial", [DialogCommand.startTutorial]),
 					new DialogHelper("stage1_1.dragBook", [DialogCommand.moveDialogBoxUp, 
 															DialogCommand.waitingForEvent]).setEvent(TutorialEvent.DRAG_THE_BOOK), 
 					new DialogHelper("stage1_1.dragItToMe", [DialogCommand.waitingForEvent]).setEvent(TutorialEvent.GET_OUT_ITEMBOX),
@@ -39,9 +39,11 @@ package stages.Tutorials
 					new DialogHelper("stage1_1.moveBookToStar", [DialogCommand.hideNPC, DialogCommand.drawStarLines,
 																DialogCommand.waitingForEvent]).setEvent(TutorialEvent.READY_TO_DROP),
 					new DialogHelper("stage1_1.releaseBooks", [DialogCommand.waitingForEvent]).setEvent(TutorialEvent.BOOKS_RELEASED),
-					new DialogHelper("stage1_1.waitForIt", [DialogCommand.waitingForEvent]).setEvent(TutorialEvent.TUTORIAL_CLEAR),
+					new DialogHelper("stage1_1.waitForIt", [DialogCommand.hideNPC, DialogCommand.promptSuccessFailed])
+									.setSuccessEvent(TutorialEvent.TUTORIAL_CLEAR).setFailedEvent(TutorialEvent.TUTORIAL_FAILED),
 					new DialogHelper("stage1_1.gotTheStars"),
-					new DialogHelper("stage1_1.noTutorial", null, true),
+					new DialogHelper("stage1_1.didnotGetStars", null, true),
+					new DialogHelper("stage1_1.noTutorial", [DialogCommand.turnOffTutorial], true),
 					new DialogHelper("", [DialogCommand.stop]) 
 				];
 	}

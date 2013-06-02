@@ -186,7 +186,7 @@ package stages
 			FlashConnect.trace("game over");
 		}
 		
-		private function displayScore(e:GrabObjectEvent):void 
+		protected function displayScore(e:GrabObjectEvent):void 
 		{
 			record.droppedItemsCount++;
 			
@@ -210,8 +210,9 @@ package stages
 			if (record.allItemsDropped() && stars.length > 0) delayAction(2000, levelClear);
 		}
 		
-		private function levelClear():void 
+		protected function levelClear():void 
 		{
+			FlashConnect.trace("level clear");
 			sCounter.sumUpScore();
 			record.stageCleared();
 			parent.dispatchEvent(new GameEvent(GameEvent.STAGE_CLEAR));

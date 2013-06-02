@@ -34,6 +34,7 @@ package general
 		public static var isHolding:Boolean = false;
 		public static var pointedBody:b2Body;
 		public static var scrollDelta:Number;
+		public static var allowDoubleClick:Boolean = true;
 		
 		public function MousePhysic() 
 		{
@@ -42,6 +43,8 @@ package general
 		
 		private static function onClick(e:MouseEvent):void 
 		{
+			if (!allowDoubleClick) return;
+			
 			if(isFirstClick){
 				dClickTimer.start();
 				isFirstClick = false;

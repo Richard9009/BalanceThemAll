@@ -4,7 +4,9 @@ package stages.Tutorials
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
+	import flash.geom.Point;
 	import gameEvents.TutorialEvent;
+	import general.animations.LinearAnimation;
 	import locales.LocalesTextField;
 	import org.flashdevelop.utils.FlashConnect;
 	import stages.StageBaseClass;
@@ -15,6 +17,7 @@ package stages.Tutorials
 	 */
 	public class Tutorial extends DialogBox 
 	{
+		public static var tutorialOn:Boolean = true;
 		private static const ABOVE_ITEM_BOX:String = "above item box";
 		private static const ON_ITEM_BOX:String = "in the middle of item box";
 		
@@ -52,13 +55,13 @@ package stages.Tutorials
 			
 			for each(var command:DialogCommand in dialog.commands) 
 			{	
-				handleDialogCommand(command, dialog.event);
+				handleDialogCommand(command, dialog);
 			}
 			
 			tField.setLocaleText(dialog.code);
 		}
 		
-		private function handleDialogCommand(command:DialogCommand, event:String = ""):void
+		private function handleDialogCommand(command:DialogCommand, helper:DialogHelper):void
 		{
 			switch(command) {
 				case DialogCommand.promptYesNo: yesButton.visible = true;
@@ -72,25 +75,41 @@ package stages.Tutorials
 				
 				case DialogCommand.hideNPC: npc.visible = false; break;
 				
-				case DialogCommand.waitingForEvent: eventHandler.addEventListener(event, handleCommandEvent);
-													eventHandler.startWaitingForAnEvent(event);
+				case DialogCommand.waitingForEvent: eventHandler.addEventListener(helper.event, handleCommandEvent);
 													removeEventListener(MouseEvent.MOUSE_DOWN, nextDialog); 
 													break;
 													
 				case DialogCommand.drawStarLines: 	var evtType:String = TutorialEvent.DRAW_STAR_LINE;
-													eventHandler.startWaitingForAnEvent(evtType);
 													eventHandler.dispatchEvent(new TutorialEvent(evtType)); break;
 				
-				case DialogCommand.stop: parent.removeChild(this); break;
+				case DialogCommand.promptSuccessFailed: eventHandler.addEventListener(helper.successEvent, handleSuccess);
+														eventHandler.addEventListener(helper.failedEvent, handleFailed);
+														break;
+													
+				case DialogCommand.turnOffTutorial: tutorialOn = false; break;									
+		
+				case DialogCommand.stop: 	eventHandler.dispatchEvent(new TutorialEvent(TutorialEvent.CLOSE_TUTORIAL));
+											parent.removeChild(this); break;
 				
 				default: return;
 			}
 		}
 		
+		private function handleFailed(e:Event):void 
+		{
+			eventHandler.forgetAllEvents();
+			handleNo(null);
+		}
+		
+		private function handleSuccess(e:Event):void 
+		{
+			eventHandler.forgetAllEvents();
+			nextDialog(null);
+		}
+		
 		private function handleCommandEvent(e:Event):void 
 		{
 			eventHandler.removeEventListener(e.type, handleCommandEvent);
-			eventHandler.forgetThisEvent();
 			nextDialog(null);
 		}
 		
@@ -99,26 +118,33 @@ package stages.Tutorials
 			npc.visible = true;
 			yesButton.visible = false;
 			noButton.visible = false; 
+			parent.setChildIndex(this, parent.numChildren - 1);
 			if (!hasEventListener(MouseEvent.MOUSE_DOWN)) 
 				addEventListener(MouseEvent.MOUSE_DOWN, nextDialog);
 		}
 		
 		private function moveTo(position:String):void
 		{
+			var destination:Point = new Point();
 			switch(position) {
-				case ABOVE_ITEM_BOX: x = StageBaseClass.STAGE_WIDTH / 2;
-									 y = StageBaseClass.STAGE_HEIGHT - StageBaseClass.ITEMBOX_HEIGHT - dialogBoxHeight / 2;
+				case ABOVE_ITEM_BOX: destination.x = StageBaseClass.STAGE_WIDTH / 2;
+									 destination.y = StageBaseClass.STAGE_HEIGHT - StageBaseClass.ITEMBOX_HEIGHT - dialogBoxHeight / 2;
 									 break;
 									 
-				case ON_ITEM_BOX: x = StageBaseClass.STAGE_WIDTH / 2;
-								  y = StageBaseClass.STAGE_HEIGHT - dialogBoxHeight / 2;
+				case ON_ITEM_BOX: destination.x = StageBaseClass.STAGE_WIDTH / 2;
+								  destination.y = StageBaseClass.STAGE_HEIGHT - dialogBoxHeight / 2;
 								  break;
 			}
+			
+			var anim:LinearAnimation = new LinearAnimation();
+			anim.constantMove(this, new Point(x, y), destination, 500);
 		}
 		
 		private function creationComplete(e:Event):void 
 		{
 			dialogBoxHeight = height;
+			x = StageBaseClass.STAGE_WIDTH / 2;
+			y = StageBaseClass.STAGE_HEIGHT - dialogBoxHeight / 2;
 			
 			tField = new LocalesTextField("");
 			addChild(tField);
