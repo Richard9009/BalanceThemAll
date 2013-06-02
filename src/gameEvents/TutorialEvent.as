@@ -12,6 +12,7 @@ package gameEvents
 		public static const ANSWERED_NO:String = "ANSWERED NO";
 		public static const DRAG_THE_BOOK:String = "DRAG THE BOOK";
 		public static const GET_OUT_ITEMBOX:String = "GET THE BOOK OUT OF ITEM BOX";
+		public static const BACK_TO_ITEMBOX:String = "BACK TO ITEMBOX";
 		public static const STOP_DRAG_BOOK:String = "STOP DRAGGING THE BOOK";
 		public static const DRAW_STAR_LINE:String = "DRAW VERTICAL LINE ON THE STARS FOR A CLUE";
 		public static const READY_TO_DROP:String = "ITEMS ARE READY TO DROP";

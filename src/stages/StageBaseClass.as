@@ -47,6 +47,7 @@ package stages
 		protected var groundBody:b2Body;
 		
 		protected var record:StageRecord;
+		protected var showBalanceLine:Boolean = true;
 		
 		private var objectsOnHand:Array;
 		private var bLine:BalanceLine;
@@ -296,12 +297,12 @@ package stages
 		
 		private function stopDrawLine(e:BalanceLineEvent):void 
 		{
-			bLine.stopDrawLine();
+			if(showBalanceLine) bLine.stopDrawLine();
 		}
 		
 		private function startDrawLine(e:BalanceLineEvent):void 
 		{
-			bLine.startDrawLine(objectsOnHand[0], objectsOnHand[1]);
+			if(showBalanceLine) bLine.startDrawLine(objectsOnHand[0], objectsOnHand[1]);
 		}
 		
 		private function dropAnObject(e:GrabObjectEvent):void 

@@ -28,15 +28,16 @@ package stages.Tutorials
 		private var collection:AssetCollection = new AssetCollection();
 		private var dialogHandler:TutorialDialogHandler;
 		private var eventHandler:TutorialEventDispatcher = TutorialEventDispatcher.getInstance();
+		private var id:String;
 		private var npc:Sprite;
 		
-		public function Tutorial() 
+		public function Tutorial(stageID:String) 
 		{
 			dialogHandler = TutorialDialogHandler.getInstance();
 			addEventListener(Event.ADDED_TO_STAGE, creationComplete);
 			yesButton.addEventListener(MouseEvent.CLICK, nextDialog);
 			noButton.addEventListener(MouseEvent.CLICK, handleNo);
-			
+			id = stageID;
 		}
 		
 		private function handleNo(e:MouseEvent):void 
@@ -57,8 +58,8 @@ package stages.Tutorials
 			{	
 				handleDialogCommand(command, dialog);
 			}
-			
-			tField.setLocaleText(dialog.code);
+
+			if(!dialog.isEmpty) tField.setLocaleText(dialog.code);
 		}
 		
 		private function handleDialogCommand(command:DialogCommand, helper:DialogHelper):void
@@ -68,6 +69,9 @@ package stages.Tutorials
 												noButton.visible = true;
 												removeEventListener(MouseEvent.MOUSE_DOWN, nextDialog);
 												break;
+				
+				case DialogCommand.startTutorial: 	tutorialOn = true;
+													eventHandler.dispatchEvent(new TutorialEvent(TutorialEvent.START_TUTORIAL)); break;								
 												
 				case DialogCommand.moveToItemBox: moveTo(ON_ITEM_BOX); break;
 				
@@ -75,20 +79,24 @@ package stages.Tutorials
 				
 				case DialogCommand.hideNPC: npc.visible = false; break;
 				
-				case DialogCommand.waitingForEvent: eventHandler.addEventListener(helper.event, handleCommandEvent);
+				case DialogCommand.waitingForEvent: 	eventHandler.addEventListener(helper.event, handleCommandEvent);
 													removeEventListener(MouseEvent.MOUSE_DOWN, nextDialog); 
 													break;
 													
 				case DialogCommand.drawStarLines: 	var evtType:String = TutorialEvent.DRAW_STAR_LINE;
 													eventHandler.dispatchEvent(new TutorialEvent(evtType)); break;
 				
-				case DialogCommand.promptSuccessFailed: eventHandler.addEventListener(helper.successEvent, handleSuccess);
+				case DialogCommand.promptSuccessFailed: removeEventListener(MouseEvent.MOUSE_DOWN, nextDialog);
+														eventHandler.addEventListener(helper.successEvent, handleSuccess);
 														eventHandler.addEventListener(helper.failedEvent, handleFailed);
 														break;
 													
+				case DialogCommand.previousTutorial: 	displayDialog(dialogHandler.getPrevDialog(DialogPath.CATCH_RETURN)); break;
+														
 				case DialogCommand.turnOffTutorial: tutorialOn = false; break;									
 		
 				case DialogCommand.stop: 	eventHandler.dispatchEvent(new TutorialEvent(TutorialEvent.CLOSE_TUTORIAL));
+											eventHandler.forgetAllEvents();
 											parent.removeChild(this); break;
 				
 				default: return;
@@ -97,13 +105,13 @@ package stages.Tutorials
 		
 		private function handleFailed(e:Event):void 
 		{
-			eventHandler.forgetAllEvents();
+			eventHandler.removeEventListener(e.type, handleFailed);
 			displayDialog(dialogHandler.getNextDialog(DialogPath.FAILED));
 		}
 		
 		private function handleSuccess(e:Event):void 
 		{
-			eventHandler.forgetAllEvents();
+			eventHandler.removeEventListener(e.type, handleSuccess);
 			displayDialog(dialogHandler.getNextDialog(DialogPath.SUCCESS));
 		}
 		

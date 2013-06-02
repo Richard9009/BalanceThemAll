@@ -49,6 +49,7 @@ package stages.Tutorials
 		
 		override public function dispatchEvent(event:Event):Boolean 
 		{
+			FlashConnect.trace(event.type +"_____" + Tutorial.tutorialOn);
 			if (event is TutorialEvent == false) throw new IllegalOperationError("This dispatcher can only dispatch TutorialEvent objects");
 			if (!thisIsTheEventWeAreWaitingFor(event.type) || !Tutorial.tutorialOn) return false;
 			

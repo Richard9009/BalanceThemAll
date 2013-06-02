@@ -15,6 +15,7 @@ package stages.Tutorials
 		public static var waitingForEvent:DialogCommand = new DialogCommand(ENUM_PASS, "it needs setEvent function from dialogHelper");
 		public static var moveDialogBoxUp:DialogCommand = new DialogCommand(ENUM_PASS, "move dialog box up");
 		public static var moveToItemBox:DialogCommand = new DialogCommand(ENUM_PASS, "move to the middle of item box");
+		public static var previousTutorial:DialogCommand = new DialogCommand(ENUM_PASS, "previous");
 		public static var drawStarLines:DialogCommand = new DialogCommand(ENUM_PASS, "draw star lines");
 		public static var startTutorial:DialogCommand = new DialogCommand(ENUM_PASS, "start tutorial");
 		public static var turnOffTutorial:DialogCommand = new DialogCommand(ENUM_PASS, "turn off tutorial");

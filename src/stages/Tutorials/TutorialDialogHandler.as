@@ -14,7 +14,6 @@ package stages.Tutorials
 		
 		private var dialogCol:DialogListCollection = DialogListCollection.getInstance();
 		private var currentDialogID:int = 0;
-		private var currentDialogPath:DialogPath = DialogPath.TUTORIAL;
 		private var currentStageID:String = "1_1";
 		
 		private static var instance:TutorialDialogHandler;
@@ -49,7 +48,6 @@ package stages.Tutorials
 		
 		public function getNextDialog(path:DialogPath):DialogHelper
 		{
-			currentDialogPath = path;
 			var dialog:DialogHelper = getDialogCode(currentStageID, currentDialogID + 1);
 			
 			if (dialog == INVALID) return dialog;
@@ -57,6 +55,19 @@ package stages.Tutorials
 			if (!dialog.inThisPath(path)) {
 				dialog = getNextDialog(path);
 			} 
+			return dialog;
+		}
+		
+		public function getPrevDialog(path:DialogPath):DialogHelper
+		{
+			var dialog:DialogHelper = getDialogCode(currentStageID, currentDialogID - 1);
+			
+			if (dialog == INVALID) return dialog;
+			
+			if (!dialog.inThisPath(path)) {
+				dialog = getPrevDialog(path);
+			} 
+			
 			return dialog;
 		}
 		

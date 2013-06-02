@@ -8,6 +8,7 @@ package stages.Tutorials
 	 */
 	public class DialogHelper {
 		
+		public static const EMPTY:String = "EMPTY";
 		private static const DEFAULT_PATH:Array = [DialogPath.TUTORIAL];
 		
 		private var _code:String;
@@ -60,6 +61,7 @@ package stages.Tutorials
 		public function get event():String { return _event; }
 		public function get successEvent():String { return _successEvent; }
 		public function get failedEvent():String { return _failedEvent; }
+		public function get isEmpty():Boolean { return code == EMPTY; }
 	}
 
 }

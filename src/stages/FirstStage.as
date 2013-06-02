@@ -30,7 +30,6 @@ package stages
 	 */
 	public class FirstStage extends StageBaseClass implements IPlayableStage
 	{
-		private static var isFirstTime:Boolean = true;
 		private var tutorialHandler:TutorialEventDispatcher = TutorialEventDispatcher.getInstance();
 		private var collection:AssetCollection;
 		private var asset:Class;
@@ -46,16 +45,13 @@ package stages
 			this.addChild(assetData);
 			
 			super();
-			
-			//createStage1_1();
 		}
 		
-		public function createTutorialDialog():void {
-			var tutorial:Tutorial = new Tutorial();
+		public function createTutorialDialog(id:String):void {
+			var tutorial:Tutorial = new Tutorial(id);
 			addChildAt(tutorial, numChildren - 1);
 			tutorialHandler.addEventListener(TutorialEvent.START_TUTORIAL, handleStartTutorial);
 			tutorialHandler.addEventListener(TutorialEvent.DRAW_STAR_LINE, drawStarLine);
-			isFirstTime = false;
 		}
 		
 		private function handleStartTutorial(e:TutorialEvent):void 
@@ -193,7 +189,8 @@ package stages
 				addChild(star);
 			}
 			
-			if (isFirstTime) createTutorialDialog();
+			showBalanceLine = false;
+			createTutorialDialog("1_1");
 		}
 		
 		public function createStage1_2():void {
