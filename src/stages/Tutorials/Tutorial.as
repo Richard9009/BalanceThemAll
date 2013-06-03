@@ -70,8 +70,7 @@ package stages.Tutorials
 												removeEventListener(MouseEvent.MOUSE_DOWN, nextDialog);
 												break;
 				
-				case DialogCommand.startTutorial: 	tutorialOn = true;
-													eventHandler.dispatchEvent(new TutorialEvent(TutorialEvent.START_TUTORIAL)); break;								
+				case DialogCommand.startTutorial: 	tutorialOn = true; break;								
 												
 				case DialogCommand.moveToItemBox: moveTo(ON_ITEM_BOX); break;
 				
@@ -93,7 +92,17 @@ package stages.Tutorials
 													
 				case DialogCommand.previousTutorial: 	displayDialog(dialogHandler.getPrevDialog(DialogPath.CATCH_RETURN)); break;
 														
-				case DialogCommand.turnOffTutorial: tutorialOn = false; break;									
+				case DialogCommand.turnOffTutorial: tutorialOn = false; break;	
+				
+				case DialogCommand.hideAll: visible = false; break;
+				
+				case DialogCommand.lockStage: eventHandler.dispatchEvent(new TutorialEvent(TutorialEvent.LOCK_STAGE)); break;
+				
+				case DialogCommand.unlockStage: eventHandler.dispatchEvent(new TutorialEvent(TutorialEvent.UNLOCK_STAGE)); break;
+				
+				case DialogCommand.lockDropItem: eventHandler.dispatchEvent(new TutorialEvent(TutorialEvent.LOCK_DOUBLE_CLICK)); break;
+				
+				case DialogCommand.allowDropItem: eventHandler.dispatchEvent(new TutorialEvent(TutorialEvent.UNLOCK_DOUBLE_CLICK)); break;
 		
 				case DialogCommand.stop: 	eventHandler.dispatchEvent(new TutorialEvent(TutorialEvent.CLOSE_TUTORIAL));
 											eventHandler.forgetAllEvents();
@@ -123,6 +132,7 @@ package stages.Tutorials
 		
 		private function setDefaultCondition():void
 		{
+			visible = true;
 			npc.visible = true;
 			yesButton.visible = false;
 			noButton.visible = false; 
@@ -169,7 +179,7 @@ package stages.Tutorials
 			npc.y = - npc.height / 2 - height / 2;
 			addChild(npc);
 			
-			displayDialog(dialogHandler.getFirstDialog("1_1"));
+			displayDialog(dialogHandler.getFirstDialog(id));
 		}
 		
 	}

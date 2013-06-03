@@ -15,6 +15,7 @@ package stages.Tutorials
 		public static const FAILED:DialogPath = new DialogPath(ENUM_PASS, "failed");
 		
 		public static const CATCH_RETURN:DialogPath = new DialogPath(ENUM_PASS, "return from the next dialog");
+		public static const CATCH_RETURN_2:DialogPath = new DialogPath(ENUM_PASS, "return from the next dialog 2");
 		public static const ALL_PATHS:DialogPath = new DialogPath(ENUM_PASS, "all paths");
 		
 		private var _path:String;

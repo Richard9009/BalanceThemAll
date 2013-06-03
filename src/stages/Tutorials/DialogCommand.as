@@ -19,6 +19,12 @@ package stages.Tutorials
 		public static var drawStarLines:DialogCommand = new DialogCommand(ENUM_PASS, "draw star lines");
 		public static var startTutorial:DialogCommand = new DialogCommand(ENUM_PASS, "start tutorial");
 		public static var turnOffTutorial:DialogCommand = new DialogCommand(ENUM_PASS, "turn off tutorial");
+		
+		public static var hideAll:DialogCommand = new DialogCommand(ENUM_PASS, "hide all tutorial");
+		public static var lockStage:DialogCommand = new DialogCommand(ENUM_PASS, "disable mouse interaction to stage");
+		public static var unlockStage:DialogCommand = new DialogCommand(ENUM_PASS, "enable mouse interaction to stage");
+		public static var lockDropItem:DialogCommand = new DialogCommand(ENUM_PASS, "lockDropItem");
+		public static var allowDropItem:DialogCommand = new DialogCommand(ENUM_PASS, "allow drop item");
 		public static var promptSuccessFailed:DialogCommand = new DialogCommand(ENUM_PASS, "it needs setSuccessEvent and setFailedEvent from dialogHelper");
 		
 		private var command:String;

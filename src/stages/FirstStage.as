@@ -52,6 +52,32 @@ package stages
 			addChildAt(tutorial, numChildren - 1);
 			tutorialHandler.addEventListener(TutorialEvent.START_TUTORIAL, handleStartTutorial);
 			tutorialHandler.addEventListener(TutorialEvent.DRAW_STAR_LINE, drawStarLine);
+			tutorialHandler.addEventListener(TutorialEvent.LOCK_STAGE, lockStage);
+			tutorialHandler.addEventListener(TutorialEvent.UNLOCK_STAGE, unlockStage);
+			tutorialHandler.addEventListener(TutorialEvent.LOCK_DOUBLE_CLICK, lockDoubleClick);
+			tutorialHandler.addEventListener(TutorialEvent.UNLOCK_DOUBLE_CLICK, unlockDoubleClick);
+		}
+		
+		private function unlockDoubleClick(e:TutorialEvent):void 
+		{
+			MousePhysic.allowDoubleClick = true;
+		}
+		
+		private function lockDoubleClick(e:TutorialEvent):void 
+		{	
+			MousePhysic.allowDoubleClick = false;
+		}
+		
+		private function unlockStage(e:TutorialEvent):void 
+		{
+			MousePhysic.unlockStage(this);
+			mouseEnabled = true;
+		}
+		
+		private function lockStage(e:TutorialEvent):void 
+		{
+			MousePhysic.lockStage();
+			mouseEnabled = false;
 		}
 		
 		private function handleStartTutorial(e:TutorialEvent):void 
@@ -146,6 +172,12 @@ package stages
 			}
 			else super.levelClear();
 		}
+		
+		override protected function grabAnObject(e:GrabObjectEvent):void 
+		{
+			super.grabAnObject(e);
+			if (objectsOnHand.length == 2) tutorialHandler.dispatchEvent(new TutorialEvent(TutorialEvent.HANDS_ARE_FULL));
+		}
 	
 		public function createLevelBySubStageID(subStageIndex:int):void {
 			
@@ -224,6 +256,8 @@ package stages
 			
 			foundation.showBalancePoint();
 			bLine.showHelp = true;
+			
+			createTutorialDialog("1_2");
 		}
 		
 		public function createStage1_3():void {

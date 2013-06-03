@@ -49,8 +49,8 @@ package stages
 		protected var record:StageRecord;
 		protected var bLine:BalanceLine;
 		protected var showBalanceLine:Boolean = true;
+		protected var objectsOnHand:Array;
 		
-		private var objectsOnHand:Array;
 		private var sCounter:ScoreCounter;
 		private var menuButton:Sprite;
 		private var replayButton:Sprite;

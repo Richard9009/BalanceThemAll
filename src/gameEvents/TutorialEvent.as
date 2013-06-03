@@ -7,6 +7,7 @@ package gameEvents
 	 */
 	public class TutorialEvent extends Event
 	{
+	//==============================================STAGE 1_1===========================================================================	
 		public static const START_TUTORIAL:String = "START TUTORIAL";
 		public static const ANSWERED_YES:String = "ANSWERED YES";
 		public static const ANSWERED_NO:String = "ANSWERED NO";
@@ -20,6 +21,16 @@ package gameEvents
 		public static const TUTORIAL_CLEAR:String = "TUTORIAL CLEAR";
 		public static const TUTORIAL_FAILED:String = "TUTORIAL FAILED";
 		public static const CLOSE_TUTORIAL:String = "CLOSE TUTORIAL";
+	
+	//===============================================STAGE 1_2=========================================================================
+		public static const HANDS_ARE_FULL:String = "THERE ARE 2 ITEMS ON HANDS";
+		public static const ON_BALANCE_POSITION:String = "ON BALANCE POSITION";
+		public static const OUT_FROM_BALANCE_ZONE:String = "GOT OUT OF BALANCE ZONE";
+		public static const LOCK_STAGE:String = "LOCK STAGE";
+		public static const UNLOCK_STAGE:String = "UNLOCK STAGE";
+		public static const LOCK_DOUBLE_CLICK:String = "LOCK_DOUBLE_CLICK";
+		public static const UNLOCK_DOUBLE_CLICK:String = "UNLOCK_DOUBLE_CLICK";
+		
 		
 		public function TutorialEvent(type:String) 
 		{

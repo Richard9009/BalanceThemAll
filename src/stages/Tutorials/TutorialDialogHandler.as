@@ -29,6 +29,7 @@ package stages.Tutorials
 			
 			switch(stageID) {
 				case "1_1": dialogArr = dialogCol.dialogList1_1; break;
+				case "1_2": dialogArr = dialogCol.dialogList1_2; break;
 				default: return INVALID;
 			}
 		

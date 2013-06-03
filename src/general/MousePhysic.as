@@ -27,7 +27,6 @@ package general
 		
 		private static var isFirstClick:Boolean = true;
 		private static var dClickTimer:Timer = new Timer(250, 1);
-		
 		private static var _isDown:Boolean = false;
 		
 		public static var isDragging:Boolean = false;
@@ -119,6 +118,17 @@ package general
 		public static function get isDown():Boolean
 		{
 			return _isDown;
+		}
+		
+		public static function lockStage():void
+		{
+			_isDown = false;
+			destroyStage();
+		}
+		
+		public static function unlockStage(stage:Sprite):void
+		{
+			setStage(stage);
 		}
 		
 	}
