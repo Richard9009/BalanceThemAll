@@ -4,9 +4,21 @@ stage1_1.beginTutorial = Great! Let's begin, shall we?
 stage1_1.dragBook = Use left mouse button to drag one of the book below.
 stage1_1.dragItToMe = Good! Now drag the book up to me here
 stage1_1.releaseDrag = You can let go the left mouse button now.<br />The book won't fall, you have your hand holding it tight
-stage1_1.getAnotherBook = Ok, you're doing so well, let's get another book there.<br />Drag it up here and let go like what you just did
+stage1_1.getAnotherBook = Let's get another book there.<br />Drag it up here and let go like what you just did
 stage1_1.moveBookToStar = Move your books to somewhere along the line<br />Make sure it would reach the stars when it fell
-stage1_1.releaseBooks = Good! Now you can do a double click to release the books
+stage1_1.releaseBooks = Good! Now you can use double click to release the books
 stage1_1.waitForIt = Wait until the books stop moving
 stage1_1.gotTheStars = That's it! Try to collect all the stars on every level.<br />I'll see you around, mate!
 stage1_1.didnotGetStars = Oh too bad, you missed the star. Never mind, better luck next time.
+
+__________________________________________________________________________________________________________________________________________________________________
+
+stage1_2.askNeedHelp = We have something new here, the balance line.<br />Do you want me to explain it to you?
+stage1_2.beginTutorial = Alright, pay attention to the red and yellow line in between these two items.<br />The more red the line is, the more balanced they will be
+stage1_2.skipTutorial = Very well, good luck. I'll see you later
+stage1_2.explainFoundation = If the red part lies somewhere above the support, they would be in good balance for sure.<br />Try it
+stage1_2.dropInItemBox = No, do not drop your item back inside there. Pick it up
+stage1_2.outOfZone = It's out of balance zone, try to get it back in there.
+stage1_2.readyToDrop = Good, now you can let the items go, use double click
+stage1_2.didnotGetStars = Oh too bad, you missed the star. Never mind, better luck next time.
+stage1_2.gotTheStars = That's it! You got all the stars!!!<br />Keep it up! See you around, mate!
