@@ -21,6 +21,8 @@ package gameObjects
 		private var balancePoint:b2Vec2;
 		private var balanceRange:Number = 10;
 		
+		public var showHelp:Boolean = false;
+		
 		public function BalanceLine() 
 		{
 			super();
@@ -40,6 +42,16 @@ package gameObjects
 			calculateBalancePoint();
 			drawBalancePoint();
 			drawLine();
+			if (showHelp) drawHelp();
+		}
+		
+		private function drawHelp():void
+		{
+			var lineLength:Number = 10;
+			
+			graphics.lineStyle(2, 0xFFFFFF, 1);
+			graphics.moveTo(balancePoint.x, balancePoint.y - lineLength);
+			graphics.lineTo(balancePoint.x, balancePoint.y + lineLength);
 		}
 		
 		private function drawBalancePoint():void 

@@ -212,7 +212,7 @@ package stages
 				}
 			}
 			
-			createFoundation(380, 420, 40, 80, -Math.PI / 2);
+			var foundation:Foundation = createFoundation(380, 420, 40, 80, -Math.PI / 2);
 			createBalanceBoard(380, 385, 500, 15);
 			stars = new Array();
 			stars.push(items.createGoldenStar(200, 100));
@@ -221,6 +221,9 @@ package stages
 			{
 				addChild(star);
 			}
+			
+			foundation.showBalancePoint();
+			bLine.showHelp = true;
 		}
 		
 		public function createStage1_3():void {
@@ -320,7 +323,7 @@ package stages
 			}
 		}
 		
-		private function createFoundation(xx:Number, yy:Number, ww:Number, hh:Number, rot:Number = 0):void
+		private function createFoundation(xx:Number, yy:Number, ww:Number, hh:Number, rot:Number = 0):Foundation
 		{
 			var fdn1:Foundation = new Foundation();
 			fdn1.getBody().SetType(b2Body.b2_staticBody);
@@ -330,6 +333,8 @@ package stages
 			fdn1.getBody().SetAngle(rot);
 			fdn1.setFixtureProperties(0, 0, 1);
 			addChild(fdn1);
+			
+			return fdn1;
 		}
 		
 		private function createBalanceBoard(xx:Number, yy:Number, ww:Number, hh:Number):void
