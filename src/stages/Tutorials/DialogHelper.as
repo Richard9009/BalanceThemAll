@@ -25,10 +25,10 @@ package stages.Tutorials
 			_commands = commandArray;
 			
 			if (_commands != null && _commands[0] is DialogCommand == false) 
-				throw new Error("The commandArray does not contain DialogCommand");
+				throw new Error("The commandArray does not contain DialogCommand. CODE: "+code);
 				
 			if (_paths[0] is DialogPath == false)
-				throw new Error("The pathArrat does not contain DialogPath object");
+				throw new Error("The pathArray does not contain DialogPath object. CODE: "+code);
 		}
 		
 		public function setEvent(type:String):DialogHelper {

@@ -98,6 +98,8 @@ package gameObjects
 			balancePoint.x = bodyA.GetUserData().x - xBPointFromA;
 			balancePoint.y = bodyA.GetUserData().y - yBPointFromA;
 		}
+		
+		public function get balance_point():b2Vec2 { return balancePoint; }
 	}
 
 }

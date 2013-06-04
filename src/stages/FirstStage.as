@@ -176,7 +176,11 @@ package stages
 		override protected function grabAnObject(e:GrabObjectEvent):void 
 		{
 			super.grabAnObject(e);
-			if (objectsOnHand.length == 2) tutorialHandler.dispatchEvent(new TutorialEvent(TutorialEvent.HANDS_ARE_FULL));
+			if (objectsOnHand.length == 2) delayAction(1000, tutorial_HandFull);
+		}
+		
+		private function tutorial_HandFull():void {
+			tutorialHandler.dispatchEvent(new TutorialEvent(TutorialEvent.HANDS_ARE_FULL));
 		}
 	
 		public function createLevelBySubStageID(subStageIndex:int):void {
@@ -258,6 +262,11 @@ package stages
 			bLine.showHelp = true;
 			
 			createTutorialDialog("1_2");
+			tutorialHandler.addEventListener(TutorialEvent.CHECK_BALANCE_LINE, function func(e:TutorialEvent):void {
+					foundation.showBalancePoint();
+					foundation.startCheckingBalanceLine(bLine);
+				} 
+			);
 		}
 		
 		public function createStage1_3():void {

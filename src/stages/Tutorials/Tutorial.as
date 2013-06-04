@@ -56,55 +56,46 @@ package stages.Tutorials
 			
 			for each(var command:DialogCommand in dialog.commands) 
 			{	
-				handleDialogCommand(command, dialog);
+				handleDialogCommand(command);
 			}
 
 			if(!dialog.isEmpty) tField.setLocaleText(dialog.code);
 		}
 		
-		private function handleDialogCommand(command:DialogCommand, helper:DialogHelper):void
+		private function handleDialogCommand(command:DialogCommand):void
 		{
-			switch(command) {
-				case DialogCommand.promptYesNo: yesButton.visible = true;
+			switch(command.commandType) {
+				case DialogCommand.promptYesNo.commandType: yesButton.visible = true;
 												noButton.visible = true;
 												removeEventListener(MouseEvent.MOUSE_DOWN, nextDialog);
 												break;
 				
-				case DialogCommand.startTutorial: 	tutorialOn = true; break;								
+				case DialogCommand.startTutorial.commandType: 	tutorialOn = true; break;								
 												
-				case DialogCommand.moveToItemBox: moveTo(ON_ITEM_BOX); break;
+				case DialogCommand.moveToItemBox.commandType: moveTo(ON_ITEM_BOX); break;
 				
-				case DialogCommand.moveDialogBoxUp: moveTo(ABOVE_ITEM_BOX); break;
+				case DialogCommand.moveDialogBoxUp.commandType: moveTo(ABOVE_ITEM_BOX); break;
 				
-				case DialogCommand.hideNPC: npc.visible = false; break;
+				case DialogCommand.hideNPC.commandType: npc.visible = false; break;
 				
-				case DialogCommand.waitingForEvent: 	eventHandler.addEventListener(helper.event, handleCommandEvent);
-													removeEventListener(MouseEvent.MOUSE_DOWN, nextDialog); 
-													break;
-													
-				case DialogCommand.drawStarLines: 	var evtType:String = TutorialEvent.DRAW_STAR_LINE;
-													eventHandler.dispatchEvent(new TutorialEvent(evtType)); break;
+				case DialogCommand.waitingForEvent().commandType: 	eventHandler.addEventListener(command.waitingEvent, handleCommandEvent);
+														removeEventListener(MouseEvent.MOUSE_DOWN, nextDialog); 
+														break;
 				
-				case DialogCommand.promptSuccessFailed: removeEventListener(MouseEvent.MOUSE_DOWN, nextDialog);
-														eventHandler.addEventListener(helper.successEvent, handleSuccess);
-														eventHandler.addEventListener(helper.failedEvent, handleFailed);
+				case DialogCommand.promptSuccessFailed().commandType: removeEventListener(MouseEvent.MOUSE_DOWN, nextDialog);
+														eventHandler.addEventListener(command.successEvent, handleSuccess);
+														eventHandler.addEventListener(command.failedEvent, handleFailed);
 														break;
 													
-				case DialogCommand.previousTutorial: 	displayDialog(dialogHandler.getPrevDialog(DialogPath.CATCH_RETURN)); break;
+				case DialogCommand.previousTutorial.commandType: 	displayDialog(dialogHandler.getPrevDialog(DialogPath.CATCH_RETURN)); break;
 														
-				case DialogCommand.turnOffTutorial: tutorialOn = false; break;	
+				case DialogCommand.turnOffTutorial.commandType: tutorialOn = false; break;	
 				
-				case DialogCommand.hideAll: visible = false; break;
+				case DialogCommand.hideAll.commandType: visible = false; break;
 				
-				case DialogCommand.lockStage: eventHandler.dispatchEvent(new TutorialEvent(TutorialEvent.LOCK_STAGE)); break;
-				
-				case DialogCommand.unlockStage: eventHandler.dispatchEvent(new TutorialEvent(TutorialEvent.UNLOCK_STAGE)); break;
-				
-				case DialogCommand.lockDropItem: eventHandler.dispatchEvent(new TutorialEvent(TutorialEvent.LOCK_DOUBLE_CLICK)); break;
-				
-				case DialogCommand.allowDropItem: eventHandler.dispatchEvent(new TutorialEvent(TutorialEvent.UNLOCK_DOUBLE_CLICK)); break;
+				case DialogCommand.dispatchAnEvent().commandType: eventHandler.dispatchEvent(new TutorialEvent(command.eventToDispatch)); break;
 		
-				case DialogCommand.stop: 	eventHandler.dispatchEvent(new TutorialEvent(TutorialEvent.CLOSE_TUTORIAL));
+				case DialogCommand.stop.commandType: 	eventHandler.dispatchEvent(new TutorialEvent(TutorialEvent.CLOSE_TUTORIAL));
 											eventHandler.forgetAllEvents();
 											parent.removeChild(this); break;
 				

@@ -261,7 +261,7 @@ package stages
 			}
 		}
 		
-		private function delayAction(delay:Number, action:Function):void {
+		protected function delayAction(delay:Number, action:Function):void {
 			var delayTimer:Timer = new Timer(delay);
 			delayTimer.start();
 			delayTimer.addEventListener(TimerEvent.TIMER, function delay(e:TimerEvent):void {
