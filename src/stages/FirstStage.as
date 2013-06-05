@@ -50,7 +50,6 @@ package stages
 		public function createTutorialDialog(id:String):void {
 			var tutorial:Tutorial = new Tutorial(id);
 			addChildAt(tutorial, numChildren - 1);
-			tutorialHandler.addEventListener(TutorialEvent.START_TUTORIAL, handleStartTutorial);
 			tutorialHandler.addEventListener(TutorialEvent.DRAW_STAR_LINE, drawStarLine);
 			tutorialHandler.addEventListener(TutorialEvent.LOCK_STAGE, lockStage);
 			tutorialHandler.addEventListener(TutorialEvent.UNLOCK_STAGE, unlockStage);
@@ -78,11 +77,6 @@ package stages
 		{
 			MousePhysic.lockStage();
 			mouseEnabled = false;
-		}
-		
-		private function handleStartTutorial(e:TutorialEvent):void 
-		{
-			MousePhysic.allowDoubleClick = false;
 		}
 		
 		private var starLine:Sprite;

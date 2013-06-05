@@ -20,5 +20,6 @@ stage1_2.explainFoundation = If the red part lies somewhere above the support,<b
 stage1_2.dropInItemBox = No, do not drop your item back inside there. Pick it up
 stage1_2.outOfZone = It's out of balance zone, try to get it back in there.
 stage1_2.readyToDrop = Good, now you can let the items go, use double click
+stage1_2.waitForIt = Wait until the books stop moving
 stage1_2.didnotGetStars = Oh too bad, you missed the star. Never mind, better luck next time.
 stage1_2.gotTheStars = That's it! You got all the stars!!!<br />Keep it up! See you around, mate!
