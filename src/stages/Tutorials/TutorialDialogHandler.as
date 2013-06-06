@@ -42,6 +42,11 @@ package stages.Tutorials
 			return INVALID;
 		}
 		
+		public function jumpTo(dialogIndex:int):DialogHelper
+		{
+			return getDialogCode(currentStageID, dialogIndex);
+		}
+		
 		public function getFirstDialog(stageID:String):DialogHelper
 		{
 			return getDialogCode(stageID, 0);

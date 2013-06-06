@@ -87,7 +87,7 @@ package stages.Tutorials
 														eventHandler.addEventListener(command.failedEvent, handleFailed);
 														break;
 													
-				case DialogCommand.previousTutorial().commandType: 	displayDialog(dialogHandler.getPrevDialog(command.dialogPath)); break;
+				case DialogCommand.jumpToDialog().commandType: 	displayDialog(dialogHandler.jumpTo(command.dialogIndex)); break;
 														
 				case DialogCommand.turnOffTutorial.commandType: tutorialOn = false; break;	
 				

@@ -19,6 +19,7 @@ package stages.Tutorials
 		public var waitingEvent:String;
 		public var eventToDispatch:String;
 		public var dialogPath:DialogPath;
+		public var dialogIndex:int;
 		
 		public function DialogCommand(pass:String, cmdType:String)
 		{
@@ -63,9 +64,9 @@ package stages.Tutorials
 			return cmd;
 		}
 		
-		public static function previousTutorial(path:DialogPath = null):DialogCommand { 
-			var cmd:DialogCommand = new DialogCommand(ENUM_PASS, "previous"); 
-			cmd.dialogPath = (path == null) ? DEFAULT_RETURN_PATH : path;
+		public static function jumpToDialog(index:int = 0):DialogCommand {
+			var cmd:DialogCommand = new DialogCommand(ENUM_PASS, "jump to a specific dialog");
+			cmd.dialogIndex = index;
 			return cmd;
 		}
 		
