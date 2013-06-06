@@ -9,7 +9,6 @@ package stages.Tutorials
 	
 		protected static const ENUM_PASS:String = "87652318643ABXSJDH";
 		protected static const NONE:String = "NO EVENT ASSIGNED";
-		protected static const DEFAULT_RETURN_PATH:DialogPath = DialogPath.CATCH_RETURN;
 		
 		private static var eventHandler:TutorialEventDispatcher = TutorialEventDispatcher.getInstance();
 		private var _commandType:String;

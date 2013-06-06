@@ -83,25 +83,33 @@ package stages.Tutorials
 								DialogCommand.startTutorial, DialogCommand.dispatchAnEvent(TutorialEvent.LOCK_DOUBLE_CLICK)]),
 				
 		/*3*/	new DialogHelper("stage1_2.dropInItemBox", [DialogCommand.moveDialogBoxUp, 
-								DialogCommand.waitingForEvent(TutorialEvent.GET_OUT_ITEMBOX)], [DialogPath.CATCH_RETURN]),		
+								DialogCommand.waitingForEvent(TutorialEvent.GET_OUT_ITEMBOX)], [DialogPath.SKIP_ME]),		
 				
 				new DialogHelper("stage1_2.explainFoundation", [DialogCommand.hideNPC, DialogCommand.moveToItemBox,
 								DialogCommand.dispatchAnEvent(TutorialEvent.CHECK_BALANCE_LINE), 
 								DialogCommand.promptSuccessFailed(TutorialEvent.ON_BALANCE_POSITION, TutorialEvent.BACK_TO_ITEMBOX)]),
-			
-		//Success - Fail pair start-----------------------						
-				new DialogHelper("stage1_2.readyToDrop", [DialogCommand.promptSuccessFailed(TutorialEvent.BOOKS_RELEASED, TutorialEvent.OUT_FROM_BALANCE_ZONE), 
-									DialogCommand.dispatchAnEvent(TutorialEvent.UNLOCK_DOUBLE_CLICK)], [DialogPath.SUCCESS]),				
+				
 								
+				new DialogHelper(DialogHelper.EMPTY, [DialogCommand.jumpToDialog(3)], [DialogPath.FAILED]),				
+								
+		/*6*/	new DialogHelper("stage1_2.readyToDrop", [DialogCommand.promptSuccessFailed(TutorialEvent.BOOKS_RELEASED, TutorialEvent.OUT_FROM_BALANCE_ZONE), 
+								DialogCommand.dispatchAnEvent(TutorialEvent.UNLOCK_DOUBLE_CLICK)], [DialogPath.SUCCESS]),				
+								
+									
+				new DialogHelper(DialogHelper.EMPTY, [DialogCommand.jumpToDialog(11)], [DialogPath.FAILED]),
+				
+				new DialogHelper("stage1_2.waitForIt", [DialogCommand.promptSuccessFailed(TutorialEvent.TUTORIAL_CLEAR, TutorialEvent.TUTORIAL_FAILED)], [DialogPath.SUCCESS]),
+				
+				new DialogHelper("stage1_2.gotTheStars", null, [DialogPath.SUCCESS]),
+				new DialogHelper("stage1_2.didnotGetStars", null, [DialogPath.FAILED]),
+		
+		/*11*/	new DialogHelper("stage1_2.outOfZone", [DialogCommand.promptSuccessFailed(TutorialEvent.ON_BALANCE_POSITION, TutorialEvent.BACK_TO_ITEMBOX), 
+													DialogCommand.dispatchAnEvent(TutorialEvent.LOCK_DOUBLE_CLICK)], [DialogPath.SKIP_ME]),
+				
+				new DialogHelper(DialogHelper.EMPTY, [DialogCommand.jumpToDialog(6)], [DialogPath.SUCCESS]),
 				new DialogHelper(DialogHelper.EMPTY, [DialogCommand.jumpToDialog(3)], [DialogPath.FAILED]),
-		//End-----------------------------------------------
-	
-		//Success - Fail pair start----------------------------																										
-		//new DialogHelper("stage1_2.waitForIt", [DialogCommand.promptSuccessFailed(TutorialEvent.TUTORIAL_CLEAR, TutorialEvent.TUTORIAL_FAILED)
-				new DialogHelper("stage1_2.outOfZone", [DialogCommand.promptSuccessFailed(TutorialEvent.ON_BALANCE_POSITION, TutorialEvent.BACK_TO_ITEMBOX), 
-													DialogCommand.dispatchAnEvent(TutorialEvent.LOCK_DOUBLE_CLICK)], [DialogPath.FAILED])
-				
-				
+				new DialogHelper("stage1_2.skipTutorial", [DialogCommand.dispatchAnEvent(TutorialEvent.UNLOCK_STAGE), DialogCommand.turnOffTutorial], [DialogPath.SKIP_TUTORIAL]),
+				new DialogHelper(DialogHelper.EMPTY, [DialogCommand.stop], [DialogPath.ALL_PATHS])
 			]
 	}
 

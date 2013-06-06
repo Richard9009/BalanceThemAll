@@ -227,11 +227,8 @@ package stages
 			var itemArray:Array = new Array();
 			var items:ObjectCollection = new ObjectCollection();
 			
-			itemArray.push(items.createGlassVase(3));
-			itemArray.push(items.createMug(2));
 			itemArray.push(items.createBlueBook(1));
-			itemArray.push(items.createPhoto(2));
-			itemArray.push(items.createEncyclopedia(2));
+			itemArray.push(items.createEncyclopedia(1));
 			
 			for each(var iArray:Array in itemArray)
 			{
