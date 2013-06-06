@@ -63,9 +63,9 @@ package stages.Tutorials
 			return cmd;
 		}
 		
-		public static function previousTutorial(path:DialogPath = DEFAULT_RETURN_PATH):DialogCommand { 
+		public static function previousTutorial(path:DialogPath = null):DialogCommand { 
 			var cmd:DialogCommand = new DialogCommand(ENUM_PASS, "previous"); 
-			cmd.dialogPath = path;
+			cmd.dialogPath = (path == null) ? DEFAULT_RETURN_PATH : path;
 			return cmd;
 		}
 		
