@@ -2,6 +2,8 @@ package stages.Tutorials
 {
 	import flash.errors.IllegalOperationError;
 	import gameEvents.TutorialEvent;
+	import stages.Tutorials.commands.DialogCommand;
+	import stages.Tutorials.commands.TutorialCommand;
 	/**
 	 * ...
 	 * @author Herichard Stefanus Salim
@@ -26,7 +28,7 @@ package stages.Tutorials
 		public function get dialogList1_1():Array { return _dialogList1_1; } 
 		private var _dialogList1_1:Array = 	
 				[	
-					new DialogHelper("stage1_1.greeting", [DialogCommand.promptYesNo]),
+					new DialogHelper("stage1_1.greeting", [TutorialCommand.promptYesNo]),
 					
 					new DialogHelper("stage1_1.beginTutorial", [DialogCommand.dispatchAnEvent(TutorialEvent.LOCK_DOUBLE_CLICK)]),
 					
@@ -65,7 +67,7 @@ package stages.Tutorials
 					
 					new DialogHelper("stage1_1.didnotGetStars", null, [DialogPath.FAILED]),
 					
-					new DialogHelper("stage1_1.noTutorial", [DialogCommand.turnOffTutorial], [DialogPath.SKIP_TUTORIAL]),
+		new DialogHelper("stage1_1.noTutorial", [TutorialCommand.turnOffTutorial], [DialogPath.SKIP_TUTORIAL]),
 					
 					new DialogHelper(DialogHelper.EMPTY, [DialogCommand.stop], [DialogPath.ALL_PATHS]) 
 				];
@@ -77,7 +79,7 @@ package stages.Tutorials
 			[
 				new DialogHelper(DialogHelper.EMPTY, [TutorialCommand.hideAll, DialogCommand.waitingForEvent(TutorialEvent.HANDS_ARE_FULL)]),
 				
-				new DialogHelper("stage1_2.askNeedHelp", [DialogCommand.promptYesNo, DialogCommand.dispatchAnEvent(TutorialEvent.LOCK_STAGE)]),
+				new DialogHelper("stage1_2.askNeedHelp", [TutorialCommand.promptYesNo, DialogCommand.dispatchAnEvent(TutorialEvent.LOCK_STAGE)]),
 				
 				new DialogHelper("stage1_2.beginTutorial", [DialogCommand.dispatchAnEvent(TutorialEvent.UNLOCK_STAGE), 
 								 DialogCommand.dispatchAnEvent(TutorialEvent.LOCK_DOUBLE_CLICK)]),
@@ -95,7 +97,6 @@ package stages.Tutorials
 		/*6*/	new DialogHelper("stage1_2.readyToDrop", [DialogCommand.promptSuccessFailed(TutorialEvent.BOOKS_RELEASED, TutorialEvent.OUT_FROM_BALANCE_ZONE), 
 								DialogCommand.dispatchAnEvent(TutorialEvent.UNLOCK_DOUBLE_CLICK)], [DialogPath.SUCCESS]),				
 								
-									
 				new DialogHelper(DialogHelper.EMPTY, [DialogCommand.jumpToDialog(11)], [DialogPath.FAILED]),
 				
 				new DialogHelper("stage1_2.waitForIt", [DialogCommand.promptSuccessFailed(TutorialEvent.TUTORIAL_CLEAR, TutorialEvent.TUTORIAL_FAILED)
@@ -109,7 +110,7 @@ package stages.Tutorials
 				
 				new DialogHelper(DialogHelper.EMPTY, [DialogCommand.jumpToDialog(6)], [DialogPath.SUCCESS]),
 				new DialogHelper(DialogHelper.EMPTY, [DialogCommand.jumpToDialog(3)], [DialogPath.FAILED]),
-				new DialogHelper("stage1_2.skipTutorial", [DialogCommand.dispatchAnEvent(TutorialEvent.UNLOCK_STAGE), DialogCommand.turnOffTutorial], [DialogPath.SKIP_TUTORIAL]),
+				new DialogHelper("stage1_2.skipTutorial", [DialogCommand.dispatchAnEvent(TutorialEvent.UNLOCK_STAGE), TutorialCommand.turnOffTutorial], [DialogPath.SKIP_TUTORIAL]),
 				new DialogHelper(DialogHelper.EMPTY, [DialogCommand.stop], [DialogPath.ALL_PATHS])
 			]
 	}

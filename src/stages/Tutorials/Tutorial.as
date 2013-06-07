@@ -10,6 +10,8 @@ package stages.Tutorials
 	import locales.LocalesTextField;
 	import org.flashdevelop.utils.FlashConnect;
 	import stages.StageBaseClass;
+	import stages.Tutorials.commands.DialogCommand;
+	import stages.Tutorials.commands.TutorialCommand;
 	
 	/**
 	 * ...
@@ -70,7 +72,7 @@ package stages.Tutorials
 			}
 			
 			switch(command.commandType) {
-				case DialogCommand.promptYesNo.commandType: yesButton.visible = true;
+				case TutorialCommand.promptYesNo.commandType: yesButton.visible = true;
 												noButton.visible = true;
 												removeEventListener(MouseEvent.MOUSE_DOWN, nextDialog);
 												break;						
@@ -92,7 +94,7 @@ package stages.Tutorials
 													
 				case DialogCommand.jumpToDialog().commandType: 	displayDialog(dialogHandler.jumpTo(command.dialogIndex)); break;
 														
-				case DialogCommand.turnOffTutorial.commandType: tutorialOn = false; break;	
+				case TutorialCommand.turnOffTutorial.commandType: tutorialOn = false; break;	
 				
 				case DialogCommand.dispatchAnEvent().commandType: eventHandler.dispatchEvent(new TutorialEvent(command.eventToDispatch)); break;
 		

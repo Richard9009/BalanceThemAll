@@ -2,6 +2,8 @@ package stages.Tutorials
 {
 	import flash.events.MouseEvent;
 	import mx.utils.StringUtil;
+	import stages.Tutorials.commands.DialogCommand;
+	import stages.Tutorials.commands.TutorialCommand;
 	/**
 	 * ...
 	 * @author Herichard Stefanus Salim
