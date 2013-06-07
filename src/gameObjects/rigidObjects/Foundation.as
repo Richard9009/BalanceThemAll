@@ -34,7 +34,7 @@ package gameObjects.rigidObjects
 		
 		public function showBalancePoint():void
 		{
-			var lineLength:Number = 440;
+			var lineLength:Number = 375;
 			balanceZone = new DashedLine(2,0x333333,new Array(5, 8));
 			
 			balanceZone.x = this.x;

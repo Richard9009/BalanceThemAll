@@ -44,6 +44,7 @@ package stages.Tutorials
 		
 		public function lockSkipDialog():void {
 			removeEventListener(MouseEvent.MOUSE_DOWN, nextDialog);
+			clickClue.visible = false;
 		}
 		
 		private function handleNo(e:MouseEvent):void 
@@ -83,21 +84,21 @@ package stages.Tutorials
 				case DialogCommand.hideNPC.commandType: npc.visible = false; break;
 				
 				case DialogCommand.waitingForEvent().commandType: 	eventHandler.addEventListener(command.waitingEvent, handleCommandEvent);
-														removeEventListener(MouseEvent.MOUSE_DOWN, nextDialog); 
-														break;
+																	lockSkipDialog();
+																	break;
 				
-				case DialogCommand.promptSuccessFailed().commandType: removeEventListener(MouseEvent.MOUSE_DOWN, nextDialog);
-														eventHandler.addEventListener(command.successEvent, handleSuccess);
-														eventHandler.addEventListener(command.failedEvent, handleFailed);
-														break;
+				case DialogCommand.promptSuccessFailed().commandType: 	lockSkipDialog();
+																		eventHandler.addEventListener(command.successEvent, handleSuccess);
+																		eventHandler.addEventListener(command.failedEvent, handleFailed);
+																		break;
 													
 				case DialogCommand.jumpToDialog().commandType: 	displayDialog(dialogHandler.jumpTo(command.dialogIndex)); break;
 				
 				case DialogCommand.dispatchAnEvent().commandType: eventHandler.dispatchEvent(new TutorialEvent(command.eventToDispatch)); break;
 		
 				case DialogCommand.stop.commandType: 	eventHandler.dispatchEvent(new TutorialEvent(TutorialEvent.CLOSE_TUTORIAL));
-											eventHandler.forgetAllEvents();
-											parent.removeChild(this); break;
+														eventHandler.forgetAllEvents();
+														parent.removeChild(this); break;
 				
 				default: return;
 			}
@@ -127,6 +128,8 @@ package stages.Tutorials
 			npc.visible = true;
 			yesButton.visible = false;
 			noButton.visible = false; 
+			clickClue.visible = true;
+			
 			parent.setChildIndex(this, parent.numChildren - 1);
 			if (!hasEventListener(MouseEvent.MOUSE_DOWN)) 
 				addEventListener(MouseEvent.MOUSE_DOWN, nextDialog);
