@@ -42,6 +42,10 @@ package stages.Tutorials
 			id = stageID;
 		}
 		
+		public function lockSkipDialog():void {
+			removeEventListener(MouseEvent.MOUSE_DOWN, nextDialog);
+		}
+		
 		private function handleNo(e:MouseEvent):void 
 		{
 			displayDialog(dialogHandler.getNextDialog(DialogPath.SKIP_TUTORIAL));
@@ -71,12 +75,7 @@ package stages.Tutorials
 				TutorialCommand(command).executeAllActions();
 			}
 			
-			switch(command.commandType) {
-				case TutorialCommand.promptYesNo.commandType: yesButton.visible = true;
-												noButton.visible = true;
-												removeEventListener(MouseEvent.MOUSE_DOWN, nextDialog);
-												break;						
-												
+			switch(command.commandType) {		
 				case DialogCommand.moveToItemBox.commandType: moveTo(ON_ITEM_BOX); break;
 				
 				case DialogCommand.moveDialogBoxUp.commandType: moveTo(ABOVE_ITEM_BOX); break;
@@ -93,8 +92,6 @@ package stages.Tutorials
 														break;
 													
 				case DialogCommand.jumpToDialog().commandType: 	displayDialog(dialogHandler.jumpTo(command.dialogIndex)); break;
-														
-				case TutorialCommand.turnOffTutorial.commandType: tutorialOn = false; break;	
 				
 				case DialogCommand.dispatchAnEvent().commandType: eventHandler.dispatchEvent(new TutorialEvent(command.eventToDispatch)); break;
 		
@@ -175,8 +172,7 @@ package stages.Tutorials
 			
 			tutorialOn = true;
 			TutorialCommand.setTutorial(this);
-			
-			
+		
 			displayDialog(dialogHandler.getFirstDialog(id));
 		}
 		

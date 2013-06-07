@@ -35,7 +35,8 @@ package stages.Tutorials.commands
 			return new TutorialCommand(ENUM_PASS, "ask yes no question")
 						.addAction( function promptYesNo_action():void {
 							tutorial.yesButton.visible = true;
-							tutorial.noButton.visible = true;				
+							tutorial.noButton.visible = true;
+							tutorial.lockSkipDialog();
 						});
 		}
 		
