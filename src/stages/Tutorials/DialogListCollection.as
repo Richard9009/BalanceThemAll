@@ -98,13 +98,14 @@ package stages.Tutorials
 									
 				new DialogHelper(DialogHelper.EMPTY, [DialogCommand.jumpToDialog(11)], [DialogPath.FAILED]),
 				
-				new DialogHelper("stage1_2.waitForIt", [DialogCommand.promptSuccessFailed(TutorialEvent.TUTORIAL_CLEAR, TutorialEvent.TUTORIAL_FAILED)], [DialogPath.SUCCESS]),
+				new DialogHelper("stage1_2.waitForIt", [DialogCommand.promptSuccessFailed(TutorialEvent.TUTORIAL_CLEAR, TutorialEvent.TUTORIAL_FAILED)
+														,DialogCommand.hideNPC], [DialogPath.SUCCESS]),
 				
 				new DialogHelper("stage1_2.gotTheStars", null, [DialogPath.SUCCESS]),
 				new DialogHelper("stage1_2.didnotGetStars", null, [DialogPath.FAILED]),
 		
 		/*11*/	new DialogHelper("stage1_2.outOfZone", [DialogCommand.promptSuccessFailed(TutorialEvent.ON_BALANCE_POSITION, TutorialEvent.BACK_TO_ITEMBOX), 
-													DialogCommand.dispatchAnEvent(TutorialEvent.LOCK_DOUBLE_CLICK)], [DialogPath.SKIP_ME]),
+														DialogCommand.hideNPC, DialogCommand.dispatchAnEvent(TutorialEvent.LOCK_DOUBLE_CLICK)], [DialogPath.SKIP_ME]),
 				
 				new DialogHelper(DialogHelper.EMPTY, [DialogCommand.jumpToDialog(6)], [DialogPath.SUCCESS]),
 				new DialogHelper(DialogHelper.EMPTY, [DialogCommand.jumpToDialog(3)], [DialogPath.FAILED]),

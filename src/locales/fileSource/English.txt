@@ -14,9 +14,9 @@ stage1_1.didnotGetStars = Oh too bad, you missed the star. Never mind, better lu
 __________________________________________________________________________________________________________________________________________________________________
 
 stage1_2.askNeedHelp = We have something new here, the balance line.<br />Do you want me to explain it to you?
-stage1_2.beginTutorial = Alright, pay attention to the red and yellow line<br />in between these two items. The more red the line is,<br />the more balanced they will be
+stage1_2.beginTutorial = Alright, pay attention to the red and yellow line<br />It represents the weight difference of the objects
 stage1_2.skipTutorial = Very well, good luck. I'll see you later
-stage1_2.explainFoundation = If the red part lies somewhere above the support,<br />they would be in good balance for sure.<br />Try it
+stage1_2.explainFoundation = If the red part of the line lies somewhere above the support,<br />they would be in good balance for sure.<br />Alright, try to balance the books
 stage1_2.dropInItemBox = No, do not drop your item back inside there. Pick it up
 stage1_2.outOfZone = It's out of balance zone, try to get it back in there.
 stage1_2.readyToDrop = Good, now you can let the items go, use double click

@@ -249,15 +249,8 @@ package stages
 				addChild(star);
 			}
 			
-			foundation.showBalancePoint();
-			bLine.showHelp = true;
-			
-			createTutorialDialog("1_2");
-			tutorialHandler.addEventListener(TutorialEvent.CHECK_BALANCE_LINE, function func(e:TutorialEvent):void {
-					foundation.showBalancePoint();
-					foundation.startCheckingBalanceLine(bLine);
-				} 
-			);
+			foundation.setBalanceLine(bLine);
+			createTutorialDialog("1_2"); 
 		}
 		
 		public function createStage1_3():void {

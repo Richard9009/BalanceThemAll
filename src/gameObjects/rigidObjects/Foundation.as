@@ -17,10 +17,19 @@ package gameObjects.rigidObjects
 		private var collection:AssetCollection = new AssetCollection();
 		private var balanceZone:DashedLine;
 		private var alreadyBalanced:Boolean = false;
+		private var balanceLine:BalanceLine;
 		
 		public function Foundation() 
 		{
 			super();
+		}
+		
+		public function setBalanceLine(bLine:BalanceLine):void
+		{
+			if (bLine == null) return;
+			
+			balanceLine = bLine;
+			TutorialEventDispatcher.getInstance().addEventListener(TutorialEvent.CHECK_BALANCE_LINE, startCheckingBalanceLine);
 		}
 		
 		public function showBalancePoint():void
@@ -31,10 +40,10 @@ package gameObjects.rigidObjects
 			balanceZone.x = this.x;
 			balanceZone.y = this.y;
 			
-			balanceZone.moveTo(-20 - height/2,  - 70);
-			balanceZone.lineTo(- 20 - height/2,  - lineLength);
-			balanceZone.moveTo(- 20 + height/2,  - 70);
-			balanceZone.lineTo(- 20 + height/2,  - lineLength);
+			balanceZone.moveTo(width/2,  0);
+			balanceZone.lineTo(width/2,  - lineLength);
+			balanceZone.moveTo(-width/2,  0);
+			balanceZone.lineTo(-width/2,  - lineLength);
 			
 			parent.addChild(balanceZone);
 		}
@@ -47,11 +56,10 @@ package gameObjects.rigidObjects
 			}
 		}
 		
-		private var balanceLine:BalanceLine;
-		public function startCheckingBalanceLine(bLine:BalanceLine):void
+		public function startCheckingBalanceLine(e:TutorialEvent):void
 		{
-			balanceLine = bLine;
 			alreadyBalanced = false;
+			showBalancePoint();
 			addEventListener(Event.ENTER_FRAME, checkBalanceLine);
 		}
 		
@@ -64,7 +72,6 @@ package gameObjects.rigidObjects
 		private function checkBalanceLine(e:Event):void 
 		{
 			if (balancePointInsideBalanceZone() && !alreadyBalanced) {
-				FlashConnect.trace("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 				TutorialEventDispatcher.getInstance().dispatchEvent(new TutorialEvent(TutorialEvent.ON_BALANCE_POSITION));
 				alreadyBalanced = true;
 			}
@@ -77,7 +84,6 @@ package gameObjects.rigidObjects
 		
 		private function balancePointInsideBalanceZone():Boolean
 		{
-			FlashConnect.trace(balanceLine.balance_point.x + "___" + balanceZone.width);
 			return (balanceLine.balance_point.x > balanceZone.x - balanceZone.width / 2
 			        && balanceLine.balance_point.x < balanceZone.x + balanceZone.width / 2
 					&& balanceLine.balance_point.y < balanceZone.y);
