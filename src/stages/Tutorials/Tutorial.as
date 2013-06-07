@@ -33,7 +33,6 @@ package stages.Tutorials
 		
 		public function Tutorial(stageID:String) 
 		{
-			tutorialOn = true;
 			dialogHandler = TutorialDialogHandler.getInstance();
 			addEventListener(Event.ADDED_TO_STAGE, creationComplete);
 			yesButton.addEventListener(MouseEvent.CLICK, nextDialog);
@@ -65,13 +64,16 @@ package stages.Tutorials
 		
 		private function handleDialogCommand(command:DialogCommand):void
 		{
+			if (command is TutorialCommand) 
+			{
+				TutorialCommand(command).executeAllActions();
+			}
+			
 			switch(command.commandType) {
 				case DialogCommand.promptYesNo.commandType: yesButton.visible = true;
 												noButton.visible = true;
 												removeEventListener(MouseEvent.MOUSE_DOWN, nextDialog);
-												break;
-				
-				case DialogCommand.startTutorial.commandType: 	tutorialOn = true; break;								
+												break;						
 												
 				case DialogCommand.moveToItemBox.commandType: moveTo(ON_ITEM_BOX); break;
 				
@@ -91,8 +93,6 @@ package stages.Tutorials
 				case DialogCommand.jumpToDialog().commandType: 	displayDialog(dialogHandler.jumpTo(command.dialogIndex)); break;
 														
 				case DialogCommand.turnOffTutorial.commandType: tutorialOn = false; break;	
-				
-				case DialogCommand.hideAll.commandType: visible = false; break;
 				
 				case DialogCommand.dispatchAnEvent().commandType: eventHandler.dispatchEvent(new TutorialEvent(command.eventToDispatch)); break;
 		
@@ -170,6 +170,10 @@ package stages.Tutorials
 			npc.x = -width/2 + npc.width / 2 + 30;
 			npc.y = - npc.height / 2 - height / 2;
 			addChild(npc);
+			
+			tutorialOn = true;
+			TutorialCommand.setTutorial(this);
+			
 			
 			displayDialog(dialogHandler.getFirstDialog(id));
 		}

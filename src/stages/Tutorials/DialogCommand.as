@@ -42,9 +42,7 @@ package stages.Tutorials
 		public static function get hideNPC():DialogCommand { return new DialogCommand(ENUM_PASS, "hide npc"); }
 		public static function get moveDialogBoxUp():DialogCommand { return new DialogCommand(ENUM_PASS, "move dialog box up"); }
 		public static function get moveToItemBox():DialogCommand { return new DialogCommand(ENUM_PASS, "move to the middle of item box"); }
-		public static function get startTutorial():DialogCommand { return new DialogCommand(ENUM_PASS, "start tutorial"); }
 		public static function get turnOffTutorial():DialogCommand { return new DialogCommand(ENUM_PASS, "turn off tutorial"); }
-		public static function get hideAll():DialogCommand { return new DialogCommand(ENUM_PASS, "hide all tutorial"); }
 		
 		public static function waitingForEvent(type:String = NONE):DialogCommand { 
 			var cmd:DialogCommand = new DialogCommand(ENUM_PASS, "it needs setEvent function from dialogHelper");

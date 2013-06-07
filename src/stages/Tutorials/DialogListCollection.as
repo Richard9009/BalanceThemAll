@@ -28,7 +28,7 @@ package stages.Tutorials
 				[	
 					new DialogHelper("stage1_1.greeting", [DialogCommand.promptYesNo]),
 					
-					new DialogHelper("stage1_1.beginTutorial", [DialogCommand.startTutorial, DialogCommand.dispatchAnEvent(TutorialEvent.LOCK_DOUBLE_CLICK)]),
+					new DialogHelper("stage1_1.beginTutorial", [DialogCommand.dispatchAnEvent(TutorialEvent.LOCK_DOUBLE_CLICK)]),
 					
 					new DialogHelper("stage1_1.dragBook", [DialogCommand.moveDialogBoxUp, 
 															DialogCommand.waitingForEvent(TutorialEvent.DRAG_THE_BOOK)]), 
@@ -75,12 +75,12 @@ package stages.Tutorials
 		public function get dialogList1_2():Array { return _dialogList1_2; }
 		private var _dialogList1_2:Array = 
 			[
-				new DialogHelper(DialogHelper.EMPTY, [DialogCommand.hideAll, DialogCommand.waitingForEvent(TutorialEvent.HANDS_ARE_FULL)]),
+				new DialogHelper(DialogHelper.EMPTY, [TutorialCommand.hideAll, DialogCommand.waitingForEvent(TutorialEvent.HANDS_ARE_FULL)]),
 				
 				new DialogHelper("stage1_2.askNeedHelp", [DialogCommand.promptYesNo, DialogCommand.dispatchAnEvent(TutorialEvent.LOCK_STAGE)]),
 				
 				new DialogHelper("stage1_2.beginTutorial", [DialogCommand.dispatchAnEvent(TutorialEvent.UNLOCK_STAGE), 
-								DialogCommand.startTutorial, DialogCommand.dispatchAnEvent(TutorialEvent.LOCK_DOUBLE_CLICK)]),
+								 DialogCommand.dispatchAnEvent(TutorialEvent.LOCK_DOUBLE_CLICK)]),
 				
 		/*3*/	new DialogHelper("stage1_2.dropInItemBox", [DialogCommand.moveDialogBoxUp, 
 								DialogCommand.waitingForEvent(TutorialEvent.GET_OUT_ITEMBOX)], [DialogPath.SKIP_ME]),		
