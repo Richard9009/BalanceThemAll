@@ -123,6 +123,7 @@ package general
 		public static function lockStage():void
 		{
 			_isDown = false;
+			isDragging = false;
 			destroyStage();
 		}
 		

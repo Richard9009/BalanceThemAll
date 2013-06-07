@@ -33,6 +33,7 @@ package stages.Tutorials
 		
 		public function Tutorial(stageID:String) 
 		{
+			tutorialOn = true;
 			dialogHandler = TutorialDialogHandler.getInstance();
 			addEventListener(Event.ADDED_TO_STAGE, creationComplete);
 			yesButton.addEventListener(MouseEvent.CLICK, nextDialog);
