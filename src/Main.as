@@ -208,7 +208,6 @@ package
 		
 		private function replayStage(e:Event):void 
 		{
-			destroyCurrentLevel();
 			changeScene();
 			var thisStageID:String = StageRecord.currentStage.toString() + "_" + StageRecord.currentSubStage.toString();
 			createLevelByID(thisStageID);
@@ -254,7 +253,6 @@ package
 		{
 			lastStageID = (currentScene as StageBaseClass).getStageRecord().stageID;
 			removeChild(optScreen);
-			destroyCurrentLevel();
 			openSelectLevel();
 			
 			addEventListener(SelectStageEvent.BACK_TO_LAST_SCENE, selectStage_to_lastStage);

@@ -42,7 +42,11 @@ package stages.Tutorials
 			
 			yesButton.addEventListener(MouseEvent.CLICK, nextDialog);
 			noButton.addEventListener(MouseEvent.CLICK, handleNo);
+			
 			eventHandler.addEventListener(EventCommandEvent.WAITING_COMPLETE, nextDialog);
+			eventHandler.addEventListener(EventCommandEvent.SUCCESS, nextSuccessDialog);
+			eventHandler.addEventListener(EventCommandEvent.FAILED, nextFailedDialog);
+			
 			id = stageID;
 		}
 		
@@ -54,11 +58,6 @@ package stages.Tutorials
 		private function handleNo(e:MouseEvent):void 
 		{
 			displayDialog(dialogHandler.getNextDialog(DialogPath.SKIP_TUTORIAL));
-		}
-		
-		private function nextDialog(e:Event):void 
-		{
-			displayDialog(dialogHandler.getNextDialog(DialogPath.TUTORIAL));
 		}
 		
 		private function displayDialog(dialog:DialogHelper):void
@@ -81,14 +80,8 @@ package stages.Tutorials
 			}
 			
 			switch(command.commandType) {		
-				case DialogCommand.promptSuccessFailed().commandType: 	lockSkipDialog();
-																		eventHandler.addEventListener(command.successEvent, handleSuccess);
-																		eventHandler.addEventListener(command.failedEvent, handleFailed);
-																		break;
 													
 				case DialogCommand.jumpToDialog().commandType: 	displayDialog(dialogHandler.jumpTo(command.dialogIndex)); break;
-				
-				case DialogCommand.dispatchAnEvent().commandType: eventHandler.dispatchEvent(new TutorialEvent(command.eventToDispatch)); break;
 		
 				case DialogCommand.stop.commandType: 	eventHandler.dispatchEvent(new TutorialEvent(TutorialEvent.CLOSE_TUTORIAL));
 														eventHandler.forgetAllEvents();
@@ -98,15 +91,18 @@ package stages.Tutorials
 			}
 		}
 		
-		private function handleFailed(e:Event):void 
+		private function nextDialog(e:Event):void 
 		{
-			eventHandler.removeEventListener(e.type, handleFailed);
+			displayDialog(dialogHandler.getNextDialog(DialogPath.TUTORIAL));
+		}
+		
+		private function nextFailedDialog(e:EventCommandEvent):void 
+		{
 			displayDialog(dialogHandler.getNextDialog(DialogPath.FAILED));
 		}
 		
-		private function handleSuccess(e:Event):void 
+		private function nextSuccessDialog(e:EventCommandEvent):void 
 		{
-			eventHandler.removeEventListener(e.type, handleSuccess);
 			displayDialog(dialogHandler.getNextDialog(DialogPath.SUCCESS));
 		}
 	

@@ -37,18 +37,6 @@ package stages.Tutorials.commands
 		
 		public static function get stop():DialogCommand { return new DialogCommand(ENUM_PASS, "stop"); }
 		
-		public static function dispatchAnEvent(type:String = NONE):DialogCommand { 
-			var cmd:DialogCommand = new DialogCommand(ENUM_PASS, "dispatch an event"); 
-			cmd.eventToDispatch = type;
-			return cmd;
-		}
-		public static function promptSuccessFailed(success:String = NONE, failed:String = NONE):DialogCommand { 
-			var cmd:DialogCommand = new DialogCommand(ENUM_PASS, "handle success and fail"); 
-			cmd.successEvent = success;
-			cmd.failedEvent = failed;
-			return cmd;
-		}
-		
 		public static function jumpToDialog(index:int = 0):DialogCommand {
 			var cmd:DialogCommand = new DialogCommand(ENUM_PASS, "jump to a specific dialog");
 			cmd.dialogIndex = index;
