@@ -3,6 +3,7 @@ package stages.Tutorials
 	import flash.errors.IllegalOperationError;
 	import gameEvents.TutorialEvent;
 	import stages.Tutorials.commands.DialogCommand;
+	import stages.Tutorials.commands.EventCommand;
 	import stages.Tutorials.commands.TutorialCommand;
 	/**
 	 * ...
@@ -24,7 +25,7 @@ package stages.Tutorials
 		}
 		
 // =======================================================================================================================================================================		
-		
+	
 		public function get dialogList1_1():Array { return _dialogList1_1; } 
 		private var _dialogList1_1:Array = 	
 				[	
@@ -32,34 +33,34 @@ package stages.Tutorials
 					
 					new DialogHelper("stage1_1.beginTutorial", [DialogCommand.dispatchAnEvent(TutorialEvent.LOCK_DOUBLE_CLICK)]),
 					
-					new DialogHelper("stage1_1.dragBook", [DialogCommand.moveDialogBoxUp, 
-															DialogCommand.waitingForEvent(TutorialEvent.DRAG_THE_BOOK)]), 
+					new DialogHelper("stage1_1.dragBook", [TutorialCommand.moveDialogBoxUp, 
+															EventCommand.waitingForEvent(TutorialEvent.DRAG_THE_BOOK)]), 
 					
-			/*3*/	new DialogHelper("stage1_1.dragItToMe", [DialogCommand.moveDialogBoxUp, DialogCommand.waitingForEvent(TutorialEvent.GET_OUT_ITEMBOX)]),
+			/*3*/	new DialogHelper("stage1_1.dragItToMe", [TutorialCommand.moveDialogBoxUp, EventCommand.waitingForEvent(TutorialEvent.GET_OUT_ITEMBOX)]),
 					
-					new DialogHelper("stage1_1.releaseDrag", [DialogCommand.hideNPC, DialogCommand.moveToItemBox, 
+					new DialogHelper("stage1_1.releaseDrag", [TutorialCommand.hideNPC, TutorialCommand.moveToItemBox, 
 											DialogCommand.promptSuccessFailed(TutorialEvent.STOP_DRAG_BOOK, TutorialEvent.BACK_TO_ITEMBOX)]),
 					
 					new DialogHelper(DialogHelper.EMPTY, [DialogCommand.jumpToDialog(3)], [DialogPath.FAILED]),										
 															
-					new DialogHelper("stage1_1.getAnotherBook", [DialogCommand.moveDialogBoxUp, DialogCommand.waitingForEvent(TutorialEvent.DRAG_THE_BOOK)],
+					new DialogHelper("stage1_1.getAnotherBook", [TutorialCommand.moveDialogBoxUp, EventCommand.waitingForEvent(TutorialEvent.DRAG_THE_BOOK)],
 																[DialogPath.SUCCESS]),
 					
-			/*7*/	new DialogHelper("stage1_1.getAnotherBook", [DialogCommand.moveDialogBoxUp, DialogCommand.waitingForEvent(TutorialEvent.GET_OUT_ITEMBOX)]),
+			/*7*/	new DialogHelper("stage1_1.getAnotherBook", [TutorialCommand.moveDialogBoxUp, EventCommand.waitingForEvent(TutorialEvent.GET_OUT_ITEMBOX)]),
 					
-					new DialogHelper("stage1_1.getAnotherBook", [DialogCommand.hideNPC, DialogCommand.moveToItemBox, 
+					new DialogHelper("stage1_1.getAnotherBook", [TutorialCommand.hideNPC, TutorialCommand.moveToItemBox, 
 												DialogCommand.promptSuccessFailed(TutorialEvent.STOP_DRAG_BOOK, TutorialEvent.BACK_TO_ITEMBOX)]),
 																									
 					
-					new DialogHelper("stage1_1.moveBookToStar", [DialogCommand.hideNPC, DialogCommand.dispatchAnEvent(TutorialEvent.DRAW_STAR_LINE) , 
+					new DialogHelper("stage1_1.moveBookToStar", [TutorialCommand.hideNPC, DialogCommand.dispatchAnEvent(TutorialEvent.DRAW_STAR_LINE) , 
 											DialogCommand.promptSuccessFailed(TutorialEvent.READY_TO_DROP, TutorialEvent.BACK_TO_ITEMBOX)], [DialogPath.SUCCESS]),
 					
 					new DialogHelper("stage1_1.releaseBooks", [DialogCommand.promptSuccessFailed(TutorialEvent.BOOKS_RELEASED, TutorialEvent.BACK_TO_ITEMBOX), 
-												DialogCommand.dispatchAnEvent(TutorialEvent.UNLOCK_DOUBLE_CLICK), DialogCommand.hideNPC], [DialogPath.SUCCESS]),
+												DialogCommand.dispatchAnEvent(TutorialEvent.UNLOCK_DOUBLE_CLICK), TutorialCommand.hideNPC], [DialogPath.SUCCESS]),
 					
 					new DialogHelper(DialogHelper.EMPTY, [DialogCommand.jumpToDialog(7)], [DialogPath.FAILED]),
 					
-					new DialogHelper("stage1_1.waitForIt", [DialogCommand.hideNPC, 
+					new DialogHelper("stage1_1.waitForIt", [TutorialCommand.hideNPC, 
 									DialogCommand.promptSuccessFailed(TutorialEvent.TUTORIAL_CLEAR, TutorialEvent.TUTORIAL_FAILED)], [DialogPath.SUCCESS])
 									,
 					
@@ -77,17 +78,17 @@ package stages.Tutorials
 		public function get dialogList1_2():Array { return _dialogList1_2; }
 		private var _dialogList1_2:Array = 
 			[
-				new DialogHelper(DialogHelper.EMPTY, [TutorialCommand.hideAll, DialogCommand.waitingForEvent(TutorialEvent.HANDS_ARE_FULL)]),
+				new DialogHelper(DialogHelper.EMPTY, [TutorialCommand.hideAll, EventCommand.waitingForEvent(TutorialEvent.HANDS_ARE_FULL)]),
 				
 				new DialogHelper("stage1_2.askNeedHelp", [TutorialCommand.promptYesNo, DialogCommand.dispatchAnEvent(TutorialEvent.LOCK_STAGE)]),
 				
 				new DialogHelper("stage1_2.beginTutorial", [DialogCommand.dispatchAnEvent(TutorialEvent.UNLOCK_STAGE), 
 								 DialogCommand.dispatchAnEvent(TutorialEvent.LOCK_DOUBLE_CLICK)]),
 				
-		/*3*/	new DialogHelper("stage1_2.dropInItemBox", [DialogCommand.moveDialogBoxUp, 
-								DialogCommand.waitingForEvent(TutorialEvent.GET_OUT_ITEMBOX)], [DialogPath.SKIP_ME]),		
+		/*3*/	new DialogHelper("stage1_2.dropInItemBox", [TutorialCommand.moveDialogBoxUp, 
+								EventCommand.waitingForEvent(TutorialEvent.GET_OUT_ITEMBOX)], [DialogPath.SKIP_ME]),		
 				
-				new DialogHelper("stage1_2.explainFoundation", [DialogCommand.hideNPC, DialogCommand.moveToItemBox,
+				new DialogHelper("stage1_2.explainFoundation", [TutorialCommand.hideNPC, TutorialCommand.moveToItemBox,
 								DialogCommand.dispatchAnEvent(TutorialEvent.CHECK_BALANCE_LINE), 
 								DialogCommand.promptSuccessFailed(TutorialEvent.ON_BALANCE_POSITION, TutorialEvent.BACK_TO_ITEMBOX)]),
 				
@@ -100,13 +101,13 @@ package stages.Tutorials
 				new DialogHelper(DialogHelper.EMPTY, [DialogCommand.jumpToDialog(11)], [DialogPath.FAILED]),
 				
 				new DialogHelper("stage1_2.waitForIt", [DialogCommand.promptSuccessFailed(TutorialEvent.TUTORIAL_CLEAR, TutorialEvent.TUTORIAL_FAILED)
-														,DialogCommand.hideNPC], [DialogPath.SUCCESS]),
+														,TutorialCommand.hideNPC], [DialogPath.SUCCESS]),
 				
 				new DialogHelper("stage1_2.gotTheStars", null, [DialogPath.SUCCESS]),
 				new DialogHelper("stage1_2.didnotGetStars", null, [DialogPath.FAILED]),
 		
 		/*11*/	new DialogHelper("stage1_2.outOfZone", [DialogCommand.promptSuccessFailed(TutorialEvent.ON_BALANCE_POSITION, TutorialEvent.BACK_TO_ITEMBOX), 
-														DialogCommand.hideNPC, DialogCommand.dispatchAnEvent(TutorialEvent.LOCK_DOUBLE_CLICK)], [DialogPath.SKIP_ME]),
+														TutorialCommand.hideNPC, DialogCommand.dispatchAnEvent(TutorialEvent.LOCK_DOUBLE_CLICK)], [DialogPath.SKIP_ME]),
 				
 				new DialogHelper(DialogHelper.EMPTY, [DialogCommand.jumpToDialog(6)], [DialogPath.SUCCESS]),
 				new DialogHelper(DialogHelper.EMPTY, [DialogCommand.jumpToDialog(3)], [DialogPath.FAILED]),

@@ -11,6 +11,8 @@ package stages.Tutorials
 	import org.flashdevelop.utils.FlashConnect;
 	import stages.StageBaseClass;
 	import stages.Tutorials.commands.DialogCommand;
+	import stages.Tutorials.commands.EventCommand;
+	import stages.Tutorials.commands.EventCommandEvent;
 	import stages.Tutorials.commands.TutorialCommand;
 	
 	/**
@@ -20,8 +22,8 @@ package stages.Tutorials
 	public class Tutorial extends DialogBox 
 	{
 		public static var tutorialOn:Boolean = true;
-		private static const ABOVE_ITEM_BOX:String = "above item box";
-		private static const ON_ITEM_BOX:String = "in the middle of item box";
+		public static const ABOVE_ITEM_BOX:String = "above item box";
+		public static const ON_ITEM_BOX:String = "in the middle of item box";
 		
 		private static const TFIELD_GAP:int = 35;
 		
@@ -31,14 +33,16 @@ package stages.Tutorials
 		private var dialogHandler:TutorialDialogHandler;
 		private var eventHandler:TutorialEventDispatcher = TutorialEventDispatcher.getInstance();
 		private var id:String;
-		private var npc:Sprite;
+		public var npc:Sprite;
 		
 		public function Tutorial(stageID:String) 
 		{
 			dialogHandler = TutorialDialogHandler.getInstance();
 			addEventListener(Event.ADDED_TO_STAGE, creationComplete);
+			
 			yesButton.addEventListener(MouseEvent.CLICK, nextDialog);
 			noButton.addEventListener(MouseEvent.CLICK, handleNo);
+			eventHandler.addEventListener(EventCommandEvent.WAITING_COMPLETE, nextDialog);
 			id = stageID;
 		}
 		
@@ -52,7 +56,7 @@ package stages.Tutorials
 			displayDialog(dialogHandler.getNextDialog(DialogPath.SKIP_TUTORIAL));
 		}
 		
-		private function nextDialog(e:MouseEvent):void 
+		private function nextDialog(e:Event):void 
 		{
 			displayDialog(dialogHandler.getNextDialog(DialogPath.TUTORIAL));
 		}
@@ -71,22 +75,12 @@ package stages.Tutorials
 		
 		private function handleDialogCommand(command:DialogCommand):void
 		{
-			if (command is TutorialCommand) 
+			if (command is TutorialCommand || command is EventCommand) 
 			{
-				TutorialCommand(command).executeAllActions();
+				command.executeAllActions();
 			}
 			
 			switch(command.commandType) {		
-				case DialogCommand.moveToItemBox.commandType: moveTo(ON_ITEM_BOX); break;
-				
-				case DialogCommand.moveDialogBoxUp.commandType: moveTo(ABOVE_ITEM_BOX); break;
-				
-				case DialogCommand.hideNPC.commandType: npc.visible = false; break;
-				
-				case DialogCommand.waitingForEvent().commandType: 	eventHandler.addEventListener(command.waitingEvent, handleCommandEvent);
-																	lockSkipDialog();
-																	break;
-				
 				case DialogCommand.promptSuccessFailed().commandType: 	lockSkipDialog();
 																		eventHandler.addEventListener(command.successEvent, handleSuccess);
 																		eventHandler.addEventListener(command.failedEvent, handleFailed);
@@ -115,13 +109,7 @@ package stages.Tutorials
 			eventHandler.removeEventListener(e.type, handleSuccess);
 			displayDialog(dialogHandler.getNextDialog(DialogPath.SUCCESS));
 		}
-		
-		private function handleCommandEvent(e:Event):void 
-		{
-			eventHandler.removeEventListener(e.type, handleCommandEvent);
-			nextDialog(null);
-		}
-		
+	
 		private function setDefaultCondition():void
 		{
 			visible = true;
@@ -135,7 +123,7 @@ package stages.Tutorials
 				addEventListener(MouseEvent.MOUSE_DOWN, nextDialog);
 		}
 		
-		private function moveTo(position:String):void
+		public function moveTo(position:String):void
 		{
 			var destination:Point = new Point();
 			switch(position) {

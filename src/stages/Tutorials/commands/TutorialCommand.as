@@ -26,6 +26,9 @@ package stages.Tutorials.commands
 			return this;
 		}
 		
+		
+		//=======================================================================================================
+		
 		public static function get hideAll():TutorialCommand { 
 			return new TutorialCommand(ENUM_PASS, "hide all tutorial")
 						.addAction( function hideAll_action():void { tutorial.visible = false });
@@ -45,6 +48,26 @@ package stages.Tutorials.commands
 						.addAction(function turnOffTutorial_action():void {
 							Tutorial.tutorialOn = false;
 						}); 
+		}
+		
+		public static function get hideNPC():TutorialCommand {
+			return new TutorialCommand(ENUM_PASS, "hide npc")
+					.addAction(function hideNPC_action():void {
+						tutorial.npc.visible = false;
+					}); 
+		}
+		
+		public static function get moveDialogBoxUp():TutorialCommand { 
+			return new TutorialCommand(ENUM_PASS, "move dialog box up")
+					.addAction(function moveDialogBoxUp_action():void {
+						tutorial.moveTo(Tutorial.ABOVE_ITEM_BOX);
+					}); 
+		}
+		public static function get moveToItemBox():TutorialCommand { 
+			return new TutorialCommand(ENUM_PASS, "move dialog box up")
+					.addAction(function moveToItemBox_action():void {
+						tutorial.moveTo(Tutorial.ON_ITEM_BOX);
+					});
 		}
 	}
 

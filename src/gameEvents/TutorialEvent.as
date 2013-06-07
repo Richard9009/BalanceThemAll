@@ -1,12 +1,13 @@
 package gameEvents 
 {
 	import flash.events.Event;
+	import stages.Tutorials.commands.ICommandEvent;
 	/**
 	 * ...
 	 * @author Herichard Stefanus Salim
 	 */
-	public class TutorialEvent extends Event
-	{
+	public class TutorialEvent extends Event implements ICommandEvent
+	{		
 	//==============================================STAGE 1_1===========================================================================	
 		public static const DRAG_THE_BOOK:String = "DRAG THE BOOK";
 		public static const GET_OUT_ITEMBOX:String = "GET THE BOOK OUT OF ITEM BOX";

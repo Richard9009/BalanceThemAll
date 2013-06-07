@@ -4,8 +4,9 @@ package stages.Tutorials
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	import flash.events.IEventDispatcher;
-	import gameEvents.TutorialEvent;
+
 	import org.flashdevelop.utils.FlashConnect;
+	import stages.Tutorials.commands.ICommandEvent;
 	
 	/**
 	 * ...
@@ -50,7 +51,7 @@ package stages.Tutorials
 		override public function dispatchEvent(event:Event):Boolean 
 		{
 			FlashConnect.trace(event.type +"_____" + Tutorial.tutorialOn);
-			if (event is TutorialEvent == false) throw new IllegalOperationError("This dispatcher can only dispatch TutorialEvent objects");
+			if (event is ICommandEvent == false) throw new IllegalOperationError("This dispatcher can only dispatch TutorialEvent objects");
 			if (!thisIsTheEventWeAreWaitingFor(event.type) || !Tutorial.tutorialOn) return false;
 			
 			return super.dispatchEvent(event);
