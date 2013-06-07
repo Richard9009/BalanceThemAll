@@ -216,7 +216,6 @@ package
 		
 		private function gotoNextStage(e:Event):void 
 		{
-			destroyCurrentLevel();
 			changeScene();
 			var nextRec:StageRecord = StageRecord.getNextStageRecord();
 			createLevelByID(nextRec.stageID);
