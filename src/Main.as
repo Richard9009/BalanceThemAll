@@ -208,6 +208,7 @@ package
 		
 		private function replayStage(e:Event):void 
 		{
+			destroyCurrentLevel();
 			changeScene();
 			var thisStageID:String = StageRecord.currentStage.toString() + "_" + StageRecord.currentSubStage.toString();
 			createLevelByID(thisStageID);
@@ -215,6 +216,7 @@ package
 		
 		private function gotoNextStage(e:Event):void 
 		{
+			destroyCurrentLevel();
 			changeScene();
 			var nextRec:StageRecord = StageRecord.getNextStageRecord();
 			createLevelByID(nextRec.stageID);
