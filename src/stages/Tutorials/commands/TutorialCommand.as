@@ -6,7 +6,7 @@ package stages.Tutorials.commands
 	 * ...
 	 * @author Herichard Stefanus Salim
 	 */
-	public class TutorialCommand extends DialogCommand
+	public class TutorialCommand extends BaseCommandClass
 	{
 		private static var tutorial:Tutorial;
 		
@@ -32,15 +32,6 @@ package stages.Tutorials.commands
 		public static function get hideAll():TutorialCommand { 
 			return new TutorialCommand(ENUM_PASS, "hide all tutorial")
 						.addAction( function hideAll_action():void { tutorial.visible = false });
-		}
-		
-		public static function get promptYesNo():TutorialCommand { 
-			return new TutorialCommand(ENUM_PASS, "ask yes no question")
-						.addAction( function promptYesNo_action():void {
-							tutorial.yesButton.visible = true;
-							tutorial.noButton.visible = true;
-							tutorial.lockSkipDialog();
-						});
 		}
 		
 		public static function get turnOffTutorial():TutorialCommand { 

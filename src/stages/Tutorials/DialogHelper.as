@@ -2,6 +2,7 @@ package stages.Tutorials
 {
 	import flash.events.MouseEvent;
 	import mx.utils.StringUtil;
+	import stages.Tutorials.commands.BaseCommandClass;
 	import stages.Tutorials.commands.DialogCommand;
 	import stages.Tutorials.commands.TutorialCommand;
 	/**
@@ -26,7 +27,7 @@ package stages.Tutorials
 			_paths = (pathArray == null) ? DEFAULT_PATH : pathArray;
 			_commands = commandArray;
 			
-			if (_commands != null && _commands[0] is DialogCommand == false) 
+			if (_commands != null && _commands[0] is BaseCommandClass == false) 
 				throw new Error("The commandArray does not contain DialogCommand. CODE: "+code);
 				
 			if (_paths[0] is DialogPath == false)

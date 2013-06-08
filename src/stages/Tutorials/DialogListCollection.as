@@ -29,7 +29,7 @@ package stages.Tutorials
 		public function get dialogList1_1():Array { return _dialogList1_1; } 
 		private var _dialogList1_1:Array = 	
 				[	
-					new DialogHelper("stage1_1.greeting", [TutorialCommand.promptYesNo]),
+					new DialogHelper("stage1_1.greeting", [DialogCommand.promptYesNo]),
 					
 					new DialogHelper("stage1_1.beginTutorial", [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_DOUBLE_CLICK)), DialogCommand.allowSkip]),
 					
@@ -80,7 +80,7 @@ package stages.Tutorials
 			[
 				new DialogHelper(DialogHelper.EMPTY, [TutorialCommand.hideAll, EventCommand.waitingForEvent(TutorialEvent.HANDS_ARE_FULL)]),
 				
-				new DialogHelper("stage1_2.askNeedHelp", [TutorialCommand.promptYesNo, EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_STAGE))]),
+				new DialogHelper("stage1_2.askNeedHelp", [DialogCommand.promptYesNo, EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_STAGE))]),
 				
 				new DialogHelper("stage1_2.beginTutorial", [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_STAGE)), 
 								EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_DOUBLE_CLICK)), DialogCommand.allowSkip]),

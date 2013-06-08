@@ -8,6 +8,7 @@ package stages.Tutorials
 	import flash.utils.Timer;
 	import gameEvents.TutorialEvent;
 	import stages.StageBaseClass;
+	import stages.Tutorials.commands.BaseCommandClass;
 	import stages.Tutorials.commands.TutorialCommand;
 
 	import locales.LocalesTextField;
@@ -26,7 +27,7 @@ package stages.Tutorials
 		private static const TFIELD_GAP:int = 35;
 		
 		private var tField:LocalesTextField;
-		private var dialogHandler:TutorialDialogHandler;
+		private var dialogHandler:DialogHandler;
 		private var eventHandler:TutorialEventDispatcher = TutorialEventDispatcher.getInstance();
 		private var id:String;
 		
@@ -35,15 +36,8 @@ package stages.Tutorials
 		
 		public function Dialog(stageID:String) 
 		{
-			dialogHandler = TutorialDialogHandler.getInstance();
+			dialogHandler = DialogHandler.getInstance();
 			addEventListener(Event.ADDED_TO_STAGE, creationComplete);
-			
-			yesButton.addEventListener(MouseEvent.CLICK, nextDialog);
-			noButton.addEventListener(MouseEvent.CLICK, handleNo);
-			
-			eventHandler.addEventListener(EventCommandEvent.WAITING_COMPLETE, nextDialog);
-			eventHandler.addEventListener(EventCommandEvent.SUCCESS, nextSuccessDialog);
-			eventHandler.addEventListener(EventCommandEvent.FAILED, nextFailedDialog);
 			
 			id = stageID;
 		}
@@ -59,7 +53,7 @@ package stages.Tutorials
 		public function allowSkipDialog():void {
 			if (!hasEventListener(MouseEvent.MOUSE_DOWN)) {
 				clickClue.visible = true;
-				addEventListener(MouseEvent.MOUSE_DOWN, nextDialog);
+				addEventListener(MouseEvent.MOUSE_DOWN, skipDialog);
 			}
 		}
 		
@@ -72,7 +66,7 @@ package stages.Tutorials
 		{
 			setDefaultCondition();
 			
-			for each(var command:DialogCommand in dialog.commands) 
+			for each(var command:BaseCommandClass in dialog.commands) 
 			{	
 				handleDialogCommand(command);
 			}
@@ -80,16 +74,14 @@ package stages.Tutorials
 			if(!dialog.isEmpty) tField.setLocaleText(dialog.code);
 		}
 		
-		private function handleDialogCommand(command:DialogCommand):void
+		private function handleDialogCommand(command:BaseCommandClass):void
 		{
-			if (command is TutorialCommand || command is EventCommand) 
-			{
-				command.executeAllActions();
-			}
+			
+			command.executeAllActions();
 			
 			switch(command.commandType) {		
 													
-				case DialogCommand.jumpToDialog().commandType: 	displayDialog(dialogHandler.jumpTo(command.dialogIndex)); break;
+				case DialogCommand.jumpToDialog().commandType: 	displayDialog(dialogHandler.jumpTo(DialogCommand(command).dialogIndex)); break;
 		
 				case DialogCommand.stop.commandType: 	eventHandler.dispatchEvent(new TutorialEvent(TutorialEvent.CLOSE_TUTORIAL));
 														eventHandler.forgetAllEvents();
@@ -101,19 +93,13 @@ package stages.Tutorials
 			}
 		}
 		
-		private function nextDialog(e:Event):void 
+		public function nextDialog(path:DialogPath):void 
 		{
-			displayDialog(dialogHandler.getNextDialog(DialogPath.TUTORIAL));
+			displayDialog(dialogHandler.getNextDialog(path));
 		}
 		
-		private function nextFailedDialog(e:EventCommandEvent):void 
-		{
-			displayDialog(dialogHandler.getNextDialog(DialogPath.FAILED));
-		}
-		
-		private function nextSuccessDialog(e:EventCommandEvent):void 
-		{
-			displayDialog(dialogHandler.getNextDialog(DialogPath.SUCCESS));
+		private function skipDialog(e:Event):void {
+			nextDialog(DialogPath.TUTORIAL);
 		}
 	
 		protected function setDefaultCondition():void
@@ -151,6 +137,8 @@ package stages.Tutorials
 			tField.y = -height / 2 + TFIELD_GAP;
 			tField.width = width - TFIELD_GAP * 2;
 			tField.height = height - TFIELD_GAP * 2;
+			
+			DialogCommand.setDialog(this);
 			
 			initiateDialog();
 		}
