@@ -31,11 +31,11 @@ package stages.Tutorials.commands
 			dialog.noButton.addEventListener(MouseEvent.CLICK, actionHandler.handleNo); 
 		}
 		
-		public static function get stop():DialogCommand { return new DialogCommand(ENUM_PASS, "stop"); }
-		
 		public static function jumpToDialog(index:int = 0):DialogCommand {
-			var cmd:DialogCommand = new DialogCommand(ENUM_PASS, "jump to a specific dialog");
-			cmd.dialogIndex = index;
+			var cmd:DialogCommand =  new DialogCommand(ENUM_PASS, "jump to dialog");
+			cmd.addAction( function jumpToDialog_action():void {
+								dialog.jumpToDialog(index);
+							});
 			return cmd;
 		}
 		
@@ -49,7 +49,13 @@ package stages.Tutorials.commands
 			return cmd;
 		}
 		
-		public static function get allowSkip():DialogCommand { return new DialogCommand(ENUM_PASS, "allow skip"); }
+		public static function get allowSkip():DialogCommand { 
+			var cmd:DialogCommand =  new DialogCommand(ENUM_PASS, "allow skip");
+			cmd.addAction( function allowSkip_action():void {
+								dialog.allowSkipDialog();
+							});
+			return cmd;
+		}
 	}
 
 }
@@ -65,11 +71,11 @@ class ActionHandler {
 	}
 	
 	public function handleYes(e:MouseEvent):void {
-		dialog.nextDialog(DialogPath.TUTORIAL);
+		dialog.nextDialog(DialogPath.DEFAULT);
 	}
 	
 	public function handleNo(e:MouseEvent):void {
-		dialog.nextDialog(DialogPath.SKIP_TUTORIAL);
+		dialog.nextDialog(DialogPath.ANSWER_NO);
 	}
 	
 	public function handleJump():void {

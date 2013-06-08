@@ -59,7 +59,7 @@ package stages.Tutorials
 		
 		private function handleNo(e:MouseEvent):void 
 		{
-			displayDialog(dialogHandler.getNextDialog(DialogPath.SKIP_TUTORIAL));
+			displayDialog(dialogHandler.getNextDialog(DialogPath.ANSWER_NO));
 		}
 		
 		private function displayDialog(dialog:DialogHelper):void
@@ -68,29 +68,10 @@ package stages.Tutorials
 			
 			for each(var command:BaseCommandClass in dialog.commands) 
 			{	
-				handleDialogCommand(command);
+				command.executeAllActions();
 			}
 
 			if(!dialog.isEmpty) tField.setLocaleText(dialog.code);
-		}
-		
-		private function handleDialogCommand(command:BaseCommandClass):void
-		{
-			
-			command.executeAllActions();
-			
-			switch(command.commandType) {		
-													
-				case DialogCommand.jumpToDialog().commandType: 	displayDialog(dialogHandler.jumpTo(DialogCommand(command).dialogIndex)); break;
-		
-				case DialogCommand.stop.commandType: 	eventHandler.dispatchEvent(new TutorialEvent(TutorialEvent.CLOSE_TUTORIAL));
-														eventHandler.forgetAllEvents();
-														parent.removeChild(this); break;
-														
-				case DialogCommand.allowSkip.commandType: allowSkipDialog(); break;
-				
-				default: return;
-			}
 		}
 		
 		public function nextDialog(path:DialogPath):void 
@@ -98,8 +79,13 @@ package stages.Tutorials
 			displayDialog(dialogHandler.getNextDialog(path));
 		}
 		
+		public function jumpToDialog(dialogIndex:int):void
+		{
+			displayDialog(dialogHandler.jumpTo(dialogIndex));
+		}
+		
 		private function skipDialog(e:Event):void {
-			nextDialog(DialogPath.TUTORIAL);
+			nextDialog(DialogPath.DEFAULT);
 		}
 	
 		protected function setDefaultCondition():void
@@ -141,6 +127,11 @@ package stages.Tutorials
 			DialogCommand.setDialog(this);
 			
 			initiateDialog();
+		}
+		
+		public function destroyMe():void
+		{
+			parent.removeChild(this);
 		}
 		
 	}

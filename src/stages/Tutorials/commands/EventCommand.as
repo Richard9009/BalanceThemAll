@@ -50,6 +50,15 @@ package stages.Tutorials.commands
 							});
 			return cmd;
 		}
+		
+		public static function get stop():EventCommand { 
+			var cmd:EventCommand =  dispatchAnEvent(new TutorialEvent(TutorialEvent.CLOSE_TUTORIAL));
+			cmd.addAction( function stop_action():void {
+								dialog.destroyMe();
+								eventHandler.forgetAllEvents();
+							});
+			return cmd;
+		}
 	}
 }
 import flash.events.Event;
@@ -70,7 +79,7 @@ class ActionHandler
 	
 	public function handleWaiting(e:Event):void
 	{
-		dialog.nextDialog(DialogPath.TUTORIAL);
+		dialog.nextDialog(DialogPath.DEFAULT);
 		eventHandler.removeEventListener(e.type, handleWaiting);
 	}
 	

@@ -12,7 +12,7 @@ package stages.Tutorials
 	public class DialogHelper {
 		
 		public static const EMPTY:String = "EMPTY";
-		private static const DEFAULT_PATH:Array = [DialogPath.TUTORIAL];
+		private static const DEFAULT_PATH:Array = [DialogPath.DEFAULT];
 		
 		private var _code:String;
 		private var _paths:Array = new Array();

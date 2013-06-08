@@ -45,6 +45,12 @@ package stages.Tutorials
 			TutorialCommand.setTutorial(this);
 		}
 		
+		override public function destroyMe():void 
+		{
+			tutorialOn = false;
+			super.destroyMe();
+		}
+		
 		public function moveTo(position:String):void
 		{
 			var destination:Point = new Point();

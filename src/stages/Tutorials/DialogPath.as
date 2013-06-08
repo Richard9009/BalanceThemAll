@@ -9,8 +9,8 @@ package stages.Tutorials
 	{
 		private static const ENUM_PASS:String = "KDAU2I2983JHDH2084JD_JID2";
 		
-		public static const TUTORIAL:DialogPath = new DialogPath(ENUM_PASS, "tutorial");
-		public static const SKIP_TUTORIAL:DialogPath = new DialogPath(ENUM_PASS, "skip tutorial");
+		public static const DEFAULT:DialogPath = new DialogPath(ENUM_PASS, "defaault path");
+		public static const ANSWER_NO:DialogPath = new DialogPath(ENUM_PASS, "skip tutorial");
 		public static const SUCCESS:DialogPath = new DialogPath(ENUM_PASS, "success");
 		public static const FAILED:DialogPath = new DialogPath(ENUM_PASS, "failed");
 		
