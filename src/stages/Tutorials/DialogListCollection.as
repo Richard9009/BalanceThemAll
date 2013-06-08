@@ -115,6 +115,8 @@ package stages.Tutorials
 															DialogCommand.allowSkip, TutorialCommand.turnOffTutorial], [DialogPath.SKIP_TUTORIAL]),
 				new DialogHelper(DialogHelper.EMPTY, [DialogCommand.stop], [DialogPath.ALL_PATHS])
 			]
+			
+//============================================================================================================================================================================			
 	}
 
 }
