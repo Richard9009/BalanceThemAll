@@ -31,7 +31,7 @@ package stages.Tutorials
 				[	
 					new DialogHelper("stage1_1.greeting", [TutorialCommand.promptYesNo]),
 					
-					new DialogHelper("stage1_1.beginTutorial", [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_DOUBLE_CLICK))]),
+					new DialogHelper("stage1_1.beginTutorial", [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_DOUBLE_CLICK)), DialogCommand.allowSkip]),
 					
 					new DialogHelper("stage1_1.dragBook", [TutorialCommand.moveDialogBoxUp, 
 															EventCommand.waitingForEvent(TutorialEvent.DRAG_THE_BOOK)]), 
@@ -64,11 +64,11 @@ package stages.Tutorials
 									EventCommand.promptSuccessFailed(TutorialEvent.TUTORIAL_CLEAR, TutorialEvent.TUTORIAL_FAILED)], [DialogPath.SUCCESS])
 									,
 					
-					new DialogHelper("stage1_1.gotTheStars", null, [DialogPath.SUCCESS]),
+					new DialogHelper("stage1_1.gotTheStars", [DialogCommand.allowSkip], [DialogPath.SUCCESS]),
 					
-					new DialogHelper("stage1_1.didnotGetStars", null, [DialogPath.FAILED]),
+					new DialogHelper("stage1_1.didnotGetStars", [DialogCommand.allowSkip], [DialogPath.FAILED]),
 					
-		new DialogHelper("stage1_1.noTutorial", [TutorialCommand.turnOffTutorial], [DialogPath.SKIP_TUTORIAL]),
+					new DialogHelper("stage1_1.noTutorial", [TutorialCommand.turnOffTutorial, DialogCommand.allowSkip], [DialogPath.SKIP_TUTORIAL]),
 					
 					new DialogHelper(DialogHelper.EMPTY, [DialogCommand.stop], [DialogPath.ALL_PATHS]) 
 				];
@@ -83,7 +83,7 @@ package stages.Tutorials
 				new DialogHelper("stage1_2.askNeedHelp", [TutorialCommand.promptYesNo, EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_STAGE))]),
 				
 				new DialogHelper("stage1_2.beginTutorial", [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_STAGE)), 
-								 EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_DOUBLE_CLICK))]),
+								EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_DOUBLE_CLICK)), DialogCommand.allowSkip]),
 				
 		/*3*/	new DialogHelper("stage1_2.dropInItemBox", [TutorialCommand.moveDialogBoxUp, 
 								EventCommand.waitingForEvent(TutorialEvent.GET_OUT_ITEMBOX)], [DialogPath.SKIP_ME]),		
@@ -91,7 +91,6 @@ package stages.Tutorials
 				new DialogHelper("stage1_2.explainFoundation", [TutorialCommand.hideNPC, TutorialCommand.moveToItemBox,
 								EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.CHECK_BALANCE_LINE)), 
 								EventCommand.promptSuccessFailed(TutorialEvent.ON_BALANCE_POSITION, TutorialEvent.BACK_TO_ITEMBOX)]),
-				
 								
 				new DialogHelper(DialogHelper.EMPTY, [DialogCommand.jumpToDialog(3)], [DialogPath.FAILED]),				
 								
@@ -103,8 +102,8 @@ package stages.Tutorials
 				new DialogHelper("stage1_2.waitForIt", [EventCommand.promptSuccessFailed(TutorialEvent.TUTORIAL_CLEAR, TutorialEvent.TUTORIAL_FAILED)
 														,TutorialCommand.hideNPC], [DialogPath.SUCCESS]),
 				
-				new DialogHelper("stage1_2.gotTheStars", null, [DialogPath.SUCCESS]),
-				new DialogHelper("stage1_2.didnotGetStars", null, [DialogPath.FAILED]),
+				new DialogHelper("stage1_2.gotTheStars", [DialogCommand.allowSkip], [DialogPath.SUCCESS]),
+				new DialogHelper("stage1_2.didnotGetStars", [DialogCommand.allowSkip], [DialogPath.FAILED]),
 		
 		/*11*/	new DialogHelper("stage1_2.outOfZone", [EventCommand.promptSuccessFailed(TutorialEvent.ON_BALANCE_POSITION, TutorialEvent.BACK_TO_ITEMBOX), 
 														TutorialCommand.hideNPC, EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_DOUBLE_CLICK))], 
@@ -112,7 +111,8 @@ package stages.Tutorials
 				
 				new DialogHelper(DialogHelper.EMPTY, [DialogCommand.jumpToDialog(6)], [DialogPath.SUCCESS]),
 				new DialogHelper(DialogHelper.EMPTY, [DialogCommand.jumpToDialog(3)], [DialogPath.FAILED]),
-				new DialogHelper("stage1_2.skipTutorial", [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_STAGE)), TutorialCommand.turnOffTutorial], [DialogPath.SKIP_TUTORIAL]),
+				new DialogHelper("stage1_2.skipTutorial", [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_STAGE)), 
+															DialogCommand.allowSkip, TutorialCommand.turnOffTutorial], [DialogPath.SKIP_TUTORIAL]),
 				new DialogHelper(DialogHelper.EMPTY, [DialogCommand.stop], [DialogPath.ALL_PATHS])
 			]
 	}

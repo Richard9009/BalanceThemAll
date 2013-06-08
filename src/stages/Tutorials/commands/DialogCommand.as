@@ -43,6 +43,8 @@ package stages.Tutorials.commands
 			return cmd;
 		}
 		
+		public static function get allowSkip():DialogCommand { return new DialogCommand(ENUM_PASS, "allow skip"); }
+		
 		public function get commandType():String { return _commandType; }
 		
 	}

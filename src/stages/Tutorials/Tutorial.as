@@ -51,8 +51,18 @@ package stages.Tutorials
 		}
 		
 		public function lockSkipDialog():void {
-			removeEventListener(MouseEvent.MOUSE_DOWN, nextDialog);
-			clickClue.visible = false;
+			if(hasEventListener(MouseEvent.MOUSE_DOWN)) {
+				removeEventListener(MouseEvent.MOUSE_DOWN, nextDialog);
+				clickClue.visible = false;
+			}
+			else if (clickClue.visible) clickClue.visible = false;
+		}
+		
+		public function allowSkipDialog():void {
+			if (!hasEventListener(MouseEvent.MOUSE_DOWN)) {
+				clickClue.visible = true;
+				addEventListener(MouseEvent.MOUSE_DOWN, nextDialog);
+			}
 		}
 		
 		private function handleNo(e:MouseEvent):void 
@@ -86,6 +96,8 @@ package stages.Tutorials
 				case DialogCommand.stop.commandType: 	eventHandler.dispatchEvent(new TutorialEvent(TutorialEvent.CLOSE_TUTORIAL));
 														eventHandler.forgetAllEvents();
 														parent.removeChild(this); break;
+														
+				case DialogCommand.allowSkip.commandType: allowSkipDialog(); break;
 				
 				default: return;
 			}
@@ -115,8 +127,7 @@ package stages.Tutorials
 			clickClue.visible = true;
 			
 			parent.setChildIndex(this, parent.numChildren - 1);
-			if (!hasEventListener(MouseEvent.MOUSE_DOWN)) 
-				addEventListener(MouseEvent.MOUSE_DOWN, nextDialog);
+			lockSkipDialog();
 		}
 		
 		public function moveTo(position:String):void
