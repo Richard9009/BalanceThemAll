@@ -17,7 +17,7 @@ package gameObjects.rigidObjects
 	import org.flashdevelop.utils.FlashConnect;
 	import stages.StageBaseClass;
 	import stages.Tutorials.Tutorial;
-	import stages.Tutorials.TutorialEventDispatcher;
+	import general.dialogs.DialogEventHandler;
 
 	/**
 	 * ...
@@ -128,7 +128,7 @@ package gameObjects.rigidObjects
 						MousePhysic.isDragging = true;
 						rigidBody.SetActive(false);
 						parent.setChildIndex(this, parent.numChildren - 4);
-						TutorialEventDispatcher.getInstance().dispatchEvent(new TutorialEvent(TutorialEvent.DRAG_THE_BOOK));
+						DialogEventHandler.getInstance().dispatchEvent(new TutorialEvent(TutorialEvent.DRAG_THE_BOOK));
 						startCollisionDetection();
 					}
 					
@@ -140,7 +140,7 @@ package gameObjects.rigidObjects
 				{
 					MousePhysic.isDragging = false;
 					if (insideItemBox()) releaseObject();
-					else TutorialEventDispatcher.getInstance().dispatchEvent(new TutorialEvent(TutorialEvent.STOP_DRAG_BOOK))
+					else DialogEventHandler.getInstance().dispatchEvent(new TutorialEvent(TutorialEvent.STOP_DRAG_BOOK))
 				}
 			}
 			
@@ -221,7 +221,7 @@ package gameObjects.rigidObjects
 			{
 				if (insideItemBox()) {
 					
-					TutorialEventDispatcher.getInstance().dispatchEvent(new TutorialEvent(TutorialEvent.BACK_TO_ITEMBOX));
+					DialogEventHandler.getInstance().dispatchEvent(new TutorialEvent(TutorialEvent.BACK_TO_ITEMBOX));
 					onHand = false;
 					
 					dropEvt = new GrabObjectEvent(GrabObjectEvent.DROP_AN_OBJECT);
@@ -236,7 +236,7 @@ package gameObjects.rigidObjects
 			else
 			{
 				if (!insideItemBox() && isDraggable) {
-					TutorialEventDispatcher.getInstance().dispatchEvent(new TutorialEvent(TutorialEvent.GET_OUT_ITEMBOX));
+					DialogEventHandler.getInstance().dispatchEvent(new TutorialEvent(TutorialEvent.GET_OUT_ITEMBOX));
 					onHand = true;
 					MousePhysic.isHolding = true;
 					grabEvt = new GrabObjectEvent(GrabObjectEvent.GRAB_AN_OBJECT);

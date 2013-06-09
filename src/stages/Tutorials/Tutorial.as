@@ -3,15 +3,15 @@ package stages.Tutorials
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.geom.Point;
+	import general.dialogs.Dialog;
 	
 	import general.animations.LinearAnimation;
 	import stages.StageBaseClass;
-	import stages.Tutorials.commands.TutorialCommand;
 	/**
 	 * ...
 	 * @author Herichard Stefanus Salim
 	 */
-	public class Tutorial extends Dialog 
+	public class Tutorial extends Dialog
 	{
 		public static const ABOVE_ITEM_BOX:String = "above item box";
 		public static const ON_ITEM_BOX:String = "in the middle of item box";
@@ -20,7 +20,7 @@ package stages.Tutorials
 		
 		public function Tutorial(stageID:String) 
 		{
-			super(stageID);
+			super(DialogListCollection.getDialogListByID(stageID));
 		}
 		
 		override protected function setDefaultCondition():void 

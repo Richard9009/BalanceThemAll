@@ -1,7 +1,7 @@
 package gameEvents 
 {
 	import flash.events.Event;
-	import stages.Tutorials.commands.ICommandEvent;
+	import general.dialogs.commands.ICommandEvent;
 	/**
 	 * ...
 	 * @author Herichard Stefanus Salim

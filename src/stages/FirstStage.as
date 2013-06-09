@@ -21,8 +21,9 @@ package stages
 	import gameObjects.StarObject;
 	import general.StageRecord;
 	import org.flashdevelop.utils.FlashConnect;
+	import general.dialogs.DialogEvent;
 	import stages.Tutorials.Tutorial;
-	import stages.Tutorials.TutorialEventDispatcher;
+	import general.dialogs.DialogEventHandler;
 	
 	/**
 	 * ...
@@ -30,7 +31,7 @@ package stages
 	 */
 	public class FirstStage extends StageBaseClass implements IPlayableStage
 	{
-		private var tutorialHandler:TutorialEventDispatcher = TutorialEventDispatcher.getInstance();
+		private var tutorialHandler:DialogEventHandler = DialogEventHandler.getInstance();
 		private var collection:AssetCollection;
 		private var asset:Class;
 		
@@ -50,6 +51,7 @@ package stages
 		public function createTutorialDialog(id:String):void {
 			var tutorial:Tutorial = new Tutorial(id);
 			addChildAt(tutorial, numChildren - 1);
+			
 			tutorialHandler.addEventListener(TutorialEvent.DRAW_STAR_LINE, drawStarLine);
 			tutorialHandler.addEventListener(TutorialEvent.LOCK_STAGE, lockStage);
 			tutorialHandler.addEventListener(TutorialEvent.UNLOCK_STAGE, unlockStage);
@@ -156,8 +158,8 @@ package stages
 		override protected function levelClear():void 
 		{
 			if (Tutorial.tutorialOn) {
-				tutorialHandler.addEventListener(TutorialEvent.CLOSE_TUTORIAL, 
-					function closeTutorial(e:TutorialEvent):void {
+				tutorialHandler.addEventListener(DialogEvent.CLOSE_DIALOG, 
+					function closeTutorial(e:DialogEvent):void {
 						Tutorial.tutorialOn = false;
 						tutorialHandler.removeEventListener(e.type, closeTutorial);
 						levelClear();

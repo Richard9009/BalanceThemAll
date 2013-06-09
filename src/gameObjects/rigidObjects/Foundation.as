@@ -7,7 +7,7 @@ package gameObjects.rigidObjects
 	import gameObjects.BalanceLine;
 	import org.flashdevelop.utils.FlashConnect;
 	import resources.DashedLine;
-	import stages.Tutorials.TutorialEventDispatcher;
+	import general.dialogs.DialogEventHandler;
 	/**
 	 * ...
 	 * @author Herichard Stefanus Salim
@@ -29,7 +29,7 @@ package gameObjects.rigidObjects
 			if (bLine == null) return;
 			
 			balanceLine = bLine;
-			TutorialEventDispatcher.getInstance().addEventListener(TutorialEvent.CHECK_BALANCE_LINE, startCheckingBalanceLine);
+			DialogEventHandler.getInstance().addEventListener(TutorialEvent.CHECK_BALANCE_LINE, startCheckingBalanceLine);
 		}
 		
 		public function showBalancePoint():void
@@ -72,12 +72,12 @@ package gameObjects.rigidObjects
 		private function checkBalanceLine(e:Event):void 
 		{
 			if (balancePointInsideBalanceZone() && !alreadyBalanced) {
-				TutorialEventDispatcher.getInstance().dispatchEvent(new TutorialEvent(TutorialEvent.ON_BALANCE_POSITION));
+				DialogEventHandler.getInstance().dispatchEvent(new TutorialEvent(TutorialEvent.ON_BALANCE_POSITION));
 				alreadyBalanced = true;
 			}
 			
 			if (!balancePointInsideBalanceZone() && alreadyBalanced) {
-				TutorialEventDispatcher.getInstance().dispatchEvent(new TutorialEvent(TutorialEvent.OUT_FROM_BALANCE_ZONE));
+				DialogEventHandler.getInstance().dispatchEvent(new TutorialEvent(TutorialEvent.OUT_FROM_BALANCE_ZONE));
 				alreadyBalanced = false;
 			}
 		}

@@ -2,9 +2,9 @@ package stages.Tutorials
 {
 	import flash.errors.IllegalOperationError;
 	import gameEvents.TutorialEvent;
-	import stages.Tutorials.commands.DialogCommand;
-	import stages.Tutorials.commands.EventCommand;
-	import stages.Tutorials.commands.TutorialCommand;
+	import general.dialogs.*;
+	import general.dialogs.commands.*;
+	import stages.Tutorials.TutorialCommand;
 	/**
 	 * ...
 	 * @author Herichard Stefanus Salim
@@ -18,10 +18,14 @@ package stages.Tutorials
 			if (pass == null) throw new IllegalOperationError("This class is a singleton. Use getInstance method to access it");
 		}
 		
-		public static function getInstance():DialogListCollection 
+		public static function getDialogListByID(stageID:String):Array
 		{
 			if (instance == null) instance = new DialogListCollection(new SingletonEnforcer());
-			return instance;
+			switch(stageID) {
+				case "1_1": return instance.dialogList1_1;
+				case "1_2": return instance.dialogList1_2;
+				default: return new Array();
+			}
 		}
 		
 // =======================================================================================================================================================================		
