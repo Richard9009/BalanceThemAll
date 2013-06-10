@@ -237,23 +237,20 @@ package stages
 		}
 		
 		public function createStage1_3():void {
-			itemArray.push(items.createGlassVase(3));
-			itemArray.push(items.createMug(2));
-			itemArray.push(items.createBlueBook(3));
-			itemArray.push(items.createPhoto(2));
-			itemArray.push(items.createEncyclopedia(1));
-			itemArray.push(items.createBasketBall(2));
+			itemArray.push(items.createPillow(2));
 			createItems(itemArray);
 			
-			createFoundation(380, 400, 40, 80, 0);
-			createBalanceBoard(380, 365, 500, 15);
+			createFoundation(380, 420, 40, 80, -Math.PI / 2);
+			createBalanceBoard(380, 385, 500, 15);
 			stars = new Array();
-			stars.push(items.createGoldenStar(160, 100));
-			stars.push(items.createSilverStar(540, 200));
+			stars.push(items.createGoldenStar(150, 290));
+			stars.push(items.createSilverStar(600, 290));
 			for each(var star:StarObject in stars)
 			{
 				addChild(star);
 			}
+			
+			createTutorialDialog("1_3"); 
 		}
 		
 		public function createStage1_4():void {

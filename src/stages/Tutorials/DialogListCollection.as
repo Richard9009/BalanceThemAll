@@ -24,6 +24,7 @@ package stages.Tutorials
 			switch(stageID) {
 				case "1_1": return instance.dialogList1_1;
 				case "1_2": return instance.dialogList1_2;
+				case "1_3": return instance.dialogList1_3;
 				default: return new Array();
 			}
 		}
@@ -120,7 +121,26 @@ package stages.Tutorials
 				new DialogHelper(DialogHelper.EMPTY, [EventCommand.stop], [DialogPath.ALL_PATHS])
 			]
 			
-//============================================================================================================================================================================			
+//============================================================================================================================================================================	
+
+		public function get dialogList1_3():Array { return _dialogList1_3; }
+		private var _dialogList1_3:Array = 
+			[
+				new DialogHelper(DialogHelper.EMPTY, [TutorialCommand.hideAll, EventCommand.waitingForEvent(TutorialEvent.HANDS_ARE_FULL)]),
+				new DialogHelper("stage1_3.askNeedHelp", [DialogCommand.promptYesNo, EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_STAGE))]),
+				new DialogHelper("stage1_3.beginTutorial", [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_STAGE)), 
+															EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_DOUBLE_CLICK)),
+															EventCommand.waitingForEvent(TutorialEvent.OBJECT_POINTED)]),
+				new DialogHelper("stage1_3.rotateIt", [EventCommand.waitingForEvent(TutorialEvent.OBJECT_ROTATED), TutorialCommand.hideNPC]),
+				new DialogHelper("stage1_3.rotateSuccess", [DialogCommand.allowSkip, EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_DOUBLE_CLICK)),
+															TutorialCommand.turnOffTutorial]),
+				new DialogHelper("stage1_3.skipTutorial", [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_STAGE)), DialogCommand.allowSkip,
+															EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_DOUBLE_CLICK)),
+															TutorialCommand.turnOffTutorial], [DialogPath.ANSWER_NO]),
+				new DialogHelper(DialogHelper.EMPTY, [EventCommand.stop], [DialogPath.ALL_PATHS])
+			];
+			
+//============================================================================================================================================================================4
 	}
 
 }

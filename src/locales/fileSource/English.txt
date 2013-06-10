@@ -23,3 +23,14 @@ stage1_2.readyToDrop = Good, now you can let the items go, use double click
 stage1_2.waitForIt = Wait until the books stop moving
 stage1_2.didnotGetStars = Oh too bad, you missed the star. Never mind, better luck next time.
 stage1_2.gotTheStars = That's it! You got all the stars!!!<br />Keep it up! See you around, mate!
+
+__________________________________________________________________________________________________________________________________________________________________
+
+stage1_3.askNeedHelp = Should I explain how to rotate an object?
+stage1_3.beginTutorial = Alright, actually it's really simple.<br />Try to point on an object first
+stage1_3.rotateIt = You can scroll your mouse wheel to rotate it.<br />Or you can just hold spacebar
+stage1_3.rotateSuccess = Well, that's it for now. Try to get all the stars. Good luck, mate
+stage1_3.skipTutorial = Ok, just click the replay button if you need me<br />Bye...
+
+___________________________________________________________________________________________________________________________________________________________________
+

@@ -132,6 +132,8 @@ package gameObjects.rigidObjects
 			var oldAngle:Number = Math.floor(rigidBody.GetAngle() * 180 / Math.PI);
 			var newAngle:Number = (oldAngle + direction * rotationAngle) % 360;
 			if (newAngle < 0 ) newAngle += 360;
+			
+			DialogEventHandler.getInstance().dispatchEvent(new TutorialEvent(TutorialEvent.OBJECT_ROTATED));
 		
 			rigidBody.SetPositionAndAngle(rigidBody.GetPosition(), newAngle * Math.PI / 180);
 		}
@@ -193,6 +195,7 @@ package gameObjects.rigidObjects
 		private function onMouseHover(e:MouseEvent):void 
 		{
 			stage.focus = this;
+			DialogEventHandler.getInstance().dispatchEvent(new TutorialEvent(TutorialEvent.OBJECT_POINTED));
 			if(MousePhysic.isDown == false){
 				MousePhysic.pointedBody = this.rigidBody;
 			}

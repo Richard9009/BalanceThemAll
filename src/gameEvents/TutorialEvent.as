@@ -30,6 +30,10 @@ package gameEvents
 		public static const UNLOCK_DOUBLE_CLICK:String = "UNLOCK_DOUBLE_CLICK";
 		public static const CHECK_BALANCE_LINE:String = "CHECK BALANCE LINE";
 		
+	//===============================================STAGE1_3==========================================================================
+		public static const OBJECT_POINTED:String = "OBJECT POINTED";
+		public static const OBJECT_ROTATED:String = "OBJECT ROTATED";
+		
 		
 		public function TutorialEvent(type:String) 
 		{
