@@ -369,6 +369,18 @@ package stages
 			return record;
 		}
 		
+		protected function createItems(itemList:Array):void
+		{
+			for each(var iArray:Array in itemList)
+			{
+				for each(var item:DraggableObject in iArray)
+				{
+					record.registerItem(item);
+					addChild(item);
+				}
+			}
+		}
+		
 		protected function createBorders():void 
 		{
 			var bd:b2BodyDef = new b2BodyDef();

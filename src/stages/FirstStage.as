@@ -34,6 +34,8 @@ package stages
 		private var tutorialHandler:DialogEventHandler = DialogEventHandler.getInstance();
 		private var collection:AssetCollection;
 		private var asset:Class;
+		private var itemArray:Array = new Array();
+		private var items:ObjectCollection = new ObjectCollection();
 		
 		public function FirstStage() 
 		{
@@ -197,19 +199,9 @@ package stages
 		
 		public function createStage1_1():void
 		{
-			var itemArray:Array = new Array();
-			var items:ObjectCollection = new ObjectCollection();
-			
 			itemArray.push(items.createEncyclopedia(2));
 			
-			for each(var iArray:Array in itemArray)
-			{
-				for each(var item:DraggableObject in iArray)
-				{
-					record.registerItem(item);
-					addChild(item);
-				}
-			}
+			createItems(itemArray);
 			
 			createFoundation(380, 420, 40, 80, -Math.PI / 2);
 			createBalanceBoard(380, 385, 500, 15);
@@ -226,20 +218,9 @@ package stages
 		}
 		
 		public function createStage1_2():void {
-			var itemArray:Array = new Array();
-			var items:ObjectCollection = new ObjectCollection();
-			
 			itemArray.push(items.createBlueBook(1));
 			itemArray.push(items.createEncyclopedia(1));
-			
-			for each(var iArray:Array in itemArray)
-			{
-				for each(var item:DraggableObject in iArray)
-				{
-					record.registerItem(item);
-					addChild(item);
-				}
-			}
+			createItems(itemArray);
 			
 			var foundation:Foundation = createFoundation(380, 420, 40, 80, -Math.PI / 2);
 			createBalanceBoard(380, 385, 500, 15);
@@ -256,24 +237,13 @@ package stages
 		}
 		
 		public function createStage1_3():void {
-			var itemArray:Array = new Array();
-			var items:ObjectCollection = new ObjectCollection();
-			
 			itemArray.push(items.createGlassVase(3));
 			itemArray.push(items.createMug(2));
 			itemArray.push(items.createBlueBook(3));
 			itemArray.push(items.createPhoto(2));
 			itemArray.push(items.createEncyclopedia(1));
 			itemArray.push(items.createBasketBall(2));
-			
-			for each(var iArray:Array in itemArray)
-			{
-				for each(var item:DraggableObject in iArray)
-				{
-					record.registerItem(item);
-					addChild(item);
-				}
-			}
+			createItems(itemArray);
 			
 			createFoundation(380, 400, 40, 80, 0);
 			createBalanceBoard(380, 365, 500, 15);
@@ -287,9 +257,6 @@ package stages
 		}
 		
 		public function createStage1_4():void {
-			var itemArray:Array = new Array();
-			var items:ObjectCollection = new ObjectCollection();
-			
 			itemArray.push(items.createGlassVase(2));
 			itemArray.push(items.createPillow(1));
 			itemArray.push(items.createBlueBook(1));
@@ -297,15 +264,7 @@ package stages
 			itemArray.push(items.createEncyclopedia(3));
 			itemArray.push(items.createBasketBall(1));
 			itemArray.push(items.createTennisBall(4));
-			
-			for each(var iArray:Array in itemArray)
-			{
-				for each(var item:DraggableObject in iArray)
-				{
-					record.registerItem(item);
-					addChild(item);
-				}
-			}
+			createItems(itemArray);
 			
 			createFoundation(380, 400, 40, 80, 0);
 			createBalanceBoard(380, 365, 500, 15);
@@ -320,9 +279,6 @@ package stages
 		}
 		
 		public function createStage1_5():void {
-			var itemArray:Array = new Array();
-			var items:ObjectCollection = new ObjectCollection();
-			
 			itemArray.push(items.createGlassVase(5));
 			itemArray.push(items.createPillow(1));
 			itemArray.push(items.createBlueBook(1));
@@ -330,15 +286,7 @@ package stages
 			itemArray.push(items.createEncyclopedia(3));
 			itemArray.push(items.createBasketBall(2));
 			itemArray.push(items.createTennisBall(2));
-			
-			for each(var iArray:Array in itemArray)
-			{
-				for each(var item:DraggableObject in iArray)
-				{
-					record.registerItem(item);
-					addChild(item);
-				}
-			}
+			createItems(itemArray);
 			
 			createFoundation(380, 400, 40, 80, 0);
 			createBalanceBoard(380, 365, 600, 15);

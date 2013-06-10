@@ -5,6 +5,7 @@ package gameObjects.rigidObjects
 	import Box2D.Dynamics.b2Body;
 	import Box2D.Dynamics.b2Fixture;
 	import Box2D.Dynamics.Contacts.b2Contact;
+	import flash.events.KeyboardEvent;
 	import gameEvents.GrabObjectEvent;
 	import flash.display.Sprite;
 	import flash.events.Event;
@@ -50,11 +51,27 @@ package gameObjects.rigidObjects
 			minLimit = minimumLimit;
 			maxLimit = maximumLimit;
 		
+			addEventListener(Event.ADDED_TO_STAGE, creationComplete);
+		}
+		
+		private function creationComplete(e:Event):void 
+		{
+			removeEventListener(Event.ADDED_TO_STAGE, creationComplete);
+			
+			stage.stageFocusRect = false;
 			addEventListener(MouseEvent.MOUSE_OVER, onMouseHover);
 			addEventListener(MouseEvent.MOUSE_OUT, onMouseOut);
 			addEventListener(Event.ENTER_FRAME, onEveryFrame);
 			addEventListener(MouseEvent.MOUSE_WHEEL, onMouseWhell);
 			addEventListener(GrabObjectEvent.DROP_AN_OBJECT, dropped);
+			
+			addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
+		}
+		
+		private function onKeyDown(e:KeyboardEvent):void 
+		{
+			if (MousePhysic.pointedBody != this.rigidBody || rigidBody.IsActive()) return;
+			if(e.keyCode == 32) rotateBody(3, true);
 		}
 		
 		override public function createDisplayBody(assetClass:Class):void
@@ -105,11 +122,15 @@ package gameObjects.rigidObjects
 		private function onMouseWhell(e:MouseEvent):void 
 		{
 			if (rigidBody.IsActive()) return;
+			rotateBody(10, e.delta > 0);	
+		}
+		
+		private function rotateBody(rotationAngle:Number, clockWise:Boolean):void
+		{
+			var direction:int = (clockWise) ? 1 : -1;
 			
-			var direction:int = (e.delta > 0) ? 1 : -1;
-			var snapAngle:int = 10;
 			var oldAngle:Number = Math.floor(rigidBody.GetAngle() * 180 / Math.PI);
-			var newAngle:Number = (oldAngle + direction * snapAngle) % 360;
+			var newAngle:Number = (oldAngle + direction * rotationAngle) % 360;
 			if (newAngle < 0 ) newAngle += 360;
 		
 			rigidBody.SetPositionAndAngle(rigidBody.GetPosition(), newAngle * Math.PI / 180);
@@ -171,6 +192,7 @@ package gameObjects.rigidObjects
 		
 		private function onMouseHover(e:MouseEvent):void 
 		{
+			stage.focus = this;
 			if(MousePhysic.isDown == false){
 				MousePhysic.pointedBody = this.rigidBody;
 			}
