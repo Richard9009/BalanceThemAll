@@ -9,20 +9,11 @@ package assets
 		[Embed (source = "AssetLibrary.swf", symbol = "Stage_Asset")]
 		public var stageAsset:Class;
 		
-		[Embed (source = "AssetLibrary.swf", symbol = "NormalBox_Asset")]
-		public var normalBoxAsset:Class;
-		
 		[Embed (source = "AssetLibrary.swf", symbol = "BoxRedLayer_Asset")]
 		public var redLayerAsset:Class;
 		
 		[Embed (source = "AssetLibrary.swf", symbol = "Foundation_Asset")]
 		public var foundationAsset:Class;
-		
-		[Embed (source = "AssetLibrary.swf", symbol = "NormalRound_Asset")]
-		public var normalRoundAsset:Class;
-		
-		[Embed (source = "AssetLibrary.swf", symbol = "RoundRedLayer_Asset")]
-		public var roundRedLayerAsset:Class;
 		
 		[Embed (source = "AssetLibrary.swf", symbol = "Shoe_Asset")]
 		public var shoeAsset:Class;
