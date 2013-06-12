@@ -23,6 +23,7 @@ package stages
 	import general.StageRecord;
 	import org.flashdevelop.utils.FlashConnect;
 	import general.dialogs.DialogEvent;
+	import resources.DashedLine;
 	import stages.Tutorials.Tutorial;
 	import general.dialogs.DialogEventHandler;
 	
@@ -84,16 +85,15 @@ package stages
 			mouseEnabled = false;
 		}
 		
-		private var starLine:Sprite;
+		private var starLine:DashedLine;
 		private function drawStarLine(e:TutorialEvent):void 
 		{
-			var lineLength:Number = 100;
-			starLine = new Sprite();
+			var lineLength:Number = 200;
+			starLine = new DashedLine(3, 0xAA3300, [8, 5, 3, 5]);
 			
 			for each(var star:StarObject in stars) {
-				starLine.graphics.lineStyle(2, 0xFF9999, 1);
-				starLine.graphics.moveTo(star.x, star.y);
-				starLine.graphics.lineTo(star.x, star.y - lineLength);
+				starLine.moveTo(star.x, star.y);
+				starLine.lineTo(star.x, star.y - lineLength);
 			}
 			
 			addChild(starLine);
