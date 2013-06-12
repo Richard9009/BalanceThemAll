@@ -25,6 +25,7 @@ package stages.Tutorials
 				case "1_1": return instance.dialogList1_1;
 				case "1_2": return instance.dialogList1_2;
 				case "1_3": return instance.dialogList1_3;
+				case "1_4": return instance.dialogList1_4;
 				default: return new Array();
 			}
 		}
@@ -140,7 +141,13 @@ package stages.Tutorials
 				new DialogHelper(DialogHelper.EMPTY, [EventCommand.stop], [DialogPath.ALL_PATHS])
 			];
 			
-//============================================================================================================================================================================4
+//============================================================================================================================================================================
+		public function get dialogList1_4():Array { return _dialogList1_4; }
+		private var _dialogList1_4:Array = 
+			[
+				new DialogHelper("stage1_4.lastDialog", [DialogCommand.allowSkip]),
+				new DialogHelper(DialogHelper.EMPTY, [EventCommand.stop])
+			];
 	}
 
 }

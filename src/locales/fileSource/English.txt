@@ -34,3 +34,4 @@ stage1_3.skipTutorial = Ok, just click the replay button if you need me<br />Bye
 
 ___________________________________________________________________________________________________________________________________________________________________
 
+stage1_4.lastDialog = There's nothing left for me to teach you now<br />You are on your own from here<br />Good luck

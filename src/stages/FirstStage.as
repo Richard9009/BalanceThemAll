@@ -259,43 +259,38 @@ package stages
 		}
 		
 		public function createStage1_4():void {
-			itemArray.push(items.createGlassVase(2));
 			itemArray.push(items.createPillow(1));
 			itemArray.push(items.createBlueBook(1));
-			itemArray.push(items.createShoes(3));
-			itemArray.push(items.createEncyclopedia(3));
-			itemArray.push(items.createBasketBall(1));
-			itemArray.push(items.createTennisBall(4));
+			itemArray.push(items.createShoes(1));
+			itemArray.push(items.createEncyclopedia(1));
+			createItems(itemArray);
+			
+			createFoundation(380, 420, 40, 80, -Math.PI / 2);
+			createBalanceBoard(380, 385, 500, 15);
+			stars = new Array();
+			stars.push(items.createGoldenStar(150, 250));
+			stars.push(items.createSilverStar(550, 250));
+			
+			for each(var star:StarObject in stars)
+			{
+				addChild(star);
+			}
+			
+			createTutorialDialog("1_4"); 
+		}
+		
+		public function createStage1_5():void {
+			itemArray.push(items.createPhoto(3));
+			itemArray.push(items.createPillow(1));
+			itemArray.push(items.createShoes(1));
+		
 			createItems(itemArray);
 			
 			createFoundation(380, 400, 40, 80, 0);
 			createBalanceBoard(380, 365, 500, 15);
 			stars = new Array();
-			stars.push(items.createGoldenStar(160, 100));
-			stars.push(items.createSilverStar(540, 200));
-			stars.push(items.createBronzeStar(600, 225));
-			for each(var star:StarObject in stars)
-			{
-				addChild(star);
-			}
-		}
-		
-		public function createStage1_5():void {
-			itemArray.push(items.createGlassVase(5));
-			itemArray.push(items.createPillow(1));
-			itemArray.push(items.createBlueBook(1));
-			itemArray.push(items.createMug(3));
-			itemArray.push(items.createEncyclopedia(3));
-			itemArray.push(items.createBasketBall(2));
-			itemArray.push(items.createTennisBall(2));
-			createItems(itemArray);
-			
-			createFoundation(380, 400, 40, 80, 0);
-			createBalanceBoard(380, 365, 600, 15);
-			stars = new Array();
-			stars.push(items.createGoldenStar(160, 100));
-			stars.push(items.createSilverStar(540, 200));
-			stars.push(items.createBronzeStar(600, 225));
+			stars.push(items.createGoldenStar(150, 170));
+			stars.push(items.createSilverStar(550, 220));
 			for each(var star:StarObject in stars)
 			{
 				addChild(star);

@@ -1,4 +1,4 @@
-package general 
+package general
 {
 	import gameObjects.*;
 	import gameObjects.rigidObjects.*;
@@ -8,11 +8,12 @@ package general
 	import flash.display.Sprite;
 	import org.flashdevelop.utils.FlashConnect;
 	import stages.StageBaseClass;
+	
 	/**
 	 * ...
 	 * @author Herichard Stefanus Salim
 	 */
-	public class ObjectCollection 
+	public class ObjectCollection
 	{
 		private var minStageLimit:b2Vec2;
 		private var maxStageLimit:b2Vec2;
@@ -20,15 +21,15 @@ package general
 		private var soundCol:SoundCollection = new SoundCollection();
 		private var scale:Number;
 		
-		public function ObjectCollection(scaling:Number = 0.5) 
+		public function ObjectCollection(scaling:Number = 0.5)
 		{
 			scale = scaling;
 			minStageLimit = new b2Vec2(StageBaseClass.BORDER_THICKNESS, StageBaseClass.HEADER_HEIGHT + StageBaseClass.BORDER_THICKNESS);
 			maxStageLimit = new b2Vec2(StageBaseClass.STAGE_WIDTH - StageBaseClass.BORDER_THICKNESS, StageBaseClass.STAGE_HEIGHT - StageBaseClass.BORDER_THICKNESS);
-			
+		
 		}
 		
-		public function createBasketBall(howMany:int):Array 
+		public function createBasketBall(howMany:int):Array
 		{
 			var objArray:Array = new Array();
 			var obj:NormalRoundObject;
@@ -219,7 +220,7 @@ package general
 			star.height = defaultStarHeight;
 			return star;
 		}
-		
+	
 	}
 
 }
