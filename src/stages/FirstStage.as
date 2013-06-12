@@ -15,6 +15,7 @@ package stages
 	import gameObjects.rigidObjects.DraggableObject;
 	import gameObjects.rigidObjects.Foundation;
 	import gameObjects.IAudibleObject;
+	import gameObjects.rigidObjects.RigidObjectBase;
 	import general.MousePhysic;
 	import general.MusicManager;
 	import general.ObjectCollection;
@@ -237,14 +238,18 @@ package stages
 		}
 		
 		public function createStage1_3():void {
-			itemArray.push(items.createPillow(2));
+			itemArray.push(items.createPillow(1));
+			itemArray.push(items.createEncyclopedia(1));
+			var book:RigidObjectBase = RigidObjectBase(itemArray[1][0]);
+			book.getBody().SetAngle(90);
 			createItems(itemArray);
 			
 			createFoundation(380, 420, 40, 80, -Math.PI / 2);
 			createBalanceBoard(380, 385, 500, 15);
 			stars = new Array();
 			stars.push(items.createGoldenStar(150, 290));
-			stars.push(items.createSilverStar(600, 290));
+			stars.push(items.createSilverStar(450, 290));
+			
 			for each(var star:StarObject in stars)
 			{
 				addChild(star);
