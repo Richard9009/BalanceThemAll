@@ -15,7 +15,7 @@ package stages.Tutorials
 	{
 		public static const ABOVE_ITEM_BOX:String = "above item box";
 		public static const ON_ITEM_BOX:String = "in the middle of item box";
-		public static var tutorialOn:Boolean = true;
+		public static var tutorialOn:Boolean = false;
 		public var npc:Sprite;
 		
 		public function Tutorial(stageID:String) 
