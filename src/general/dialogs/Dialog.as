@@ -30,7 +30,9 @@ package general.dialogs
 		
 		protected var dialogBoxHeight:Number = 0;
 		protected var collection:AssetCollection = new AssetCollection();
+		protected var currentPath:DialogPath = DialogPath.DEFAULT;
 		public var uniqueID:Number = Math.random();
+		
 		public function Dialog(dialogArray:Array) 
 		{
 			dialogHandler = new DialogHandler(dialogArray);
@@ -65,8 +67,9 @@ package general.dialogs
 			if(!dialog.isEmpty) tField.setLocaleText(dialog.code);
 		}
 		
-		public function nextDialog(path:DialogPath):void 
+		public function nextDialog(path:DialogPath = null):void 
 		{
+			if (path == null) path = currentPath;
 			displayDialog(dialogHandler.getNextDialog(path));
 		}
 		
@@ -75,8 +78,13 @@ package general.dialogs
 			displayDialog(dialogHandler.jumpTo(dialogIndex));
 		}
 		
+		public function changeCurrentPath(path:DialogPath):void
+		{
+			currentPath = path;
+		}
+		
 		private function skipDialog(e:Event):void {
-			nextDialog(DialogPath.DEFAULT);
+			nextDialog();
 		}
 	
 		protected function setDefaultCondition():void

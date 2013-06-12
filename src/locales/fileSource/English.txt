@@ -34,4 +34,14 @@ stage1_3.skipTutorial = Ok, just click the replay button if you need me<br />Bye
 
 ___________________________________________________________________________________________________________________________________________________________________
 
-stage1_4.lastDialog = There's nothing left for me to teach you now<br />You are on your own from here<br />Good luck
+stage1_4.challenge = How about a little challenge?<br />I'm sure you can do this on your own<br />Good luck
+stage1_4.failed = Oh too bad, You might wanna try it again
+stage1_4.success = Good! I knew you can do it!<br />I'll see you in the next level 
+____________________________________________________________________________________________________________________________________________________________________
+
+stage1_5.failed = You didn't get all the stars<br />Why don't you try it again?
+stage1_5.thatsIt = Well, that's it from me<br />There's nothing else you can find here
+stage1_5.meetAvia = However this is just the beginning<br />First, I want to meet my sister, Avia
+stage1_5.moreStars = You can find more stars in her house<br />If she liked you, she might let you take it
+stage1_5.aviaPlace = This is where her house is<br />*Handing over a map*
+stage1_5.goodbye = I hope we could meet again, mate<br />Goodbye....

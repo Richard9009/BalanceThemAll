@@ -81,7 +81,7 @@ class ActionHandler
 	
 	public function handleWaiting(e:Event):void
 	{
-		dialog.nextDialog(DialogPath.DEFAULT);
+		dialog.nextDialog();
 		eventHandler.removeEventListener(e.type, handleWaiting);
 	}
 	

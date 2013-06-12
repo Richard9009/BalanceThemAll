@@ -33,6 +33,7 @@ package gameEvents
 	//===============================================STAGE1_3==========================================================================
 		public static const OBJECT_POINTED:String = "OBJECT POINTED";
 		public static const OBJECT_ROTATED:String = "OBJECT ROTATED";
+		public static const RESTART_TUTORIAL:String = "RESTART TUTORIAL";
 		
 		
 		public function TutorialEvent(type:String) 

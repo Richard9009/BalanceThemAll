@@ -56,6 +56,14 @@ package general.dialogs.commands
 							});
 			return cmd;
 		}
+		
+		public static function changePath(path:DialogPath):DialogCommand {
+			var cmd:DialogCommand =  new DialogCommand(ENUM_PASS, "change path");
+			cmd.addAction( function changePath_action():void {
+								dialog.changeCurrentPath(path);
+							});
+			return cmd;
+		}
 	}
 
 }
@@ -71,7 +79,7 @@ class ActionHandler {
 	}
 	
 	public function handleYes(e:MouseEvent):void {
-		dialog.nextDialog(DialogPath.DEFAULT);
+		dialog.nextDialog();
 	}
 	
 	public function handleNo(e:MouseEvent):void {

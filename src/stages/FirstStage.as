@@ -9,6 +9,7 @@ package stages
 	import Box2D.Dynamics.b2FixtureDef;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import gameEvents.GameEvent;
 	import gameEvents.GrabObjectEvent;
 	import gameEvents.TutorialEvent;
 	import gameObjects.rigidObjects.BalanceBoard;
@@ -61,6 +62,12 @@ package stages
 			tutorialHandler.addEventListener(TutorialEvent.UNLOCK_STAGE, unlockStage);
 			tutorialHandler.addEventListener(TutorialEvent.LOCK_DOUBLE_CLICK, lockDoubleClick);
 			tutorialHandler.addEventListener(TutorialEvent.UNLOCK_DOUBLE_CLICK, unlockDoubleClick);
+			tutorialHandler.addEventListener(TutorialEvent.RESTART_TUTORIAL, restartTutorial);
+		}
+		
+		private function restartTutorial(e:TutorialEvent):void 
+		{
+			parent.dispatchEvent(new GameEvent(GameEvent.RESTART_LEVEL)); 
 		}
 		
 		private function unlockDoubleClick(e:TutorialEvent):void 
@@ -295,6 +302,8 @@ package stages
 			{
 				addChild(star);
 			}
+			
+			createTutorialDialog("1_5");
 		}
 		
 		private function createFoundation(xx:Number, yy:Number, ww:Number, hh:Number, rot:Number = 0):Foundation

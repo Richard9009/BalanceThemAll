@@ -26,6 +26,7 @@ package stages.Tutorials
 				case "1_2": return instance.dialogList1_2;
 				case "1_3": return instance.dialogList1_3;
 				case "1_4": return instance.dialogList1_4;
+				case "1_5": return instance.dialogList1_5;
 				default: return new Array();
 			}
 		}
@@ -142,14 +143,39 @@ package stages.Tutorials
 			];
 			
 //============================================================================================================================================================================
+		
 		public function get dialogList1_4():Array { return _dialogList1_4; }
 		private var _dialogList1_4:Array = 
 			[
-				new DialogHelper("stage1_4.lastDialog", [DialogCommand.allowSkip]),
+				new DialogHelper("stage1_4.challenge", [DialogCommand.allowSkip]),
+				new DialogHelper(DialogHelper.EMPTY, [EventCommand.promptSuccessFailed(TutorialEvent.TUTORIAL_CLEAR, TutorialEvent.TUTORIAL_FAILED),
+														TutorialCommand.hideAll]),
+				new DialogHelper("stage1_4.failed", [DialogCommand.allowSkip, DialogCommand.changePath(DialogPath.FAILED)], [DialogPath.FAILED]),
+				new DialogHelper(DialogHelper.EMPTY, [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.RESTART_TUTORIAL))], [DialogPath.FAILED]),
+				new DialogHelper("stage1_4.success", [DialogCommand.allowSkip], [DialogPath.SUCCESS]),
+				new DialogHelper(DialogHelper.EMPTY, [EventCommand.stop], [DialogPath.ALL_PATHS])
+			];
+	
+//=============================================================================================================================================================================
+		
+		public function get dialogList1_5():Array { return _dialogList1_5; }
+		private var _dialogList1_5:Array = 
+			[
+				new DialogHelper(DialogHelper.EMPTY, [TutorialCommand.hideAll, EventCommand.promptSuccessFailed(TutorialEvent.TUTORIAL_CLEAR, 
+																				TutorialEvent.TUTORIAL_FAILED)]),
+				
+				new DialogHelper("stage1_5.failed", [DialogCommand.allowSkip, DialogCommand.changePath(DialogPath.FAILED)], [DialogPath.FAILED]),
+				new DialogHelper(DialogHelper.EMPTY, [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.RESTART_TUTORIAL))], [DialogPath.FAILED]),
+				
+				new DialogHelper("stage1_5.thatsIt", [DialogCommand.allowSkip], [DialogPath.SUCCESS]),
+				new DialogHelper("stage1_5.meetAvia", [DialogCommand.allowSkip]),
+				new DialogHelper("stage1_5.moreStars", [DialogCommand.allowSkip]),
+				new DialogHelper("stage1_5.aviaPlace", [DialogCommand.allowSkip]),
+				new DialogHelper("stage1_5.goodbye", [DialogCommand.allowSkip]),
 				new DialogHelper(DialogHelper.EMPTY, [EventCommand.stop])
 			];
-	}
 
+	}
 }
 
 class SingletonEnforcer { }
