@@ -2,10 +2,12 @@ package stages
 {
 	import assets.AssetCollection;
 	import Box2D.Dynamics.b2Body;
+	import Box2D.Dynamics.b2Fixture;
 	import flash.display.Sprite;
 	import gameObjects.rigidObjects.BalanceBoard;
 	import gameObjects.rigidObjects.Foundation;
 	import general.ObjectCollection;
+	import org.flashdevelop.utils.FlashConnect;
 	/**
 	 * ...
 	 * @author Herichard Stefanus Salim
@@ -41,13 +43,20 @@ package stages
 			switch(subStageIndex) {
 				case 1: createStage2_1(); break;
 			}
+			
+			createItems(itemArray);
+			createStars();
 		}
 		
 		private function createStage2_1():void
 		{
-			itemArray.push(items.createBlueBook(3));
-			createItems(itemArray);
-			createFoundation(380, 410, 50, 75, 0);
+			itemArray.push(items.createBasketBall(1));
+			itemArray.push(items.createEncyclopedia(1));
+			itemArray.push(items.createGlassVase(1));
+			
+			stars.push(items.createGoldenStar(150, 250));
+			
+			createFoundation(380, 410, 40, 60, 0);
 			createBalanceBoard(380, 365, 550, 45);
 		}
 		
@@ -71,9 +80,14 @@ package stages
 			balanceBoard.createDisplayBody(collection.baseballAsset);
 			balanceBoard.setAssetSize(ww, hh);
 			balanceBoard.setPosition(xx-30, yy);
-			balanceBoard.addBoxFixture(ww / 2, hh / 2, 0.3);
-			balanceBoard.addBoxFixture(ww / 2, hh, 0.5);
-			balanceBoard.setFixtureProperties(0.5, 0.1, 0.8);
+			balanceBoard.addBoxFixture(ww / 2, hh / 2, 0.1);
+			balanceBoard.addBoxFixture(ww / 2, hh, 0.9);
+			
+			var fixt:b2Fixture = balanceBoard.getBody().GetFixtureList();
+			balanceBoard.setFixtureProperties(0.5, 0.1, 0.8, fixt);
+			fixt = fixt.GetNext();
+			balanceBoard.setFixtureProperties(0.2, 0.1, 0.8, fixt);
+			
 			balanceBoard.arrangeFixture();
 			addChild(balanceBoard);
 			

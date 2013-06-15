@@ -127,9 +127,9 @@ package gameObjects.rigidObjects
 			this.setFixtureProperties(oldFixture.GetDensity(), oldFixture.GetRestitution(), oldFixture.GetFriction());
 		}
 		
-		public function setFixtureProperties(density:Number, restitution:Number, friction:Number):void
-		{
-			var fixture:b2Fixture = rigidBody.GetFixtureList();
+		public function setFixtureProperties(density:Number, restitution:Number, friction:Number, fixture:b2Fixture = null):void
+		{			
+			fixture = (fixture) ? fixture : FirstFixture;
 			
 			if (density >= 0) fixture.SetDensity(density);
 			if (restitution >= 0) fixture.SetRestitution(restitution);
@@ -191,6 +191,11 @@ package gameObjects.rigidObjects
 		protected function getCollisionList():Array
 		{
 			return collidingBodyList;
+		}
+		
+		private function get FirstFixture():b2Fixture 
+		{
+			return rigidBody.GetFixtureList();
 		}
 	}
 

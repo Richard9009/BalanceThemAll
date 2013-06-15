@@ -62,7 +62,7 @@ package stages
 		private var lHand:Hand = new Hand(false);
 		private var rHandIsEmpty:Boolean = true;
 		
-		public var stars:Array;
+		public var stars:Array = new Array();
 		
 		public function StageBaseClass() 
 		{
@@ -235,6 +235,7 @@ package stages
 		
 		protected function checkStarCollision(item:Sprite):void
 		{
+			if (stars.length < 1) return;
 			
 			for (var i:int = 0; i < stars.length; i++)
 			{

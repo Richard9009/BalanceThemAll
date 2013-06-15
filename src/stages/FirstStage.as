@@ -217,7 +217,6 @@ package stages
 			createFoundation(380, 420, 40, 80, -Math.PI / 2);
 			createBalanceBoard(380, 385, 500, 15);
 			
-			stars = new Array();
 			stars.push(items.createGoldenStar(150, 350));
 			stars.push(items.createSilverStar(600, 350));
 			
@@ -230,7 +229,7 @@ package stages
 			
 			var foundation:Foundation = createFoundation(380, 420, 40, 80, -Math.PI / 2);
 			createBalanceBoard(380, 385, 500, 15);
-			stars = new Array();
+			
 			stars.push(items.createGoldenStar(300, 350));
 			stars.push(items.createSilverStar(600, 350));
 			
@@ -245,7 +244,7 @@ package stages
 			
 			createFoundation(380, 420, 40, 80, -Math.PI / 2);
 			createBalanceBoard(380, 385, 500, 15);
-			stars = new Array();
+			
 			stars.push(items.createGoldenStar(150, 290));
 			stars.push(items.createSilverStar(450, 290));
 		}
@@ -258,7 +257,7 @@ package stages
 			
 			createFoundation(380, 420, 40, 80, -Math.PI / 2);
 			createBalanceBoard(380, 385, 500, 15);
-			stars = new Array();
+			
 			stars.push(items.createGoldenStar(150, 250));
 			stars.push(items.createSilverStar(550, 250));
 		}
@@ -270,7 +269,7 @@ package stages
 			
 			createFoundation(380, 400, 40, 80, 0);
 			createBalanceBoard(380, 365, 500, 15);
-			stars = new Array();
+			
 			stars.push(items.createGoldenStar(150, 170));
 			stars.push(items.createSilverStar(550, 220));
 		}

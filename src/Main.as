@@ -135,8 +135,8 @@ package
 		private function update(e:Event):void 
 		{
 			world.Step(1 / 30, 10, 10);
-			world.DrawDebugData();
-			setChildIndex(debugSprite, numChildren - 1);
+			//world.DrawDebugData();
+			//setChildIndex(debugSprite, numChildren - 1);
 			// Go through body list and update sprite positions/rotations
 			for (var bb:b2Body = world.GetBodyList(); bb; bb = bb.GetNext()){
 				if (bb.GetUserData() is Sprite){
@@ -172,13 +172,14 @@ package
 		
 		private function createLevelByID(stageID:String):void
 		{
+			
 			var idArray:Array = stageID.split("_");
 			var stg:int = int(idArray[0]);
 			var subStg:int = int(idArray[1]);
 			
 			switch(stg) {
-				case 1: createLevel(FirstStage, subStg);
-				case 2: createLevel(SecondStage, subStg);
+				case 1: createLevel(FirstStage, subStg); break;
+				case 2: createLevel(SecondStage, subStg); break;
 			}
 		}
 		
@@ -286,7 +287,7 @@ package
 			world = new b2World(_gravity, true);
 			world.SetContactListener(new BreakContactListener());
 			this.addEventListener(Event.ENTER_FRAME, update);
-			debugDraw();
+			//debugDraw();
 		}
 		
 		private function resumeGame(e:Event):void 
