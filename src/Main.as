@@ -21,6 +21,7 @@ package
 	import org.flashdevelop.utils.FlashConnect;
 	import stages.FirstStage;
 	import stages.IPlayableStage;
+	import stages.SecondStage;
 	import stages.StageBaseClass;
 	
 	/**
@@ -134,7 +135,8 @@ package
 		private function update(e:Event):void 
 		{
 			world.Step(1 / 30, 10, 10);
-	
+			world.DrawDebugData();
+			setChildIndex(debugSprite, numChildren - 1);
 			// Go through body list and update sprite positions/rotations
 			for (var bb:b2Body = world.GetBodyList(); bb; bb = bb.GetNext()){
 				if (bb.GetUserData() is Sprite){
@@ -176,6 +178,7 @@ package
 			
 			switch(stg) {
 				case 1: createLevel(FirstStage, subStg);
+				case 2: createLevel(SecondStage, subStg);
 			}
 		}
 		
@@ -283,6 +286,7 @@ package
 			world = new b2World(_gravity, true);
 			world.SetContactListener(new BreakContactListener());
 			this.addEventListener(Event.ENTER_FRAME, update);
+			debugDraw();
 		}
 		
 		private function resumeGame(e:Event):void 
@@ -303,6 +307,21 @@ package
 			addChild(blackLayer);
 		}
 		
+		private function debugDraw():void
+		{
+			var dbgDraw:b2DebugDraw = new b2DebugDraw();
+			//var dbgSprite:Sprite = new Sprite();
+			//m_sprite.addChild(dbgSprite);
+			debugSprite.mouseEnabled = false;
+			dbgDraw.SetSprite(debugSprite);
+			dbgDraw.SetDrawScale(_physScale);
+			dbgDraw.SetFillAlpha(0.3);
+			dbgDraw.SetLineThickness(1.0);
+			dbgDraw.SetFlags(b2DebugDraw.e_shapeBit | b2DebugDraw.e_jointBit);
+			world.SetDebugDraw(dbgDraw);
+			addChild(debugSprite);
+		}
+		private var debugSprite:Sprite = new Sprite();
 	}
 }
 

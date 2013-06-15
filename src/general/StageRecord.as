@@ -95,7 +95,7 @@ package general
 				for (var subStageCount:int = 0; subStageCount < subStageinEveryStage; subStageCount++) {
 					var stage:StageRecord = new StageRecord(new ExternalInstantiationBlocker());
 					stage.stageID = (stageCount + 1).toString() + "_" + (subStageCount + 1).toString();
-					if (stageCount > 0) stage.stageStatus = LOCKED;
+					if (stageCount > 1) stage.stageStatus = LOCKED;
 					stageRecordList.push(stage);
 				}
 			}

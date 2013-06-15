@@ -191,7 +191,8 @@ package stages
 	
 		public function createLevelBySubStageID(subStageIndex:int):void {
 			
-			initiateStage("1_"+subStageIndex.toString());
+			var stgID:String = "1_" + subStageIndex.toString();
+			initiateStage(stgID);
 			
 			switch(subStageIndex) {
 				case 1: createStage1_1(); break;
@@ -203,45 +204,37 @@ package stages
 			
 			if (subStageIndex < 4) MusicManager.getInstance().playStage1FirstHalfBGM();
 			else MusicManager.getInstance().playStage1SecondHalfBGM();
+			
+			createItems(itemArray);
+			createStars();
+			createTutorialDialog(stgID);
 		}
 		
 		public function createStage1_1():void
 		{
 			itemArray.push(items.createEncyclopedia(2));
 			
-			createItems(itemArray);
-			
 			createFoundation(380, 420, 40, 80, -Math.PI / 2);
 			createBalanceBoard(380, 385, 500, 15);
+			
 			stars = new Array();
 			stars.push(items.createGoldenStar(150, 350));
 			stars.push(items.createSilverStar(600, 350));
-			for each(var star:StarObject in stars)
-			{
-				addChild(star);
-			}
 			
 			showBalanceLine = false;
-			createTutorialDialog("1_1");
 		}
 		
 		public function createStage1_2():void {
 			itemArray.push(items.createBlueBook(1));
 			itemArray.push(items.createEncyclopedia(1));
-			createItems(itemArray);
 			
 			var foundation:Foundation = createFoundation(380, 420, 40, 80, -Math.PI / 2);
 			createBalanceBoard(380, 385, 500, 15);
 			stars = new Array();
 			stars.push(items.createGoldenStar(300, 350));
 			stars.push(items.createSilverStar(600, 350));
-			for each(var star:StarObject in stars)
-			{
-				addChild(star);
-			}
 			
 			foundation.setBalanceLine(bLine);
-			createTutorialDialog("1_2"); 
 		}
 		
 		public function createStage1_3():void {
@@ -249,20 +242,12 @@ package stages
 			itemArray.push(items.createEncyclopedia(1));
 			var book:RigidObjectBase = RigidObjectBase(itemArray[1][0]);
 			book.getBody().SetAngle(90);
-			createItems(itemArray);
 			
 			createFoundation(380, 420, 40, 80, -Math.PI / 2);
 			createBalanceBoard(380, 385, 500, 15);
 			stars = new Array();
 			stars.push(items.createGoldenStar(150, 290));
 			stars.push(items.createSilverStar(450, 290));
-			
-			for each(var star:StarObject in stars)
-			{
-				addChild(star);
-			}
-			
-			createTutorialDialog("1_3"); 
 		}
 		
 		public function createStage1_4():void {
@@ -270,40 +255,24 @@ package stages
 			itemArray.push(items.createBlueBook(1));
 			itemArray.push(items.createShoes(1));
 			itemArray.push(items.createEncyclopedia(1));
-			createItems(itemArray);
 			
 			createFoundation(380, 420, 40, 80, -Math.PI / 2);
 			createBalanceBoard(380, 385, 500, 15);
 			stars = new Array();
 			stars.push(items.createGoldenStar(150, 250));
 			stars.push(items.createSilverStar(550, 250));
-			
-			for each(var star:StarObject in stars)
-			{
-				addChild(star);
-			}
-			
-			createTutorialDialog("1_4"); 
 		}
 		
 		public function createStage1_5():void {
 			itemArray.push(items.createPhoto(3));
 			itemArray.push(items.createPillow(1));
 			itemArray.push(items.createShoes(1));
-		
-			createItems(itemArray);
 			
 			createFoundation(380, 400, 40, 80, 0);
 			createBalanceBoard(380, 365, 500, 15);
 			stars = new Array();
 			stars.push(items.createGoldenStar(150, 170));
 			stars.push(items.createSilverStar(550, 220));
-			for each(var star:StarObject in stars)
-			{
-				addChild(star);
-			}
-			
-			createTutorialDialog("1_5");
 		}
 		
 		private function createFoundation(xx:Number, yy:Number, ww:Number, hh:Number, rot:Number = 0):Foundation
@@ -324,7 +293,8 @@ package stages
 		{
 			balanceBoard = new BalanceBoard();
 			balanceBoard.createDisplayBody(collection.balanceBoardAsset);
-			balanceBoard.setSize(ww, hh, 0.5);
+			balanceBoard.setAssetSize(ww, hh);
+			balanceBoard.addBoxFixture(ww, hh, 0.3);
 			balanceBoard.setPosition(xx, yy);
 			balanceBoard.setFixtureProperties(0.5, 0.1, 0.8);
 			addChild(balanceBoard);

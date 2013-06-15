@@ -381,6 +381,11 @@ package stages
 			}
 		}
 		
+		protected function createStars():void
+		{
+			for each(var star:StarObject in stars) addChild(star);
+		}
+		
 		protected function createBorders():void 
 		{
 			var bd:b2BodyDef = new b2BodyDef();

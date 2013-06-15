@@ -8,7 +8,7 @@ package gameObjects.rigidObjects
 	 * ...
 	 * @author Herichard Stefanus Salim
 	 */
-	public class BalanceBoard extends RigidObjectBase 
+	public class BalanceBoard extends CompoundObject
 	{
 		private var breakable:Boolean;
 		private var maxTorque:Number;

@@ -81,6 +81,18 @@ package assets
 		[Embed (source = "AssetLibrary.swf", symbol = "Gavin_Asset")]
 		public var gavinAsset:Class;
 		
+		[Embed(source = "AssetLibrary.swf", symbol = "Avia_Asset")]
+		public var aviaAsset:Class;
+		
+		[Embed(source = "AssetLibrary.swf", symbol = "BaseballBat_Asset")]
+		public var baseballAsset:Class;
+		
+		[Embed(source = "AssetLibrary.swf", symbol = "Foundation2_Asset")]
+		public var foundation2Asset:Class;
+		
+		[Embed(source="AssetLibrary.swf", symbol="Stage2BG_Asset")]
+		public var stage2BGAsset:Class;
+		
 		public function AssetCollection() 
 		{
 			 
