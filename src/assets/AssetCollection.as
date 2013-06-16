@@ -93,6 +93,12 @@ package assets
 		[Embed(source="AssetLibrary.swf", symbol="Stage2BG_Asset")]
 		public var stage2BGAsset:Class;
 		
+		[Embed(source = "AssetLibrary.swf", symbol = "HeavyObject_Asset")]
+		public var heavyObjectAsset:Class;
+		
+		[Embed(source="AssetLibrary.swf", symbol="BowlingBall_Asset")]
+		public var bowlingBallAsset:Class;
+		
 		public function AssetCollection() 
 		{
 			 

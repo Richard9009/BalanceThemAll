@@ -42,7 +42,12 @@ package stages
 			
 			switch(subStageIndex) {
 				case 1: createStage2_1(); break;
+				case 2: createStage2_2(); break;
+				case 3: createStage2_3(); break;
 			}
+			
+			createFoundation(380, 410, 40, 60, 0);
+			createBalanceBoard(380, 365, 550, 45);
 			
 			createItems(itemArray);
 			createStars();
@@ -55,10 +60,27 @@ package stages
 			itemArray.push(items.createMug(2));
 			
 			stars.push(items.createGoldenStar(110, 210));
-			stars.push(items.createSilverStar(550, 250));
+			stars.push(items.createSilverStar(550, 265));
+		}
+		
+		private function createStage2_2():void
+		{
+			itemArray.push(items.createPhoto(1));
+			itemArray.push(items.createHeavyObject(1));
+			itemArray.push(items.createBlueBook(1));
 			
-			createFoundation(380, 410, 40, 60, 0);
-			createBalanceBoard(380, 365, 550, 45);
+			stars.push(items.createGoldenStar(110, 210));
+			stars.push(items.createSilverStar(550, 268));
+		}
+		
+		private function createStage2_3():void
+		{
+			itemArray.push(items.createShoes(2));
+			itemArray.push(items.createBowlingBall(2));
+			itemArray.push(items.createHeavyObject(2));
+			
+			stars.push(items.createGoldenStar(110, 210));
+			stars.push(items.createSilverStar(550, 268));
 		}
 		
 		private function createFoundation(xx:Number, yy:Number, ww:Number, hh:Number, rot:Number = 0):Foundation
@@ -80,12 +102,12 @@ package stages
 			balanceBoard = new BalanceBoard();
 			balanceBoard.createDisplayBody(collection.baseballAsset);
 			balanceBoard.setAssetSize(ww, hh);
-			balanceBoard.setPosition(xx-30, yy);
-			balanceBoard.addBoxFixture(ww / 2, hh / 2, 0.1);
-			balanceBoard.addBoxFixture(ww / 2, hh, 0.9);
+			balanceBoard.setPosition(xx-70, yy);
+			balanceBoard.addBoxFixture(ww * 2/5, hh / 2, 0.2);
+			balanceBoard.addBoxFixture(ww * 3/5, hh, 0.2);
 			
 			var fixt:b2Fixture = balanceBoard.getBody().GetFixtureList();
-			balanceBoard.setFixtureProperties(0.5, 0.1, 0.8, fixt);
+			balanceBoard.setFixtureProperties(0.2, 0.1, 0.8, fixt);
 			fixt = fixt.GetNext();
 			balanceBoard.setFixtureProperties(0.2, 0.1, 0.8, fixt);
 			

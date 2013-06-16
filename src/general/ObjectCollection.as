@@ -65,6 +65,24 @@ package general
 			return objArray;
 		}
 		
+		public function createBowlingBall(howMany:int):Array
+		{
+			var objArray:Array = new Array();
+			var obj:NormalRoundObject;
+			for (var i:int = 0; i < howMany; i++)
+			{
+				obj = new NormalRoundObject(minStageLimit, maxStageLimit);
+				obj.createDisplayBody(collection.bowlingBallAsset);
+				obj.setFixtureProperties(1, 0.8, 0.2);
+				obj.setRoundSize(50 * scale);
+				obj.setRandomPositionInsideItemBox();
+				obj.setSound(new soundCol.heavyImpactSound());
+				objArray.push(obj);
+			}
+			
+			return objArray;
+		}
+		
 		public function createShoes(howMany:int):Array
 		{
 			var objArray:Array = new Array();
@@ -92,7 +110,7 @@ package general
 				obj = new NormalBoxObject(minStageLimit, maxStageLimit, true);
 				obj.durability = 0.3;
 				obj.createDisplayBody(collection.glassVaseAsset);
-				obj.setFixtureProperties(0.1, 0.1, 0.1);
+				obj.setFixtureProperties(0.15, 0.1, 0.1);
 				obj.setSize(50 * scale, 100 * scale);
 				obj.setRandomPositionInsideItemBox();
 				obj.setSound(new soundCol.glassImpactSound(), new soundCol.glassBreakingSound());
@@ -186,6 +204,24 @@ package general
 				obj.setSize(200 * scale, 56 * scale);
 				obj.setRandomPositionInsideItemBox();
 				obj.setSound(new soundCol.pillowImpactSound());
+				objArray.push(obj);
+			}
+			
+			return objArray;
+		}
+		
+		public function createHeavyObject(howMany:int):Array
+		{
+			var objArray:Array = new Array();
+			var obj:NormalBoxObject;
+			for (var i:int = 0; i < howMany; i++)
+			{
+				obj = new NormalBoxObject(minStageLimit, maxStageLimit);
+				obj.createDisplayBody(collection.heavyObjectAsset);
+				obj.setFixtureProperties(1, 0, 0.9);
+				obj.setSize(150 * scale, 135 * scale);
+				obj.setRandomPositionInsideItemBox();
+				obj.setSound(new soundCol.heavyImpactSound());
 				objArray.push(obj);
 			}
 			

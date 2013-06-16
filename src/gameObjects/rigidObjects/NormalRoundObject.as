@@ -28,7 +28,7 @@ package gameObjects.rigidObjects
 		{
 			super(minimumLimit, maximumLimit);
 			
-			rigidBody.SetLinearDamping(0.6);
+			rigidBody.SetLinearDamping(0.8);
 		}
 		
 		/* INTERFACE general.collisions.ICollisionObject */

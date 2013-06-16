@@ -312,12 +312,13 @@ package gameObjects.rigidObjects
 			
 			for (var bb:b2Body = Main.getWorld().GetBodyList(); bb; bb = bb.GetNext())
 			{
-				if (bb.GetUserData() is RigidObjectBase && this.hitTestObject(bb.GetUserData()))
+				if (bb.GetUserData() == this) bb = bb.GetNext();
+				if (bb.GetUserData() is RigidObjectBase && CollisionGenerator.getCollisionStatus(this, bb.GetUserData()))
 				{
-					if(bb.GetUserData().y > this.y) {
+					//if(bb.GetUserData().y > this.y) {
 						this.y -= 10;
 						return bb;
-					}
+					//}
 				}
 			}
 			this.y -= 10;
