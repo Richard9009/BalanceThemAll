@@ -252,7 +252,6 @@ package stages
 					star.startFadeOut();
 					stars.splice(i, 1);
 					updateScore();
-					break;
 				}
 			}
 			

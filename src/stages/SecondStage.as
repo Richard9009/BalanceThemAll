@@ -52,9 +52,10 @@ package stages
 		{
 			itemArray.push(items.createBasketBall(1));
 			itemArray.push(items.createEncyclopedia(1));
-			itemArray.push(items.createGlassVase(1));
+			itemArray.push(items.createMug(2));
 			
-			stars.push(items.createGoldenStar(150, 250));
+			stars.push(items.createGoldenStar(110, 210));
+			stars.push(items.createSilverStar(550, 250));
 			
 			createFoundation(380, 410, 40, 60, 0);
 			createBalanceBoard(380, 365, 550, 45);
