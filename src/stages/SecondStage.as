@@ -57,9 +57,10 @@ package stages
 		{
 			itemArray.push(items.createBasketBall(1));
 			itemArray.push(items.createEncyclopedia(1));
-			itemArray.push(items.createMug(2));
+			itemArray.push(items.createMug(1));
+			itemArray.push(items.createGlassVase(1));
 			
-			stars.push(items.createGoldenStar(110, 210));
+			stars.push(items.createGoldenStar(110, 225));
 			stars.push(items.createSilverStar(550, 265));
 		}
 		

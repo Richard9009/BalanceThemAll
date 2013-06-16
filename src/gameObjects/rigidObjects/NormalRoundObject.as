@@ -7,6 +7,7 @@ package gameObjects.rigidObjects
 	import Box2D.Common.Math.b2Vec2;
 	import Box2D.Dynamics.b2Body;
 	import Box2D.Dynamics.b2Fixture;
+	import flash.events.Event;
 	import flash.media.Sound;
 	import gameObjects.IAudibleObject;
 	import general.collisions.CollisionGenerator;
@@ -28,7 +29,7 @@ package gameObjects.rigidObjects
 		{
 			super(minimumLimit, maximumLimit);
 			
-			rigidBody.SetLinearDamping(0.8);
+			rigidBody.SetLinearDamping(1);
 		}
 		
 		/* INTERFACE general.collisions.ICollisionObject */
@@ -79,6 +80,15 @@ package gameObjects.rigidObjects
 			impactSound.setBreakingSound(breakSnd);
 			impactSound.setRollingSound(rollSnd);
 			impactSound.setBody(rigidBody);
+		}
+		
+		override protected function checkActivity(e:Event):void 
+		{
+			super.checkActivity(e);
+			
+			if (rigidBody.GetLinearVelocity().Length() < 0.1) {
+				rigidBody.SetLinearVelocity(new b2Vec2());
+			}
 		}
 		
 	}
