@@ -38,7 +38,7 @@ package gameEvents
 		
 		public function TutorialEvent(type:String) 
 		{
-			super(type);
+			super(type, true);
 		}
 		
 		override public function clone():Event 

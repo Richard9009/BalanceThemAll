@@ -14,7 +14,7 @@ package gameEvents
 		public static const STAGE_SELECTED:String = "STAGE SELECTED";
 		
 		
-		public function SelectStageEvent(type:String, bubbles:Boolean=false, cancelable:Boolean=false) 
+		public function SelectStageEvent(type:String, bubbles:Boolean=true, cancelable:Boolean=false) 
 		{
 			super(type, bubbles, cancelable);
 			

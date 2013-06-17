@@ -14,7 +14,7 @@ package gameEvents
 		
 		public var brokenObject:Sprite;
 		
-		public function ObjectBreakEvent(type:String, bubbles:Boolean=false, cancelable:Boolean=false) 
+		public function ObjectBreakEvent(type:String, bubbles:Boolean=true, cancelable:Boolean=false) 
 		{
 			super(type, bubbles, cancelable);
 			

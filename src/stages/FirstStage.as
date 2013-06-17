@@ -1,12 +1,9 @@
 package stages 
 {
 	import assets.AssetCollection;
-	import assets.SoundCollection;
-	import Box2D.Collision.Shapes.b2PolygonShape;
-	import Box2D.Common.Math.b2Vec2;
-	import Box2D.Dynamics.b2Body;
-	import Box2D.Dynamics.b2BodyDef;
-	import Box2D.Dynamics.b2FixtureDef;
+	import builders.ObjectBuilder;
+	import builders.SpecialObjectBuilder;
+	import builders.StageBuilder;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import gameEvents.GameEvent;
@@ -14,13 +11,10 @@ package stages
 	import gameEvents.TutorialEvent;
 	import gameObjects.rigidObjects.DraggableObject;
 	import gameObjects.rigidObjects.Foundation;
-	import gameObjects.IAudibleObject;
 	import gameObjects.rigidObjects.RigidObjectBase;
 	import general.MousePhysic;
 	import general.MusicManager;
-	import general.ObjectBuilder;
 	import gameObjects.StarObject;
-	import general.SpecialObjectBuilder;
 	import general.StageRecord;
 	import org.flashdevelop.utils.FlashConnect;
 	import general.dialogs.DialogEvent;
@@ -193,88 +187,14 @@ package stages
 	
 		public function createLevelBySubStageID(subStageIndex:int):void {
 			
-			var hardMode:Boolean = subStageIndex > 4;
 			var stgID:String = "1_" + subStageIndex.toString();
 			initiateStage(stgID);
-			
-			switch(subStageIndex) {
-				case 1: createStage1_1(); break;
-				case 2: createStage1_2(); break;
-				case 3: createStage1_3(); break;
-				case 4: createStage1_4(); break;
-				case 5: createStage1_5(); break;
-			}
-			
-			if (!hardMode) MusicManager.getInstance().playStage1FirstHalfBGM();
-			else MusicManager.getInstance().playStage1SecondHalfBGM();
-			
-			createItems(liftableItems);
-			createBalanceBoard(hardMode);
-			createFoundation(hardMode);
-			createStars();
 			createTutorialDialog(stgID);
-		}
-		
-		private function createBalanceBoard(isLong:Boolean):void
-		{
-			var broom:RigidObjectBase = specialBuilder.createBroom(380, 395, isLong ? 550 : 500);
-			otherItems.push(broom);
-			addChild(broom);
-		}
-		
-		private function createFoundation(tall:Boolean):void
-		{
-			var micWave:Foundation = specialBuilder.createMicrowave(380, 420, tall);
-			otherItems.push(micWave);
-			micWave.setBalanceLine(bLine);
-			addChild(micWave);
-		}
-		
-		public function createStage1_1():void
-		{
-			liftableItems.push(itemBuilder.createEncyclopedia(2));
 			
-			stars.push(specialBuilder.createGoldenStar(150, 350));
-			stars.push(specialBuilder.createSilverStar(600, 350));
-			
-			showBalanceLine = false;
-		}
-		
-		public function createStage1_2():void {
-			liftableItems.push(itemBuilder.createBlueBook(1));
-			liftableItems.push(itemBuilder.createEncyclopedia(1));
-			
-			stars.push(specialBuilder.createGoldenStar(300, 350));
-			stars.push(specialBuilder.createSilverStar(600, 350));
-		}
-		
-		public function createStage1_3():void {
-			liftableItems.push(itemBuilder.createPillow(1));
-			liftableItems.push(itemBuilder.createEncyclopedia(1));
-			var book:RigidObjectBase = RigidObjectBase(liftableItems[1][0]);
-			book.getBody().SetAngle(90);
-			
-			stars.push(specialBuilder.createGoldenStar(150, 290));
-			stars.push(specialBuilder.createSilverStar(450, 290));
-		}
-		
-		public function createStage1_4():void {
-			liftableItems.push(itemBuilder.createPillow(1));
-			liftableItems.push(itemBuilder.createBlueBook(1));
-			liftableItems.push(itemBuilder.createShoes(1));
-			liftableItems.push(itemBuilder.createEncyclopedia(1));
-			
-			stars.push(specialBuilder.createGoldenStar(150, 250));
-			stars.push(specialBuilder.createSilverStar(550, 250));
-		}
-		
-		public function createStage1_5():void {
-			liftableItems.push(itemBuilder.createPhoto(3));
-			liftableItems.push(itemBuilder.createPillow(1));
-			liftableItems.push(itemBuilder.createShoes(1));
-			
-			stars.push(specialBuilder.createGoldenStar(150, 170));
-			stars.push(specialBuilder.createSilverStar(550, 220));
+			var builder:StageBuilder = new StageBuilder();
+			addChild(builder.buildAndGetStage(1, subStageIndex));
+			stars = builder.getStars();
+			builder.getFoundation().setBalanceLine(bLine);
 		}
 	}
 

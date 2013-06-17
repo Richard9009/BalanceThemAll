@@ -13,7 +13,7 @@ package gameEvents
 		
 		public function BalanceLineEvent(type:String) 
 		{
-			super(type, false, false);
+			super(type, true, false);
 		}
 		
 	}

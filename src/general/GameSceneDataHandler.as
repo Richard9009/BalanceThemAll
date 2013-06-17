@@ -1,5 +1,6 @@
 package general 
 {
+	import builders.SpecialObjectBuilder;
 	import gameObjects.StarObject;
 	import org.flashdevelop.utils.FlashConnect;
 	/**
