@@ -193,6 +193,7 @@ package stages
 	
 		public function createLevelBySubStageID(subStageIndex:int):void {
 			
+			var hardMode:Boolean = subStageIndex > 4;
 			var stgID:String = "1_" + subStageIndex.toString();
 			initiateStage(stgID);
 			
@@ -204,26 +205,34 @@ package stages
 				case 5: createStage1_5(); break;
 			}
 			
-			if (subStageIndex < 4) MusicManager.getInstance().playStage1FirstHalfBGM();
+			if (!hardMode) MusicManager.getInstance().playStage1FirstHalfBGM();
 			else MusicManager.getInstance().playStage1SecondHalfBGM();
 			
 			createItems(liftableItems);
-			createBalanceBoard(subStageIndex > 4);
+			createBalanceBoard(hardMode);
+			createFoundation(hardMode);
 			createStars();
 			createTutorialDialog(stgID);
 		}
 		
 		private function createBalanceBoard(isLong:Boolean):void
 		{
-			otherItems.push(specialBuilder.createBroom(380, 395, isLong ? 550 : 500));
-			addChild(otherItems[0]);
+			var broom:RigidObjectBase = specialBuilder.createBroom(380, 395, isLong ? 550 : 500);
+			otherItems.push(broom);
+			addChild(broom);
+		}
+		
+		private function createFoundation(tall:Boolean):void
+		{
+			var micWave:Foundation = specialBuilder.createMicrowave(380, 420, tall);
+			otherItems.push(micWave);
+			micWave.setBalanceLine(bLine);
+			addChild(micWave);
 		}
 		
 		public function createStage1_1():void
 		{
 			liftableItems.push(itemBuilder.createEncyclopedia(2));
-			
-			createFoundation(380, 420, 40, 80, -Math.PI / 2);
 			
 			stars.push(specialBuilder.createGoldenStar(150, 350));
 			stars.push(specialBuilder.createSilverStar(600, 350));
@@ -235,12 +244,8 @@ package stages
 			liftableItems.push(itemBuilder.createBlueBook(1));
 			liftableItems.push(itemBuilder.createEncyclopedia(1));
 			
-			var foundation:Foundation = createFoundation(380, 420, 40, 80, -Math.PI / 2);
-			
 			stars.push(specialBuilder.createGoldenStar(300, 350));
 			stars.push(specialBuilder.createSilverStar(600, 350));
-			
-			foundation.setBalanceLine(bLine);
 		}
 		
 		public function createStage1_3():void {
@@ -248,8 +253,6 @@ package stages
 			liftableItems.push(itemBuilder.createEncyclopedia(1));
 			var book:RigidObjectBase = RigidObjectBase(liftableItems[1][0]);
 			book.getBody().SetAngle(90);
-			
-			createFoundation(380, 420, 40, 80, -Math.PI / 2);
 			
 			stars.push(specialBuilder.createGoldenStar(150, 290));
 			stars.push(specialBuilder.createSilverStar(450, 290));
@@ -261,8 +264,6 @@ package stages
 			liftableItems.push(itemBuilder.createShoes(1));
 			liftableItems.push(itemBuilder.createEncyclopedia(1));
 			
-			createFoundation(380, 420, 40, 80, -Math.PI / 2);
-			
 			stars.push(specialBuilder.createGoldenStar(150, 250));
 			stars.push(specialBuilder.createSilverStar(550, 250));
 		}
@@ -272,25 +273,9 @@ package stages
 			liftableItems.push(itemBuilder.createPillow(1));
 			liftableItems.push(itemBuilder.createShoes(1));
 			
-			createFoundation(380, 400, 40, 80, 0);
-			
 			stars.push(specialBuilder.createGoldenStar(150, 170));
 			stars.push(specialBuilder.createSilverStar(550, 220));
 		}
-		
-		private function createFoundation(xx:Number, yy:Number, ww:Number, hh:Number, rot:Number = 0):Foundation
-		{
-			var fdn1:Foundation = new Foundation();
-			fdn1.getBody().SetType(b2Body.b2_staticBody);
-			fdn1.createDisplayBody(collection.foundationAsset);
-			fdn1.setSize(ww, hh, 0);
-			fdn1.setPosition(xx, yy);
-			fdn1.getBody().SetAngle(rot);
-			fdn1.setFixtureProperties(0, 0, 1);
-			addChild(fdn1);
-			
-			return fdn1;
-		}	
 	}
 
 }
