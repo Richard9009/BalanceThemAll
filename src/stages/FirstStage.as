@@ -37,7 +37,8 @@ package stages
 		private var tutorialHandler:DialogEventHandler = DialogEventHandler.getInstance();
 		private var collection:AssetCollection;
 		private var asset:Class;
-		private var itemArray:Array = new Array();
+		private var liftableItems:Array = new Array();
+		private var otherItems:Array = new Array();
 		private var itemBuilder:ObjectBuilder = new ObjectBuilder();
 		private var specialBuilder:SpecialObjectBuilder = new SpecialObjectBuilder();
 		
@@ -206,17 +207,23 @@ package stages
 			if (subStageIndex < 4) MusicManager.getInstance().playStage1FirstHalfBGM();
 			else MusicManager.getInstance().playStage1SecondHalfBGM();
 			
-			createItems(itemArray);
+			createItems(liftableItems);
+			createBalanceBoard(subStageIndex > 4);
 			createStars();
 			createTutorialDialog(stgID);
 		}
 		
+		private function createBalanceBoard(isLong:Boolean):void
+		{
+			otherItems.push(specialBuilder.createBroom(380, 395, isLong ? 550 : 500));
+			addChild(otherItems[0]);
+		}
+		
 		public function createStage1_1():void
 		{
-			itemArray.push(itemBuilder.createEncyclopedia(2));
+			liftableItems.push(itemBuilder.createEncyclopedia(2));
 			
 			createFoundation(380, 420, 40, 80, -Math.PI / 2);
-			createBalanceBoard(380, 385, 500, 15);
 			
 			stars.push(specialBuilder.createGoldenStar(150, 350));
 			stars.push(specialBuilder.createSilverStar(600, 350));
@@ -225,11 +232,10 @@ package stages
 		}
 		
 		public function createStage1_2():void {
-			itemArray.push(itemBuilder.createBlueBook(1));
-			itemArray.push(itemBuilder.createEncyclopedia(1));
+			liftableItems.push(itemBuilder.createBlueBook(1));
+			liftableItems.push(itemBuilder.createEncyclopedia(1));
 			
 			var foundation:Foundation = createFoundation(380, 420, 40, 80, -Math.PI / 2);
-			createBalanceBoard(380, 385, 500, 15);
 			
 			stars.push(specialBuilder.createGoldenStar(300, 350));
 			stars.push(specialBuilder.createSilverStar(600, 350));
@@ -238,38 +244,35 @@ package stages
 		}
 		
 		public function createStage1_3():void {
-			itemArray.push(itemBuilder.createPillow(1));
-			itemArray.push(itemBuilder.createEncyclopedia(1));
-			var book:RigidObjectBase = RigidObjectBase(itemArray[1][0]);
+			liftableItems.push(itemBuilder.createPillow(1));
+			liftableItems.push(itemBuilder.createEncyclopedia(1));
+			var book:RigidObjectBase = RigidObjectBase(liftableItems[1][0]);
 			book.getBody().SetAngle(90);
 			
 			createFoundation(380, 420, 40, 80, -Math.PI / 2);
-			createBalanceBoard(380, 385, 500, 15);
 			
 			stars.push(specialBuilder.createGoldenStar(150, 290));
 			stars.push(specialBuilder.createSilverStar(450, 290));
 		}
 		
 		public function createStage1_4():void {
-			itemArray.push(itemBuilder.createPillow(1));
-			itemArray.push(itemBuilder.createBlueBook(1));
-			itemArray.push(itemBuilder.createShoes(1));
-			itemArray.push(itemBuilder.createEncyclopedia(1));
+			liftableItems.push(itemBuilder.createPillow(1));
+			liftableItems.push(itemBuilder.createBlueBook(1));
+			liftableItems.push(itemBuilder.createShoes(1));
+			liftableItems.push(itemBuilder.createEncyclopedia(1));
 			
 			createFoundation(380, 420, 40, 80, -Math.PI / 2);
-			createBalanceBoard(380, 385, 500, 15);
 			
 			stars.push(specialBuilder.createGoldenStar(150, 250));
 			stars.push(specialBuilder.createSilverStar(550, 250));
 		}
 		
 		public function createStage1_5():void {
-			itemArray.push(itemBuilder.createPhoto(3));
-			itemArray.push(itemBuilder.createPillow(1));
-			itemArray.push(itemBuilder.createShoes(1));
+			liftableItems.push(itemBuilder.createPhoto(3));
+			liftableItems.push(itemBuilder.createPillow(1));
+			liftableItems.push(itemBuilder.createShoes(1));
 			
 			createFoundation(380, 400, 40, 80, 0);
-			createBalanceBoard(380, 365, 500, 15);
 			
 			stars.push(specialBuilder.createGoldenStar(150, 170));
 			stars.push(specialBuilder.createSilverStar(550, 220));
@@ -287,20 +290,7 @@ package stages
 			addChild(fdn1);
 			
 			return fdn1;
-		}
-		
-		private function createBalanceBoard(xx:Number, yy:Number, ww:Number, hh:Number):void
-		{
-			var balanceBoard:RigidObjectBase = new RigidObjectBase();
-			balanceBoard.createDisplayBody(collection.balanceBoardAsset);
-			balanceBoard.setSize(ww, hh);
-			balanceBoard.setPosition(xx, yy);
-			balanceBoard.setFixtureProperties(0.5, 0.1, 0.8);
-			balanceBoard.isBalanceBoard = true;
-			addChild(balanceBoard);
-			
-		}
-		
+		}	
 	}
 
 }

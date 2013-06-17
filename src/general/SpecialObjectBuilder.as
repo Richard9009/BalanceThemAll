@@ -1,6 +1,7 @@
 package general 
 {
 	import assets.AssetCollection;
+	import gameObjects.rigidObjects.RigidObjectBase;
 	import gameObjects.StarObject;
 	/**
 	 * ...
@@ -18,6 +19,18 @@ package general
 		
 		private var defaultStarWidth:Number = 50;
 		private var defaultStarHeight:Number = 50;
+		
+		public function createBroom(xx:Number, yy:Number, length:Number = 500):RigidObjectBase
+		{
+			var broom:RigidObjectBase = new RigidObjectBase();
+			broom.createDisplayBody(collection.balanceBoardAsset);
+			broom.setSize(length, 15);
+			broom.setPosition(xx, yy);
+			broom.setFixtureProperties(0.5, 0.1, 0.8);
+			broom.isBalanceBoard = true;
+			
+			return broom;
+		}
 		
 		public function createGoldenStar(xx:Number, yy:Number):StarObject
 		{
