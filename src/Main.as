@@ -135,8 +135,11 @@ package
 		private function update(e:Event):void 
 		{
 			world.Step(1 / 30, 10, 10);
-			world.DrawDebugData();
-			setChildIndex(debugSprite, numChildren - 1);
+			
+			if(debugMode) {
+				world.DrawDebugData();
+				setChildIndex(debugSprite, numChildren - 1);
+			}
 			// Go through body list and update sprite positions/rotations
 			for (var bb:b2Body = world.GetBodyList(); bb; bb = bb.GetNext()){
 				if (bb.GetUserData() is Sprite){
@@ -287,7 +290,7 @@ package
 			world = new b2World(_gravity, true);
 			world.SetContactListener(new BreakContactListener());
 			this.addEventListener(Event.ENTER_FRAME, update);
-			debugDraw();
+			if(debugMode) debugDraw();
 		}
 		
 		private function resumeGame(e:Event):void 
@@ -321,6 +324,7 @@ package
 			addChild(debugSprite);
 		}
 		private var debugSprite:Sprite = new Sprite();
+		private var debugMode:Boolean = false;
 	}
 }
 
