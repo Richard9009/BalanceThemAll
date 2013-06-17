@@ -11,7 +11,7 @@ package general
 	import flash.media.SoundLoaderContext;
 	import flash.net.URLRequest;
 	import org.flashdevelop.utils.FlashConnect;
-	import stages.StageBaseClass;
+	import stages.StageConfig;
 	
 	/**
 	 * ...
@@ -102,7 +102,7 @@ package general
 		private function getPanning():Number
 		{
 			var xPos:Number = body.GetPosition().x * Main._physScale;
-			var xCenter:Number = StageBaseClass.STAGE_WIDTH / 2;
+			var xCenter:Number = StageConfig.STAGE_WIDTH / 2;
 			var stageHalfWidth:Number = xCenter;
 			
 			return ((xPos - xCenter) / stageHalfWidth);

@@ -7,8 +7,9 @@ package general.dialogs
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 	import gameEvents.TutorialEvent;
-	import stages.StageBaseClass;
+	import stages.StageConfig;
 	import general.dialogs.commands.BaseCommandClass;
+	import stages.StageConfig;
 
 	import locales.LocalesTextField;
 	import org.flashdevelop.utils.FlashConnect;
@@ -113,9 +114,9 @@ package general.dialogs
 		
 		protected function creationComplete(e:Event):void 
 		{
-			dialogBoxHeight = height;
-			x = StageBaseClass.STAGE_WIDTH / 2;
-			y = StageBaseClass.STAGE_HEIGHT - dialogBoxHeight / 2;
+			dialogBoxHeight = height; 
+			x = StageConfig.STAGE_WIDTH / 2;
+			y = StageConfig.STAGE_HEIGHT - dialogBoxHeight / 2;
 			
 			tField = new LocalesTextField("");
 			addChild(tField);

@@ -142,7 +142,7 @@ package builders
 			stars.push(specialBuilder.createSilverStar(550, 268));
 		}
 
-//====================================================================================================================================
+//================================================== GENERAL ===========================================================================
 		public function buildAndGetStage(stageIndex:int, substageIndex:int):Sprite
 		{
 			switch(stageIndex) {

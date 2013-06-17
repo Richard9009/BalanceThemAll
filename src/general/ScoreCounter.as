@@ -2,7 +2,7 @@ package general
 {
 	import flash.display.Sprite;
 	import gameObjects.StarObject;
-	import stages.StageBaseClass;
+	import stages.StageConfig;
 	
 	/**
 	 * ...

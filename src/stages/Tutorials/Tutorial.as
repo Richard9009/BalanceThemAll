@@ -6,7 +6,7 @@ package stages.Tutorials
 	import general.dialogs.Dialog;
 	
 	import general.animations.LinearAnimation;
-	import stages.StageBaseClass;
+	import stages.StageConfig;
 	/**
 	 * ...
 	 * @author Herichard Stefanus Salim
@@ -52,15 +52,15 @@ package stages.Tutorials
 		}
 		
 		public function moveTo(position:String):void
-		{
+		{ 
 			var destination:Point = new Point();
 			switch(position) {
-				case ABOVE_ITEM_BOX: destination.x = StageBaseClass.STAGE_WIDTH / 2;
-									 destination.y = StageBaseClass.STAGE_HEIGHT - StageBaseClass.ITEMBOX_HEIGHT - dialogBoxHeight / 2;
+				case ABOVE_ITEM_BOX: destination.x = StageConfig.STAGE_WIDTH / 2;
+									 destination.y = StageConfig.STAGE_HEIGHT - StageConfig.ITEMBOX_HEIGHT - dialogBoxHeight / 2;
 									 break;
 									 
-				case ON_ITEM_BOX: destination.x = StageBaseClass.STAGE_WIDTH / 2;
-								  destination.y = StageBaseClass.STAGE_HEIGHT - dialogBoxHeight / 2;
+				case ON_ITEM_BOX: destination.x = StageConfig.STAGE_WIDTH / 2;
+								  destination.y = StageConfig.STAGE_HEIGHT - dialogBoxHeight / 2;
 								  break;
 			}
 			

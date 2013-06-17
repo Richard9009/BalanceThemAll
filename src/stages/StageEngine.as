@@ -32,14 +32,8 @@ package stages
 	 * ...
 	 * @author Herichard Stefanus Salim
 	 */
-	public class StageBaseClass extends Sprite 
+	public class StageEngine extends Sprite 
 	{
-		public static const HEADER_HEIGHT:Number = 50.0;
-		public static const ITEMBOX_HEIGHT:Number = 150.0;
-		public static const STAGE_WIDTH:Number = 800.0;
-		public static const STAGE_HEIGHT:Number = 600.0;
-		public static const BORDER_THICKNESS:Number = 10;
-		
 		private static const RED_COLOR:uint = 0xAA2233;
 		
 		protected var borderList:Array;
@@ -63,7 +57,7 @@ package stages
 		
 		public var stars:Array = new Array();
 		
-		public function StageBaseClass() 
+		public function StageEngine() 
 		{
 			super();
 			
@@ -132,16 +126,16 @@ package stages
 			menuButton = new assetCol.menuButtonAsset();
 			menuButton.width = 30;
 			menuButton.height = 30;
-			menuButton.x = STAGE_WIDTH - menuButton.width;
-			menuButton.y = HEADER_HEIGHT / 2;
+			menuButton.x = StageConfig.STAGE_WIDTH - menuButton.width;
+			menuButton.y = StageConfig.HEADER_HEIGHT / 2;
 			addChild(menuButton);
 			menuButton.addEventListener(MouseEvent.CLICK, onMenuClick);
 			
 			replayButton = new assetCol.replayButtonAsset();
 			replayButton.width = 30;
 			replayButton.height = 30;
-			replayButton.x = STAGE_WIDTH - replayButton.width - menuButton.width - 10;
-			replayButton.y = HEADER_HEIGHT / 2;
+			replayButton.x = StageConfig.STAGE_WIDTH - replayButton.width - menuButton.width - 10;
+			replayButton.y = StageConfig.HEADER_HEIGHT / 2;
 			addChild(replayButton);
 			replayButton.addEventListener(MouseEvent.CLICK, onReplayClick);
 		}
@@ -273,7 +267,7 @@ package stages
 			updateScore();
 			
 			scoreText.x = 25;
-			scoreText.y = HEADER_HEIGHT / 2 - 10;
+			scoreText.y = StageConfig.HEADER_HEIGHT / 2 - 10;
 			addChild(scoreText);
 		}
 		
@@ -384,7 +378,7 @@ package stages
 			var fd:b2FixtureDef = new b2FixtureDef();
 			var borderBody:b2Body;
 			var borderShape:b2PolygonShape = new b2PolygonShape();
-			var borderThickness:Number = BORDER_THICKNESS/2;
+			var borderThickness:Number = StageConfig.BORDER_THICKNESS/2;
 			
 			bd.type = b2Body.b2_staticBody;
 			fd.density = 0;
@@ -413,13 +407,13 @@ package stages
 			fd.shape = borderShape;
 			
 			/****** TOP BORDER ***********/
-			bd.position.Set( this.width / (2 * Main._physScale), (HEADER_HEIGHT + borderThickness) / Main._physScale);
+			bd.position.Set( this.width / (2 * Main._physScale), (StageConfig.HEADER_HEIGHT + borderThickness) / Main._physScale);
 			borderBody = Main.getWorld().CreateBody(bd);
 			borderBody.CreateFixture(fd);
 			borderList.push(borderBody);
 			
 			/****** ITEM BOX UPPER BORDER ***********/
-			bd.position.Set( this.width / (2 * Main._physScale), (this.height - ITEMBOX_HEIGHT - borderThickness) / Main._physScale);
+			bd.position.Set( this.width / (2 * Main._physScale), (this.height - StageConfig.ITEMBOX_HEIGHT - borderThickness) / Main._physScale);
 			borderBody = Main.getWorld().CreateBody(bd);
 			groundBody = borderBody;
 			borderBody.CreateFixture(fd);

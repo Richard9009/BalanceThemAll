@@ -7,7 +7,7 @@ package builders
 	import Box2D.Common.Math.b2Vec2;
 	import flash.display.Sprite;
 	import org.flashdevelop.utils.FlashConnect;
-	import stages.StageBaseClass;
+	import stages.StageConfig;
 	
 	/**
 	 * ...
@@ -24,8 +24,8 @@ package builders
 		public function ObjectBuilder(scaling:Number = 0.5)
 		{
 			scale = scaling;
-			minStageLimit = new b2Vec2(StageBaseClass.BORDER_THICKNESS, StageBaseClass.HEADER_HEIGHT + StageBaseClass.BORDER_THICKNESS);
-			maxStageLimit = new b2Vec2(StageBaseClass.STAGE_WIDTH - StageBaseClass.BORDER_THICKNESS, StageBaseClass.STAGE_HEIGHT - StageBaseClass.BORDER_THICKNESS);
+			minStageLimit = new b2Vec2(StageConfig.BORDER_THICKNESS, StageConfig.HEADER_HEIGHT + StageConfig.BORDER_THICKNESS);
+			maxStageLimit = new b2Vec2(StageConfig.STAGE_WIDTH - StageConfig.BORDER_THICKNESS, StageConfig.STAGE_HEIGHT - StageConfig.BORDER_THICKNESS);
 		
 		}
 		

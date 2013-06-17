@@ -14,7 +14,7 @@ package gameObjects.rigidObjects
 	import flash.media.Sound;
 	import gameObjects.IAudibleObject;
 	import general.PhysicSound;
-	import stages.StageBaseClass;
+	import stages.StageConfig;
 
 	import flash.events.MouseEvent;
 	import org.flashdevelop.utils.FlashConnect;

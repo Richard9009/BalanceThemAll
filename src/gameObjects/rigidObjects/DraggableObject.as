@@ -16,7 +16,7 @@ package gameObjects.rigidObjects
 	import general.collisions.ICollisionObject;
 	import general.MousePhysic;
 	import org.flashdevelop.utils.FlashConnect;
-	import stages.StageBaseClass;
+	import stages.StageConfig;
 	import stages.Tutorials.Tutorial;
 	import general.dialogs.DialogEventHandler;
 
@@ -229,7 +229,7 @@ package gameObjects.rigidObjects
 		
 		public function insideItemBox():Boolean
 		{
-			return (this.y + this.height/2 > StageBaseClass.STAGE_HEIGHT - StageBaseClass.ITEMBOX_HEIGHT)
+			return (this.y + this.height/2 > StageConfig.STAGE_HEIGHT - StageConfig.ITEMBOX_HEIGHT)
 		}
 		
 		private function updateRedLayer():void
@@ -298,7 +298,7 @@ package gameObjects.rigidObjects
 			if (maxLimit == null || minLimit == null) return;
 			
 			var maxRandom:b2Vec2 = new b2Vec2(maxLimit.x - this.width/2, maxLimit.y - this.height/2);
-			var minRandom:b2Vec2 = new b2Vec2(minLimit.x + this.width/2, maxLimit.y - StageBaseClass.ITEMBOX_HEIGHT + this.height/2);
+			var minRandom:b2Vec2 = new b2Vec2(minLimit.x + this.width/2, maxLimit.y - StageConfig.ITEMBOX_HEIGHT + this.height/2);
 			
 			var randomX:Number = Math.floor( Math.random() * (maxRandom.x - minRandom.x) + minRandom.x );
 			var randomY:Number = Math.floor( Math.random() * (maxRandom.y - minRandom.y) + minRandom.y );

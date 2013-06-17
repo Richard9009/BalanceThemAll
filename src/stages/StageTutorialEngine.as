@@ -1,20 +1,11 @@
 package stages 
 {
-	import assets.AssetCollection;
-	import builders.ObjectBuilder;
-	import builders.SpecialObjectBuilder;
-	import builders.StageBuilder;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import gameEvents.GameEvent;
 	import gameEvents.GrabObjectEvent;
 	import gameEvents.TutorialEvent;
-	import gameObjects.rigidObjects.DraggableObject;
-	import gameObjects.rigidObjects.Foundation;
-	import gameObjects.rigidObjects.RigidObjectBase;
 	import general.MousePhysic;
-	import general.MusicManager;
-	import gameObjects.StarObject;
 	import general.StageRecord;
 	import org.flashdevelop.utils.FlashConnect;
 	import general.dialogs.DialogEvent;
@@ -26,26 +17,12 @@ package stages
 	 * ...
 	 * @author Herichard Stefanus Salim
 	 */
-	public class FirstStage extends StageBaseClass implements IPlayableStage
+	public class StageTutorialEngine extends StageEngine
 	{
 		private var tutorialHandler:DialogEventHandler = DialogEventHandler.getInstance();
-		private var collection:AssetCollection;
-		private var asset:Class;
-		private var liftableItems:Array = new Array();
-		private var otherItems:Array = new Array();
-		private var itemBuilder:ObjectBuilder = new ObjectBuilder();
-		private var specialBuilder:SpecialObjectBuilder = new SpecialObjectBuilder();
-		
-		public function FirstStage() 
+	
+		public function StageTutorialEngine() 
 		{
-			collection = new AssetCollection();
-			asset = collection.stageAsset;
-			
-			var assetData:Sprite = new asset() as Sprite;
-			assetData.x = STAGE_WIDTH / 2;
-			assetData.y = STAGE_HEIGHT / 2;
-			this.addChild(assetData);
-			
 			super();
 		}
 		
@@ -94,7 +71,7 @@ package stages
 			var lineLength:Number = 200;
 			starLine = new DashedLine(3, 0xAA3300, [8, 5, 3, 5]);
 			
-			for each(var star:StarObject in stars) {
+			for each(var star:Sprite in stars) {
 				starLine.moveTo(star.x, star.y);
 				starLine.lineTo(star.x, star.y - lineLength);
 			}
@@ -129,7 +106,7 @@ package stages
 		
 		private function willGetTheStar(obj:Sprite):Boolean
 		{
-			for each(var star:StarObject in stars) {
+			for each(var star:Sprite in stars) {
 				if (obj.y < star.y && obj.x > star.x - star.width / 2 && obj.x < star.x + star.width / 2) {
 					return true;
 				}
@@ -183,18 +160,6 @@ package stages
 		
 		private function tutorial_HandFull():void {
 			tutorialHandler.dispatchEvent(new TutorialEvent(TutorialEvent.HANDS_ARE_FULL));
-		}
-	
-		public function createLevelBySubStageID(subStageIndex:int):void {
-			
-			var stgID:String = "1_" + subStageIndex.toString();
-			initiateStage(stgID);
-			createTutorialDialog(stgID);
-			
-			var builder:StageBuilder = new StageBuilder();
-			addChild(builder.buildAndGetStage(1, subStageIndex));
-			stars = builder.getStars();
-			builder.getFoundation().setBalanceLine(bLine);
 		}
 	}
 

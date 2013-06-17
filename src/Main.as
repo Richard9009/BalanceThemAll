@@ -19,10 +19,8 @@ package
 	import general.ScoreRecord;
 	import general.StageRecord;
 	import org.flashdevelop.utils.FlashConnect;
-	import stages.FirstStage;
-	import stages.IPlayableStage;
-	import stages.SecondStage;
-	import stages.StageBaseClass;
+	import stages.StageDisplay;
+	import stages.StageEngine;
 	
 	/**
 	 * ...
@@ -155,17 +153,22 @@ package
 		private function startGame(e:Event):void
 		{
 			changeScene();
-			createLevel(FirstStage);
+			createLevelByID("1_1");
 		}
 		
-		private function createLevel(stageClass:Class, subStageIndex:int = 1):void
+		private function createLevelByID(stageID:String):void
 		{
-			createWorld();
-			currentScene = new stageClass();
-			addChild(currentScene);
-			(currentScene as IPlayableStage).createLevelBySubStageID(subStageIndex);
-			MousePhysic.setStage(currentScene);
+			var idArray:Array = stageID.split("_");
+			var stg:int = int(idArray[0]);
+			var subStg:int = int(idArray[1]);
+			var hasTutorial:Boolean = (stg == 1);
 			
+			createWorld();
+			currentScene = new StageDisplay(stg);
+			addChild(currentScene);
+			(currentScene as StageDisplay).createLevelBySubStageID(stg, subStg, hasTutorial);
+			
+			MousePhysic.setStage(currentScene);
 			this.addEventListener(GameEvent.PAUSE_GAME, displayOptionScreen);
 			this.addEventListener(GameEvent.RESTART_LEVEL, restartLevel);
 			this.addEventListener(GameEvent.STAGE_CLEAR, stageClear);
@@ -173,22 +176,9 @@ package
 			blackFadeIn();
 		}
 		
-		private function createLevelByID(stageID:String):void
-		{
-			
-			var idArray:Array = stageID.split("_");
-			var stg:int = int(idArray[0]);
-			var subStg:int = int(idArray[1]);
-			
-			switch(stg) {
-				case 1: createLevel(FirstStage, subStg); break;
-				case 2: createLevel(SecondStage, subStg); break;
-			}
-		}
-		
 		private function stageClear(e:GameEvent):void 
 		{
-			var scoreRecord:ScoreRecord = (currentScene as StageBaseClass).getStageRecord().scoreRecord;
+			var scoreRecord:ScoreRecord = (currentScene as StageEngine).getStageRecord().scoreRecord;
 			destroyCurrentLevel();
 			
 			currentScene = new EndLevel_Movie();
@@ -229,15 +219,15 @@ package
 		
 		private function destroyCurrentLevel():void
 		{
-			StageBaseClass(currentScene).removeAllListeners();
+			StageEngine(currentScene).removeAllListeners();
 			destroyWorld();
-			changeScene();
+			changeScene(); 
 			MousePhysic.destroyStage();
 		}
 		
 		private function restartLevel(e:GameEvent):void 
 		{
-			lastStageID = StageBaseClass(currentScene).getStageRecord().stageID;
+			lastStageID = StageEngine(currentScene).getStageRecord().stageID;
 			destroyCurrentLevel();
 			createLevelByID(lastStageID);
 		}
@@ -258,7 +248,7 @@ package
 		private var lastStageID:String;
 		private function openSelectLevelFromOption(e:Event):void 
 		{
-			lastStageID = (currentScene as StageBaseClass).getStageRecord().stageID;
+			lastStageID = (currentScene as StageEngine).getStageRecord().stageID;
 			removeChild(optScreen);
 			openSelectLevel();
 			
