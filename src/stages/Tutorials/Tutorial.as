@@ -1,5 +1,6 @@
 package stages.Tutorials 
 {
+	import builders.DialogBuilder;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.geom.Point;
@@ -20,7 +21,7 @@ package stages.Tutorials
 		
 		public function Tutorial(stageID:String) 
 		{
-			super(DialogListCollection.getDialogListByID(stageID));
+			super(DialogBuilder.getDialogListByID(stageID));
 		}
 		
 		override protected function setDefaultCondition():void 

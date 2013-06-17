@@ -1,4 +1,4 @@
-package stages.Tutorials 
+package builders 
 {
 	import flash.errors.IllegalOperationError;
 	import gameEvents.TutorialEvent;
@@ -9,18 +9,18 @@ package stages.Tutorials
 	 * ...
 	 * @author Herichard Stefanus Salim
 	 */
-	public class DialogListCollection 
+	public class DialogBuilder 
 	{
-		private static var instance:DialogListCollection;
+		private static var instance:DialogBuilder;
 		
-		public function DialogListCollection(pass:SingletonEnforcer) 
+		public function DialogBuilder(pass:SingletonEnforcer) 
 		{
 			if (pass == null) throw new IllegalOperationError("This class is a singleton. Use getInstance method to access it");
 		}
 		
 		public static function getDialogListByID(stageID:String):Array
 		{
-			if (instance == null) instance = new DialogListCollection(new SingletonEnforcer());
+			if (instance == null) instance = new DialogBuilder(new SingletonEnforcer());
 			switch(stageID) {
 				case "1_1": return instance.dialogList1_1;
 				case "1_2": return instance.dialogList1_2;
