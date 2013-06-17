@@ -37,8 +37,8 @@ package general
 		
 		private function calcAdditionalScore():void
 		{
-			objectBreakPenalty = scorePerObject * 10;
-			objectFallPenalty = scorePerObject * 3;
+			objectBreakPenalty = scorePerObject * 5;
+			objectFallPenalty = scorePerObject * 2;
 			bonusPoint = scorePerObject * 5;
 		}
 		
@@ -73,7 +73,7 @@ package general
 		
 		public function getStarBonus(star:StarObject):String
 		{
-			var bonus:int = star.starValue * scorePerObject * 10;
+			var bonus:int = star.starValue * scorePerObject * 3;
 			addScore(bonus);
 			scoreRecord.starBonus += bonus;
 			currentScore += bonus;
