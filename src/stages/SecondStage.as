@@ -4,9 +4,11 @@ package stages
 	import Box2D.Dynamics.b2Body;
 	import Box2D.Dynamics.b2Fixture;
 	import flash.display.Sprite;
-	import gameObjects.rigidObjects.BalanceBoard;
+	import gameObjects.rigidObjects.CompoundObject;
 	import gameObjects.rigidObjects.Foundation;
-	import general.ObjectCollection;
+	import gameObjects.rigidObjects.RigidObjectBase;
+	import general.ObjectBuilder;
+	import general.SpecialObjectBuilder;
 	import org.flashdevelop.utils.FlashConnect;
 	/**
 	 * ...
@@ -18,7 +20,8 @@ package stages
 		private var collection:AssetCollection;
 		private var asset:Class;
 		private var itemArray:Array = new Array();
-		private var items:ObjectCollection = new ObjectCollection();
+		private var itemBuilder:ObjectBuilder = new ObjectBuilder();
+		private var specialBuilder:SpecialObjectBuilder = new SpecialObjectBuilder();
 		
 		public function SecondStage() 
 		{
@@ -55,33 +58,33 @@ package stages
 		
 		private function createStage2_1():void
 		{
-			itemArray.push(items.createBasketBall(1));
-			itemArray.push(items.createEncyclopedia(1));
-			itemArray.push(items.createMug(1));
-			itemArray.push(items.createGlassVase(1));
+			itemArray.push(itemBuilder.createBasketBall(1));
+			itemArray.push(itemBuilder.createEncyclopedia(1));
+			itemArray.push(itemBuilder.createMug(1));
+			itemArray.push(itemBuilder.createGlassVase(1));
 			
-			stars.push(items.createGoldenStar(110, 225));
-			stars.push(items.createSilverStar(550, 265));
+			stars.push(specialBuilder.createGoldenStar(110, 225));
+			stars.push(specialBuilder.createSilverStar(550, 265));
 		}
 		
 		private function createStage2_2():void
 		{
-			itemArray.push(items.createPhoto(1));
-			itemArray.push(items.createHeavyObject(1));
-			itemArray.push(items.createBlueBook(1));
+			itemArray.push(itemBuilder.createPhoto(1));
+			itemArray.push(itemBuilder.createHeavyObject(1));
+			itemArray.push(itemBuilder.createBlueBook(1));
 			
-			stars.push(items.createGoldenStar(110, 210));
-			stars.push(items.createSilverStar(550, 268));
+			stars.push(specialBuilder.createGoldenStar(110, 210));
+			stars.push(specialBuilder.createSilverStar(550, 268));
 		}
 		
 		private function createStage2_3():void
 		{
-			itemArray.push(items.createShoes(2));
-			itemArray.push(items.createBowlingBall(2));
-			itemArray.push(items.createHeavyObject(2));
+			itemArray.push(itemBuilder.createShoes(2));
+			itemArray.push(itemBuilder.createBowlingBall(2));
+			itemArray.push(itemBuilder.createHeavyObject(2));
 			
-			stars.push(items.createGoldenStar(110, 210));
-			stars.push(items.createSilverStar(550, 268));
+			stars.push(specialBuilder.createGoldenStar(110, 210));
+			stars.push(specialBuilder.createSilverStar(550, 268));
 		}
 		
 		private function createFoundation(xx:Number, yy:Number, ww:Number, hh:Number, rot:Number = 0):Foundation
@@ -100,13 +103,13 @@ package stages
 		
 		private function createBalanceBoard(xx:Number, yy:Number, ww:Number, hh:Number):void
 		{
-			balanceBoard = new BalanceBoard();
+			var balanceBoard:CompoundObject = new CompoundObject();
 			balanceBoard.createDisplayBody(collection.baseballAsset);
 			balanceBoard.setAssetSize(ww, hh);
 			balanceBoard.setPosition(xx-70, yy);
 			balanceBoard.addBoxFixture(ww * 2/5, hh / 2, 0.2);
 			balanceBoard.addBoxFixture(ww * 3/5, hh, 0.2);
-			
+			balanceBoard.isBalanceBoard = true;
 			var fixt:b2Fixture = balanceBoard.getBody().GetFixtureList();
 			balanceBoard.setFixtureProperties(0.2, 0.1, 0.8, fixt);
 			fixt = fixt.GetNext();

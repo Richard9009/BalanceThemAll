@@ -27,11 +27,11 @@ package general
 					if (rec.stageStatus == StageRecord.LOCKED) lPanel.lockStage();
 					
 					var star:StarObject;
-					var objCol:ObjectCollection = new ObjectCollection(0.3);
+					var builder:SpecialObjectBuilder = new SpecialObjectBuilder(0.3);
 					switch(rec.bestStar) {
-						case StarObject.GOLDEN: star = objCol.createGoldenStar(0, 0); break;
-						case StarObject.SILVER: star = objCol.createSilverStar(0, 0); break;
-						case StarObject.BRONZE: star = objCol.createBronzeStar(0, 0); break;
+						case StarObject.GOLDEN: star = builder.createGoldenStar(0, 0); break;
+						case StarObject.SILVER: star = builder.createSilverStar(0, 0); break;
+						case StarObject.BRONZE: star = builder.createBronzeStar(0, 0); break;
 						default: star = null;
 					}
 					

@@ -40,6 +40,7 @@ package gameObjects.rigidObjects
 		
 		protected static var nextID:int = 0;
 		public var id:int;
+		public var isBalanceBoard:Boolean = false;
 		
 		protected var bDef:b2BodyDef;
 		protected var fDef:b2FixtureDef;

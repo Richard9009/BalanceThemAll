@@ -13,7 +13,7 @@ package general
 	 * ...
 	 * @author Herichard Stefanus Salim
 	 */
-	public class ObjectCollection
+	public class ObjectBuilder
 	{
 		private var minStageLimit:b2Vec2;
 		private var maxStageLimit:b2Vec2;
@@ -21,7 +21,7 @@ package general
 		private var soundCol:SoundCollection = new SoundCollection();
 		private var scale:Number;
 		
-		public function ObjectCollection(scaling:Number = 0.5)
+		public function ObjectBuilder(scaling:Number = 0.5)
 		{
 			scale = scaling;
 			minStageLimit = new b2Vec2(StageBaseClass.BORDER_THICKNESS, StageBaseClass.HEADER_HEIGHT + StageBaseClass.BORDER_THICKNESS);
@@ -227,36 +227,6 @@ package general
 			
 			return objArray;
 		}
-		
-		//=========================================================
-		private var defaultStarWidth:Number = 50;
-		private var defaultStarHeight:Number = 50;
-		
-		public function createGoldenStar(xx:Number, yy:Number):StarObject
-		{
-			return createStar(collection.goldenStarAsset, StarObject.GOLDEN, xx, yy);
-		}
-		
-		public function createSilverStar(xx:Number, yy:Number):StarObject
-		{
-			return createStar(collection.silverStarAsset, StarObject.SILVER, xx, yy);
-		}
-		
-		public function createBronzeStar(xx:Number, yy:Number):StarObject
-		{
-			return createStar(collection.bronzeStarAsset, StarObject.BRONZE, xx, yy);
-		}
-		
-		private function createStar(starClass:Class, type:String, xx:Number, yy:Number):StarObject
-		{
-			var star:StarObject = new StarObject(starClass, type);
-			star.x = xx;
-			star.y = yy;
-			star.width = defaultStarWidth;
-			star.height = defaultStarHeight;
-			return star;
-		}
-	
 	}
 
 }

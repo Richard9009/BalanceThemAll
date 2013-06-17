@@ -43,7 +43,6 @@ package stages
 		private static const RED_COLOR:uint = 0xAA2233;
 		
 		protected var borderList:Array;
-		protected var balanceBoard:BalanceBoard;
 		protected var groundBody:b2Body;
 		
 		protected var record:StageRecord;
@@ -85,7 +84,6 @@ package stages
 			addChild(rHand);
 			addChild(lHand);
 			
-			addEventListener(GameEvent.GAME_OVER, gameOver);
 			addEventListener(GrabObjectEvent.GRAB_AN_OBJECT, grabAnObject);
 			addEventListener(GrabObjectEvent.DROP_AN_OBJECT, dropAnObject);
 			addEventListener(GrabObjectEvent.DROP_ALL_OBJECTS, dropAll);
@@ -101,7 +99,6 @@ package stages
 		}
 		
 		public function removeAllListeners():void {
-			removeEventListener(GameEvent.GAME_OVER, gameOver);
 			removeEventListener(GrabObjectEvent.GRAB_AN_OBJECT, grabAnObject);
 			removeEventListener(GrabObjectEvent.DROP_AN_OBJECT, dropAnObject);
 			removeEventListener(GrabObjectEvent.DROP_ALL_OBJECTS, dropAll);
@@ -182,19 +179,14 @@ package stages
 			removeChild(e.brokenObject);
 		}
 		
-		private function gameOver(e:GameEvent):void 
-		{
-			FlashConnect.trace("game over");
-		}
-		
 		protected function displayScore(e:GrabObjectEvent):void 
 		{
 			record.droppedItemsCount++;
 			
 			var item:DraggableObject =  e.object.GetUserData();
 			var fText:FloatingText;
-			if (item.onWhichBalanceBoard()) {
-				fText = new FloatingText(sCounter.countScore(item, item.onWhichBalanceBoard()));
+			if (item.isOnBalanceBoard()) {
+				fText = new FloatingText(sCounter.countScore());
 				checkStarCollision(item);
 			}	
 			else {
@@ -329,7 +321,7 @@ package stages
 		private function objectRelocated(e:GrabObjectEvent):void 
 		{
 			var obj:DraggableObject = e.object.GetUserData() as DraggableObject;
-			if (obj.onWhichBalanceBoard() == null) {
+			if (!obj.isOnBalanceBoard()) {
 				obj.destroyMe();
 				
 				var fText:FloatingText = new FloatingText(sCounter.getFallPenaltyString(), 2, 2, RED_COLOR);

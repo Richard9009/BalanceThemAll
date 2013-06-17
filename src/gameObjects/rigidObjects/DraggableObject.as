@@ -315,26 +315,25 @@ package gameObjects.rigidObjects
 				if (bb.GetUserData() == this) bb = bb.GetNext();
 				if (bb.GetUserData() is RigidObjectBase && CollisionGenerator.getCollisionStatus(this, bb.GetUserData()))
 				{
-					//if(bb.GetUserData().y > this.y) {
-						this.y -= 10;
-						return bb;
-					//}
+					this.y -= 10;
+					return bb;
 				}
 			}
 			this.y -= 10;
 			return null;
 		}
 		
-		public function onWhichBalanceBoard():BalanceBoard
+		public function isOnBalanceBoard():Boolean
 		{
-			if (getBodyBelowMe() == null) return null;
-			var board:RigidObjectBase = getBodyBelowMe().GetUserData();
+			if (getBodyBelowMe() == null) return false;
+			var objectBelow:RigidObjectBase = getBodyBelowMe().GetUserData();
+			var onBoard:Boolean = objectBelow.isBalanceBoard;
 			
-			if (board is DraggableObject) {			
-				board = DraggableObject(board).onWhichBalanceBoard();
+			if (objectBelow is DraggableObject) {			
+				onBoard = DraggableObject(objectBelow).isOnBalanceBoard();
 			}
 			
-			return board as BalanceBoard;
+			return onBoard;
 			
 		}
 		

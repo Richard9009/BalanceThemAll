@@ -39,7 +39,9 @@ package gameObjects
 				case SILVER: points = 500; color = 0x909090; starValue = 2; break;
 				case BRONZE: points = 200; color = 0xCD7F32; starValue = 1;  break;
 			}
-
+			
+			mouseChildren = false;
+			mouseEnabled = false;
 		}
 		
 		public function playSound():void

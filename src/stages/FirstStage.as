@@ -12,15 +12,15 @@ package stages
 	import gameEvents.GameEvent;
 	import gameEvents.GrabObjectEvent;
 	import gameEvents.TutorialEvent;
-	import gameObjects.rigidObjects.BalanceBoard;
 	import gameObjects.rigidObjects.DraggableObject;
 	import gameObjects.rigidObjects.Foundation;
 	import gameObjects.IAudibleObject;
 	import gameObjects.rigidObjects.RigidObjectBase;
 	import general.MousePhysic;
 	import general.MusicManager;
-	import general.ObjectCollection;
+	import general.ObjectBuilder;
 	import gameObjects.StarObject;
+	import general.SpecialObjectBuilder;
 	import general.StageRecord;
 	import org.flashdevelop.utils.FlashConnect;
 	import general.dialogs.DialogEvent;
@@ -38,7 +38,8 @@ package stages
 		private var collection:AssetCollection;
 		private var asset:Class;
 		private var itemArray:Array = new Array();
-		private var items:ObjectCollection = new ObjectCollection();
+		private var itemBuilder:ObjectBuilder = new ObjectBuilder();
+		private var specialBuilder:SpecialObjectBuilder = new SpecialObjectBuilder();
 		
 		public function FirstStage() 
 		{
@@ -212,66 +213,66 @@ package stages
 		
 		public function createStage1_1():void
 		{
-			itemArray.push(items.createEncyclopedia(2));
+			itemArray.push(itemBuilder.createEncyclopedia(2));
 			
 			createFoundation(380, 420, 40, 80, -Math.PI / 2);
 			createBalanceBoard(380, 385, 500, 15);
 			
-			stars.push(items.createGoldenStar(150, 350));
-			stars.push(items.createSilverStar(600, 350));
+			stars.push(specialBuilder.createGoldenStar(150, 350));
+			stars.push(specialBuilder.createSilverStar(600, 350));
 			
 			showBalanceLine = false;
 		}
 		
 		public function createStage1_2():void {
-			itemArray.push(items.createBlueBook(1));
-			itemArray.push(items.createEncyclopedia(1));
+			itemArray.push(itemBuilder.createBlueBook(1));
+			itemArray.push(itemBuilder.createEncyclopedia(1));
 			
 			var foundation:Foundation = createFoundation(380, 420, 40, 80, -Math.PI / 2);
 			createBalanceBoard(380, 385, 500, 15);
 			
-			stars.push(items.createGoldenStar(300, 350));
-			stars.push(items.createSilverStar(600, 350));
+			stars.push(specialBuilder.createGoldenStar(300, 350));
+			stars.push(specialBuilder.createSilverStar(600, 350));
 			
 			foundation.setBalanceLine(bLine);
 		}
 		
 		public function createStage1_3():void {
-			itemArray.push(items.createPillow(1));
-			itemArray.push(items.createEncyclopedia(1));
+			itemArray.push(itemBuilder.createPillow(1));
+			itemArray.push(itemBuilder.createEncyclopedia(1));
 			var book:RigidObjectBase = RigidObjectBase(itemArray[1][0]);
 			book.getBody().SetAngle(90);
 			
 			createFoundation(380, 420, 40, 80, -Math.PI / 2);
 			createBalanceBoard(380, 385, 500, 15);
 			
-			stars.push(items.createGoldenStar(150, 290));
-			stars.push(items.createSilverStar(450, 290));
+			stars.push(specialBuilder.createGoldenStar(150, 290));
+			stars.push(specialBuilder.createSilverStar(450, 290));
 		}
 		
 		public function createStage1_4():void {
-			itemArray.push(items.createPillow(1));
-			itemArray.push(items.createBlueBook(1));
-			itemArray.push(items.createShoes(1));
-			itemArray.push(items.createEncyclopedia(1));
+			itemArray.push(itemBuilder.createPillow(1));
+			itemArray.push(itemBuilder.createBlueBook(1));
+			itemArray.push(itemBuilder.createShoes(1));
+			itemArray.push(itemBuilder.createEncyclopedia(1));
 			
 			createFoundation(380, 420, 40, 80, -Math.PI / 2);
 			createBalanceBoard(380, 385, 500, 15);
 			
-			stars.push(items.createGoldenStar(150, 250));
-			stars.push(items.createSilverStar(550, 250));
+			stars.push(specialBuilder.createGoldenStar(150, 250));
+			stars.push(specialBuilder.createSilverStar(550, 250));
 		}
 		
 		public function createStage1_5():void {
-			itemArray.push(items.createPhoto(3));
-			itemArray.push(items.createPillow(1));
-			itemArray.push(items.createShoes(1));
+			itemArray.push(itemBuilder.createPhoto(3));
+			itemArray.push(itemBuilder.createPillow(1));
+			itemArray.push(itemBuilder.createShoes(1));
 			
 			createFoundation(380, 400, 40, 80, 0);
 			createBalanceBoard(380, 365, 500, 15);
 			
-			stars.push(items.createGoldenStar(150, 170));
-			stars.push(items.createSilverStar(550, 220));
+			stars.push(specialBuilder.createGoldenStar(150, 170));
+			stars.push(specialBuilder.createSilverStar(550, 220));
 		}
 		
 		private function createFoundation(xx:Number, yy:Number, ww:Number, hh:Number, rot:Number = 0):Foundation
@@ -290,12 +291,12 @@ package stages
 		
 		private function createBalanceBoard(xx:Number, yy:Number, ww:Number, hh:Number):void
 		{
-			balanceBoard = new BalanceBoard();
+			var balanceBoard:RigidObjectBase = new RigidObjectBase();
 			balanceBoard.createDisplayBody(collection.balanceBoardAsset);
-			balanceBoard.setAssetSize(ww, hh);
-			balanceBoard.addBoxFixture(ww, hh, 0.3);
+			balanceBoard.setSize(ww, hh);
 			balanceBoard.setPosition(xx, yy);
 			balanceBoard.setFixtureProperties(0.5, 0.1, 0.8);
+			balanceBoard.isBalanceBoard = true;
 			addChild(balanceBoard);
 			
 		}
