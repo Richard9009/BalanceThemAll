@@ -35,6 +35,7 @@ package stages
 			addChild(builder.buildAndGetStage(stageID, subStageIndex));
 			stars = builder.getStars();
 			builder.getFoundation().setBalanceLine(bLine);
+			record.itemList = builder.getLiftableItems();
 		}
 		
 	}

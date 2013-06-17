@@ -189,6 +189,18 @@ package builders
 			
 			return null;
 		}
+		
+		public function getLiftableItems():Array
+		{
+			var itemList:Array = new Array()
+			for each(var arr:Array in liftables) {
+				for each(var s:Sprite in arr) {
+					itemList.push(s);
+				}
+			}
+			
+			return itemList;
+		}
 	}
 
 }

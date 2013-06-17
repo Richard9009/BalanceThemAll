@@ -15,8 +15,6 @@ package stages
 	import gameEvents.GrabObjectEvent;
 	import gameEvents.ObjectBreakEvent;
 	import flash.display.Sprite;
-	import flash.events.GestureEvent;
-	import flash.text.StaticText;
 	import flash.text.TextField;
 	import flash.text.TextFormat;
 	import gameObjects.rigidObjects.*;
