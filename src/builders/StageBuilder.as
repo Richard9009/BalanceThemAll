@@ -105,6 +105,7 @@ package builders
 				case 1: stage2_1(); break;
 				case 2: stage2_2(); break;
 				case 3: stage2_3(); break;
+				case 4: stage2_4(); break;
 			}
 			
 			others.push(specialBuilder.createBookStack(400, 410));
@@ -139,8 +140,16 @@ package builders
 			liftables.push(itemBuilder.createTennisBall(1));
 			liftables.push(itemBuilder.createBasketBall(1));
 			
-			stars.push(specialBuilder.createGoldenStar(40, 280));
-			stars.push(specialBuilder.createSilverStar(550, 390));
+			stars.push(specialBuilder.createSilverStar(40, 280));
+			stars.push(specialBuilder.createGoldenStar(550, 390));
+		}
+		
+		private function stage2_4():void
+		{
+			liftables.push(itemBuilder.createHeavyObject(2));
+			
+			stars.push(specialBuilder.createSilverStar(40, 280));
+			stars.push(specialBuilder.createGoldenStar(550, 390));
 		}
 
 //================================================== GENERAL ===========================================================================

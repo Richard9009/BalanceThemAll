@@ -17,6 +17,7 @@ package stages
 	import flash.display.Sprite;
 	import flash.text.TextField;
 	import flash.text.TextFormat;
+	import gameObjects.HandManager;
 	import gameObjects.rigidObjects.*;
 	import gameObjects.BalanceLine;
 	import gameObjects.FloatingText;
@@ -99,6 +100,7 @@ package stages
 			removeEventListener(BalanceLineEvent.STOP_DRAW_LINE, stopDrawLine);
 			removeEventListener(ObjectBreakEvent.GENERATE_PARTICLE, generateParticle);
 			
+			HandManager.reset();
 			destroyAllObjects();
 		}
 		
