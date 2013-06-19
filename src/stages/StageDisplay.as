@@ -3,6 +3,7 @@ package stages
 	import assets.AssetCollection;
 	import builders.StageBuilder;
 	import flash.display.Sprite;
+	import gameObjects.rigidObjects.DraggableObject;
 	/**
 	 * ...
 	 * @author Herichard Stefanus Salim
@@ -35,7 +36,14 @@ package stages
 			addChild(builder.buildAndGetStage(stageID, subStageIndex));
 			stars = builder.getStars();
 			builder.getFoundation().setBalanceLine(bLine);
-			record.itemList = builder.getLiftableItems();
+			registerItems(builder.getLiftableItems());
+		}
+		
+		private function registerItems(list:Array):void
+		{
+			for each(var item:DraggableObject in list) {
+				record.registerItem(item);
+			}
 		}
 		
 	}

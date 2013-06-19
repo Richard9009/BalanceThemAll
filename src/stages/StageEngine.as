@@ -191,7 +191,7 @@ package stages
 			addChild(fText);
 			
 			updateScore();
-			
+			FlashConnect.trace(stars.length + "   " + record.droppedItemsCount);
 			if (record.allItemsDropped() && stars.length > 0) delayAction(2000, levelClear);
 		}
 		
@@ -351,23 +351,6 @@ package stages
 		public function getStageRecord():StageRecord
 		{
 			return record;
-		}
-		
-		protected function createItems(itemList:Array):void
-		{
-			for each(var iArray:Array in itemList)
-			{
-				for each(var item:DraggableObject in iArray)
-				{
-					record.registerItem(item);
-					addChild(item);
-				}
-			}
-		}
-		
-		protected function createStars():void
-		{
-			for each(var star:StarObject in stars) addChild(star);
 		}
 		
 		protected function createBorders():void 
