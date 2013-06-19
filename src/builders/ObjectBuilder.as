@@ -182,7 +182,7 @@ package builders
 			{
 				obj = new NormalBoxObject(minStageLimit, maxStageLimit);
 				obj.createDisplayBody(collection.encyclopediaAsset);
-				obj.setFixtureProperties(0.6, 0.1, 0.3);
+				obj.setFixtureProperties(0.6, 0.1, 0.5);
 				obj.setSize(75 * scale, 150 * scale);
 				obj.setRandomPositionInsideItemBox();
 				obj.setSound(new soundCol.bookImpactSound());

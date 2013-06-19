@@ -107,8 +107,8 @@ package builders
 				case 3: stage2_3(); break;
 			}
 			
-			others.push(specialBuilder.createBookStack(380, 410));
-			others.push(specialBuilder.createBaseballBat(380, 365));
+			others.push(specialBuilder.createBookStack(400, 410));
+			others.push(specialBuilder.createBaseballBat(400, 365));
 		}
 
 		private function stage2_1():void
@@ -134,12 +134,13 @@ package builders
 		
 		private function stage2_3():void
 		{
-			liftables.push(itemBuilder.createShoes(2));
-			liftables.push(itemBuilder.createBowlingBall(2));
-			liftables.push(itemBuilder.createHeavyObject(2));
+			liftables.push(itemBuilder.createEncyclopedia(2));
+			liftables.push(itemBuilder.createBowlingBall(1));
+			liftables.push(itemBuilder.createTennisBall(1));
+			liftables.push(itemBuilder.createBasketBall(1));
 			
-			stars.push(specialBuilder.createGoldenStar(110, 210));
-			stars.push(specialBuilder.createSilverStar(550, 268));
+			stars.push(specialBuilder.createGoldenStar(40, 280));
+			stars.push(specialBuilder.createSilverStar(550, 390));
 		}
 
 //================================================== GENERAL ===========================================================================
