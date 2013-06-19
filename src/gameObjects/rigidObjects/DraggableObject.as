@@ -1,10 +1,7 @@
 package gameObjects.rigidObjects 
 {
-	import assets.AssetCollection;
-	import Box2D.Common.Math.b2Vec2;
 	import Box2D.Dynamics.b2Body;
 	import Box2D.Dynamics.b2Fixture;
-	import Box2D.Dynamics.Contacts.b2Contact;
 	import flash.events.KeyboardEvent;
 	import gameEvents.GrabObjectEvent;
 	import flash.display.Sprite;
@@ -14,7 +11,6 @@ package gameObjects.rigidObjects
 	import gameEvents.TutorialEvent;
 	import gameObjects.HandManager;
 	import general.collisions.CollisionGenerator;
-	import general.collisions.ICollisionObject;
 	import general.MousePhysic;
 	import org.flashdevelop.utils.FlashConnect;
 	import stages.StageConfig;
@@ -27,8 +23,6 @@ package gameObjects.rigidObjects
 	 */
 	public class DraggableObject extends RigidObjectBase
 	{	
-		
-		
 		protected var redLayerClass:Class;
 		
 		protected var minLimit:b2Vec2;
