@@ -3,6 +3,7 @@ package gameObjects.rigidObjects
 	import assets.AssetCollection;
 	import assets.SoundCollection;
 	import Box2D.Collision.Shapes.b2PolygonShape;
+	import Box2D.Collision.Shapes.b2Shape;
 	import Box2D.Common.Math.b2Vec2;
 	import Box2D.Dynamics.b2Body;
 	import Box2D.Dynamics.b2ContactImpulse;
@@ -64,6 +65,15 @@ package gameObjects.rigidObjects
 		public function getSound():PhysicSound
 		{
 			return impactSound;
+		}
+		
+		public function changeShape(shape:b2Shape):void
+		{
+			var oldFixture:b2Fixture = rigidBody.GetFixtureList();
+			rigidBody.DestroyFixture(oldFixture);
+			
+			rigidBody.CreateFixture2(shape, 1);
+			copyFixtureProperties(oldFixture);
 		}
 		
 		public function setSound(impactSnd:Sound, breakSnd:Sound = null, rollSnd:Sound = null):void

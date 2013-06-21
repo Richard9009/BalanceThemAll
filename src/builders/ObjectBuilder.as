@@ -1,5 +1,6 @@
 package builders
 {
+	import Box2D.Dynamics.b2Body;
 	import gameObjects.*;
 	import gameObjects.rigidObjects.*;
 	import assets.AssetCollection;
@@ -20,6 +21,7 @@ package builders
 		private var collection:AssetCollection = new AssetCollection();
 		private var soundCol:SoundCollection = new SoundCollection();
 		private var scale:Number;
+		private var shape:ShapeBuilder = new ShapeBuilder();
 		
 		public function ObjectBuilder(scaling:Number = 0.5)
 		{
@@ -93,6 +95,7 @@ package builders
 				obj.createDisplayBody(collection.shoeAsset);
 				obj.setFixtureProperties(0.3, 0.2, 0.5);
 				obj.setSize(180 * scale, 100 * scale);
+				obj.changeShape(shape.shoeShape(obj));
 				obj.setRandomPositionInsideItemBox();
 				obj.setSound(new soundCol.mediumImpactSound());
 				objArray.push(obj);

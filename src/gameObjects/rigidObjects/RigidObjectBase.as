@@ -125,7 +125,7 @@ package gameObjects.rigidObjects
 			bDef.userData.width = w;
 			bDef.userData.height = h;
 			
-			this.setFixtureProperties(oldFixture.GetDensity(), oldFixture.GetRestitution(), oldFixture.GetFriction());
+			copyFixtureProperties(oldFixture);
 		}
 		
 		public function setFixtureProperties(density:Number, restitution:Number, friction:Number, fixture:b2Fixture = null):void
@@ -135,6 +135,15 @@ package gameObjects.rigidObjects
 			if (density >= 0) fixture.SetDensity(density);
 			if (restitution >= 0) fixture.SetRestitution(restitution);
 			if (friction >= 0) fixture.SetFriction(friction);
+		}
+		
+		public function copyFixtureProperties(original:b2Fixture, copy:b2Fixture = null):void
+		{
+			copy = (copy) ? copy : FirstFixture;
+			
+			copy.SetDensity(original.GetDensity());
+			copy.SetFriction(original.GetFriction());
+			copy.SetRestitution(original.GetRestitution());
 		}
 		
 		public function setPosition(xx:Number, yy:Number):void
