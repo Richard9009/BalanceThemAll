@@ -4,8 +4,10 @@ package builders
 	import Box2D.Common.Math.b2Vec2;
 	import Box2D.Dynamics.b2Body;
 	import Box2D.Dynamics.b2Fixture;
+	import flash.display.Shape;
 	import gameObjects.rigidObjects.CompoundObject;
 	import gameObjects.rigidObjects.Foundation;
+	import gameObjects.rigidObjects.NormalBoxObject;
 	import gameObjects.rigidObjects.RigidObjectBase;
 	import gameObjects.StarObject;
 	/**
@@ -50,22 +52,16 @@ package builders
 			return microwave;
 		}
 		
-		public function createBaseballBat(xx:Number, yy:Number):CompoundObject
+		public function createBaseballBat(xx:Number, yy:Number):RigidObjectBase
 		{
 			var size:b2Vec2 = new b2Vec2(550, 45);
-			var bbBat:CompoundObject = new CompoundObject();
+			var bbBat:RigidObjectBase = new RigidObjectBase();
 			bbBat.createDisplayBody(collection.baseballAsset);
-			bbBat.setAssetSize(size.x, size.y);
+			bbBat.setSize(size.x, size.y);
+			bbBat.changeShape(new ShapeBuilder().baseballBatShape(bbBat));
+			bbBat.setFixtureProperties(0.1, 0.2, 0.8);
 			bbBat.setPosition(xx-70, yy);
-			bbBat.addBoxFixture(size.x * 2/5, size.y / 2, 0.2);
-			bbBat.addBoxFixture(size.x * 3/5, size.y, 0.2);
 			bbBat.isBalanceBoard = true;
-			var fixt:b2Fixture = bbBat.getBody().GetFixtureList();
-			bbBat.setFixtureProperties(0.2, 0.1, 0.8, fixt);
-			fixt = fixt.GetNext();
-			bbBat.setFixtureProperties(0.2, 0.1, 0.8, fixt);
-			
-			bbBat.arrangeFixture();
 			
 			return bbBat;
 		}

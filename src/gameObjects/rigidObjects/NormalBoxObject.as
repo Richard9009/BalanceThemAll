@@ -67,15 +67,6 @@ package gameObjects.rigidObjects
 			return impactSound;
 		}
 		
-		public function changeShape(shape:b2Shape):void
-		{
-			var oldFixture:b2Fixture = rigidBody.GetFixtureList();
-			rigidBody.DestroyFixture(oldFixture);
-			
-			rigidBody.CreateFixture2(shape, 1);
-			copyFixtureProperties(oldFixture);
-		}
-		
 		public function setSound(impactSnd:Sound, breakSnd:Sound = null, rollSnd:Sound = null):void
 		{
 			impactSound.setSound(impactSnd);

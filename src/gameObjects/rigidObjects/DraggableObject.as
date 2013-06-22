@@ -313,10 +313,12 @@ package gameObjects.rigidObjects
 			for (var bb:b2Body = Main.getWorld().GetBodyList(); bb; bb = bb.GetNext())
 			{
 				if (bb.GetUserData() == this) bb = bb.GetNext();
-				if (bb.GetUserData() is RigidObjectBase && CollisionGenerator.getCollisionStatus(this, bb.GetUserData()))
+				if (bb.GetUserData() is RigidObjectBase && hitTestObject(bb.GetUserData()))
 				{
-					this.y -= 10;
-					return bb;
+					if(CollisionGenerator.isAbelowB(bb.GetUserData(), this)) {
+						this.y -= 10;
+						return bb;
+					}
 				}
 			}
 			this.y -= 10;
@@ -327,6 +329,7 @@ package gameObjects.rigidObjects
 		{
 			if (getBodyBelowMe() == null) return false;
 			var objectBelow:RigidObjectBase = getBodyBelowMe().GetUserData();
+			if (objectBelow == this) return false;
 			var onBoard:Boolean = objectBelow.isBalanceBoard;
 			
 			if (objectBelow is DraggableObject) {			

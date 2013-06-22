@@ -128,6 +128,15 @@ package gameObjects.rigidObjects
 			copyFixtureProperties(oldFixture);
 		}
 		
+		public function changeShape(shape:b2Shape):void
+		{
+			var oldFixture:b2Fixture = rigidBody.GetFixtureList();
+			rigidBody.DestroyFixture(oldFixture);
+			
+			rigidBody.CreateFixture2(shape, 1);
+			copyFixtureProperties(oldFixture);
+		}
+		
 		public function setFixtureProperties(density:Number, restitution:Number, friction:Number, fixture:b2Fixture = null):void
 		{			
 			fixture = (fixture) ? fixture : FirstFixture;

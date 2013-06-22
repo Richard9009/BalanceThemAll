@@ -108,8 +108,8 @@ package builders
 				case 4: stage2_4(); break;
 			}
 			
-			others.push(specialBuilder.createBookStack(400, 410));
-			others.push(specialBuilder.createBaseballBat(400, 365));
+			others.push(specialBuilder.createBookStack(390, 410));
+			others.push(specialBuilder.createBaseballBat(390, 365));
 		}
 
 		private function stage2_1():void

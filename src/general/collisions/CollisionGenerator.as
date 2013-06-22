@@ -1,6 +1,7 @@
 package general.collisions 
 {
 	import flash.display.Sprite;
+	import flash.geom.Point;
 	import org.flashdevelop.utils.FlashConnect;
 	/**
 	 * ...
@@ -37,6 +38,32 @@ package general.collisions
 			}
 			
 			return collision.hitTest(host, guest);
+		}
+		
+		public static function isAbelowB(objA:Sprite, objB:Sprite):Boolean
+		{
+			var counterRotA:Number = -objA.rotation * Math.PI / 180;
+			
+			var posA:Point = new Point(objA.x, objA.y);
+			var posB:Point = new Point(objB.x, objB.y);
+			
+			var sizeA:Point = new Point(objA.width, objA.height);
+			var sizeB:Point = new Point(objB.width, objB.height);
+			
+			//======SET A AS HOST=================================================
+			posB.x -= posA.x;
+			posB.y -= posA.y;
+			posA = new Point();
+			
+			
+			
+			//=======ROTATE B ACCORDING TO A======================================
+			posB.x = posB.x * Math.cos(counterRotA) - posB.y * Math.sin(counterRotA);
+			posB.y = posB.x * Math.sin(counterRotA) + posB.y * Math.cos(counterRotA);
+			
+			if (posB.y > 0) return false;
+			trace(posB.y + "  " + sizeA.y);
+			return -posB.y < sizeA.y / 2;
 		}
 		
 	}

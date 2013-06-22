@@ -78,6 +78,23 @@ package builders
 			return shape;
 		}
 		
+		public function baseballBatShape(userData:Sprite):b2PolygonShape
+		{
+			matchSize(userData);
+			
+			var shape:b2PolygonShape = new b2PolygonShape();
+			var verArray:Vector.<b2Vec2> = new Vector.<b2Vec2>;
+			
+			verArray.push(new b2Vec2( -width / 2, 0));
+			verArray.push(new b2Vec2( -width / 2 + width/50, -height / 2));
+			verArray.push(new b2Vec2(width / 2, -height / 4));
+			verArray.push(new b2Vec2(width / 2, height / 4));
+			verArray.push(new b2Vec2( -width / 2 + width / 50, height / 2));
+			
+			shape.SetAsVector(verArray, 5);
+			return shape;
+		}
+		
 		private function matchSize(userData:Sprite):void
 		{
 			width = userData.width / Main._physScale;
