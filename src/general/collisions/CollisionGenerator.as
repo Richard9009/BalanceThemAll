@@ -42,8 +42,12 @@ package general.collisions
 		
 		public static function isAbelowB(objA:Sprite, objB:Sprite):Boolean
 		{
+			
 			var counterRotA:Number = -(objA.rotation%90) * Math.PI / 180;
-			if (counterRotA > Math.PI/4) counterRotA -= Math.PI / 2;
+			//limit rotation value from -45 to 45
+			if (counterRotA > Math.PI / 4) counterRotA -= Math.PI / 2;
+			if (counterRotA < -Math.PI / 4) counterRotA += Math.PI / 2;
+			
 			var posA:Point = new Point(objA.x, objA.y);
 			var posB:Point = new Point(objB.x, objB.y);
 			
@@ -60,7 +64,8 @@ package general.collisions
 			posB.x = posB_noRot.x * Math.cos(counterRotA) - posB_noRot.y * Math.sin(counterRotA);
 			posB.y = posB_noRot.x * Math.sin(counterRotA) + posB_noRot.y * Math.cos(counterRotA);
 			
-			trace(objA.rotation +"    " + posB.y);
+			if (posB.y > 0) trace(counterRotA * 180 / Math.PI);
+			
 			return posB.y < 0;
 		}
 		
