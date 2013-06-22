@@ -205,6 +205,7 @@ package builders
 				obj.createDisplayBody(collection.pillowAsset);
 				obj.setFixtureProperties(0.3, 0, 0.9);
 				obj.setSize(200 * scale, 56 * scale);
+				obj.changeShape(shape.pillowShape(obj));
 				obj.setRandomPositionInsideItemBox();
 				obj.setSound(new soundCol.pillowImpactSound());
 				objArray.push(obj);
@@ -223,6 +224,7 @@ package builders
 				obj.createDisplayBody(collection.heavyObjectAsset);
 				obj.setFixtureProperties(1, 0, 0.9);
 				obj.setSize(150 * scale, 135 * scale);
+				obj.changeShape(shape.barbelShape(obj));
 				obj.setRandomPositionInsideItemBox();
 				obj.setSound(new soundCol.heavyImpactSound());
 				objArray.push(obj);

@@ -9,6 +9,8 @@ package builders
 	 */
 	public class ShapeBuilder 
 	{
+		private var width:Number;
+		private var height:Number;
 		
 		public function ShapeBuilder() 
 		{
@@ -17,8 +19,7 @@ package builders
 		
 		public function boxShape(userData:Sprite):b2PolygonShape
 		{
-			var width:Number = userData.width / Main._physScale;
-			var height:Number = userData.height / Main._physScale;
+			matchSize(userData);
 			
 			var shape:b2PolygonShape = new b2PolygonShape();
 			shape.SetAsBox(width / 2, height / 2);
@@ -27,8 +28,7 @@ package builders
 		
 		public function shoeShape(userData:Sprite):b2PolygonShape
 		{
-			var width:Number = userData.width / Main._physScale;
-			var height:Number = userData.height / Main._physScale;
+			matchSize(userData);
 			
 			var shape:b2PolygonShape = new b2PolygonShape();
 			var verArray:Vector.<b2Vec2> = new Vector.<b2Vec2>;
@@ -40,6 +40,48 @@ package builders
 				   
 			shape.SetAsVector(verArray, 5);
 			return shape;
+		}
+		
+		public function pillowShape(userData:Sprite):b2PolygonShape
+		{
+			matchSize(userData);
+			
+			var shape:b2PolygonShape = new b2PolygonShape();
+			var verArray:Vector.<b2Vec2> = new Vector.<b2Vec2>;
+			verArray.push(new b2Vec2( -width / 2, 0));
+			verArray.push(new b2Vec2(-width * 3/8, -height / 2));
+			verArray.push(new b2Vec2(width * 3/8, -height / 2));
+			verArray.push(new b2Vec2(width / 2, 0));
+			verArray.push(new b2Vec2(width * 3 / 8, height / 2));
+			verArray.push(new b2Vec2(-width * 3/8, height / 2));
+				   
+			shape.SetAsVector(verArray, 6);
+			return shape;
+		}
+		
+		public function barbelShape(userData:Sprite):b2PolygonShape
+		{
+			matchSize(userData);
+			
+			var shape:b2PolygonShape = new b2PolygonShape();
+			var verArray:Vector.<b2Vec2> = new Vector.<b2Vec2>;
+			verArray.push(new b2Vec2( -width / 2, height / 4));
+			verArray.push(new b2Vec2( -width / 2, -height / 4));
+			verArray.push(new b2Vec2(-width * 3/10, -height / 2));
+			verArray.push(new b2Vec2(width * 3/10, -height / 2));
+			verArray.push(new b2Vec2(width / 2, -height / 4));
+			verArray.push(new b2Vec2(width / 2, height / 4));
+			verArray.push(new b2Vec2(width * 3/10, height / 2));
+			verArray.push(new b2Vec2(-width * 3/10, height / 2));
+				   
+			shape.SetAsVector(verArray, 8);
+			return shape;
+		}
+		
+		private function matchSize(userData:Sprite):void
+		{
+			width = userData.width / Main._physScale;
+			height = userData.height / Main._physScale;
 		}
 		
 	}
