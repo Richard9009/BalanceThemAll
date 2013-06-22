@@ -69,7 +69,7 @@ package builders
 		}
 		
 		private function stage1_3():void {
-			liftables.push(itemBuilder.createPillow(1));
+			liftables.push(itemBuilder.createShoes(1));
 			liftables.push(itemBuilder.createEncyclopedia(1));
 			var book:RigidObjectBase = RigidObjectBase(liftables[1][0]);
 			book.getBody().SetAngle(90); 
