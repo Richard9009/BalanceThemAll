@@ -31,16 +31,14 @@ package builders
 			var height:Number = userData.height / Main._physScale;
 			
 			var shape:b2PolygonShape = new b2PolygonShape();
-			var verArray:Array = new Array();
-			verArray = [ 
-						 new b2Vec2(width/2, height/2),
-						 new b2Vec2(width/2, -height/2),
-						 new b2Vec2(0, -height / 2),
-						 new b2Vec2( -width / 2, height / 6),
-						 new b2Vec2( -width / 2, height / 2)
-					   ];
-					   
-			shape.SetAsArray(verArray, 5);
+			var verArray:Vector.<b2Vec2> = new Vector.<b2Vec2>;
+			verArray.push(new b2Vec2( -width / 2, height / 6));
+			verArray.push(new b2Vec2(0, -height / 2));
+			verArray.push(new b2Vec2(width / 2, -height / 2));
+			verArray.push(new b2Vec2(width / 2, height / 2));
+			verArray.push(new b2Vec2( -width / 2, height / 2));
+				   
+			shape.SetAsVector(verArray, 5);
 			return shape;
 		}
 		
