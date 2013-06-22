@@ -133,7 +133,7 @@ package gameObjects.rigidObjects
 			var oldFixture:b2Fixture = rigidBody.GetFixtureList();
 			rigidBody.DestroyFixture(oldFixture);
 			
-			rigidBody.CreateFixture2(shape, 1);
+			rigidBody.CreateFixture2(shape, oldFixture.GetDensity());
 			copyFixtureProperties(oldFixture);
 		}
 		

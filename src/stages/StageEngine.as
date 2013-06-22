@@ -170,7 +170,7 @@ package stages
 			sCounter.breakPenalty();
 			updateScore();
 			
-			removeChild(e.brokenObject);
+			DraggableObject(e.brokenObject).destroyMe();
 		}
 		
 		protected function displayScore(e:GrabObjectEvent):void 

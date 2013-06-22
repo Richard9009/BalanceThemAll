@@ -55,14 +55,14 @@ package general.collisions
 			posB.y -= posA.y;
 			posA = new Point();
 			
-			
-			
 			//=======ROTATE B ACCORDING TO A======================================
-			posB.x = posB.x * Math.cos(counterRotA) - posB.y * Math.sin(counterRotA);
-			posB.y = posB.x * Math.sin(counterRotA) + posB.y * Math.cos(counterRotA);
+			var posB_noRot:Point = posB.clone();
+			posB.x = posB_noRot.x * Math.cos(counterRotA) - posB_noRot.y * Math.sin(counterRotA);
+			posB.y = posB_noRot.x * Math.sin(counterRotA) + posB_noRot.y * Math.cos(counterRotA);
 			
+			trace(objA.rotation +"    " + sizeA.y / 2);
 			if (posB.y > 0) return false;
-			trace(posB.y + "  " + sizeA.y);
+			
 			return -posB.y < sizeA.y / 2;
 		}
 		

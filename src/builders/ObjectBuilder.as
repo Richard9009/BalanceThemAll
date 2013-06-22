@@ -113,7 +113,7 @@ package builders
 				obj = new NormalBoxObject(minStageLimit, maxStageLimit, true);
 				obj.durability = 0.5;
 				obj.createDisplayBody(collection.glassVaseAsset);
-				obj.setFixtureProperties(0.15, 0.1, 0.1);
+				obj.setFixtureProperties(0.1, 0.1, 0.1);
 				obj.setSize(50 * scale, 100 * scale);
 				obj.setRandomPositionInsideItemBox();
 				obj.setSound(new soundCol.glassImpactSound(), new soundCol.glassBreakingSound());
@@ -222,7 +222,7 @@ package builders
 			{
 				obj = new NormalBoxObject(minStageLimit, maxStageLimit);
 				obj.createDisplayBody(collection.heavyObjectAsset);
-				obj.setFixtureProperties(1, 0, 0.9);
+				obj.setFixtureProperties(3, 0, 0.9);
 				obj.setSize(150 * scale, 135 * scale);
 				obj.changeShape(shape.barbelShape(obj));
 				obj.setRandomPositionInsideItemBox();

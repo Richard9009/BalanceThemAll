@@ -58,8 +58,9 @@ package builders
 			var bbBat:RigidObjectBase = new RigidObjectBase();
 			bbBat.createDisplayBody(collection.baseballAsset);
 			bbBat.setSize(size.x, size.y);
+			bbBat.setFixtureProperties(0.2, 0.2, 0.8);
 			bbBat.changeShape(new ShapeBuilder().baseballBatShape(bbBat));
-			bbBat.setFixtureProperties(0.1, 0.2, 0.8);
+			trace(bbBat.getBody().GetMass());
 			bbBat.setPosition(xx-70, yy);
 			bbBat.isBalanceBoard = true;
 			

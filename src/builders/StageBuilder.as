@@ -114,9 +114,8 @@ package builders
 
 		private function stage2_1():void
 		{
-			liftables.push(itemBuilder.createBasketBall(1));
 			liftables.push(itemBuilder.createEncyclopedia(1));
-			liftables.push(itemBuilder.createMug(1));
+			liftables.push(itemBuilder.createMug(2));
 			liftables.push(itemBuilder.createGlassVase(1));
 			
 			stars.push(specialBuilder.createGoldenStar(110, 225));
