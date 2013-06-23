@@ -17,7 +17,7 @@ package gameEvents
 		public static const OBJECT_RELOCATED:String = "object relocated";
 		
 		public var object:b2Body;
-		
+	
 		public function GrabObjectEvent(type:String, bubbles:Boolean=true, cancelable:Boolean=false) 
 		{
 			super(type, bubbles, cancelable);

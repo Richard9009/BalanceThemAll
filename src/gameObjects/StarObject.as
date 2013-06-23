@@ -1,5 +1,6 @@
 package gameObjects 
 {
+	import assets.AssetCollection;
 	import assets.SoundCollection;
 	import flash.display.Sprite;
 	import flash.events.Event;
@@ -26,14 +27,14 @@ package gameObjects
 		public var starType:String;
 		public var starValue:int = 0;
 		
-		public function StarObject(starAsset:Class, type:String) 
+		public function StarObject(type:String) 
 		{
 			var soundCol:SoundCollection = new SoundCollection();
 			sound = new soundCol.getStarSound();
 			
-			addChild(new starAsset());
-			
 			starType = type
+			createAsset();
+			
 			switch (type) {
 				case GOLDEN: points = 1000; color = 0xD9D919; starValue = 3; break;
 				case SILVER: points = 500; color = 0x909090; starValue = 2; break;
@@ -42,6 +43,20 @@ package gameObjects
 			
 			mouseChildren = false;
 			mouseEnabled = false;
+		}
+		
+		public function createAsset():void
+		{
+			var assetClass:Class;
+			var assetsCol:AssetCollection = new AssetCollection();
+			
+			switch(starType) {
+				case GOLDEN: assetClass = assetsCol.goldenStarAsset; break;
+				case SILVER: assetClass = assetsCol.silverStarAsset; break;
+				case BRONZE: assetClass = assetsCol.bronzeStarAsset; break;
+			}
+			
+			addChild(new assetClass());
 		}
 		
 		public function playSound():void

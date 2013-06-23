@@ -4,6 +4,7 @@ package stages
 	import builders.StageBuilder;
 	import flash.display.Sprite;
 	import gameObjects.rigidObjects.DraggableObject;
+	import general.StageRecord;
 	/**
 	 * ...
 	 * @author Herichard Stefanus Salim
@@ -24,6 +25,13 @@ package stages
 			this.addChild(assetData);
 			
 			super();
+		}
+		
+		protected function initiateStage(id:String):void
+		{
+			record = StageRecord.getStageRecordByID(id);
+			record.stageStarted();
+			sCounter.setScoreRecord(record.scoreRecord);
 		}
 		
 		public function createLevelBySubStageID(stageID:int, subStageIndex:int, hasTutorial:Boolean = false):void {

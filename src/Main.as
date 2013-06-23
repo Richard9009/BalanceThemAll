@@ -44,7 +44,7 @@ package
 			else addEventListener(Event.ADDED_TO_STAGE, init);
 		} 
 		
-		private function init(e:Event = null):void 
+		protected function init(e:Event = null):void 
 		{
 			cleanListener();
 			StageRecord.CreateRecordList();
@@ -274,7 +274,7 @@ package
 			world = null; 
 		}
 		
-		private function createWorld():void
+		protected function createWorld():void
 		{
 			_gravity = new b2Vec2(0, 10.0);
 			world = new b2World(_gravity, true);

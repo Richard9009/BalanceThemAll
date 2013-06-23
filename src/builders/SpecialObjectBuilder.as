@@ -81,22 +81,22 @@ package builders
 		
 		public function createGoldenStar(xx:Number, yy:Number):StarObject
 		{
-			return createStar(collection.goldenStarAsset, StarObject.GOLDEN, xx, yy);
+			return createStar(StarObject.GOLDEN, xx, yy);
 		}
 		
 		public function createSilverStar(xx:Number, yy:Number):StarObject
 		{
-			return createStar(collection.silverStarAsset, StarObject.SILVER, xx, yy);
+			return createStar(StarObject.SILVER, xx, yy);
 		}
 		
 		public function createBronzeStar(xx:Number, yy:Number):StarObject
 		{
-			return createStar(collection.bronzeStarAsset, StarObject.BRONZE, xx, yy);
+			return createStar(StarObject.BRONZE, xx, yy);
 		}
 		
-		private function createStar(starClass:Class, type:String, xx:Number, yy:Number):StarObject
+		private function createStar(type:String, xx:Number, yy:Number):StarObject
 		{
-			var star:StarObject = new StarObject(starClass, type);
+			var star:StarObject = new StarObject(type);
 			star.x = xx;
 			star.y = yy;
 			star.width = defaultStarWidth;

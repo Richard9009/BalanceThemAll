@@ -10,6 +10,8 @@ package general
 	 */
 	public class StageRecord 
 	{
+		protected static const PASS_CODE:Number = 928374281374;
+		
 		public static const ONGOING:String = "ONGOING";
 		public static const LOCKED:String = "LOCKED";
 		public static const OPEN:String = "OPEN";
@@ -35,9 +37,9 @@ package general
 		private var startTime:Number;
 		private var endTime:Number;
 		
-		public function StageRecord(pass:ExternalInstantiationBlocker) 
+		public function StageRecord(pass:Number) 
 		{
-			if (pass == null) {
+			if (pass != PASS_CODE) {
 				throw new IllegalOperationError("You can't use new method to get an object of this class!!! Use getStage method");
 			}
 		}
@@ -93,7 +95,7 @@ package general
 			
 			for (var stageCount:int = 0; stageCount < totalStages; stageCount++) {
 				for (var subStageCount:int = 0; subStageCount < subStageinEveryStage; subStageCount++) {
-					var stage:StageRecord = new StageRecord(new ExternalInstantiationBlocker());
+					var stage:StageRecord = new StageRecord(PASS_CODE);
 					stage.stageID = (stageCount + 1).toString() + "_" + (subStageCount + 1).toString();
 					if (stageCount > 1) stage.stageStatus = LOCKED;
 					stageRecordList.push(stage);
@@ -128,5 +130,3 @@ package general
 		
 	}
 }
-
-class ExternalInstantiationBlocker {}

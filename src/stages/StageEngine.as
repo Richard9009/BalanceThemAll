@@ -43,7 +43,7 @@ package stages
 		protected var showBalanceLine:Boolean = true;
 		protected var objectsOnHand:Array;
 		
-		private var sCounter:ScoreCounter;
+		protected var sCounter:ScoreCounter;
 		private var menuButton:Sprite;
 		private var replayButton:Sprite;
 		
@@ -102,13 +102,6 @@ package stages
 			
 			HandManager.reset();
 			destroyAllObjects();
-		}
-		
-		protected function initiateStage(id:String):void
-		{
-			record = StageRecord.getStageRecordByID(id);
-			record.stageStarted();
-			sCounter.setScoreRecord(record.scoreRecord);
 		}
 		
 		private function destroyAllObjects():void {

@@ -15,11 +15,11 @@ package builders
 		private var liftablesContainer:Sprite;
 		private var othersContainer:Sprite;
 		private var stars:Array;
-		private var liftables:Array;
-		private var others:Array;
 		
-		private var itemBuilder:ObjectBuilder = new ObjectBuilder();
-		private var specialBuilder:SpecialObjectBuilder = new SpecialObjectBuilder();
+		protected var liftables:Array;
+		protected var others:Array;
+		protected var itemBuilder:ObjectBuilder = new ObjectBuilder();
+		protected var specialBuilder:SpecialObjectBuilder = new SpecialObjectBuilder();
 		
 		public function StageBuilder() 
 		{
@@ -33,7 +33,7 @@ package builders
 		
 //==============================================================STAGE 1============================================================
 		
-		private function stage1(subStageIndex:int):void
+		protected function stage1(subStageIndex:int):void
 		{
 			var hardMode:Boolean = subStageIndex > 4;
 			
@@ -99,7 +99,7 @@ package builders
 		
 //=====================================================STAGE 2========================================================================
 
-		private function stage2(substageIndex:int):void
+		protected function stage2(substageIndex:int):void
 		{
 			switch(substageIndex) {
 				case 1: stage2_1(); break;
