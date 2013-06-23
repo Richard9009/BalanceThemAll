@@ -314,7 +314,7 @@ package
 			addChild(debugSprite);
 		}
 		private var debugSprite:Sprite = new Sprite();
-		private var debugMode:Boolean = true;
+		private var debugMode:Boolean = false;
 	}
 }
 

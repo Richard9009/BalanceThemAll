@@ -108,13 +108,13 @@ package builders
 				case 4: stage2_4(); break;
 			}
 			
-			others.push(specialBuilder.createBookStack(390, 410));
+			others.push(specialBuilder.createBookStack(380, 410));
 			others.push(specialBuilder.createBaseballBat(390, 365));
 		}
 
 		private function stage2_1():void
 		{
-			liftables.push(itemBuilder.createEncyclopedia(1));
+			liftables.push(itemBuilder.createPillow(2));
 			liftables.push(itemBuilder.createMug(2));
 			liftables.push(itemBuilder.createGlassVase(1));
 			
@@ -134,7 +134,7 @@ package builders
 		
 		private function stage2_3():void
 		{
-			liftables.push(itemBuilder.createEncyclopedia(2));
+			liftables.push(itemBuilder.createHeavyObject(1));
 			liftables.push(itemBuilder.createBowlingBall(1));
 			liftables.push(itemBuilder.createTennisBall(1));
 			liftables.push(itemBuilder.createBasketBall(1));

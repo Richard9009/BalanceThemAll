@@ -222,9 +222,9 @@ package builders
 			{
 				obj = new NormalBoxObject(minStageLimit, maxStageLimit);
 				obj.createDisplayBody(collection.heavyObjectAsset);
-				obj.setFixtureProperties(1, 0, 0.9);
+				obj.setFixtureProperties(1, 0, 1);
 				obj.setSize(150 * scale, 135 * scale);
-				obj.changeShape(shape.barbelShape(obj));
+				//obj.changeShape(shape.barbelShape(obj));
 				obj.setRandomPositionInsideItemBox();
 				obj.setSound(new soundCol.heavyImpactSound());
 				objArray.push(obj);
