@@ -291,7 +291,7 @@ package
 		}
 		
 		public static function getWorld():b2World 
-		{
+		{  
 			return world;
 		}
 		
