@@ -106,13 +106,23 @@ package builders
 				case 2: stage2_2(); break;
 				case 3: stage2_3(); break;
 				case 4: stage2_4(); break;
+				case 5: stage2_5(); break;
 			}
 			
 			others.push(specialBuilder.createBookStack(380, 410));
 			others.push(specialBuilder.createBaseballBat(390, 365));
 		}
-
+		
 		private function stage2_1():void
+		{
+			liftables.push(itemBuilder.createPillow(1));
+			liftables.push(itemBuilder.createHeavyObject(1));
+			
+			stars.push(specialBuilder.createGoldenStar(510, 365));
+			stars.push(specialBuilder.createSilverStar(100, 340));
+		}
+
+		private function stage2_2():void
 		{
 			liftables.push(itemBuilder.createPillow(2));
 			liftables.push(itemBuilder.createMug(2));
@@ -122,7 +132,7 @@ package builders
 			stars.push(specialBuilder.createSilverStar(550, 265));
 		}
 		
-		private function stage2_2():void
+		private function stage2_3():void
 		{
 			liftables.push(itemBuilder.createPhoto(1));
 			liftables.push(itemBuilder.createHeavyObject(1));
@@ -132,20 +142,22 @@ package builders
 			stars.push(specialBuilder.createSilverStar(550, 268));
 		}
 		
-		private function stage2_3():void
+		private function stage2_4():void
+		{
+			liftables.push(itemBuilder.createHeavyObject(1));
+			liftables.push(itemBuilder.createPillow(1));
+			liftables.push(itemBuilder.createPhoto(1));
+			
+			stars.push(specialBuilder.createGoldenStar(50, 130));
+			stars.push(specialBuilder.createSilverStar(570, 400));
+		}
+		
+		private function stage2_5():void
 		{
 			liftables.push(itemBuilder.createHeavyObject(1));
 			liftables.push(itemBuilder.createBowlingBall(1));
 			liftables.push(itemBuilder.createTennisBall(1));
 			liftables.push(itemBuilder.createBasketBall(1));
-			
-			stars.push(specialBuilder.createSilverStar(40, 280));
-			stars.push(specialBuilder.createGoldenStar(550, 390));
-		}
-		
-		private function stage2_4():void
-		{
-			liftables.push(itemBuilder.createHeavyObject(2));
 			
 			stars.push(specialBuilder.createSilverStar(40, 280));
 			stars.push(specialBuilder.createGoldenStar(550, 390));
