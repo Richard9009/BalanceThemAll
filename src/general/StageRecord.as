@@ -51,6 +51,9 @@ package general
 			currentStage = stageID.split("_")[0].toString();
 			currentSubStage = stageID.split("_")[1].toString();
 			
+			totalItemsCount = 0;
+			droppedItemsCount = 0;
+			
 			scoreRecord.resetScore();
 		}
 		
