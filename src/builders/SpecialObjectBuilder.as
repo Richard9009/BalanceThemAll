@@ -45,7 +45,8 @@ package builders
 			microwave.getBody().SetType(b2Body.b2_staticBody);
 			microwave.createDisplayBody(collection.foundationAsset);
 			microwave.setSize(40, 80, 0);
-			microwave.setPosition(xx, yy);
+			var whGap:Number = (microwave.height - microwave.width) / 2;
+			microwave.setPosition(xx, yy - ((tall) ? whGap : 0));
 			microwave.getBody().SetAngle(tall ? 0 : -Math.PI/2);
 			microwave.setFixtureProperties(0, 0, 1);
 			
