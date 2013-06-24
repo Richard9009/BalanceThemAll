@@ -111,6 +111,9 @@ package builders
 			
 			others.push(specialBuilder.createBookStack(380, 410));
 			others.push(specialBuilder.createBaseballBat(390, 365));
+			
+			if (substageIndex < 3) MusicManager.getInstance().playStage2FirstHalfBGM();
+			else MusicManager.getInstance().playStage2SecondHalfBGM(); 
 		}
 		
 		private function stage2_1():void

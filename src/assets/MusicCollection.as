@@ -22,6 +22,12 @@ package assets
 		[Embed(source="musics/Stage1 - Second Half.mp3")]
 		public var s1SecondHalfBGM:Class;
 		
+		[Embed(source = "musics/Stage2 - First Half.mp3")]
+		public var s2FirstHalfBGM:Class;
+		
+		[Embed(source="musics/Stage2 - Second Half.mp3")]
+		public var s2SecondHalfBGM:Class;
+		
 		public function MusicCollection() 
 		{
 			
