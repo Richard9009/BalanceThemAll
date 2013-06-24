@@ -68,7 +68,6 @@ package general
 		
 		public function allItemsDropped():Boolean
 		{
-			trace(droppedItemsCount + "__________" + totalItemsCount);
 			return droppedItemsCount == totalItemsCount;
 		}
 		
