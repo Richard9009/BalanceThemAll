@@ -42,12 +42,9 @@ package stages
 		protected var bLine:BalanceLine;
 		protected var showBalanceLine:Boolean = true;
 		protected var objectsOnHand:Array;
-		
+		protected var header:StageHeader;
 		protected var sCounter:ScoreCounter;
-		private var menuButton:Sprite;
-		private var replayButton:Sprite;
-		
-		private var scoreText:TextField;
+	
 		private var tFormat:TextFormat;
 		
 		private var rHand:Hand = new Hand(true);
@@ -69,6 +66,8 @@ package stages
 			objectsOnHand = new Array();
 			bLine = new BalanceLine();
 			addChild(bLine);
+			header = new StageHeader();
+			addChild(header);
 			
 			rHand.x = 300;
 			rHand.y = 300;
@@ -87,8 +86,6 @@ package stages
 			addEventListener(ObjectBreakEvent.GENERATE_PARTICLE, generateParticle);
 			
 			createBorders();
-			createScoreCounter();
-			createMenuButton();
 		}
 		
 		public function removeAllListeners():void {
@@ -113,36 +110,6 @@ package stages
 			}
 		}
 		
-		private function createMenuButton():void 
-		{
-			var assetCol:AssetCollection = new AssetCollection();
-			menuButton = new assetCol.menuButtonAsset();
-			menuButton.width = 30;
-			menuButton.height = 30;
-			menuButton.x = StageConfig.STAGE_WIDTH - menuButton.width;
-			menuButton.y = StageConfig.HEADER_HEIGHT / 2;
-			addChild(menuButton);
-			menuButton.addEventListener(MouseEvent.CLICK, onMenuClick);
-			
-			replayButton = new assetCol.replayButtonAsset();
-			replayButton.width = 30;
-			replayButton.height = 30;
-			replayButton.x = StageConfig.STAGE_WIDTH - replayButton.width - menuButton.width - 10;
-			replayButton.y = StageConfig.HEADER_HEIGHT / 2;
-			addChild(replayButton);
-			replayButton.addEventListener(MouseEvent.CLICK, onReplayClick);
-		}
-		
-		private function onReplayClick(e:MouseEvent):void 
-		{
-			parent.dispatchEvent(new GameEvent(GameEvent.RESTART_LEVEL));
-		}
-		
-		private function onMenuClick(e:MouseEvent):void 
-		{
-			parent.dispatchEvent(new GameEvent(GameEvent.PAUSE_GAME));
-		}
-		
 		private function generateParticle(e:ObjectBreakEvent):void 
 		{
 			var particlesNum:int = Math.floor(Math.random() * 10 + 10);
@@ -161,7 +128,7 @@ package stages
 			addChild(fText);
 			
 			sCounter.breakPenalty();
-			updateScore();
+			header.updateScore(sCounter);
 			
 			DraggableObject(e.brokenObject).destroyMe();
 		}
@@ -185,8 +152,8 @@ package stages
 			fText.y = e.object.GetUserData().y;
 			addChild(fText);
 			
-			updateScore();
-			FlashConnect.trace(stars.length + "   " + record.droppedItemsCount);
+			header.updateScore(sCounter);
+	
 			if (record.allItemsDropped() && stars.length > 0) delayAction(2000, levelClear);
 		}
 		
@@ -230,7 +197,7 @@ package stages
 					
 					star.startFadeOut();
 					stars.splice(i, 1);
-					updateScore();
+					header.updateScore(sCounter);
 				}
 			}
 			
@@ -248,20 +215,6 @@ package stages
 				delayTimer.removeEventListener(TimerEvent.TIMER, delay);
 				action();
 			});
-		}
-		
-		private function createScoreCounter():void
-		{
-			tFormat = new TextFormat("Arial", 20, 0xAA9933, true);
-			
-			scoreText = new TextField();
-			scoreText.selectable = false;
-			scoreText.width = 1000;
-			updateScore();
-			
-			scoreText.x = 25;
-			scoreText.y = StageConfig.HEADER_HEIGHT / 2 - 10;
-			addChild(scoreText);
 		}
 		
 		protected function dropAll(e:GrabObjectEvent):void 
@@ -317,14 +270,8 @@ package stages
 				addChild(fText);
 				
 				sCounter.fallPenalty();
-				updateScore();
+				header.updateScore(sCounter);
 			}
-		}
-		
-		protected function updateScore():void
-		{
-			scoreText.text = "Score: " + sCounter.getScore().toString();
-			scoreText.setTextFormat(tFormat);
 		}
 		
 		protected function grabAnObject(e:GrabObjectEvent):void

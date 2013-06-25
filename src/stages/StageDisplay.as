@@ -22,7 +22,7 @@ package stages
 			var assetData:Sprite = new assetList[stageID - 1]() as Sprite;
 			assetData.x = StageConfig.STAGE_WIDTH / 2; 
 			assetData.y = StageConfig.STAGE_HEIGHT / 2;
-			this.addChild(assetData);
+			this.addChildAt(assetData,0);
 			
 			super();
 		}
@@ -32,6 +32,7 @@ package stages
 			record = StageRecord.getStageRecordByID(id);
 			record.stageStarted();
 			sCounter.setScoreRecord(record.scoreRecord);
+			header.updateScore(sCounter);
 		}
 		
 		public function createLevelBySubStageID(stageID:int, subStageIndex:int, hasTutorial:Boolean = false):void {
