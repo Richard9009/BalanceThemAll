@@ -19,19 +19,13 @@ package stages
 		private var replayBtn:Sprite;
 		private var scoreText:TextField;
 		private var tFormat:TextFormat;
+		private var assetCol:AssetCollection = new AssetCollection();
 		
 		public function StageHeader() 
 		{
 			super();
 			addEventListener(Event.ADDED_TO_STAGE, addedToStage);
-			addEventListener(MouseEvent.MOUSE_DOWN, abcd);
 		}
-		
-		private function abcd(e:MouseEvent):void 
-		{
-			trace(e.target + "   " + e.currentTarget);
-		}
-		
 		
 		private function addedToStage(e:Event):void 
 		{
@@ -40,12 +34,12 @@ package stages
 			createPauseButton();
 			createReplayButton();
 			createScoreCounter();
+			createBalanceButton();
 		}
 		
 		
 		private function createPauseButton():void 
 		{
-			var assetCol:AssetCollection = new AssetCollection();
 			pauseBtn = new assetCol.menuButtonAsset();
 			pauseBtn.width = 30;
 			pauseBtn.height = 30; 
@@ -57,7 +51,6 @@ package stages
 		
 		private function createReplayButton():void
 		{
-			var assetCol:AssetCollection = new AssetCollection();
 			replayBtn = new assetCol.replayButtonAsset();
 			replayBtn.width = 30;
 			replayBtn.height = 30;
@@ -77,14 +70,23 @@ package stages
 			dispatchEvent(new GameEvent(GameEvent.PAUSE_GAME));
 		}
 		
+		private function createBalanceButton():void
+		{
+			var bButton:BalanceButton = new BalanceButton();
+			bButton.width = 38;
+			bButton.height = 38;
+			bButton.x = StageConfig.STAGE_WIDTH / 2;
+			bButton.y = StageConfig.HEADER_HEIGHT / 2;
+			addChild(bButton);
+		}
+		
 		private function createScoreCounter():void
 		{
 			tFormat = new TextFormat("Arial", 20, 0xAA9933, true);
 			
 			scoreText = new TextField();
 			scoreText.selectable = false;
-			scoreText.width = 300;
-			
+			scoreText.width = 150;
 			scoreText.x = 25;
 			scoreText.y = StageConfig.HEADER_HEIGHT / 2 - 10;
 			addChild(scoreText);
