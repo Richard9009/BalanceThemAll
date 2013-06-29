@@ -23,9 +23,15 @@ package stages
 		public function StageHeader() 
 		{
 			super();
-			
 			addEventListener(Event.ADDED_TO_STAGE, addedToStage);
+			addEventListener(MouseEvent.MOUSE_DOWN, abcd);
 		}
+		
+		private function abcd(e:MouseEvent):void 
+		{
+			trace(e.target + "   " + e.currentTarget);
+		}
+		
 		
 		private function addedToStage(e:Event):void 
 		{
@@ -34,9 +40,6 @@ package stages
 			createPauseButton();
 			createReplayButton();
 			createScoreCounter();
-		
-			x = 0;
-			y = 0;
 		}
 		
 		
@@ -49,7 +52,7 @@ package stages
 			pauseBtn.x = StageConfig.STAGE_WIDTH - pauseBtn.width;
 			pauseBtn.y = StageConfig.HEADER_HEIGHT / 2;
 			addChild(pauseBtn);
-			pauseBtn.addEventListener(MouseEvent.CLICK, onMenuClick);
+			pauseBtn.addEventListener(MouseEvent.MOUSE_UP, onMenuClick);
 		}
 		
 		private function createReplayButton():void
@@ -61,17 +64,17 @@ package stages
 			replayBtn.x = pauseBtn.x - pauseBtn.width - 10;
 			replayBtn.y = StageConfig.HEADER_HEIGHT / 2;
 			addChild(replayBtn);
-			replayBtn.addEventListener(MouseEvent.CLICK, onReplayClick);
+			replayBtn.addEventListener(MouseEvent.MOUSE_UP, onReplayClick);
 		}
 		
 		private function onReplayClick(e:MouseEvent):void
 		{
-			parent.dispatchEvent(new GameEvent(GameEvent.RESTART_LEVEL));
+			dispatchEvent(new GameEvent(GameEvent.RESTART_LEVEL));
 		}
 		
 		private function onMenuClick(e:MouseEvent):void 
 		{
-			parent.dispatchEvent(new GameEvent(GameEvent.PAUSE_GAME));
+			dispatchEvent(new GameEvent(GameEvent.PAUSE_GAME));
 		}
 		
 		private function createScoreCounter():void
@@ -80,7 +83,7 @@ package stages
 			
 			scoreText = new TextField();
 			scoreText.selectable = false;
-			scoreText.width = 1000;
+			scoreText.width = 300;
 			
 			scoreText.x = 25;
 			scoreText.y = StageConfig.HEADER_HEIGHT / 2 - 10;

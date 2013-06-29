@@ -119,7 +119,7 @@ package general.dialogs
 			y = StageConfig.STAGE_HEIGHT - dialogBoxHeight / 2;
 			
 			tField = new LocalesTextField("");
-			addChild(tField);
+			addChildAt(tField, 1);
 			tField.x = -width / 2 + TFIELD_GAP;
 			tField.y = -height / 2 + TFIELD_GAP;
 			tField.width = width - TFIELD_GAP * 2;
