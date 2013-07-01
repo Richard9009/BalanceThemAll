@@ -1,9 +1,13 @@
 package stages 
 {
 	import assets.AssetCollection;
+	import Box2D.Common.Math.b2Vec2;
 	import builders.StageBuilder;
 	import flash.display.Sprite;
+	import gameEvents.PowerEvent;
+	import gameObjects.BlueLayer;
 	import gameObjects.rigidObjects.DraggableObject;
+	import general.PowerType;
 	import general.StageRecord;
 	/**
 	 * ...
@@ -24,7 +28,25 @@ package stages
 			assetData.y = StageConfig.STAGE_HEIGHT / 2;
 			this.addChildAt(assetData,0);
 			
+			addEventListener(PowerEvent.USE_SPECIAL_POWER, handlePower);
+			
 			super();
+		}
+		
+		private function powerComplete_balance(e:PowerEvent):void 
+		{
+			bLine.visible = false;
+			removeEventListener(PowerEvent.POWER_COMPLETE, powerComplete_balance);
+		}
+		
+		private function handlePower(e:PowerEvent):void 
+		{
+			switch(e.powerType) {
+				case PowerType.BALANCE: bLine.visible = true;
+										addChild(new BlueLayer(60000));
+										addEventListener(PowerEvent.POWER_COMPLETE, powerComplete_balance);
+										break;
+			}
 		}
 		
 		protected function initiateStage(id:String):void
@@ -46,6 +68,8 @@ package stages
 			stars = builder.getStars();
 			builder.getFoundation().setBalanceLine(bLine);
 			registerItems(builder.getLiftableItems());
+			if (stageID == 1 && subStageIndex == 1) header.hideBalanceButton();
+			bLine.visible = false;
 		}
 		
 		private function registerItems(list:Array):void

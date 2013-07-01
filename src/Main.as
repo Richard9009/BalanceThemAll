@@ -1,6 +1,5 @@
 package 
 {
-	import assets.movies.MovieCollection;
 	import Box2D.Common.Math.b2Vec2;
 	import Box2D.Dynamics.b2Body;
 	import Box2D.Dynamics.b2DebugDraw;
@@ -35,7 +34,6 @@ package
 		private static var world:b2World;
 		private var currentScene:Sprite;
 		private var optScreen:Sprite;
-		private var movieCol:MovieCollection = new MovieCollection();
 		private var listenersList:Array = new Array();
 		
 		public function Main():void 
@@ -82,7 +80,7 @@ package
 		private function createMainMenu():void 
 		{
 			MusicManager.getInstance().playMainMenuBGM();
-			currentScene = new movieCol.mainMenuMovie(); 
+			currentScene = new MainMenu_Movie(); 
 			addChild(currentScene); 
 			addEventListener(GameEvent.START_GAME, startGame);
 			addEventListener(SelectStageEvent.OPEN_SELECT_LEVEL, beforeOpenSelectLevel);
@@ -237,7 +235,7 @@ package
 			currentScene.mouseChildren = false;
 			currentScene.mouseEnabled = false;
 			
-			optScreen = new movieCol.optionScreen();
+			optScreen = new OptionScreen_Movie();
 			addChild(optScreen);
 			
 			addEventListener(GameEvent.RESUME_GAME, resumeGame);

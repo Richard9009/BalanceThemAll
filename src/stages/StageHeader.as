@@ -7,6 +7,8 @@ package stages
 	import flash.text.TextField;
 	import flash.text.TextFormat;
 	import gameEvents.GameEvent;
+	import gameEvents.PowerEvent;
+	import general.PowerType;
 	import general.ScoreCounter;
 	
 	/**
@@ -19,6 +21,7 @@ package stages
 		private var replayBtn:Sprite;
 		private var scoreText:TextField;
 		private var tFormat:TextFormat;
+		private var bButton:BalanceButton;
 		private var assetCol:AssetCollection = new AssetCollection();
 		
 		public function StageHeader() 
@@ -72,12 +75,17 @@ package stages
 		
 		private function createBalanceButton():void
 		{
-			var bButton:BalanceButton = new BalanceButton();
+			bButton = new BalanceButton();
 			bButton.width = 38;
 			bButton.height = 38;
 			bButton.x = StageConfig.STAGE_WIDTH / 2;
 			bButton.y = StageConfig.HEADER_HEIGHT / 2;
 			addChild(bButton);
+			
+			bButton.addEventListener(MouseEvent.MOUSE_UP, function balancePow(e:MouseEvent):void {
+				dispatchEvent(new PowerEvent(PowerEvent.USE_SPECIAL_POWER, PowerType.BALANCE));
+				bButton.used();
+			});
 		}
 		
 		private function createScoreCounter():void
@@ -96,6 +104,11 @@ package stages
 		{
 			scoreText.text = "Score: " + sCounter.getScore().toString();
 			scoreText.setTextFormat(tFormat);
+		}
+		
+		public function hideBalanceButton():void
+		{
+			bButton.visible = false;
 		}
 		
 	}

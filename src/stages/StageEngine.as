@@ -96,9 +96,6 @@ package stages
 			removeEventListener(BalanceLineEvent.START_DRAW_LINE, startDrawLine);
 			removeEventListener(BalanceLineEvent.STOP_DRAW_LINE, stopDrawLine);
 			removeEventListener(ObjectBreakEvent.GENERATE_PARTICLE, generateParticle);
-			
-			HandManager.reset();
-			destroyAllObjects();
 		}
 		
 		private function destroyAllObjects():void {
@@ -347,6 +344,13 @@ package stages
 			borderBody = Main.getWorld().CreateBody(bd);
 			borderBody.CreateFixture(fd);
 			borderList.push(borderBody);
+		}
+		
+		public function destroyMe():void
+		{
+			removeAllListeners();
+			HandManager.reset();
+			destroyAllObjects();
 		}
 		
 	}

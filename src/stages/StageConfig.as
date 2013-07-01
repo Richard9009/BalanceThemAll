@@ -11,6 +11,7 @@ package stages
 		public static const STAGE_WIDTH:Number = 800.0;
 		public static const STAGE_HEIGHT:Number = 600.0;
 		public static const BORDER_THICKNESS:Number = 10;
+		public static const FRAME_RATE:Number = 30;
 		
 		public function StageConfig() 
 		{
