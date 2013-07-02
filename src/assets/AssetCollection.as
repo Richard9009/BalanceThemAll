@@ -108,6 +108,9 @@ package assets
 		[Embed(source="AssetLibrary.swf", symbol="SnowPile_Asset")]
 		public var snowPileAsset:Class;
 		
+		[Embed(source="AssetLibrary.swf", symbol="FrozenFish_Asset")]
+		public var frozenFishAsset:Class;
+		
 		public function AssetCollection() 
 		{
 			 

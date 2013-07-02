@@ -170,12 +170,16 @@ package builders
 		protected function stage3(substageIndex:int):void
 		{
 			switch(substageIndex) {
-				
+				case 1: stage3_1(); break;
 			}
 			
 			others.push(specialBuilder.createSnowPile(380, 415));
 			others.push(specialBuilder.createIceBeam(380, 408));
-			
+		}
+		
+		private function stage3_1():void
+		{
+			liftables.push(itemBuilder.createFrozenFish(3));
 		}
 
 //================================================== GENERAL ===========================================================================

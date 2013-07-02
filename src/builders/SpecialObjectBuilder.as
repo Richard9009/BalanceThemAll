@@ -99,7 +99,7 @@ package builders
 			iceBeam.createDisplayBody(collection.iceBeamAsset);
 			iceBeam.setSize(600, 15, 0);
 			iceBeam.setPosition(xx, yy);
-			iceBeam.setFixtureProperties(0.5, 0, 0.1);
+			iceBeam.setFixtureProperties(0.5, 0, 0.01);
 			iceBeam.isBalanceBoard = true;
 			
 			return iceBeam;
