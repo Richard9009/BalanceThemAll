@@ -100,7 +100,7 @@ package general
 				for (var subStageCount:int = 0; subStageCount < subStageinEveryStage; subStageCount++) {
 					var stage:StageRecord = new StageRecord(PASS_CODE);
 					stage.stageID = (stageCount + 1).toString() + "_" + (subStageCount + 1).toString();
-					if (stageCount > 1) stage.stageStatus = LOCKED;
+					if (stageCount > 2) stage.stageStatus = LOCKED;
 					stageRecordList.push(stage);
 				}
 			}

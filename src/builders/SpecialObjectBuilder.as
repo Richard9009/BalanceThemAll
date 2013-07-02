@@ -80,6 +80,31 @@ package builders
 			return bookStack;
 		}
 		
+		public function createSnowPile(xx:Number, yy:Number):Foundation
+		{
+			var snowPile:Foundation = new Foundation();
+			snowPile.getBody().SetType(b2Body.b2_staticBody);
+			snowPile.createDisplayBody(collection.snowPileAsset);
+			snowPile.setSize(108, 60, 0);
+			snowPile.changeShape(new ShapeBuilder().snowPileShape(snowPile));
+			snowPile.setPosition(xx, yy);
+			snowPile.setFixtureProperties(0, 0, 1);
+			
+			return snowPile;
+		}
+		
+		public function createIceBeam(xx:Number, yy:Number):RigidObjectBase
+		{
+			var iceBeam:RigidObjectBase = new RigidObjectBase();
+			iceBeam.createDisplayBody(collection.iceBeamAsset);
+			iceBeam.setSize(600, 15, 0);
+			iceBeam.setPosition(xx, yy);
+			iceBeam.setFixtureProperties(0.5, 0, 0.1);
+			iceBeam.isBalanceBoard = true;
+			
+			return iceBeam;
+		}
+		
 		public function createGoldenStar(xx:Number, yy:Number):StarObject
 		{
 			return createStar(StarObject.GOLDEN, xx, yy);

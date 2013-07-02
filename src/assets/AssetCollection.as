@@ -99,6 +99,15 @@ package assets
 		[Embed(source="AssetLibrary.swf", symbol="BowlingBall_Asset")]
 		public var bowlingBallAsset:Class;
 		
+		[Embed(source = "AssetLibrary.swf", symbol = "IceBeam_Asset")]
+		public var iceBeamAsset:Class;
+		
+		[Embed(source = "AssetLibrary.swf", symbol = "Stage3BG_Asset")]
+		public var stage3BGAsset:Class;
+		
+		[Embed(source="AssetLibrary.swf", symbol="SnowPile_Asset")]
+		public var snowPileAsset:Class;
+		
 		public function AssetCollection() 
 		{
 			 

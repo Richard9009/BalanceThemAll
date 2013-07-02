@@ -165,6 +165,18 @@ package builders
 			stars.push(specialBuilder.createSilverStar(40, 280));
 			stars.push(specialBuilder.createGoldenStar(550, 390));
 		}
+		
+//=====================================================STAGE 3========================================================================
+		protected function stage3(substageIndex:int):void
+		{
+			switch(substageIndex) {
+				
+			}
+			
+			others.push(specialBuilder.createSnowPile(380, 415));
+			others.push(specialBuilder.createIceBeam(380, 408));
+			
+		}
 
 //================================================== GENERAL ===========================================================================
 		public function buildAndGetStage(stageIndex:int, substageIndex:int):Sprite
@@ -172,6 +184,7 @@ package builders
 			switch(stageIndex) {
 				case 1: stage1(substageIndex); break;
 				case 2: stage2(substageIndex); break;
+				case 3: stage3(substageIndex); break;
 			}
 			for each(var star:Sprite in stars) others.push(star);
 			
