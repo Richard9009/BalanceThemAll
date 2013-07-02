@@ -89,22 +89,25 @@ package builders
 				
 				new DialogHelper("stage1_2.askNeedHelp", [DialogCommand.promptYesNo, EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_STAGE))]),
 				
-				new DialogHelper("stage1_2.beginTutorial", [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_STAGE)), 
+				new DialogHelper("stage1_2.beginTutorial", [TutorialCommand.moveToItemBox,
+													EventCommand.waitingForEvent(TutorialEvent.POWER_USED)]),	
+				
+				new DialogHelper("stage1_2.explainBalanceLine", [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_STAGE)), 
 								EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_DOUBLE_CLICK)), DialogCommand.allowSkip]),
 				
-		/*3*/	new DialogHelper("stage1_2.dropInItemBox", [TutorialCommand.moveDialogBoxUp, 
-								EventCommand.waitingForEvent(TutorialEvent.GET_OUT_ITEMBOX)], [DialogPath.SKIP_ME]),		
-				
+		/*4*/	new DialogHelper("stage1_2.dropInItemBox", [TutorialCommand.moveDialogBoxUp, 
+								EventCommand.waitingForEvent(TutorialEvent.GET_OUT_ITEMBOX)], [DialogPath.SKIP_ME]),					
+								
 				new DialogHelper("stage1_2.explainFoundation", [TutorialCommand.hideNPC, TutorialCommand.moveToItemBox,
 								EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.CHECK_BALANCE_LINE)), 
 								EventCommand.promptSuccessFailed(TutorialEvent.ON_BALANCE_POSITION, TutorialEvent.BACK_TO_ITEMBOX)]),
 								
-				new DialogHelper(DialogHelper.EMPTY, [DialogCommand.jumpToDialog(3)], [DialogPath.FAILED]),				
+				new DialogHelper(DialogHelper.EMPTY, [DialogCommand.jumpToDialog(4)], [DialogPath.FAILED]),				
 								
-		/*6*/	new DialogHelper("stage1_2.readyToDrop", [EventCommand.promptSuccessFailed(TutorialEvent.BOOKS_RELEASED, TutorialEvent.OUT_FROM_BALANCE_ZONE), 
+		/*7*/	new DialogHelper("stage1_2.readyToDrop", [EventCommand.promptSuccessFailed(TutorialEvent.BOOKS_RELEASED, TutorialEvent.OUT_FROM_BALANCE_ZONE), 
 								EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_DOUBLE_CLICK))], [DialogPath.SUCCESS]),				
 								
-				new DialogHelper(DialogHelper.EMPTY, [DialogCommand.jumpToDialog(11)], [DialogPath.FAILED]),
+				new DialogHelper(DialogHelper.EMPTY, [DialogCommand.jumpToDialog(12)], [DialogPath.FAILED]),
 				
 				new DialogHelper("stage1_2.waitForIt", [EventCommand.promptSuccessFailed(TutorialEvent.TUTORIAL_CLEAR, TutorialEvent.TUTORIAL_FAILED)
 														,TutorialCommand.hideNPC], [DialogPath.SUCCESS]),
@@ -112,12 +115,14 @@ package builders
 				new DialogHelper("stage1_2.gotTheStars", [DialogCommand.allowSkip], [DialogPath.SUCCESS]),
 				new DialogHelper("stage1_2.didnotGetStars", [DialogCommand.allowSkip], [DialogPath.FAILED]),
 		
-		/*11*/	new DialogHelper("stage1_2.outOfZone", [EventCommand.promptSuccessFailed(TutorialEvent.ON_BALANCE_POSITION, TutorialEvent.BACK_TO_ITEMBOX), 
+		/*12*/	new DialogHelper("stage1_2.outOfZone", [EventCommand.promptSuccessFailed(TutorialEvent.ON_BALANCE_POSITION, TutorialEvent.BACK_TO_ITEMBOX), 
 														TutorialCommand.hideNPC, EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_DOUBLE_CLICK))], 
 														[DialogPath.SKIP_ME]),
 				
-				new DialogHelper(DialogHelper.EMPTY, [DialogCommand.jumpToDialog(6)], [DialogPath.SUCCESS]),
-				new DialogHelper(DialogHelper.EMPTY, [DialogCommand.jumpToDialog(3)], [DialogPath.FAILED]),
+				new DialogHelper(DialogHelper.EMPTY, [DialogCommand.jumpToDialog(7)], [DialogPath.SUCCESS]),
+				new DialogHelper(DialogHelper.EMPTY, [DialogCommand.jumpToDialog(4)], [DialogPath.FAILED]),
+				
+				new DialogHelper("stage1_2.limitedPower", [DialogCommand.allowSkip]),
 				new DialogHelper("stage1_2.skipTutorial", [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_STAGE)), 
 															DialogCommand.allowSkip, TutorialCommand.turnOffTutorial], [DialogPath.ANSWER_NO]),
 				new DialogHelper(DialogHelper.EMPTY, [EventCommand.stop], [DialogPath.ALL_PATHS])

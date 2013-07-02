@@ -8,6 +8,8 @@ package stages
 	import flash.text.TextFormat;
 	import gameEvents.GameEvent;
 	import gameEvents.PowerEvent;
+	import gameEvents.TutorialEvent;
+	import general.dialogs.DialogEventHandler;
 	import general.PowerType;
 	import general.ScoreCounter;
 	
@@ -84,6 +86,7 @@ package stages
 			
 			bButton.addEventListener(MouseEvent.MOUSE_UP, function balancePow(e:MouseEvent):void {
 				dispatchEvent(new PowerEvent(PowerEvent.USE_SPECIAL_POWER, PowerType.BALANCE));
+				DialogEventHandler.getInstance().dispatchEvent(new TutorialEvent(TutorialEvent.POWER_USED));
 				bButton.used();
 			});
 		}

@@ -22,6 +22,7 @@ package gameEvents
 	
 	//===============================================STAGE 1_2=========================================================================
 		public static const HANDS_ARE_FULL:String = "THERE ARE 2 ITEMS ON HANDS";
+		public static const POWER_USED:String = "POWER USED";
 		public static const ON_BALANCE_POSITION:String = "ON BALANCE POSITION";
 		public static const OUT_FROM_BALANCE_ZONE:String = "GOT OUT OF BALANCE ZONE";
 		public static const LOCK_STAGE:String = "LOCK STAGE";
