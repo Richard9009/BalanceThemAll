@@ -3,6 +3,7 @@ package gameObjects
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import gameEvents.PowerEvent;
+	import general.Power;
 	import stages.StageConfig;
 	
 	/**
@@ -11,16 +12,14 @@ package gameObjects
 	 */
 	public class BlueLayer extends Sprite 
 	{
-		private var duration:Number;
+		private var power:Power;
 		private var fadeSpd:Number;
 		private var minAlpha:Number = 0.5;
 		
-		private var counter:Number = 0;
-		
-		public function BlueLayer(miliseconds:Number = 10000) 
+		public function BlueLayer(pow:Power) 
 		{
 			mouseEnabled = false;
-			duration = miliseconds;
+			power = pow;
 			drawDisplay();
 			startFading();
 			
@@ -49,16 +48,15 @@ package gameObjects
 		
 		private function startFading():void
 		{
-			fadeSpd = (1 - minAlpha) / (duration / StageConfig.FRAME_RATE);
-			counter = 0;
+			fadeSpd = (1 - minAlpha) / (power.duration / StageConfig.FRAME_RATE);
+			power.start();
 			addEventListener(Event.ENTER_FRAME, fading);
 		}
 		
 		private function fading(e:Event):void 
 		{
 			if(alpha >= minAlpha) alpha -= fadeSpd;
-			counter++;
-			if (counter >= duration) {
+			if (!power.isRunning) {
 				dispatchEvent(new PowerEvent(PowerEvent.POWER_COMPLETE));
 				removeEventListener(Event.ENTER_FRAME, fading);
 				parent.removeChild(this);

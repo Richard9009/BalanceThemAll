@@ -7,7 +7,7 @@ package stages
 	import gameEvents.PowerEvent;
 	import gameObjects.BlueLayer;
 	import gameObjects.rigidObjects.DraggableObject;
-	import general.PowerType;
+	import general.Power;
 	import general.StageRecord;
 	/**
 	 * ...
@@ -41,9 +41,9 @@ package stages
 		
 		private function handlePower(e:PowerEvent):void 
 		{
-			switch(e.powerType) {
-				case PowerType.BALANCE: bLine.visible = true;
-										addChild(new BlueLayer(60000));
+			switch(e.power.type) {
+				case Power.BALANCE: bLine.visible = true;
+										addChild(new BlueLayer(e.power));
 										addEventListener(PowerEvent.POWER_COMPLETE, powerComplete_balance);
 										break;
 			}

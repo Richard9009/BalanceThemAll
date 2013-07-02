@@ -10,7 +10,7 @@ package stages
 	import gameEvents.PowerEvent;
 	import gameEvents.TutorialEvent;
 	import general.dialogs.DialogEventHandler;
-	import general.PowerType;
+	import general.Power;
 	import general.ScoreCounter;
 	
 	/**
@@ -85,7 +85,9 @@ package stages
 			addChild(bButton);
 			
 			bButton.addEventListener(MouseEvent.MOUSE_UP, function balancePow(e:MouseEvent):void {
-				dispatchEvent(new PowerEvent(PowerEvent.USE_SPECIAL_POWER, PowerType.BALANCE));
+				if (Power.getPower_balance().isRunning) return;
+				
+				dispatchEvent(new PowerEvent(PowerEvent.USE_SPECIAL_POWER, Power.getPower_balance()));
 				DialogEventHandler.getInstance().dispatchEvent(new TutorialEvent(TutorialEvent.POWER_USED));
 				bButton.used();
 			});
