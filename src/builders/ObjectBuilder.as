@@ -250,6 +250,43 @@ package builders
 			
 			return objArray;
 		}
+		
+		public function createFrozenTomato(howMany:int):Array
+		{
+			var objArray:Array = new Array();
+			var obj:NormalBoxObject;
+			for (var i:int = 0; i < howMany; i++)
+			{
+				obj = new NormalBoxObject(minStageLimit, maxStageLimit);
+				obj.createDisplayBody(collection.frozenTomatoAsset);
+				obj.setFixtureProperties(0.3, 0, 0.05);
+				obj.setSize(120 * scale, 100 * scale);
+				obj.setRandomPositionInsideItemBox();
+				obj.setSound(new soundCol.glassImpactSound());
+				objArray.push(obj);
+			}
+			
+			return objArray;
+		}
+		
+		public function createFragileIce(howMany:int):Array
+		{
+			var objArray:Array = new Array();
+			var obj:NormalBoxObject;
+			for (var i:int = 0; i < howMany; i++)
+			{
+				obj = new NormalBoxObject(minStageLimit, maxStageLimit, true);
+				obj.durability = 0.7;
+				obj.createDisplayBody(collection.fragileIceAsset);
+				obj.setFixtureProperties(0.3, 0, 0.05);
+				obj.setSize(150 * scale, 140 * scale);
+				obj.setRandomPositionInsideItemBox();
+				obj.setSound(new soundCol.glassImpactSound(), new soundCol.glassBreakingSound());
+				objArray.push(obj);
+			}
+			
+			return objArray;
+		}
 	}
 
 }

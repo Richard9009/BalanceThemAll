@@ -111,6 +111,12 @@ package assets
 		[Embed(source="AssetLibrary.swf", symbol="FrozenFish_Asset")]
 		public var frozenFishAsset:Class;
 		
+		[Embed(source="AssetLibrary.swf", symbol="FrozenTomato_Asset")]
+		public var frozenTomatoAsset:Class;
+		
+		[Embed(source="AssetLibrary.swf", symbol="FragileIce_Asset")]
+		public var fragileIceAsset:Class;
+		
 		public function AssetCollection() 
 		{
 			 

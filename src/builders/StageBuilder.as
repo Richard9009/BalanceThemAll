@@ -179,7 +179,9 @@ package builders
 		
 		private function stage3_1():void
 		{
-			liftables.push(itemBuilder.createFrozenFish(3));
+			liftables.push(itemBuilder.createFrozenFish(1));
+			liftables.push(itemBuilder.createFrozenTomato(1));
+			liftables.push(itemBuilder.createFragileIce(1));
 		}
 
 //================================================== GENERAL ===========================================================================
