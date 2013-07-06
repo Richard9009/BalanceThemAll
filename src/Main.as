@@ -217,7 +217,7 @@ package
 		
 		private function destroyCurrentLevel():void
 		{
-			StageEngine(currentScene).removeAllListeners();
+			StageEngine(currentScene).destroyMe();
 			destroyWorld();
 			changeScene(); 
 			MousePhysic.destroyStage();

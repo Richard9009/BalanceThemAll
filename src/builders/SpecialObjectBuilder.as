@@ -88,7 +88,7 @@ package builders
 			snowPile.setSize(108, 60, 0);
 			snowPile.changeShape(new ShapeBuilder().snowPileShape(snowPile));
 			snowPile.setPosition(xx, yy);
-			snowPile.setFixtureProperties(0, 0, 1);
+			snowPile.setFixtureProperties(0, 0, 10);
 			
 			return snowPile;
 		}
