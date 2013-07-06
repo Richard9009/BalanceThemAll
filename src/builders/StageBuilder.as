@@ -182,6 +182,7 @@ package builders
 			liftables.push(itemBuilder.createFrozenFish(1));
 			liftables.push(itemBuilder.createFrozenTomato(1));
 			liftables.push(itemBuilder.createFragileIce(1));
+			liftables.push(itemBuilder.createPenguin(2));
 		}
 
 //================================================== GENERAL ===========================================================================

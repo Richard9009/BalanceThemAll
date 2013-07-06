@@ -287,6 +287,25 @@ package builders
 			
 			return objArray;
 		}
+		
+		public function createPenguin(howMany:int):Array
+		{
+			var objArray:Array = new Array();
+			var obj:NormalBoxObject;
+			for (var i:int = 0; i < howMany; i++)
+			{
+				obj = new NormalBoxObject(minStageLimit, maxStageLimit);
+				obj.createDisplayBody(collection.penguinAsset);
+				obj.setFixtureProperties(0.5, 0, 5);
+				obj.setSize(144 * scale, 204 * scale);
+				obj.changeShape(shape.penguinShape(obj));
+				obj.setRandomPositionInsideItemBox();
+				obj.setSound(new soundCol.pillowImpactSound());
+				objArray.push(obj);
+			}
+			
+			return objArray;
+		}
 	}
 
 }

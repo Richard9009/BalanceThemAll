@@ -117,6 +117,9 @@ package assets
 		[Embed(source="AssetLibrary.swf", symbol="FragileIce_Asset")]
 		public var fragileIceAsset:Class;
 		
+		[Embed(source="AssetLibrary.swf", symbol="Penguin_Asset")]
+		public var penguinAsset:Class;
+		
 		public function AssetCollection() 
 		{
 			 
