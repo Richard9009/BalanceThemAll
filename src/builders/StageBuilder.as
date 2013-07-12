@@ -171,6 +171,8 @@ package builders
 		{
 			switch(substageIndex) {
 				case 1: stage3_1(); break;
+				case 2: stage3_2(); break;
+				case 3: stage3_3(); break;
 			}
 			
 			others.push(specialBuilder.createSnowPile(380, 415));
@@ -179,10 +181,34 @@ package builders
 		
 		private function stage3_1():void
 		{
-			liftables.push(itemBuilder.createFrozenFish(1));
-			liftables.push(itemBuilder.createFrozenTomato(1));
+			liftables.push(itemBuilder.createFrozenFish(2));
+			liftables.push(itemBuilder.createFrozenTomato(2));
 			liftables.push(itemBuilder.createFragileIce(1));
+			
+			stars.push(specialBuilder.createGoldenStar(120, 200));
+			stars.push(specialBuilder.createSilverStar(640, 280));
+			stars.push(specialBuilder.createBronzeStar(380, 312));
+		}
+		
+		private function stage3_2():void
+		{
+			liftables.push(itemBuilder.createFrozenFish(1));
 			liftables.push(itemBuilder.createPenguin(2));
+			liftables.push(itemBuilder.createFragileIce(1));
+			
+			stars.push(specialBuilder.createBronzeStar(325, 340));
+			stars.push(specialBuilder.createSilverStar(420, 233));
+			stars.push(specialBuilder.createGoldenStar(357, 149));
+		}
+		
+		private function stage3_3():void
+		{
+			liftables.push(itemBuilder.createFrozenFish(2));
+			liftables.push(itemBuilder.createPenguin(2));
+			
+			stars.push(specialBuilder.createGoldenStar(200, 200));
+			stars.push(specialBuilder.createSilverStar(536, 348));
+			stars.push(specialBuilder.createBronzeStar(662, 412));
 		}
 
 //================================================== GENERAL ===========================================================================

@@ -241,7 +241,7 @@ package builders
 			{
 				obj = new NormalBoxObject(minStageLimit, maxStageLimit);
 				obj.createDisplayBody(collection.frozenFishAsset);
-				obj.setFixtureProperties(0.5, 0, 0.05);
+				obj.setFixtureProperties(0.4, 0, 0.05);
 				obj.setSize(240 * scale, 75 * scale);
 				obj.setRandomPositionInsideItemBox();
 				obj.setSound(new soundCol.glassImpactSound());
@@ -296,7 +296,7 @@ package builders
 			{
 				obj = new NormalBoxObject(minStageLimit, maxStageLimit);
 				obj.createDisplayBody(collection.penguinAsset);
-				obj.setFixtureProperties(0.5, 0, 5);
+				obj.setFixtureProperties(0.8, 0, 10);
 				obj.setSize(144 * scale, 204 * scale);
 				obj.changeShape(shape.penguinShape(obj));
 				obj.setRandomPositionInsideItemBox();
