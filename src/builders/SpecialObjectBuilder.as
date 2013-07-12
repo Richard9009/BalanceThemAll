@@ -80,24 +80,24 @@ package builders
 			return bookStack;
 		}
 		
-		public function createSnowPile(xx:Number, yy:Number):Foundation
+		public function createSnowPile(xx:Number, yy:Number, tall:Boolean = false):Foundation
 		{
 			var snowPile:Foundation = new Foundation();
 			snowPile.getBody().SetType(b2Body.b2_staticBody);
 			snowPile.createDisplayBody(collection.snowPileAsset);
-			snowPile.setSize(108, 60, 0);
+			snowPile.setSize(108, tall ? 180 : 60, 0);
 			snowPile.changeShape(new ShapeBuilder().snowPileShape(snowPile));
 			snowPile.setPosition(xx, yy);
-			snowPile.setFixtureProperties(0, 0, 10);
+			snowPile.setFixtureProperties(0, 0, 100);
 			
 			return snowPile;
 		}
 		
-		public function createIceBeam(xx:Number, yy:Number):RigidObjectBase
+		public function createIceBeam(xx:Number, yy:Number, short:Boolean = false):RigidObjectBase
 		{
 			var iceBeam:RigidObjectBase = new RigidObjectBase();
 			iceBeam.createDisplayBody(collection.iceBeamAsset);
-			iceBeam.setSize(600, 15, 0);
+			iceBeam.setSize(short ? 400 : 600, 15, 0);
 			iceBeam.setPosition(xx, yy);
 			iceBeam.setFixtureProperties(0.5, 0, 0.01);
 			iceBeam.isBalanceBoard = true;

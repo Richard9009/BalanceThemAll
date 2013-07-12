@@ -169,14 +169,24 @@ package builders
 //=====================================================STAGE 3========================================================================
 		protected function stage3(substageIndex:int):void
 		{
+			var hardMode:Boolean = (substageIndex > 3);
+			
 			switch(substageIndex) {
 				case 1: stage3_1(); break;
 				case 2: stage3_2(); break;
 				case 3: stage3_3(); break;
+				case 4: stage3_4(); break;
+				case 5: stage3_5(); break;
 			}
-			
-			others.push(specialBuilder.createSnowPile(380, 415));
-			others.push(specialBuilder.createIceBeam(380, 408));
+			if (hardMode) {
+				others.push(specialBuilder.createSnowPile(250, 415));
+				others.push(specialBuilder.createIceBeam(250, 408, true));
+				others.push(specialBuilder.createSnowPile(550, 360, true));
+				others.push(specialBuilder.createIceBeam(550, 350, true));
+			} else {
+				others.push(specialBuilder.createSnowPile(380, 415));
+				others.push(specialBuilder.createIceBeam(380, 408));
+			}
 		}
 		
 		private function stage3_1():void
@@ -209,6 +219,28 @@ package builders
 			stars.push(specialBuilder.createGoldenStar(200, 200));
 			stars.push(specialBuilder.createSilverStar(536, 348));
 			stars.push(specialBuilder.createBronzeStar(662, 412));
+		}
+		
+		private function stage3_4():void
+		{
+			liftables.push(itemBuilder.createFrozenFish(2));
+			liftables.push(itemBuilder.createPenguin(1));
+			liftables.push(itemBuilder.createFrozenTomato(1));
+			
+			stars.push(specialBuilder.createGoldenStar(500, 350));
+			stars.push(specialBuilder.createSilverStar(163, 267));
+			stars.push(specialBuilder.createBronzeStar(670, 145));
+		}
+		
+		private function stage3_5():void
+		{
+			liftables.push(itemBuilder.createFrozenFish(1));
+			liftables.push(itemBuilder.createPenguin(1));
+			liftables.push(itemBuilder.createFragileIce(1));
+			
+			stars.push(specialBuilder.createGoldenStar(500, 275));
+			stars.push(specialBuilder.createSilverStar(258, 355));
+			stars.push(specialBuilder.createBronzeStar(340, 253));
 		}
 
 //================================================== GENERAL ===========================================================================
