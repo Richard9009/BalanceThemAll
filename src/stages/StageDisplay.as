@@ -52,9 +52,11 @@ package stages
 		protected function initiateStage(id:String):void
 		{
 			record = StageRecord.getStageRecordByID(id);
-			record.stageStarted();
-			sCounter.setScoreRecord(record.scoreRecord);
-			header.updateScore(sCounter);
+			if(record) {
+				record.stageStarted();
+				sCounter.setScoreRecord(record.scoreRecord);
+				header.updateScore(sCounter);
+			}
 		}
 		
 		public function createLevelBySubStageID(stageID:int, subStageIndex:int, hasTutorial:Boolean = false):void {

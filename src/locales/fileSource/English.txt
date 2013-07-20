@@ -46,3 +46,44 @@ stage1_5.meetAvia = However this is just the beginning<br />First, I want to mee
 stage1_5.moreStars = You can find more stars in her house<br />If she liked you, she might let you take it
 stage1_5.aviaPlace = This is where her house is<br />*Handing over a map*
 stage1_5.goodbye = I hope we could meet again, mate<br />Goodbye....
+
+====================================================================================================================================================================
+
+stage2_1.start = You must be the star collector who Gavin mentioned.<br />I'm Avia, Gavin's sister.
+stage2_1.second = You don't look so convincing<br />I guess we won't know until we tried it<br />Show me what you can do
+stage2_1.fail = Just as I thought, it must be too hard for you.<br />I'll give you another chance<br />Wanna try again?
+stage2_1.success = Not bad... You got a lot more to learn<br />But that will do for now
+
+_________________________________________________________________________________________________________________________________________
+
+stage2_2.start = I'm not sure if you can do this,<br />just try to keep the items balanced, OK?
+stage2_2.warning = By the way, whatever you do just don't break my glass vase<br />It's really expensive
+stage2_2.success = You did it, but don't get cocky yet<br />We just started
+stage2_2.fail = That was really bad! Shall we give it another try?
+
+_________________________________________________________________________________________________________________________________________
+
+stage2_3.start = The real challenge begins from here.<br />I would be impressed if you could clear this
+stage2_3.needClue = Do you want me to give you a clue?
+stage2_3.clue = I tell what...<br />It doesn't always have to be balanced.<br />Try to think outside the box from now on
+stage2_3.noClue = Alright, tough guy...<br />Good luck on your own
+stage2_3.success = It turns out that I'm not so easily impressed<br />We'll see what you can do for the next one
+stage2_3.fail = It wasn't so easy, was it? Feel free to try it again<br />So... Another try?
+
+_________________________________________________________________________________________________________________________________________
+
+stage2_4.start = This is my favorite one, and it's not going to be easy<br />You need to be smart here
+stage2_4.success = That's what I call Impressive!!<br />We really can't judge a book by its cover, huh?<br />You are really good!
+stage2_4.fail = Don't feel bad, maybe it's just too hard<br />All you need is another chance<br />Shall we?
+
+_________________________________________________________________________________________________________________________________________
+
+stage2_5.start = I never thought that you would made it this far.<br />This is the last one from me
+stage2_5.second = You surprised me a few times.<br />I expect something interesting this time
+stage2_5.success = You never let me down, star collector<br />I think I like you
+stage2_5.emmi = My sister Emmi is going to need your help<br />Now I'm sure I can trust her to you
+stage2_5.emmiLocation = You can find Emmi here<br />(Drawing something on the map)
+stage2_5.goodbye = Emmi is a sweet girl, be nice to here<br />So long, star collector
+stage2_5.fail = You will need a lot more than luck here<br />Want to try again?
+
+=========================================================================================================================================
