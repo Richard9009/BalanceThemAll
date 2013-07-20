@@ -21,14 +21,7 @@ package builders
 		public static function getDialogListByID(stageID:String):Array
 		{
 			if (instance == null) instance = new DialogBuilder(new SingletonEnforcer());
-			switch(stageID) {
-				case "1_1": return instance.dialogList1_1;
-				case "1_2": return instance.dialogList1_2;
-				case "1_3": return instance.dialogList1_3;
-				case "1_4": return instance.dialogList1_4;
-				case "1_5": return instance.dialogList1_5;
-				default: return new Array();
-			}
+			return instance["dialogList" + stageID];
 		}
 		
 // =======================================================================================================================================================================		

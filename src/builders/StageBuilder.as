@@ -28,7 +28,7 @@ package builders
 			othersContainer = new Sprite();
 			stars = new Array();
 			others = new Array();
-			liftables = new Array();
+			liftables = new Array(); 
 		}
 		
 //==============================================================STAGE 1============================================================
@@ -36,14 +36,6 @@ package builders
 		protected function stage1(subStageIndex:int):void
 		{
 			var hardMode:Boolean = subStageIndex > 4;
-			
-			switch(subStageIndex) {
-				case 1: stage1_1(); break;
-				case 2: stage1_2(); break;
-				case 3: stage1_3(); break;
-				case 4: stage1_4(); break;
-				case 5: stage1_5(); break;
-			}
 			
 			if (!hardMode) MusicManager.getInstance().playStage1FirstHalfBGM();
 			else MusicManager.getInstance().playStage1SecondHalfBGM(); 
@@ -101,14 +93,6 @@ package builders
 
 		protected function stage2(substageIndex:int):void
 		{
-			switch(substageIndex) {
-				case 1: stage2_1(); break;
-				case 2: stage2_2(); break;
-				case 3: stage2_3(); break;
-				case 4: stage2_4(); break;
-				case 5: stage2_5(); break;
-			}
-			
 			others.push(specialBuilder.createBookStack(380, 410));
 			others.push(specialBuilder.createBaseballBat(390, 365));
 			
@@ -171,13 +155,6 @@ package builders
 		{
 			var hardMode:Boolean = (substageIndex > 3);
 			
-			switch(substageIndex) {
-				case 1: stage3_1(); break;
-				case 2: stage3_2(); break;
-				case 3: stage3_3(); break;
-				case 4: stage3_4(); break;
-				case 5: stage3_5(); break;
-			}
 			if (hardMode) {
 				others.push(specialBuilder.createSnowPile(250, 415));
 				others.push(specialBuilder.createIceBeam(250, 408, true));
@@ -246,11 +223,10 @@ package builders
 //================================================== GENERAL ===========================================================================
 		public function buildAndGetStage(stageIndex:int, substageIndex:int):Sprite
 		{
-			switch(stageIndex) {
-				case 1: stage1(substageIndex); break;
-				case 2: stage2(substageIndex); break;
-				case 3: stage3(substageIndex); break;
-			}
+			var stageID:String = stageIndex.toString() + "_" + substageIndex.toString();
+			this["stage" + stageIndex.toString()](substageIndex);
+			this["stage" + stageID]();
+			
 			for each(var star:Sprite in stars) others.push(star);
 			
 			buildStage();
