@@ -120,6 +120,9 @@ package assets
 		[Embed(source="AssetLibrary.swf", symbol="Penguin_Asset")]
 		public var penguinAsset:Class;
 		
+		[Embed(source="AssetLibrary.swf", symbol="Emmi_Asset")]
+		public var emmiAsset:Class;
+		
 		public function AssetCollection() 
 		{
 			 

@@ -17,11 +17,23 @@ package stages.Tutorials
 		public static const ABOVE_ITEM_BOX:String = "above item box";
 		public static const ON_ITEM_BOX:String = "in the middle of item box";
 		public static var tutorialOn:Boolean = false;
+		
+		private static var characters:Array;
+		
+		private var stageNum:int;
 		public var npc:Sprite;
 		
 		public function Tutorial(stageID:String) 
 		{
 			super(DialogBuilder.getDialogListByID(stageID));
+			
+			stageNum = int(stageID.split("_")[0]);
+			
+			if (characters == null) {
+				characters = [	collection.gavinAsset, 
+								collection.aviaAsset, 
+								collection.emmiAsset];
+			}
 		}
 		
 		override protected function setDefaultCondition():void 
@@ -35,7 +47,7 @@ package stages.Tutorials
 			super.creationComplete(e);
 			
 			var scaleRatio:Number = 0.8;
-			npc = new collection.gavinAsset();
+			npc = new characters[stageNum - 1]();
 			npc.width *= scaleRatio;
 			npc.height *= scaleRatio;
 			npc.x = -width/2 + npc.width / 2 + 30;
