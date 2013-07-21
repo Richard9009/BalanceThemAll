@@ -173,7 +173,22 @@ package builders
 				new DialogHelper(DialogHelper.EMPTY, [EventCommand.stop])
 			];
 
+
+
+//=======================================================================================================================================
+//=======================================================================================================================================
+		
+		private var dialogList2_1:Array =
+			[
+				new DialogHelper("stage2_1.start", [DialogCommand.allowSkip, EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_STAGE))]),
+				new DialogHelper("stage2_1.second", [DialogCommand.allowSkip]),
+				new DialogHelper(DialogHelper.EMPTY, [TutorialCommand.hideAll, EventCommand.promptSuccessFailed(TutorialEvent.TUTORIAL_CLEAR,
+									TutorialEvent.TUTORIAL_FAILED), EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_STAGE))]),
+				new DialogHelper("stage2_1.fail", [DialogCommand.allowSkip, DialogCommand.promptYesNo], [DialogPath.FAILED]),
+				new DialogHelper(DialogHelper.EMPTY, [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.RESTART_TUTORIAL))]),
+				new DialogHelper("stage2_1.success", [DialogCommand.allowSkip], [DialogPath.SUCCESS]),
+				new DialogHelper(DialogHelper.EMPTY, [EventCommand.stop], [DialogPath.ALL_PATHS])
+			]
 	}
 }
-
 class SingletonEnforcer { }

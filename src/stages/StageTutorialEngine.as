@@ -38,9 +38,21 @@ package stages
 			tutorialHandler.addEventListener(TutorialEvent.RESTART_TUTORIAL, restartTutorial);
 		}
 		
+		override public function destroyMe():void 
+		{
+			super.destroyMe();
+			
+			tutorialHandler.removeEventListener(TutorialEvent.DRAW_STAR_LINE, drawStarLine);
+			tutorialHandler.removeEventListener(TutorialEvent.LOCK_STAGE, lockStage);
+			tutorialHandler.removeEventListener(TutorialEvent.UNLOCK_STAGE, unlockStage);
+			tutorialHandler.removeEventListener(TutorialEvent.LOCK_DOUBLE_CLICK, lockDoubleClick);
+			tutorialHandler.removeEventListener(TutorialEvent.UNLOCK_DOUBLE_CLICK, unlockDoubleClick);
+			tutorialHandler.removeEventListener(TutorialEvent.RESTART_TUTORIAL, restartTutorial);
+		}
+		
 		private function restartTutorial(e:TutorialEvent):void 
 		{
-			parent.dispatchEvent(new GameEvent(GameEvent.RESTART_LEVEL)); 
+			dispatchEvent(new GameEvent(GameEvent.RESTART_LEVEL)); 
 		}
 		
 		private function unlockDoubleClick(e:TutorialEvent):void 

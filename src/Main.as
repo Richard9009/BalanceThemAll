@@ -159,7 +159,7 @@ package
 			var idArray:Array = stageID.split("_");
 			var stg:int = int(idArray[0]);
 			var subStg:int = int(idArray[1]);
-			var hasTutorial:Boolean = (stg < 2);
+			var hasTutorial:Boolean = (stg < 3);
 			
 			createWorld();
 			currentScene = new StageDisplay(stg);
@@ -203,7 +203,7 @@ package
 		
 		private function replayStage(e:Event):void 
 		{
-			destroyCurrentLevel();
+			changeScene();
 			var thisStageID:String = StageRecord.currentStage.toString() + "_" + StageRecord.currentSubStage.toString();
 			createLevelByID(thisStageID);
 		}

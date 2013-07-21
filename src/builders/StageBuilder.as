@@ -82,7 +82,7 @@ package builders
 		
 		private function stage1_5():void {
 			liftables.push(itemBuilder.createPhoto(3));
-			liftables.push(itemBuilder.createPillow(1));
+			liftables.push(itemBuilder.createEncyclopedia(1));
 			liftables.push(itemBuilder.createShoes(1));
 			
 			stars.push(specialBuilder.createGoldenStar(150, 170));
