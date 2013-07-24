@@ -215,8 +215,33 @@ package builders
 			new DialogHelper(DialogHelper.EMPTY, [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.RESTART_TUTORIAL))]),
 			new DialogHelper("stage2_3.success", [DialogCommand.allowSkip], [DialogPath.SUCCESS]),
 			new DialogHelper(DialogHelper.EMPTY, [EventCommand.stop], [DialogPath.ALL_PATHS])
-		]
-				
+		];
+		
+		private var dialogList2_4:Array =
+		[
+			new DialogHelper("stage2_4.start", [DialogCommand.allowSkip, EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_STAGE))]),
+			new DialogHelper(DialogHelper.EMPTY, [TutorialCommand.hideAll, EventCommand.promptSuccessFailed(TutorialEvent.TUTORIAL_CLEAR,
+								TutorialEvent.TUTORIAL_FAILED), EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_STAGE))]),
+			new DialogHelper("stage2_4.fail", [DialogCommand.promptYesNo], [DialogPath.FAILED]),
+			new DialogHelper(DialogHelper.EMPTY, [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.RESTART_TUTORIAL))]),
+			new DialogHelper("stage2_4.success", [DialogCommand.allowSkip], [DialogPath.SUCCESS]),
+			new DialogHelper(DialogHelper.EMPTY, [EventCommand.stop], [DialogPath.ALL_PATHS])
+		];
+		
+		private var dialogList2_5:Array =
+		[
+			new DialogHelper("stage2_5.start", [DialogCommand.allowSkip, EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_STAGE))]),
+			new DialogHelper("stage2_5.second", [DialogCommand.allowSkip]),
+			new DialogHelper(DialogHelper.EMPTY, [TutorialCommand.hideAll, EventCommand.promptSuccessFailed(TutorialEvent.TUTORIAL_CLEAR,
+								TutorialEvent.TUTORIAL_FAILED), EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_STAGE))]),
+			new DialogHelper("stage2_5.fail", [DialogCommand.promptYesNo], [DialogPath.FAILED]),
+			new DialogHelper(DialogHelper.EMPTY, [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.RESTART_TUTORIAL))]),
+			new DialogHelper("stage2_5.success", [DialogCommand.allowSkip, DialogCommand.changePath(DialogPath.SUCCESS)], [DialogPath.SUCCESS]),
+			new DialogHelper("stage2_5.emmi", [DialogCommand.allowSkip], [DialogPath.SUCCESS]),
+			new DialogHelper("stage2_5.emmiLocation", [DialogCommand.allowSkip], [DialogPath.SUCCESS]),
+			new DialogHelper("stage2_5.goodbye", [DialogCommand.allowSkip], [DialogPath.SUCCESS]),
+			new DialogHelper(DialogHelper.EMPTY, [EventCommand.stop], [DialogPath.ALL_PATHS])
+		];
 	}
 }
 class SingletonEnforcer { }
