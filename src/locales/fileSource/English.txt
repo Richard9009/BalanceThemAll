@@ -65,7 +65,7 @@ ________________________________________________________________________________
 
 stage2_3.start = The real challenge begins from here.<br />I would be impressed if you could clear this
 stage2_3.needClue = Do you want me to give you a clue?
-stage2_3.clue = I tell what...<br />It doesn't always have to be balanced.<br />Try to think outside the box from now on
+stage2_3.clue = I tell you what...<br />It doesn't always have to be balanced.<br />Try to think outside the box from now on
 stage2_3.noClue = Alright, tough guy...<br />Good luck on your own
 stage2_3.success = It turns out that I'm not so easily impressed<br />We'll see what you can do for the next one
 stage2_3.fail = It wasn't so easy, was it? Feel free to try it again<br />So... Another try?

@@ -159,7 +159,7 @@ package stages
 			FlashConnect.trace("level clear");
 			sCounter.sumUpScore();
 			record.stageCleared();
-			parent.dispatchEvent(new GameEvent(GameEvent.STAGE_CLEAR));
+			dispatchEvent(new GameEvent(GameEvent.STAGE_CLEAR));
 		}
 		
 		private function countBonusPoints():void

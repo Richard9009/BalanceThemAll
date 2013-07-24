@@ -149,12 +149,12 @@ package stages
 				tutorialHandler.dispatchEvent(new TutorialEvent(TutorialEvent.TUTORIAL_FAILED));
 			}
 		}
-		
+	
 		override protected function levelClear():void 
 		{
 			if (Tutorial.tutorialOn) {
 				tutorialHandler.addEventListener(DialogEvent.CLOSE_DIALOG, 
-					function closeTutorial(e:DialogEvent):void {
+					function closeTutorial(e:Event):void {
 						Tutorial.tutorialOn = false;
 						tutorialHandler.removeEventListener(e.type, closeTutorial);
 						levelClear();
@@ -162,6 +162,8 @@ package stages
 				);
 			}
 			else super.levelClear();
+			
+			
 		}
 		
 		override protected function grabAnObject(e:GrabObjectEvent):void 

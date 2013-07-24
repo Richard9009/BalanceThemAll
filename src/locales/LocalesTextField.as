@@ -37,7 +37,6 @@ package locales
 		
 		private function updateLocale(e:LocalesEvent = null):void {
 			htmlText = LocalesManager.getInstance().getText(textCode);
-			FlashConnect.trace(htmlText);
 			this.setTextFormat(_textFormat);
 		}
 		
