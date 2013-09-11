@@ -87,3 +87,6 @@ stage2_5.goodbye = Emmi is a sweet girl, be nice to here<br />So long, star coll
 stage2_5.fail = You will need a lot more than luck here<br />Want to try again?
 
 =========================================================================================================================================
+
+stage3_1.start = Umm... Avia told me about you, mister star collector<br />Thank you for helping my sister
+stage3_1.second = 

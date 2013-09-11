@@ -25,9 +25,9 @@ package gameObjects.rigidObjects
 		private var collection:AssetCollection = new AssetCollection();
 		private var impactSound:PhysicSound = new PhysicSound();
 		
-		public function NormalRoundObject(minimumLimit:b2Vec2=null, maximumLimit:b2Vec2=null) 
+		public function NormalRoundObject(objName:String = "No Name", minimumLimit:b2Vec2=null, maximumLimit:b2Vec2=null) 
 		{
-			super(minimumLimit, maximumLimit);
+			super(objName, minimumLimit, maximumLimit);
 			
 			rigidBody.SetLinearDamping(1);
 		}

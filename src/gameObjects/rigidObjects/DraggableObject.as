@@ -13,6 +13,7 @@ package gameObjects.rigidObjects
 	import gameObjects.HandManager;
 	import general.collisions.CollisionGenerator;
 	import general.MousePhysic;
+	import general.ObjectData;
 	import org.flashdevelop.utils.FlashConnect;
 	import stages.StageConfig;
 	import stages.Tutorials.Tutorial;
@@ -39,13 +40,16 @@ package gameObjects.rigidObjects
 		private var stopEvt:GrabObjectEvent;
 		
 		private var hand:HandManager;
+		protected var objectName:String;
 		
+		public var objectData:ObjectData;
 		public var handPosition:String = "bottom"; //bottom or side
 					
-		public function DraggableObject(minimumLimit:b2Vec2 = null, maximumLimit:b2Vec2 = null) 
+		public function DraggableObject(objName:String, minimumLimit:b2Vec2 = null, maximumLimit:b2Vec2 = null) 
 		{
 			super();
 			
+			objectName = objName;
 			minLimit = minimumLimit;
 			maxLimit = maximumLimit;
 			
@@ -338,6 +342,11 @@ package gameObjects.rigidObjects
 			
 			return onBoard;
 			
+		}
+		
+		public function writeObjectData():void
+		{
+			objectData = new ObjectData(objectName, rigidBody.GetFixtureList());
 		}
 		
 		public function isBlocked():Boolean { return redLayer.visible; }

@@ -14,6 +14,7 @@ package gameObjects.rigidObjects
 	import flash.events.Event;
 	import flash.media.Sound;
 	import gameObjects.IAudibleObject;
+	import general.ObjectData;
 	import general.PhysicSound;
 	import stages.StageConfig;
 
@@ -33,11 +34,11 @@ package gameObjects.rigidObjects
 		private var willBreak:Boolean = false;
 		private var impactSound:PhysicSound = new PhysicSound();
 		
-		public function NormalBoxObject(minimumLimit:b2Vec2 = null, maximumLimit:b2Vec2 = null, breakable:Boolean = false) 
+		public function NormalBoxObject(objName:String = "No Name", minimumLimit:b2Vec2 = null, maximumLimit:b2Vec2 = null, breakable:Boolean = false) 
 		{
-			super(minimumLimit, maximumLimit);
+			super(objName, minimumLimit, maximumLimit);
 			willBreak = breakable; 
-			
+
 			addEventListener(ObjectBreakEvent.OBJECT_BREAK, objectBreak);
 		}
 		
@@ -79,6 +80,11 @@ package gameObjects.rigidObjects
 		{
 			super.destroyMe();
 			removeEventListener(ObjectBreakEvent.OBJECT_BREAK, objectBreak);
+		}
+		
+		override public function writeObjectData():void 
+		{
+			objectData = new ObjectData(objectName, rigidBody.GetFixtureList(), willBreak);
 		}
 	}
 }

@@ -6,6 +6,7 @@ package stages
 	import flash.display.Sprite;
 	import gameEvents.PowerEvent;
 	import gameObjects.BlueLayer;
+	import gameObjects.ItemPanel;
 	import gameObjects.rigidObjects.DraggableObject;
 	import general.Power;
 	import general.StageRecord;
@@ -29,6 +30,11 @@ package stages
 			this.addChildAt(assetData,0);
 			
 			addEventListener(PowerEvent.USE_SPECIAL_POWER, handlePower);
+			
+			var iPanel:ItemPanel = new ItemPanel();
+			addChild(iPanel);
+			iPanel.x = StageConfig.STAGE_WIDTH - 15 - iPanel.panelWidth/2;
+			iPanel.y = StageConfig.HEADER_HEIGHT + 15 + iPanel.panelHeight/2;
 			
 			super();
 		}

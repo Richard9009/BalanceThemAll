@@ -123,6 +123,9 @@ package assets
 		[Embed(source="AssetLibrary.swf", symbol="Emmi_Asset")]
 		public var emmiAsset:Class;
 		
+		[Embed(source="AssetLibrary.swf", symbol="ItemPanel_Asset")]
+		public var itemPanelAsset:Class;
+		
 		public function AssetCollection() 
 		{
 			 
