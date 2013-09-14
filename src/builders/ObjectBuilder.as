@@ -44,6 +44,7 @@ package builders
 				obj.setRandomPositionInsideItemBox();
 				obj.setSound(new soundCol.ballImpactSound(), null, new soundCol.ballRollingSound());
 				objArray.push(obj);
+				obj.writeObjectData();
 			}
 			
 			return objArray;
@@ -80,6 +81,7 @@ package builders
 				obj.setRandomPositionInsideItemBox();
 				obj.setSound(new soundCol.heavyImpactSound());
 				objArray.push(obj);
+				obj.writeObjectData();
 			}
 			
 			return objArray;
@@ -118,6 +120,7 @@ package builders
 				obj.setRandomPositionInsideItemBox();
 				obj.setSound(new soundCol.glassImpactSound(), new soundCol.glassBreakingSound());
 				objArray.push(obj);
+				obj.writeObjectData();
 			}
 			
 			return objArray;
@@ -136,6 +139,7 @@ package builders
 				obj.setRandomPositionInsideItemBox();
 				obj.setSound(new soundCol.glassImpactSound());
 				objArray.push(obj);
+				obj.writeObjectData();
 			}
 			
 			return objArray;
@@ -154,6 +158,7 @@ package builders
 				obj.setRandomPositionInsideItemBox();
 				obj.setSound(new soundCol.woodImpactSound());
 				objArray.push(obj);
+				obj.writeObjectData();
 			}
 			
 			return objArray;
@@ -172,6 +177,7 @@ package builders
 				obj.setRandomPositionInsideItemBox();
 				obj.setSound(new soundCol.bookImpactSound());
 				objArray.push(obj);
+				obj.writeObjectData();
 			}
 			
 			return objArray;
@@ -190,7 +196,7 @@ package builders
 				obj.setRandomPositionInsideItemBox();
 				obj.setSound(new soundCol.bookImpactSound());
 				objArray.push(obj);
-				trace(obj.getBody().GetMass());
+				obj.writeObjectData();
 			}
 			
 			return objArray;
@@ -210,6 +216,7 @@ package builders
 				obj.setRandomPositionInsideItemBox();
 				obj.setSound(new soundCol.pillowImpactSound());
 				objArray.push(obj);
+				obj.writeObjectData();
 			}
 			
 			return objArray;
@@ -229,6 +236,7 @@ package builders
 				obj.setRandomPositionInsideItemBox();
 				obj.setSound(new soundCol.heavyImpactSound());
 				objArray.push(obj);
+				obj.writeObjectData();
 			}
 			
 			return objArray;
@@ -247,6 +255,7 @@ package builders
 				obj.setRandomPositionInsideItemBox();
 				obj.setSound(new soundCol.glassImpactSound());
 				objArray.push(obj);
+				obj.writeObjectData();
 			}
 			
 			return objArray;
@@ -265,6 +274,7 @@ package builders
 				obj.setRandomPositionInsideItemBox();
 				obj.setSound(new soundCol.glassImpactSound());
 				objArray.push(obj);
+				obj.writeObjectData();
 			}
 			
 			return objArray;
@@ -284,6 +294,7 @@ package builders
 				obj.setRandomPositionInsideItemBox();
 				obj.setSound(new soundCol.glassImpactSound(), new soundCol.glassBreakingSound());
 				objArray.push(obj);
+				obj.writeObjectData();
 			}
 			
 			return objArray;
@@ -303,6 +314,7 @@ package builders
 				obj.setRandomPositionInsideItemBox();
 				obj.setSound(new soundCol.pillowImpactSound());
 				objArray.push(obj);
+				obj.writeObjectData();
 			}
 			
 			return objArray;

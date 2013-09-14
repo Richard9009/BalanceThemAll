@@ -271,20 +271,26 @@ package stages
 			}
 		}
 		
-		protected function grabAnObject(e:GrabObjectEvent):void
+		protected function grabAnObject(e:GrabObjectEvent):String
 		{
 			objectsOnHand.push(e.object);
+			
+			var whatHand:String;
 			
 			if (rHandIsEmpty) {
 				rHandIsEmpty = false;
 				rHand.startHoldObject(e.object.GetUserData());
+				whatHand = "right";
 			}
 			else {
 				lHand.startHoldObject(e.object.GetUserData());
+				whatHand = "left";
 			}
 			
 			if (objectsOnHand.length == 2) 
 				dispatchEvent(new BalanceLineEvent(BalanceLineEvent.START_DRAW_LINE));
+				
+			return whatHand;
 		}
 		
 		public function getStageRecord():StageRecord

@@ -4,6 +4,7 @@ package stages
 	import Box2D.Common.Math.b2Vec2;
 	import builders.StageBuilder;
 	import flash.display.Sprite;
+	import gameEvents.GrabObjectEvent;
 	import gameEvents.PowerEvent;
 	import gameObjects.BlueLayer;
 	import gameObjects.ItemPanel;
@@ -19,6 +20,9 @@ package stages
 		private var collection:AssetCollection;
 		private var assetList:Array;;
 		
+		private var rightIP:ItemPanel;
+		private var leftIP:ItemPanel;
+		
 		public function StageDisplay(stageID:int) 
 		{	
 			collection = new AssetCollection();
@@ -30,11 +34,6 @@ package stages
 			this.addChildAt(assetData,0);
 			
 			addEventListener(PowerEvent.USE_SPECIAL_POWER, handlePower);
-			
-			var iPanel:ItemPanel = new ItemPanel();
-			addChild(iPanel);
-			iPanel.x = StageConfig.STAGE_WIDTH - 15 - iPanel.panelWidth/2;
-			iPanel.y = StageConfig.HEADER_HEIGHT + 15 + iPanel.panelHeight/2;
 			
 			super();
 		}
@@ -85,6 +84,31 @@ package stages
 			for each(var item:DraggableObject in list) {
 				record.registerItem(item);
 			}
+		}
+		
+		override protected function grabAnObject(e:GrabObjectEvent):String 
+		{
+			var whatHand:String = super.grabAnObject(e);
+			var iPanel:ItemPanel;
+			var grabbedObject:DraggableObject = e.object.GetUserData() as DraggableObject;
+			
+			if (whatHand == "right") {
+				rightIP = new ItemPanel();
+				rightIP.x = StageConfig.STAGE_WIDTH - 15 - rightIP.panelWidth/2;
+				rightIP.y = StageConfig.HEADER_HEIGHT + 15 + rightIP.panelHeight / 2;
+				iPanel = rightIP;
+			} else {
+				leftIP = new ItemPanel();
+				leftIP.x = leftIP.panelWidth / 2 + 15;
+				leftIP.y = StageConfig.HEADER_HEIGHT + 15 + rightIP.panelHeight / 2;
+				iPanel = leftIP;
+			}
+			
+			iPanel.displayData(grabbedObject.objectData);
+			addChild(iPanel);
+			
+			
+			return whatHand;
 		}
 		
 	}

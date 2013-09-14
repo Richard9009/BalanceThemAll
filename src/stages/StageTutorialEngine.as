@@ -166,10 +166,11 @@ package stages
 			
 		}
 		
-		override protected function grabAnObject(e:GrabObjectEvent):void 
+		override protected function grabAnObject(e:GrabObjectEvent):String
 		{
-			super.grabAnObject(e);
+			var whatHand:String = super.grabAnObject(e);
 			if (objectsOnHand.length == 2) delayAction(1000, tutorial_HandFull);
+			return whatHand;
 		}
 		
 		private function tutorial_HandFull():void {

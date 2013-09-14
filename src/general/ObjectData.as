@@ -9,6 +9,7 @@ package general
 	{
 		private static const SLIPPERY:String = "Slippery";
 		private static const BOUNCY:String = "Bouncy";
+		private static const STICKY:String = "Sticky";
 		private static const FRAGILE:String = "Fragile";
 		private static const WEIGHT_LIST:Array = ["Very Light", "Light", "Normal", "Heavy", "Very Heavy"];
 		
@@ -20,6 +21,7 @@ package general
 		private var weight_category_divider:Number = 0.5;
 		private var slippery_threshold:Number = 0.3;
 		private var bouncy_threshold:Number = 0.5;
+		private var sticky_threshold:Number = 0.8;
 		
 		public function ObjectData(objName:String, fixture:b2Fixture, breakable:Boolean = false) 
 		{
@@ -31,7 +33,8 @@ package general
 			
 			_infoList = new Array();
 			if (fixture.GetFriction() < slippery_threshold) _infoList.push(SLIPPERY);
-			if (fixture.GetRestitution() < bouncy_threshold) _infoList.push(BOUNCY);
+			if (fixture.GetFriction() > sticky_threshold) _infoList.push(STICKY);
+			if (fixture.GetRestitution() > bouncy_threshold) _infoList.push(BOUNCY);
 			if (breakable) _infoList.push(FRAGILE);
 		}
 		

@@ -5,6 +5,7 @@ package gameObjects
 	import flash.display.Sprite;
 	import flash.text.TextField;
 	import flash.text.TextFormat;
+	import general.ObjectData;
 	import locales.LocalesTextField;
 	
 	/**
@@ -34,15 +35,12 @@ package gameObjects
 		
 		public function ItemPanel()
 		{
-			psuedoData();
 			tFormat = new TextFormat("Arial", TEXT_SIZE, 0x000000, false);
 			
 			panel = new collection.itemPanelAsset();
 			panel.width = 180;
 			panel.height = 100;
 			addChild(panel);
-			
-			printData();
 		}
 		
 		private function printData():void
@@ -69,8 +67,6 @@ package gameObjects
 			infoTxt.width = panel.width;
 			infoTxt.setTextFormat(tFormat);
 			addChild(infoTxt);
-			
-			arrangeData();
 		}
 		
 		private function arrangeData():void 
@@ -85,11 +81,18 @@ package gameObjects
 			infoTxt.y = weightTxt.y + GAP;
 		}
 		
-		private function psuedoData():void
+		private function writeData(data:ObjectData):void
 		{
-			itemName = "Glass Vase";
-			weight = "Very Light";
-			infoList = ["Slippery", "Fragile"];
+			itemName = data.name;
+			weight = data.weight_category;
+			infoList = data.infoList;
+		}
+		
+		public function displayData(data:ObjectData):void
+		{
+			writeData(data);
+			printData();
+			arrangeData();
 		}
 		
 		public function get panelWidth():Number { return panel.width; }
