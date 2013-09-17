@@ -336,7 +336,7 @@ package gameObjects.rigidObjects
 			if (objectBelow == this) return false;
 			var onBoard:Boolean = objectBelow.isBalanceBoard;
 			
-			if (objectBelow is DraggableObject) {			
+			if (!onBoard && objectBelow is DraggableObject) {			
 				onBoard = DraggableObject(objectBelow).isOnBalanceBoard();
 			}
 			

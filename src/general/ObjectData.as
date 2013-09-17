@@ -11,7 +11,7 @@ package general
 		private static const BOUNCY:String = "Bouncy";
 		private static const STICKY:String = "Sticky";
 		private static const FRAGILE:String = "Fragile";
-		private static const WEIGHT_LIST:Array = ["Very Light", "Light", "Normal", "Heavy", "Very Heavy"];
+		private static const WEIGHT_LIST:Array = ["Very Light", "Light", "Normal", "Heavy", "Very Heavy", "Heaviest"];
 		
 		
 		private var _name:String;

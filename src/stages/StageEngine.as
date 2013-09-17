@@ -234,14 +234,18 @@ package stages
 			if(showBalanceLine) bLine.startDrawLine(objectsOnHand[0], objectsOnHand[1]);
 		}
 		
-		private function dropAnObject(e:GrabObjectEvent):void 
+		protected function dropAnObject(e:GrabObjectEvent):String
 		{
+			var whatHand:String;
+			
 			if (rHand.isHoldingThisObject(e.object.GetUserData())) {
 				rHand.stopHoldObject();
 				rHandIsEmpty = true;
+				whatHand = "right";
 			}
 			else {
 				lHand.stopHoldObject();
+				whatHand = "left";
 			}
 			
 			for (var i:int = 0; i < objectsOnHand.length; i++) 
@@ -250,9 +254,11 @@ package stages
 					objectsOnHand.splice(i, 1);
 					if (objectsOnHand.length < 2) 
 						dispatchEvent(new BalanceLineEvent(BalanceLineEvent.STOP_DRAW_LINE));
-					return;
+					break;
 				}
 			}
+			
+			return whatHand;
 		}
 		
 		private function objectRelocated(e:GrabObjectEvent):void 

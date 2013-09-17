@@ -101,6 +101,7 @@ package builders
 				obj.setRandomPositionInsideItemBox();
 				obj.setSound(new soundCol.mediumImpactSound());
 				objArray.push(obj);
+				obj.writeObjectData();
 			}
 			
 			return objArray;
@@ -172,7 +173,7 @@ package builders
 			{
 				obj = new NormalBoxObject("Book", minStageLimit, maxStageLimit);
 				obj.createDisplayBody(collection.blueBookAsset);
-				obj.setFixtureProperties(0.5, 0.1, 0.2);
+				obj.setFixtureProperties(0.5, 0.1, 0.5);
 				obj.setSize(100 * scale, 40 * scale);
 				obj.setRandomPositionInsideItemBox();
 				obj.setSound(new soundCol.bookImpactSound());

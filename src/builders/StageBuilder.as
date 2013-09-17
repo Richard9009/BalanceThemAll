@@ -71,9 +71,8 @@ package builders
 		}
 		
 		private function stage1_4():void {
-			liftables.push(itemBuilder.createPillow(1));
 			liftables.push(itemBuilder.createBlueBook(1));
-			liftables.push(itemBuilder.createShoes(1));
+			liftables.push(itemBuilder.createShoes(2));
 			liftables.push(itemBuilder.createEncyclopedia(1));
 			
 			stars.push(specialBuilder.createGoldenStar(150, 250));
