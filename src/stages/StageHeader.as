@@ -82,7 +82,7 @@ package stages
 			bButton.height = 38;
 			bButton.x = StageConfig.STAGE_WIDTH / 2;
 			bButton.y = StageConfig.HEADER_HEIGHT / 2;
-			addChild(bButton);
+			//addChild(bButton); UNCOMMENT TO SHOW THE BUTTON!!!!!!!!!!!!!!!!!!
 			
 			bButton.addEventListener(MouseEvent.MOUSE_UP, function balancePow(e:MouseEvent):void {
 				if (Power.getPower_balance().isRunning) return;

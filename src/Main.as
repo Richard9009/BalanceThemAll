@@ -164,7 +164,7 @@ package
 			createWorld();
 			currentScene = new StageDisplay(stg);
 			addChild(currentScene);
-			(currentScene as StageDisplay).createLevelBySubStageID(stg, subStg, false);
+			(currentScene as StageDisplay).createLevelBySubStageID(stg, subStg, hasTutorial);
 			
 			MousePhysic.setStage(currentScene);
 			this.addEventListener(GameEvent.PAUSE_GAME, displayOptionScreen);

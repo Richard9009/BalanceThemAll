@@ -14,17 +14,13 @@ stage1_1.didnotGetStars = Oh too bad, you missed the star. Never mind, better lu
 __________________________________________________________________________________________________________________________________________________________________
 
 stage1_2.askNeedHelp = We have something new here, the balance line.<br />Do you want me to explain it to you?
-stage1_2.explainBalanceLine = Pay attention to the red and yellow line<br />It represents the weight difference of the objects
-stage1_2.beginTutorial = Alright, Do you see the golden round button above there?<br />Clicking it will let you see the weight of the objects 
+stage1_2.explainHand = You can only carry 2 items at the same time<br />One on your right(R) and one on your left(L) hand
+stage1_2.explainItemPanel = The details of the items you are carrying will be shown<br />on the top corners. 
+stage1_2.explainWeight = The rule of balance is simple<br />Put lighter object closer to the edge
+stage1_2.getStars = Try to balance your items here<br />And get the stars
 stage1_2.skipTutorial = Very well, good luck. I'll see you later
-stage1_2.explainFoundation = If the red part of the line lies somewhere above the support,<br />they would be in good balance for sure.<br />Alright, try to balance the books
-stage1_2.dropInItemBox = No, do not drop your item back inside there. Pick it up
-stage1_2.outOfZone = It's out of balance zone, try to get it back in there.
-stage1_2.readyToDrop = Good, now you can let the items go, use double click
-stage1_2.waitForIt = Wait until the books stop moving
 stage1_2.didnotGetStars = Oh too bad, you missed the star. Never mind, better luck next time.
 stage1_2.gotTheStars = That's it! You got all the stars!!!
-stage1_2.limitedPower = For now you can only use this twice in every stage<br />Use it wisely
 __________________________________________________________________________________________________________________________________________________________________
 
 stage1_3.askNeedHelp = Should I explain how to rotate an object?
