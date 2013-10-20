@@ -93,12 +93,12 @@ package stages
 			var grabbedObject:DraggableObject = e.object.GetUserData() as DraggableObject;
 			
 			if (whatHand == "right") {
-				rightIP = new ItemPanel();
+				rightIP = new ItemPanel(true);
 				rightIP.x = StageConfig.STAGE_WIDTH - 15 - rightIP.panelWidth/2;
 				rightIP.y = StageConfig.HEADER_HEIGHT + 15 + rightIP.panelHeight / 2;
 				iPanel = rightIP;
 			} else {
-				leftIP = new ItemPanel();
+				leftIP = new ItemPanel(false);
 				leftIP.x = leftIP.panelWidth / 2 + 15;
 				leftIP.y = StageConfig.HEADER_HEIGHT + 15 + rightIP.panelHeight / 2;
 				iPanel = leftIP;

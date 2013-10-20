@@ -32,11 +32,12 @@ package gameObjects
 		private var itemName:String;
 		private var weight:String;
 		private var infoList:Array = new Array();
+		private var isRightPanel:Boolean;
 		
-		public function ItemPanel()
+		public function ItemPanel(isRight:Boolean)
 		{
 			tFormat = new TextFormat("Arial", TEXT_SIZE, 0x000000, false);
-			
+			isRightPanel = isRight;
 			panel = new collection.itemPanelAsset();
 			panel.width = 180;
 			panel.height = 100;
@@ -45,8 +46,9 @@ package gameObjects
 		
 		private function printData():void
 		{
+			var R_or_L:String = (isRightPanel) ? "R: " : "L: ";
 			nameTxt = new TextField();
-			nameTxt.text = itemName;
+			nameTxt.text = R_or_L + itemName;
 			nameTxt.width = panel.width;
 			var headerTF:TextFormat = new TextFormat("Arial", TEXT_SIZE, 0x000000, true);
 			nameTxt.setTextFormat(headerTF);
