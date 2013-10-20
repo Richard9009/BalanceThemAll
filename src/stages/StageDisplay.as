@@ -22,6 +22,7 @@ package stages
 		
 		private var rightIP:ItemPanel;
 		private var leftIP:ItemPanel;
+		private var showIP:Boolean = true;
 		
 		public function StageDisplay(stageID:int) 
 		{	
@@ -66,7 +67,8 @@ package stages
 		
 		public function createLevelBySubStageID(stageID:int, subStageIndex:int, hasTutorial:Boolean = false):void {
 			
-			var stgID:String = stageID.toString()+ "_" + subStageIndex.toString();
+			var stgID:String = stageID.toString() + "_" + subStageIndex.toString();
+			showIP = (stgID != "1_1");
 			initiateStage(stgID); 
 			if(hasTutorial) createTutorialDialog(stgID);
 			
@@ -89,6 +91,8 @@ package stages
 		override protected function grabAnObject(e:GrabObjectEvent):String 
 		{
 			var whatHand:String = super.grabAnObject(e);
+			if (!showIP) return whatHand;
+			
 			var iPanel:ItemPanel;
 			var grabbedObject:DraggableObject = e.object.GetUserData() as DraggableObject;
 			
