@@ -14,6 +14,17 @@ package general
 			
 		}
 		
+		public static function updateLevelMap(starArray:Array):void {
+			for (var i:int = 0; i < starArray.length; i++) {
+				for (var j:int = 0; j < starArray[0].length; j++) {
+					var stageID:String = (i + 1).toString() + "_" + (j + 1).toString();
+					var rec:StageRecord = StageRecord.getStageRecordByID(stageID);
+					var selectLvStar:SelectLevelStar = starArray[i][j] as SelectLevelStar;
+					selectLvStar.setStatus(rec.stageStatus, rec.bestStar);
+				}
+			}
+		}
+		
 		public static function updateLevelPanels(levelPanelArray:Array):void {		
 			
 			for (var i:int; i < levelPanelArray.length; i++) {
@@ -38,21 +49,6 @@ package general
 					
 					if (star != null) lPanel.addChild(star);
 				}
-		}
-		
-		public static function displayScoreOnStageClearScene(scene:EndLevel_Movie, record:ScoreRecord):void
-		{
-			var minusSign:String = (record.penalty > 0) ? "-" : "";
-			
-			scene.lastScoreText.text = record.scoreBeforeStage.toString();
-			scene.scoreText.text = record.scoreInThisStage.toString();
-			scene.starBonusText.text = record.starBonus.toString();
-			scene.penaltyText.text = minusSign + record.penalty.toString();
-			scene.totalText.text = ScoreRecord.totalScore.toString();
-			
-			scene.goldStarSymbol.visible = record.gotGoldStar;
-			scene.silverStarSymbol.visible = record.gotSilverStar;
-			scene.bronzeStarSymbol.visible = record.gotBronzeStar;
 		}
 	}
 

@@ -90,14 +90,6 @@ package
 		{
 			changeScene();	
 			openSelectLevel();
-			addEventListener(SelectStageEvent.BACK_TO_LAST_SCENE, selectScreen_to_mainMenu);
-		}
-		
-		private function selectScreen_to_mainMenu(e:Event):void 
-		{
-			changeScene();
-			createMainMenu();
-			blackFadeIn();
 		}
 		
 		private function openSelectLevel():void 
@@ -112,16 +104,13 @@ package
 			delayTimer.addEventListener(TimerEvent.TIMER, function delayListener(e:TimerEvent):void{
 				e.target.stop();
 				e.target.removeEventListener(TimerEvent.TIMER, delayListener);
-				GameSceneDataHandler.updateLevelPanels(SelectStage_Movie(currentScene).cellArray);
+				GameSceneDataHandler.updateLevelMap(SelectStage_Movie(currentScene).starArray);
 			});
 		}
 		
 		private function stageSelected(e:Event):void 
 		{
-			var selectedStage:String;
-			if (currentScene is SelectStage_Movie) selectedStage = (currentScene as SelectStage_Movie).stageID;
-			else if (currentScene is EndLevel_Movie) selectedStage = (currentScene as EndLevel_Movie).stageID;
-			else throw new IOError("The scene doesn't have select level capability");
+			var selectedStage:String = (currentScene as SelectStage_Movie).stageID;
 			
 			changeScene();
 			createLevelByID(selectedStage);
@@ -178,41 +167,8 @@ package
 		{
 			var scoreRecord:ScoreRecord = (currentScene as StageEngine).getStageRecord().scoreRecord;
 			destroyCurrentLevel();
-			
-			currentScene = new EndLevel_Movie();
-			var scene:EndLevel_Movie = currentScene as EndLevel_Movie;
-			addChild(currentScene);
-			
-			MusicManager.getInstance().playStageClearBGM();
-
-			var delayTimer:Timer = new Timer(100, 1);
-			delayTimer.start();
-			delayTimer.addEventListener(TimerEvent.TIMER, function delayListener(e:TimerEvent):void{
-				e.target.stop();
-				e.target.removeEventListener(TimerEvent.TIMER, delayListener);
-				GameSceneDataHandler.displayScoreOnStageClearScene(scene, scoreRecord);
-				GameSceneDataHandler.updateLevelPanelsRow(scene.panels);
-			});
-			
-			
-			addEventListener(GameEvent.GOTO_NEXT_STAGE, gotoNextStage);
-			addEventListener(GameEvent.REPLAY_THIS_STAGE, replayStage);
-			addEventListener(SelectStageEvent.STAGE_SELECTED, stageSelected);
-			blackFadeIn();
-		}
-		
-		private function replayStage(e:Event):void 
-		{
 			changeScene();
-			var thisStageID:String = StageRecord.currentStage.toString() + "_" + StageRecord.currentSubStage.toString();
-			createLevelByID(thisStageID);
-		}
-		
-		private function gotoNextStage(e:Event):void 
-		{
-			changeScene();
-			var nextRec:StageRecord = StageRecord.getNextStageRecord();
-			createLevelByID(nextRec.stageID);
+			openSelectLevel();
 		}
 		
 		private function destroyCurrentLevel():void
