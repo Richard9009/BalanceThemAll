@@ -105,6 +105,7 @@ package
 				e.target.stop();
 				e.target.removeEventListener(TimerEvent.TIMER, delayListener);
 				GameSceneDataHandler.updateLevelMap(SelectStage_Movie(currentScene).starArray);
+				(currentScene as SelectStage_Movie).updateStatus();
 			});
 		}
 		

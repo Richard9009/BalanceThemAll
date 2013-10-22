@@ -42,10 +42,6 @@ package general
 				}
 				
 				thisStar.drawLine(new Point(prevStar.x, prevStar.y), lineColor);
-				/*line.graphics.lineStyle(8, lineColor, 1);
-				line.graphics.moveTo(thisStar.x, thisStar.y);
-				line.graphics.lineTo(prevStar.x, prevStar.y);
-				thisStar.parent.addChild(line);*/
 			}
 		}
 		

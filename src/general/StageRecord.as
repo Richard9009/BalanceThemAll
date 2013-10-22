@@ -64,6 +64,7 @@ package general
 			var miliTimeCleared:Number = endTime - startTime;
 			timeCleared = new Date(0, 0, 0, 0, 0, 0, 0);
 			timeCleared.seconds = Math.floor(miliTimeCleared / 1000);
+			unlockNextLevel();
 		}
 		
 		public function allItemsDropped():Boolean
@@ -92,6 +93,11 @@ package general
 			}
 		}
 		
+		private function unlockNextLevel():void
+		{
+			getNextStageRecord().stageStatus = OPEN;
+		}
+		
 		public static function CreateRecordList():void //this method shall only be called once in an application
 		{	
 			stageRecordList = new Array();
@@ -100,7 +106,10 @@ package general
 				for (var subStageCount:int = 0; subStageCount < subStageinEveryStage; subStageCount++) {
 					var stage:StageRecord = new StageRecord(PASS_CODE);
 					stage.stageID = (stageCount + 1).toString() + "_" + (subStageCount + 1).toString();
-					if (stageCount > 2) stage.stageStatus = LOCKED;
+					
+					if (stage.stageID == "1_1") stage.stageStatus = OPEN;
+					else stage.stageStatus = LOCKED;
+					
 					stageRecordList.push(stage);
 				}
 			}
