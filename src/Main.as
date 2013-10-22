@@ -167,7 +167,6 @@ package
 		{
 			var scoreRecord:ScoreRecord = (currentScene as StageEngine).getStageRecord().scoreRecord;
 			destroyCurrentLevel();
-			changeScene();
 			openSelectLevel();
 		}
 		

@@ -25,31 +25,6 @@ package general
 			}
 		}
 		
-		public static function updateLevelPanels(levelPanelArray:Array):void {		
-			
-			for (var i:int; i < levelPanelArray.length; i++) {
-				updateLevelPanelsRow(levelPanelArray[i]);
-			}
-		}
-		
-		public static function updateLevelPanelsRow(lPanelRow:Array):void {
-			for each (var lPanel:LevelPanel in lPanelRow) {
-					
-					var rec:StageRecord = StageRecord.getStageRecordByID(lPanel.stageID);
-					if (rec.stageStatus == StageRecord.LOCKED) lPanel.lockStage();
-					
-					var star:StarObject;
-					var builder:SpecialObjectBuilder = new SpecialObjectBuilder(0.3);
-					switch(rec.bestStar) {
-						case StarObject.GOLDEN: star = builder.createGoldenStar(0, 0); break;
-						case StarObject.SILVER: star = builder.createSilverStar(0, 0); break;
-						case StarObject.BRONZE: star = builder.createBronzeStar(0, 0); break;
-						default: star = null;
-					}
-					
-					if (star != null) lPanel.addChild(star);
-				}
-		}
 	}
 
 }

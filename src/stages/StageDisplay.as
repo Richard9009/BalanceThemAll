@@ -118,6 +118,8 @@ package stages
 		override protected function dropAnObject(e:GrabObjectEvent):String 
 		{
 			var whatHand:String = super.dropAnObject(e);
+			if (!showIP) return whatHand;
+			
 			var iPanel:ItemPanel = (whatHand == "right") ? rightIP : leftIP;
 			
 			if(iPanel.parent == this) {
@@ -129,7 +131,7 @@ package stages
 		override protected function dropAll(e:GrabObjectEvent):void 
 		{
 			super.dropAll(e);
-			
+			if (!showIP) return;
 			if(rightIP && rightIP.parent == this) {
 				removeChild(rightIP);
 			}
