@@ -120,7 +120,7 @@ package general
 					stage.stageID = (stageCount + 1).toString() + "_" + (subStageCount + 1).toString();
 					
 					if (stage.stageID == "1_1") stage.stageStatus = OPEN;
-					//if (stageCount == 0) stage.stageStatus = OPEN;
+					//if (stageCount == 0) stage.stageStatus = CLEARED;
 					else stage.stageStatus = LOCKED;
 					
 					stageRecordList.push(stage);

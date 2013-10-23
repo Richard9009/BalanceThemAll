@@ -65,6 +65,7 @@ package gameObjects.rigidObjects
 			stage.stageFocusRect = false;
 			addEventListener(MouseEvent.MOUSE_OVER, onMouseHover);
 			addEventListener(MouseEvent.MOUSE_OUT, onMouseOut);
+			addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
 			addEventListener(Event.ENTER_FRAME, onEveryFrame);
 			addEventListener(MouseEvent.MOUSE_WHEEL, onMouseWhell);
 			addEventListener(GrabObjectEvent.DROP_AN_OBJECT, dropped);
@@ -203,6 +204,16 @@ package gameObjects.rigidObjects
 			if(MousePhysic.isDown == false){
 				MousePhysic.pointedBody = this.rigidBody;
 			}
+		}
+		
+		private function onMouseUp(e:MouseEvent):void
+		{
+			addEventListener(Event.ENTER_FRAME, function nextFrame(e:Event):void {
+						if (isDraggable) MousePhysic.pointedBody = rigidBody;
+						removeEventListener(Event.ENTER_FRAME, nextFrame);
+				}
+			);
+			
 		}
 		
 		private function checkLimit():void

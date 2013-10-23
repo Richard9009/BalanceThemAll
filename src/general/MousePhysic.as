@@ -62,6 +62,7 @@ package general
 		private static function onMouseUp(e:MouseEvent):void 
 		{
 			_isDown = false;
+			pointedBody = null;
 		}
 		
 		private static function onMouseDown(e:MouseEvent):void 
