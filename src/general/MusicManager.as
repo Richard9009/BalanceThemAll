@@ -61,6 +61,16 @@ package general
 			playMusic(MUSIC_COL.s2SecondHalfBGM, volume);
 		}
 		
+		public function playStage3FirstHalfBGM(volume:Number = DEFAULT_VOLUME):void
+		{
+			playMusic(MUSIC_COL.s3FirstHalfBGM, volume);
+		}
+		
+		public function playStage3SecondHalfBGM(volume:Number = DEFAULT_VOLUME):void
+		{
+			playMusic(MUSIC_COL.s3SecondHalfBGM, volume);
+		}
+		
 		public function playSelectStageBGM(volume:Number = DEFAULT_VOLUME):void
 		{
 			playMusic(MUSIC_COL.selectLevelBGM, volume);

@@ -163,6 +163,9 @@ package builders
 				others.push(specialBuilder.createSnowPile(380, 415));
 				others.push(specialBuilder.createIceBeam(380, 408));
 			}
+			
+			if (substageIndex < 4) MusicManager.getInstance().playStage3FirstHalfBGM();
+			else MusicManager.getInstance().playStage3SecondHalfBGM();
 		}
 		
 		private function stage3_1():void
