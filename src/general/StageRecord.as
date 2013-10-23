@@ -119,12 +119,19 @@ package general
 					var stage:StageRecord = new StageRecord(PASS_CODE);
 					stage.stageID = (stageCount + 1).toString() + "_" + (subStageCount + 1).toString();
 					
-					//if (stage.stageID == "1_1") stage.stageStatus = OPEN;
-					if (stageCount == 2) stage.stageStatus = CLEARED;
+					if (stage.stageID == "1_1") stage.stageStatus = OPEN;
+					//if (stageCount == 2) stage.stageStatus = CLEARED;
 					else stage.stageStatus = LOCKED;
 					
 					stageRecordList.push(stage);
 				}
+			}
+		}
+		
+		public static function unlockAll():void {
+			for each(var stage:StageRecord in stageRecordList)
+			{
+				stage.stageStatus = CLEARED;
 			}
 		}
 		

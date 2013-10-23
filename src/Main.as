@@ -84,6 +84,12 @@ package
 			addChild(currentScene); 
 			addEventListener(GameEvent.START_GAME, startGame);
 			addEventListener(SelectStageEvent.OPEN_SELECT_LEVEL, beforeOpenSelectLevel);
+			currentScene.addEventListener("CHEAT_OPEN_ALL", unlockAll);
+		}
+		
+		private function unlockAll(e:Event):void {
+			trace("AAAAAAAAA");
+			StageRecord.unlockAll();
 		}
 		
 		private function beforeOpenSelectLevel(e:Event):void 
