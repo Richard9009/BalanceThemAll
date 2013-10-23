@@ -187,8 +187,7 @@ package builders
 			new DialogHelper("stage2_3.clue", [DialogCommand.allowSkip]),
 			new DialogHelper("stage2_3.noClue", [DialogCommand.allowSkip], [DialogPath.ANSWER_NO]),
 			new DialogHelper(DialogHelper.EMPTY, [TutorialCommand.hideAll, EventCommand.promptSuccessFailed(TutorialEvent.TUTORIAL_CLEAR,
-								TutorialEvent.TUTORIAL_FAILED), EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_STAGE))]
-								[DialogPath.ALL_PATHS]),
+								TutorialEvent.TUTORIAL_FAILED), EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_STAGE))]),
 			new DialogHelper("stage2_3.fail", [DialogCommand.promptYesNo], [DialogPath.FAILED]),
 			new DialogHelper(DialogHelper.EMPTY, [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.RESTART_TUTORIAL))]),
 			new DialogHelper("stage2_3.success", [DialogCommand.allowSkip], [DialogPath.SUCCESS]),
