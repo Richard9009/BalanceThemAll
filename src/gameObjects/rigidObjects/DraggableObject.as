@@ -3,6 +3,7 @@ package gameObjects.rigidObjects
 	import Box2D.Common.Math.b2Vec2;
 	import Box2D.Dynamics.b2Body;
 	import Box2D.Dynamics.b2Fixture;
+	import flash.errors.StackOverflowError;
 	import flash.events.KeyboardEvent;
 	import gameEvents.GrabObjectEvent;
 	import flash.display.Sprite;
@@ -347,8 +348,12 @@ package gameObjects.rigidObjects
 			if (objectBelow == this) return false;
 			var onBoard:Boolean = objectBelow.isBalanceBoard;
 			
-			if (!onBoard && objectBelow is DraggableObject) {			
-				onBoard = DraggableObject(objectBelow).isOnBalanceBoard();
+			if (!onBoard && objectBelow is DraggableObject) {
+				try {
+					onBoard = DraggableObject(objectBelow).isOnBalanceBoard();
+				} catch (e:StackOverflowError) {
+					return true;
+				}
 			}
 			
 			return onBoard;
