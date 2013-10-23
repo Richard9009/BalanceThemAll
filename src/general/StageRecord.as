@@ -21,9 +21,6 @@ package general
 		public static var totalStages:int = 5;
 		public static var subStageinEveryStage:int = 5;
 		
-		public static var currentStage:int = 1;
-		public static var currentSubStage:int = 1;
-		
 		public var stageID:String; //"1_1", "1_2", "1_3", etc
 		public var stageStatus:String = "OPEN";
 		public var bestStar:String = "NOTHING";
@@ -48,8 +45,6 @@ package general
 		{
 			stageStatus = ONGOING;
 			startTime = (new Date()).getTime();
-			currentStage = stageID.split("_")[0].toString();
-			currentSubStage = stageID.split("_")[1].toString();
 			
 			totalItemsCount = 0;
 			droppedItemsCount = 0;
@@ -95,9 +90,24 @@ package general
 		
 		private function unlockNextLevel():void
 		{
-			var next:StageRecord = getNextStageRecord();
+			var next:StageRecord = getNextLevel();
 			if(next.stageStatus == LOCKED) 
 				next.stageStatus = OPEN;
+		}
+		
+		private function getNextLevel():StageRecord
+		{
+			var stg:int = int(stageID.split("_")[0]);
+			var subStg:int = int(stageID.split("_")[1]);
+			var nextStageID:String;
+			
+			if (subStg + 1 > subStageinEveryStage) {
+				nextStageID = (stg + 1).toString() + "_1";
+			} else {
+				nextStageID = stg.toString() + "_" + (subStg + 1).toString();
+			}
+			
+			return getStageRecordByID(nextStageID);
 		}
 		
 		public static function CreateRecordList():void //this method shall only be called once in an application
@@ -110,7 +120,7 @@ package general
 					stage.stageID = (stageCount + 1).toString() + "_" + (subStageCount + 1).toString();
 					
 					if (stage.stageID == "1_1") stage.stageStatus = OPEN;
-					//if (stageCount == 1) stage.stageStatus = OPEN;
+					//if (stageCount == 0) stage.stageStatus = OPEN;
 					else stage.stageStatus = LOCKED;
 					
 					stageRecordList.push(stage);
@@ -129,18 +139,6 @@ package general
 			}
 			
 			return null;
-		}
-		
-		public static function getNextStageRecord():StageRecord
-		{
-			currentSubStage++;
-			if (currentSubStage > subStageinEveryStage) {
-				currentSubStage = 1;
-				currentStage++;
-			}
-			
-			var nextStgID:String = currentStage.toString() + "_" + currentSubStage.toString();
-			return getStageRecordByID(nextStgID);
 		}
 		
 	}

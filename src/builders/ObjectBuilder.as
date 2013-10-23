@@ -63,6 +63,7 @@ package builders
 				obj.setRandomPositionInsideItemBox();
 				obj.setSound(new soundCol.ballImpactSound(), null, new soundCol.ballRollingSound());
 				objArray.push(obj);
+				obj.writeObjectData();
 			}
 			
 			return objArray;
