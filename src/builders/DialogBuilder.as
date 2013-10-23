@@ -78,9 +78,10 @@ package builders
 		public function get dialogList1_2():Array { return _dialogList1_2; }
 		private var _dialogList1_2:Array = 
 			[
-				new DialogHelper(DialogHelper.EMPTY, [TutorialCommand.hideAll, EventCommand.waitingForEvent(TutorialEvent.HANDS_ARE_FULL)]),
+				new DialogHelper(DialogHelper.EMPTY, [TutorialCommand.hideAll, EventCommand.promptSuccessFailed
+								(TutorialEvent.HANDS_ARE_FULL, TutorialEvent.TUTORIAL_FAILED)]),
 				
-				new DialogHelper("stage1_2.askNeedHelp", [DialogCommand.promptYesNo]),
+				new DialogHelper("stage1_2.askNeedHelp", [DialogCommand.promptYesNo], [DialogPath.SUCCESS]),
 			
 				new DialogHelper("stage1_2.explainHand", [DialogCommand.allowSkip]),
 				new DialogHelper("stage1_2.explainItemPanel", [DialogCommand.allowSkip]),
@@ -100,8 +101,11 @@ package builders
 		public function get dialogList1_3():Array { return _dialogList1_3; }
 		private var _dialogList1_3:Array = 
 			[
-				new DialogHelper(DialogHelper.EMPTY, [TutorialCommand.hideAll, EventCommand.waitingForEvent(TutorialEvent.HANDS_ARE_FULL)]),
-				new DialogHelper("stage1_3.askNeedHelp", [DialogCommand.promptYesNo, EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_STAGE))]),
+				new DialogHelper(DialogHelper.EMPTY, [TutorialCommand.hideAll, EventCommand.promptSuccessFailed
+												(TutorialEvent.HANDS_ARE_FULL, TutorialEvent.TUTORIAL_FAILED)]),
+												
+				new DialogHelper("stage1_3.askNeedHelp", [DialogCommand.promptYesNo, EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_STAGE))],
+											[DialogPath.SUCCESS]),
 				new DialogHelper("stage1_3.beginTutorial", [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_STAGE)), 
 															EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_DOUBLE_CLICK)),
 															EventCommand.waitingForEvent(TutorialEvent.OBJECT_POINTED)]),
