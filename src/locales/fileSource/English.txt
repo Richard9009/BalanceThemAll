@@ -13,10 +13,10 @@ stage1_1.didnotGetStars = Oh too bad, you missed the star. Never mind, better lu
 
 __________________________________________________________________________________________________________________________________________________________________
 
-stage1_2.askNeedHelp = We have something new here, the balance line.<br />Do you want me to explain it to you?
+stage1_2.askNeedHelp = We have something new here.<br />Do you want me to explain it to you?
 stage1_2.explainHand = You can only carry 2 items at the same time<br />One on your right(R) and one on your left(L) hand
 stage1_2.explainItemPanel = The details of the items you are carrying will be shown<br />on the top corners. 
-stage1_2.explainWeight = The rule of balance is simple<br />Put lighter object closer to the edge
+stage1_2.explainWeight = The rule of balance is simple<br />Put lighter object closer to the edge<br />Come on, give it a try!
 stage1_2.getStars = Try to balance your items here<br />And get the stars
 stage1_2.skipTutorial = Very well, good luck. I'll see you later
 stage1_2.didnotGetStars = Oh too bad, you missed the star. Never mind, better luck next time.

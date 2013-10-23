@@ -22,6 +22,7 @@ package general
 		public function ScoreCounter()
 		{
 			calcAdditionalScore();
+			currentScore = ScoreRecord.totalScore;
 		}
 		
 		public function setScoreRecord(rec:ScoreRecord):void
@@ -44,7 +45,7 @@ package general
 		
 		public function countScore():String
 		{
-			currentScore += scorePerObject;
+			addScore(scorePerObject);
 			return scorePerObject.toString();
 		}
 		
@@ -61,22 +62,18 @@ package general
 		
 		public function breakPenalty():void
 		{
-			currentScore -= objectBreakPenalty;
-			scoreRecord.penalty += objectBreakPenalty;
+			addScore( -objectBreakPenalty);
 		}
 		
 		public function fallPenalty():void
 		{
-			currentScore -= objectFallPenalty
-			scoreRecord.penalty += objectFallPenalty;
+			addScore( -objectFallPenalty);
 		}
 		
 		public function getStarBonus(star:StarObject):String
 		{
-			var bonus:int = star.starValue * scorePerObject * 3;
+			var bonus:int = star.starValue * scorePerObject;
 			addScore(bonus);
-			scoreRecord.starBonus += bonus;
-			currentScore += bonus;
 			
 			switch (star.starType)
 			{
@@ -96,12 +93,11 @@ package general
 		
 		public function getBonusPoints():String
 		{
-			currentScore += bonusPoint;
+			addScore(bonusPoint);
 			return bonusPoint.toString();
 		}
 		
-		public function sumUpScore():void
-		{
+		public function sumUpScore():void {
 			scoreRecord.sumUpScore();
 		}
 		

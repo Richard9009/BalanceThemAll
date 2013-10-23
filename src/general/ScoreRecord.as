@@ -7,10 +7,7 @@ package general
 	public class ScoreRecord 
 	{
 		public static var totalScore:Number = 0;
-		
-		public var scoreBeforeStage:Number = 0;
-		public var penalty:Number = 0;
-		public var starBonus:Number = 0;
+	
 		public var scoreInThisStage:Number = 0;
 		
 		public var gotGoldStar:Boolean = false;
@@ -19,16 +16,13 @@ package general
 		
 		public function ScoreRecord()
 		{
-			scoreBeforeStage = totalScore;
+			
 		}
 		
 		public function resetScore():void
 		{
-			totalScore -= totalScoreOfThisStage;
-			scoreBeforeStage = totalScore;
-			
-			penalty = 0;
-			starBonus = 0;
+			//totalScore -= scoreInThisStage;
+
 			scoreInThisStage = 0;
 			gotGoldStar = false;
 			gotSilverStar = false;
@@ -37,12 +31,7 @@ package general
 		
 		public function sumUpScore():void
 		{
-			totalScore = scoreBeforeStage + totalScoreOfThisStage;
-		}
-		
-		public function get totalScoreOfThisStage():Number
-		{
-			return scoreInThisStage + starBonus - penalty;
+			totalScore += scoreInThisStage;
 		}
 	}
 

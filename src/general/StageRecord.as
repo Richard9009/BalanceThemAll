@@ -95,7 +95,9 @@ package general
 		
 		private function unlockNextLevel():void
 		{
-			getNextStageRecord().stageStatus = OPEN;
+			var next:StageRecord = getNextStageRecord();
+			if(next.stageStatus == LOCKED) 
+				next.stageStatus = OPEN;
 		}
 		
 		public static function CreateRecordList():void //this method shall only be called once in an application

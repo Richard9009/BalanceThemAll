@@ -141,7 +141,8 @@ package stages
 				checkStarCollision(item);
 			}	
 			else {
-				fText = new FloatingText("Miss", 2, 2, RED_COLOR);
+				fText = new FloatingText(sCounter.getFallPenaltyString(), 2, 2, RED_COLOR);
+				sCounter.fallPenalty();
 				item.destroyMe();
 				record.missedItemsCount++;
 			}
