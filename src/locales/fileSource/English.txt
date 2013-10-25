@@ -37,15 +37,15 @@ stage1_4.success = Good! I knew you can do it!<br />I'll see you in the next lev
 ____________________________________________________________________________________________________________________________________________________________________
 
 stage1_5.failed = You didn't get all the stars<br />Why don't you try it again?
-stage1_5.thatsIt = Well, that's it from me<br />There's nothing else you can find here
-stage1_5.meetAvia = However this is just the beginning<br />First, I want to meet my sister, Avia
-stage1_5.moreStars = You can find more stars in her house<br />If she liked you, she might let you take it
+stage1_5.thatsIt = Well, that's it from me<br />There's no doubt that you're the start collector we're looking for
+stage1_5.meetAvia = This is just the beginning<br />First, I want to meet my sister, Avia
+stage1_5.moreStars = You can find more stars in her house<br />You need to collect them to fulfill your destiny
 stage1_5.aviaPlace = This is where her house is<br />*Handing over a map*
-stage1_5.goodbye = I hope we could meet again, mate<br />Goodbye....
+stage1_5.goodbye = I hope we could meet again, star collector<br />Goodbye....
 
 ====================================================================================================================================================================
 
-stage2_1.start = You must be the star collector who Gavin mentioned.<br />I'm Avia, Gavin's sister.
+stage2_1.start = You must be the star collector who Gavin mentioned.
 stage2_1.second = You don't look so convincing<br />I guess we won't know until we tried it<br />Show me what you can do
 stage2_1.fail = Just as I thought, it must be too hard for you.<br />I'll give you another chance<br />Wanna try again?
 stage2_1.success = Not bad... You got a lot more to learn<br />But that will do for now
@@ -77,12 +77,45 @@ ________________________________________________________________________________
 stage2_5.start = I never thought that you would made it this far.<br />This is the last one from me
 stage2_5.second = You surprised me a few times.<br />I expect something interesting this time
 stage2_5.success = You never let me down, star collector<br />I think I like you
-stage2_5.emmi = My sister Emmi is going to need your help<br />Now I'm sure I can trust her to you
-stage2_5.emmiLocation = You can find Emmi here<br />(Drawing something on the map)
-stage2_5.goodbye = Emmi is a sweet girl, be nice to here<br />So long, star collector
+stage2_5.emmi = Let me tell you where you should go next<br />You need to see Emmi<br />She lives in the land of ice
+stage2_5.emmiLocation = It is here<br />(Drawing something on the map)
+stage2_5.goodbye = Be careful, Emmi will not let you get the stars so easily<br />So long, star collector
 stage2_5.fail = You will need a lot more than luck here<br />Want to try again?
 
 =========================================================================================================================================
 
-stage3_1.start = Umm... Avia told me about you, mister star collector<br />Thank you for helping my sister
-stage3_1.second = 
+stage3_1.start = You must be another star collector coming to get my stars<br />I had too many uninvited guests these days
+stage3_1.second = I am Emmi, the ice princess, guardian of the stars
+stage3_1.third = Many people came here to collect the stars like you<br />But none of them did it, not on my watch<br />These stars are MINE!
+stage3_1.fourth = You can never make it through this cold and slippery ice
+stage3_1.success = You're just lucky<br />Count your blessings
+stage3_1.fail = You failed. You can try as many times as you want<br />but you will never get it<br />*TRY AGAIN?*
+
+__________________________________________________________________________________________________________________________________________
+
+stage3_2.start = Oh look! The golden star is so high up there.<br />How will you get it, star collector?
+stage3_2.second = And I hope the penguins bite your leg
+stage3_2.success = Damn it! This is not good.....
+stage3.fail = *TRY AGAIN?*
+
+__________________________________________________________________________________________________________________________________________
+
+stage3_3.start = I hate to see you made it this far<br />But I know you won't make any further than this
+stage3_3.second = This place made many star collectors went home.<br />I put the stars there so nobody can touch it
+stage3_3.success = No!! Impossible!! How did you do that?<br />Those damn penguins!!!
+
+__________________________________________________________________________________________________________________________________________
+
+stage3_4.start = Why is this stupid penguin keeps following you?
+stage3_4.second = You should go home, star collector!<br />Don't take anymore of my stars!!!!
+stage3_4.success = That was your last straw<br />Don't blame me of what happen to you after this<br />Follow me if you must
+
+__________________________________________________________________________________________________________________________________________
+
+stage3_5.start = It is getting so much colder, isn't it?
+stage3_5.second = This is the heart of land of ice<br />You are the first star collector who has seen this place
+stage3_5.third = You can try to collect the stars, I won't mind anymore<br />But if you fail, you and your penguin shall<br />stay here for eternity
+stage3_5.success = No... I lost to a star collector...<br />But the ice princess can't lose...<br />Not like this..
+stage3_5.brock = You are a true star collector.<br />There is one place you should go.<br />You have to defeat Brock, his star power is out of control
+stage3_5.brockLocation = You can find him here<br />*Drawing something on the map*
+stage3_5.last = Get his stars before he blew this world out of balance<br />So I won't lose my stars to you for nothing.
