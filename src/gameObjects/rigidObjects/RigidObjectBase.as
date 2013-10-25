@@ -193,6 +193,7 @@ package gameObjects.rigidObjects
 		
 		public function destroyMe():void
 		{
+			removeEventListener(Event.ENTER_FRAME, onEnterFrame);
 			destroyRigidBody();
 			destroyDisplayObject();
 		}
