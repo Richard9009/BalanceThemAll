@@ -10,6 +10,7 @@ package
 	import gameEvents.GameEvent;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import gameEvents.MainMenuEvent;
 	import gameEvents.SelectStageEvent;
 	import general.BreakContactListener;
 	import general.MousePhysic;
@@ -44,6 +45,7 @@ package
 		
 		protected function init(e:Event = null):void 
 		{
+			stage.stageFocusRect = false;
 			cleanListener();
 			StageRecord.CreateRecordList();
 			createMainMenu();
@@ -83,12 +85,28 @@ package
 			currentScene = new MainMenu_Movie(); 
 			addChild(currentScene); 
 			addEventListener(GameEvent.START_GAME, startGame);
-			addEventListener(SelectStageEvent.OPEN_SELECT_LEVEL, beforeOpenSelectLevel);
-			currentScene.addEventListener("CHEAT_OPEN_ALL", unlockAll);
+			addEventListener(SelectStageEvent.OPEN_SELECT_LEVEL, beforeOpenSelectLevel); 
+			addEventListener(MainMenuEvent.CHEAT_OPEN_ALL, unlockAll);
+			addEventListener(MainMenuEvent.OPEN_CREDIT, openCredit);
+		}
+		
+		private function openCredit(e:Event):void {
+			changeScene();
+			
+			MusicManager.getInstance().playMainMenuBGM();
+			currentScene = new CreditScreen_Movie();
+			addChild(currentScene);
+			blackFadeIn();
+			addEventListener(MainMenuEvent.BACK_TO_MAIN, credit_to_main);
+		}
+		
+		private function credit_to_main(e:Event):void {
+			changeScene();
+			createMainMenu();
+			blackFadeIn();
 		}
 		
 		private function unlockAll(e:Event):void {
-			trace("AAAAAAAAA");
 			StageRecord.unlockAll();
 		}
 		

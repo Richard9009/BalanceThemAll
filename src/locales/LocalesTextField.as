@@ -21,7 +21,7 @@ package locales
 			multiline = true;
 			
 			if (textFormat == null) {
-				_textFormat = new TextFormat('Arial', 20, 0x000000, true);
+				_textFormat = new TextFormat('Nueva Std', 25, 0x000000, true);
 				_textFormat.leading = 5;
 			}
 			else _textFormat = textFormat;

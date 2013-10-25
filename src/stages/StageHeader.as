@@ -95,8 +95,8 @@ package stages
 		
 		private function createScoreCounter():void
 		{
-			tFormat = new TextFormat("Arial", 20, 0xAA9933, true);
-			
+			tFormat = new TextFormat("Nueva Std", 20, 0xAA9933, true);
+			tFormat
 			scoreText = new TextField();
 			scoreText.selectable = false;
 			scoreText.width = 150;

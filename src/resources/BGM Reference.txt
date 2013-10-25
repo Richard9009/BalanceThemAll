@@ -1,3 +1,7 @@
+MAIN MENU
+稿屋 隆 - Curiosity
+http://dova-s.jp/bgm/play041.html
+	
 SELECT LEVEL
 稿屋 隆 - So Sweet
 http://dova-s.jp/bgm/play221.html
@@ -5,6 +9,10 @@ http://dova-s.jp/bgm/play221.html
 STAGE CLEAR
 稿屋 隆 - CLAP
 http://dova-s.jp/bgm/play182.html
+	
+STAGE1 FIRST HALF
+こおろぎ - 子馬に乗って
+http://dova-s.jp/bgm/play430.html
 	
 STAGE 1 SECOND HALF
 稿屋 隆 - My Busy Mom
