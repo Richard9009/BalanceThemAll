@@ -54,6 +54,8 @@ package stages.Tutorials
 			npc.y = - npc.height / 2 - height / 2;
 			addChild(npc);
 			
+			this.gotoAndStop(stageNum);
+			
 			tutorialOn = true;
 			TutorialCommand.setTutorial(this);
 		}
