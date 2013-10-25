@@ -61,12 +61,13 @@ package builders
 					new DialogHelper(DialogHelper.EMPTY, [DialogCommand.jumpToDialog(7)], [DialogPath.FAILED]),
 					
 					new DialogHelper("stage1_1.waitForIt", [TutorialCommand.hideNPC, 
-									EventCommand.promptSuccessFailed(TutorialEvent.TUTORIAL_CLEAR, TutorialEvent.TUTORIAL_FAILED)], [DialogPath.SUCCESS])
-									,
+									EventCommand.promptSuccessFailed(TutorialEvent.TUTORIAL_CLEAR, TutorialEvent.TUTORIAL_FAILED)], [DialogPath.SUCCESS]),
+					
+					new DialogHelper("stage1_1.didnotGetStars", [DialogCommand.promptYesNo], [DialogPath.FAILED]),
+					
+					new DialogHelper(DialogHelper.EMPTY, [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.RESTART_TUTORIAL))]),
 					
 					new DialogHelper("stage1_1.gotTheStars", [DialogCommand.allowSkip], [DialogPath.SUCCESS]),
-					
-					new DialogHelper("stage1_1.didnotGetStars", [DialogCommand.allowSkip], [DialogPath.FAILED]),
 					
 					new DialogHelper("stage1_1.noTutorial", [TutorialCommand.turnOffTutorial, DialogCommand.allowSkip], [DialogPath.ANSWER_NO]),
 					
@@ -88,9 +89,10 @@ package builders
 				new DialogHelper("stage1_2.explainWeight", [DialogCommand.allowSkip]),
 				new DialogHelper("stage1_2.getStars", [DialogCommand.allowSkip, TutorialCommand.hideAll,
 														EventCommand.promptSuccessFailed(TutorialEvent.TUTORIAL_CLEAR, TutorialEvent.TUTORIAL_FAILED)]),
-				new DialogHelper("stage1_2.gotTheStars", [DialogCommand.allowSkip], [DialogPath.SUCCESS]),
+				
 				new DialogHelper("stage1_2.didnotGetStars", [DialogCommand.allowSkip], [DialogPath.FAILED]),
-		
+				new DialogHelper(DialogHelper.EMPTY, [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.RESTART_TUTORIAL))]),
+				new DialogHelper("stage1_2.gotTheStars", [DialogCommand.allowSkip], [DialogPath.SUCCESS]),
 				new DialogHelper("stage1_2.skipTutorial", [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_STAGE)), 
 															DialogCommand.allowSkip, TutorialCommand.turnOffTutorial], [DialogPath.ANSWER_NO]),
 				new DialogHelper(DialogHelper.EMPTY, [EventCommand.stop], [DialogPath.ALL_PATHS])
@@ -110,8 +112,12 @@ package builders
 															EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_DOUBLE_CLICK)),
 															EventCommand.waitingForEvent(TutorialEvent.OBJECT_POINTED)]),
 				new DialogHelper("stage1_3.rotateIt", [EventCommand.waitingForEvent(TutorialEvent.OBJECT_ROTATED), TutorialCommand.hideNPC]),
-				new DialogHelper("stage1_3.rotateSuccess", [DialogCommand.allowSkip, EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_DOUBLE_CLICK)),
-															TutorialCommand.turnOffTutorial]),
+				new DialogHelper("stage1_3.rotateSuccess", [DialogCommand.allowSkip, EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_DOUBLE_CLICK))]),
+				new DialogHelper(DialogHelper.EMPTY, [EventCommand.promptSuccessFailed(TutorialEvent.TUTORIAL_CLEAR, 
+									TutorialEvent.TUTORIAL_FAILED), TutorialCommand.hideAll]),
+				new DialogHelper("stage1_3.fail", [DialogCommand.promptYesNo, TutorialCommand.hideNPC], [DialogPath.FAILED]),
+				new DialogHelper(DialogHelper.EMPTY, [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.RESTART_TUTORIAL))]),
+				new DialogHelper("stage1_3.success", [DialogCommand.allowSkip], [DialogPath.SUCCESS]),
 				new DialogHelper("stage1_3.skipTutorial", [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_STAGE)), DialogCommand.allowSkip,
 															EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_DOUBLE_CLICK)),
 															TutorialCommand.turnOffTutorial], [DialogPath.ANSWER_NO]),

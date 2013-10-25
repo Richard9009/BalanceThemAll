@@ -9,7 +9,7 @@ stage1_1.moveBookToStar = Move your books to somewhere along the line<br />Make 
 stage1_1.releaseBooks = Good! Now you can use double click to release the books
 stage1_1.waitForIt = Wait until the books stop moving
 stage1_1.gotTheStars = That's it! Try to collect all the stars on every level.<br />I'll see you around, mate!
-stage1_1.didnotGetStars = Oh too bad, you missed the star. Never mind, better luck next time.
+stage1_1.didnotGetStars = Oh too bad, you missed the star. Do you want to try again?
 
 __________________________________________________________________________________________________________________________________________________________________
 
@@ -19,7 +19,7 @@ stage1_2.explainItemPanel = The details of the items you are carrying will be sh
 stage1_2.explainWeight = The rule of balance is simple<br />Put lighter object closer to the edge<br />Come on, give it a try!
 stage1_2.getStars = Try to balance your items here<br />And get the stars
 stage1_2.skipTutorial = Very well, good luck. I'll see you later
-stage1_2.didnotGetStars = Oh too bad, you missed the star. Never mind, better luck next time.
+stage1_2.didnotGetStars = Oh too bad, you missed the star. Let's try again, shall we?
 stage1_2.gotTheStars = That's it! You got all the stars!!!
 __________________________________________________________________________________________________________________________________________________________________
 
@@ -28,7 +28,8 @@ stage1_3.beginTutorial = Alright, actually it's really simple.<br />Try to point
 stage1_3.rotateIt = You can scroll your mouse wheel to rotate it.<br />Or you can just hold spacebar
 stage1_3.rotateSuccess = Well, that's it for now. Try to get all the stars. Good luck, mate
 stage1_3.skipTutorial = Ok, just click the replay button if you need me<br />Bye...
-
+stage1_3.success = That was good. You learnt well 
+stage1_3.fail = Do you want to try again?
 ___________________________________________________________________________________________________________________________________________________________________
 
 stage1_4.challenge = How about a little challenge?<br />I'm sure you can do this on your own<br />Good luck
