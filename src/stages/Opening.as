@@ -27,14 +27,14 @@ package stages
 			timer.addEventListener(TimerEvent.TIMER, blackFadeOut);
 			timer.start();
 			
-			var tFormat:TextFormat = new TextFormat("Nueva Std", 20, 0xFFFF33);
+			var tFormat:TextFormat = new TextFormat("Nueva Std", 23, 0xFFFF33);
 			tFormat.align = TextFormatAlign.CENTER;
 			
 			tField = new LocalesTextField("", tFormat);
 			tField.x = 15;
 			tField.y = StageConfig.STAGE_HEIGHT - 75;
 			tField.width = StageConfig.STAGE_WIDTH - 50;
-			tField.height = 50;
+			tField.height = 75;
 			addChild(tField);
 			tField.setLocaleText(getTextCode());
 			

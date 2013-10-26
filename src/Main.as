@@ -98,10 +98,10 @@ package
 			currentScene = new CreditScreen_Movie();
 			addChild(currentScene);
 			blackFadeIn();
-			addEventListener(MainMenuEvent.BACK_TO_MAIN, credit_to_main);
+			addEventListener(MainMenuEvent.BACK_TO_MAIN, back_to_main);
 		}
 		
-		private function credit_to_main(e:Event):void {
+		private function back_to_main(e:Event):void {
 			changeScene();
 			createMainMenu();
 			blackFadeIn();
@@ -123,6 +123,7 @@ package
 			currentScene = new SelectStage_Movie();
 			addChild(currentScene);
 			addEventListener(SelectStageEvent.STAGE_SELECTED, stageSelected);
+			addEventListener(GameEvent.BACK_TO_MAIN, back_to_main);
 			
 			var delayTimer:Timer = new Timer(50, 1);
 			delayTimer.start();
@@ -230,7 +231,7 @@ package
 			addChild(optScreen);
 			
 			addEventListener(GameEvent.RESUME_GAME, resumeGame);
-			addEventListener(GameEvent.BACK_TO_MAIN, backToMain);
+			addEventListener(GameEvent.BACK_TO_MAIN, option_to_main);
 			addEventListener(SelectStageEvent.OPEN_SELECT_LEVEL_FROM_OPTION, openSelectLevelFromOption);
 		}
 		
@@ -251,7 +252,7 @@ package
 			createLevelByID(lastStageID);
 		}
 		
-		private function backToMain(e:Event):void 
+		private function option_to_main(e:Event):void 
 		{
 			removeChild(optScreen);
 			destroyCurrentLevel();
