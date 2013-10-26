@@ -1,3 +1,10 @@
+opening.first = Once upon a time, there was an enormous lightning struck from heaven.
+opening.second = The lightning was so strong that it made all stars on the sky fell down onto earth.
+opening.third = Stars are the moon's energy source, without them the moon will be swallowed by darkness<br />With its very last power, the moon granted its power to the breavest people on earth to collect the fallen stars
+opening.fourth = People of the earth call these brave warriors, The star collectors<br />They are the only ones who can bring the light back on the night sky
+
+=====================================================================================================================================================
+
 stage1_1.greeting = Hello, my name is Gavin. Are you new here?<br />Do you need me to show you how to play?
 stage1_1.noTutorial = Very well, I wish you luck.<br />See you later, mate
 stage1_1.beginTutorial = Great! Let's begin, shall we?
