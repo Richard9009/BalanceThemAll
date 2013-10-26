@@ -19,6 +19,7 @@ package
 	import general.ScoreRecord;
 	import general.StageRecord;
 	import org.flashdevelop.utils.FlashConnect;
+	import stages.Opening;
 	import stages.StageDisplay;
 	import stages.StageEngine;
 	
@@ -84,7 +85,7 @@ package
 			MusicManager.getInstance().playMainMenuBGM();
 			currentScene = new MainMenu_Movie(); 
 			addChild(currentScene); 
-			addEventListener(GameEvent.START_GAME, startGame);
+			addEventListener(GameEvent.START_GAME, showOpening);
 			addEventListener(SelectStageEvent.OPEN_SELECT_LEVEL, beforeOpenSelectLevel); 
 			addEventListener(MainMenuEvent.CHEAT_OPEN_ALL, unlockAll);
 			addEventListener(MainMenuEvent.OPEN_CREDIT, openCredit);
@@ -162,7 +163,17 @@ package
 			}
 		}
 		
-		private function startGame(e:Event):void
+		private function showOpening(e:Event):void
+		{
+			changeScene();
+			//createLevelByID("1_1");
+			MusicManager.getInstance().playOpeningBGM(0.7);
+			currentScene = new Opening();
+			addChild(currentScene);
+			addEventListener(GameEvent.OPENING_COMPLETE, startGame);
+		}
+		
+		private function startGame(e:GameEvent):void
 		{
 			changeScene();
 			createLevelByID("1_1");
@@ -277,6 +288,7 @@ package
 		private function blackFadeIn():void
 		{
 			var blackLayer:BlackLayer_Movie = new BlackLayer_Movie();
+			blackLayer.fadeIn();
 			addChild(blackLayer);
 		}
 		

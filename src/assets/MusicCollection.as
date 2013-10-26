@@ -10,6 +10,9 @@ package assets
 		[Embed(source = "musics/Main Menu BGM.mp3")]
 		public var mainMenuBGM:Class;
 		
+		[Embed(source = "musics/Opening BGM.mp3")]
+		public var openingBGM:Class;
+		
 		[Embed(source = "musics/Select Level BGM.mp3")]
 		public var selectLevelBGM:Class;
 		

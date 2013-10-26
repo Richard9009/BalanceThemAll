@@ -5,7 +5,11 @@ http://dova-s.jp/bgm/play041.html
 SELECT LEVEL
 稿屋 隆 - So Sweet
 http://dova-s.jp/bgm/play221.html
-
+	
+OPENING 
+Koorogi - 森に潜む悪魔
+http://dova-s.jp/bgm/play453.html
+	
 STAGE CLEAR
 稿屋 隆 - CLAP
 http://dova-s.jp/bgm/play182.html
