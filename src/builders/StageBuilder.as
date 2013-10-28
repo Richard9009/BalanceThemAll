@@ -1,7 +1,6 @@
 package builders 
 {
 	import flash.display.Sprite;
-	import gameObjects.rigidObjects.Foundation;
 	import gameObjects.rigidObjects.RigidObjectBase;
 	import general.MusicManager;
 	/**
@@ -227,7 +226,7 @@ package builders
 		private function stage4(substg:int):void 
 		{
 			others.push(specialBuilder.createSnowPile(380, 415));
-				others.push(specialBuilder.createIceBeam(380, 408));
+			others.push(specialBuilder.createIceBeam(380, 408));
 		}
 		
 		private function stage4_1():void
@@ -279,15 +278,6 @@ package builders
 		public function getStars():Array
 		{
 			return stars;
-		}
-		
-		public function getFoundation():Foundation
-		{
-			for each(var obj:Sprite in others) {
-				if (obj is Foundation) return (obj as Foundation);
-			}
-			
-			return null;
 		}
 		
 		public function getLiftableItems():Array

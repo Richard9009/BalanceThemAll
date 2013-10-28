@@ -6,7 +6,6 @@ package builders
 	import Box2D.Dynamics.b2Fixture;
 	import flash.display.Shape;
 	import gameObjects.rigidObjects.CompoundObject;
-	import gameObjects.rigidObjects.Foundation;
 	import gameObjects.rigidObjects.NormalBoxObject;
 	import gameObjects.rigidObjects.RigidObjectBase;
 	import gameObjects.StarObject;
@@ -39,9 +38,9 @@ package builders
 			return broom;
 		}
 		
-		public function createMicrowave(xx:Number, yy:Number, tall:Boolean):Foundation
+		public function createMicrowave(xx:Number, yy:Number, tall:Boolean):RigidObjectBase
 		{ 
-			var microwave:Foundation = new Foundation();
+			var microwave:RigidObjectBase = new RigidObjectBase();
 			microwave.getBody().SetType(b2Body.b2_staticBody);
 			microwave.createDisplayBody(collection.foundationAsset);
 			microwave.setSize(40, 80, 0);
@@ -68,9 +67,9 @@ package builders
 			return bbBat;
 		}
 		
-		public function createBookStack(xx:Number, yy:Number):Foundation
+		public function createBookStack(xx:Number, yy:Number):RigidObjectBase
 		{
-			var bookStack:Foundation = new Foundation();
+			var bookStack:RigidObjectBase = new RigidObjectBase();
 			bookStack.getBody().SetType(b2Body.b2_staticBody);
 			bookStack.createDisplayBody(collection.foundation2Asset);
 			bookStack.setSize(40, 60, 0);
@@ -80,9 +79,9 @@ package builders
 			return bookStack;
 		}
 		
-		public function createSnowPile(xx:Number, yy:Number, tall:Boolean = false):Foundation
+		public function createSnowPile(xx:Number, yy:Number, tall:Boolean = false):RigidObjectBase
 		{
-			var snowPile:Foundation = new Foundation();
+			var snowPile:RigidObjectBase = new RigidObjectBase();
 			snowPile.getBody().SetType(b2Body.b2_staticBody);
 			snowPile.createDisplayBody(collection.snowPileAsset);
 			snowPile.setSize(108, tall ? 180 : 60, 0);

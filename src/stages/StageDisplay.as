@@ -75,7 +75,6 @@ package stages
 			var builder:StageBuilder = new StageBuilder();
 			addChild(builder.buildAndGetStage(stageID, subStageIndex));
 			stars = builder.getStars();
-			builder.getFoundation().setBalanceLine(bLine);
 			registerItems(builder.getLiftableItems());
 			if (stageID == 1 && subStageIndex == 1) header.hideBalanceButton();
 			bLine.visible = false;
