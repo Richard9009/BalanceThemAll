@@ -321,6 +321,85 @@ package builders
 			
 			return objArray;
 		}
+		
+		public function createAntiGravBox(howMany:int):Array
+		{
+			var objArray:Array = new Array();
+			var obj:NormalBoxObject;
+			for (var i:int = 0; i < howMany; i++)
+			{
+				obj = new NormalBoxObject("Anti Gravity Block", minStageLimit, maxStageLimit);
+				obj.createDisplayBody(collection.antiGravAsset);
+				obj.setFixtureProperties(0.5, 0, 10);
+				obj.setSize(110 * scale, 120 * scale);
+				obj.changeShape(shape.gravityBoxShape(obj));
+				obj.setRandomPositionInsideItemBox();
+				obj.setSound(new soundCol.pillowImpactSound());
+				objArray.push(obj);
+				obj.writeObjectData();
+			}
+			
+			return objArray;
+		}
+		
+		public function createLightTriangle(howMany:int):Array
+		{
+			var objArray:Array = new Array();
+			var obj:NormalBoxObject;
+			for (var i:int = 0; i < howMany; i++)
+			{
+				obj = new NormalBoxObject("Triangle of Light", minStageLimit, maxStageLimit);
+				obj.createDisplayBody(collection.lightTriangleAsset);
+				obj.setFixtureProperties(0.5, 0, 10);
+				obj.setSize(120 * scale, 102 * scale);
+				obj.changeShape(shape.triangleShape(obj));
+				obj.setRandomPositionInsideItemBox();
+				obj.setSound(new soundCol.pillowImpactSound());
+				objArray.push(obj);
+				obj.writeObjectData();
+			}
+			
+			return objArray;
+		}
+		
+		public function createLightBox(howMany:int):Array
+		{
+			var objArray:Array = new Array();
+			var obj:NormalBoxObject;
+			for (var i:int = 0; i < howMany; i++)
+			{
+				obj = new NormalBoxObject("Caged Light", minStageLimit, maxStageLimit);
+				obj.createDisplayBody(collection.lightBoxAsset);
+				obj.setFixtureProperties(0.2, 0, 10);
+				obj.setSize(120 * scale, 120 * scale);
+				obj.setRandomPositionInsideItemBox();
+				obj.setSound(new soundCol.pillowImpactSound());
+				objArray.push(obj);
+				obj.writeObjectData();
+			}
+			
+			return objArray;
+		}
+		
+		public function createLightHolder(howMany:int):Array
+		{
+			var objArray:Array = new Array();
+			var obj:NormalBoxObject;
+			for (var i:int = 0; i < howMany; i++)
+			{
+				obj = new NormalBoxObject("Light Holder", minStageLimit, maxStageLimit);
+				obj.createDisplayBody(collection.lightHolderAsset);
+				obj.setFixtureProperties(0.2, 0, 10);
+				obj.setSize(120 * scale, 220 * scale);
+				obj.changeShape(shape.lightHolderShape(obj));
+				obj.setRandomPositionInsideItemBox();
+				obj.setSound(new soundCol.pillowImpactSound());
+				objArray.push(obj);
+				obj.writeObjectData();
+			}
+			
+			return objArray;
+		}
 	}
 
 }

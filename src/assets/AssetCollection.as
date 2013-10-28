@@ -126,6 +126,27 @@ package assets
 		[Embed(source="AssetLibrary.swf", symbol="ItemPanel_Asset")]
 		public var itemPanelAsset:Class;
 		
+		[Embed(source = "AssetLibrary.swf", symbol = "Stage4BG_Asset")]
+		public var Stage4BGAsset:Class;
+		
+		[Embed(source = "AssetLibrary.swf", symbol = "AntiGravityBox_Asset")]
+		public var antiGravAsset:Class;
+		
+		[Embed(source = "AssetLibrary.swf", symbol = "LightBox_Asset")]
+		public var lightBoxAsset:Class;
+		
+		[Embed(source = "AssetLibrary.swf", symbol = "LightTriangle_Asset")]
+		public var lightTriangleAsset:Class;
+		
+		[Embed(source = "AssetLibrary.swf", symbol = "LightHolder_Asset")]
+		public var lightHolderAsset:Class;
+		
+		[Embed(source = "AssetLibrary.swf", symbol = "GravityBox_Asset")]
+		public var gravBoxAsset:Class;
+		
+		[Embed(source = "AssetLibrary.swf", symbol = "GravityBall_Asset")]
+		public var gravBallAsset:Class;
+		
 		public function AssetCollection() 
 		{
 			 

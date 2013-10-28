@@ -221,6 +221,26 @@ package builders
 			stars.push(specialBuilder.createSilverStar(258, 355));
 			stars.push(specialBuilder.createBronzeStar(340, 253));
 		}
+		
+//======================================================STAGE 4=========================================================================
+
+		private function stage4(substg:int):void 
+		{
+			others.push(specialBuilder.createSnowPile(380, 415));
+				others.push(specialBuilder.createIceBeam(380, 408));
+		}
+		
+		private function stage4_1():void
+		{
+			liftables.push(itemBuilder.createAntiGravBox(2));
+			liftables.push(itemBuilder.createLightBox(2));
+			liftables.push(itemBuilder.createLightTriangle(2));
+			liftables.push(itemBuilder.createLightHolder(2));
+			
+			stars.push(specialBuilder.createGoldenStar(500, 275));
+			stars.push(specialBuilder.createSilverStar(258, 355));
+			stars.push(specialBuilder.createBronzeStar(340, 253));
+		}
 
 //================================================== GENERAL ===========================================================================
 		public function buildAndGetStage(stageIndex:int, substageIndex:int):Sprite

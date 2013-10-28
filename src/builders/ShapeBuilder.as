@@ -128,6 +128,51 @@ package builders
 			return shape;
 		}
 		
+		public function gravityBoxShape(userData:Sprite):b2PolygonShape
+		{
+			matchSize(userData);
+			var shape:b2PolygonShape = new b2PolygonShape();
+			var verArray:Vector.<b2Vec2> = new Vector.<b2Vec2>;
+			
+			verArray.push(new b2Vec2( -width/2, height / 2));
+			verArray.push(new b2Vec2( -width / 2, -height * 2/5));
+			verArray.push(new b2Vec2( width / 2, -height * 2/5));
+			verArray.push(new b2Vec2(width / 2, height / 2));
+			
+			shape.SetAsVector(verArray, 4);
+			return shape;
+		}
+		
+		public function triangleShape(userData:Sprite):b2PolygonShape
+		{
+			matchSize(userData);
+			var shape:b2PolygonShape = new b2PolygonShape();
+			var verArray:Vector.<b2Vec2> = new Vector.<b2Vec2>;
+			
+			verArray.push(new b2Vec2( -width/2, height / 2));
+			verArray.push(new b2Vec2( 0, -height / 2));
+			verArray.push(new b2Vec2(width / 2, height / 2));
+			
+			shape.SetAsVector(verArray, 3);
+			return shape;
+		}
+		
+		public function lightHolderShape(userData:Sprite):b2PolygonShape
+		{
+			matchSize(userData);
+			var shape:b2PolygonShape = new b2PolygonShape();
+			var verArray:Vector.<b2Vec2> = new Vector.<b2Vec2>;
+			
+			
+			verArray.push(new b2Vec2( -width/2, height / 2));
+			verArray.push(new b2Vec2( -width/2, -height * 3/11));
+			verArray.push(new b2Vec2( 0, -height /2));
+			verArray.push(new b2Vec2(width / 2, -height * 3/11));
+			verArray.push(new b2Vec2( width/2, height / 2));
+			
+			shape.SetAsVector(verArray, 5);
+			return shape;
+		}
 		private function matchSize(userData:Sprite):void
 		{
 			width = userData.width / Main._physScale;

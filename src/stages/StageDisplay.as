@@ -27,7 +27,7 @@ package stages
 		public function StageDisplay(stageID:int) 
 		{	
 			collection = new AssetCollection();
-			assetList = [collection.stageAsset, collection.stage2BGAsset, collection.stage3BGAsset];
+			assetList = [collection.stageAsset, collection.stage2BGAsset, collection.stage3BGAsset, collection.Stage4BGAsset];
 			
 			var assetData:Sprite = new assetList[stageID - 1]() as Sprite;
 			assetData.x = StageConfig.STAGE_WIDTH / 2; 

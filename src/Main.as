@@ -185,7 +185,7 @@ package
 			var idArray:Array = stageID.split("_");
 			var stg:int = int(idArray[0]);
 			var subStg:int = int(idArray[1]);
-			var hasTutorial:Boolean = true;
+			var hasTutorial:Boolean = stg < 4;
 			
 			createWorld();
 			currentScene = new StageDisplay(stg);

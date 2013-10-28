@@ -39,6 +39,7 @@ package general
 					case 0: lineColor = 0x0033FF; break;
 					case 1: lineColor = 0x663399; break;
 					case 2: lineColor = 0xCC66CC; break;
+					case 3: lineColor = 0x003333; break;
 				}
 				
 				thisStar.drawLine(new Point(prevStar.x, prevStar.y), lineColor);
