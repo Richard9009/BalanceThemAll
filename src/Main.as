@@ -125,7 +125,7 @@ package
 			addEventListener(SelectStageEvent.STAGE_SELECTED, stageSelected);
 			addEventListener(GameEvent.BACK_TO_MAIN, back_to_main);
 			
-			var delayTimer:Timer = new Timer(50, 1);
+			var delayTimer:Timer = new Timer(100, 1);
 			delayTimer.start();
 			delayTimer.addEventListener(TimerEvent.TIMER, function delayListener(e:TimerEvent):void{
 				e.target.stop();

@@ -53,6 +53,7 @@ package gameObjects.rigidObjects
 		protected var collidingBodyList:Array = new Array();
 		
 		private var collision:BoxToBoxCollision = new BoxToBoxCollision();
+		public var massOnMe:Number = 0;
 		
 		public function RigidObjectBase() 
 		{
@@ -189,6 +190,16 @@ package gameObjects.rigidObjects
 		{
 			fadeSpd = fadeSpeed;
 			addEventListener(Event.ENTER_FRAME, fadingAway);
+		}
+		
+		public function addMassOnMe(addedMass:Number):void
+		{
+			massOnMe += addedMass;
+		}
+		
+		public function getTotalMass():Number
+		{
+			return rigidBody.GetMass() + massOnMe;
 		}
 		
 		public function destroyMe():void

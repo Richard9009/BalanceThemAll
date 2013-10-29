@@ -107,6 +107,7 @@ package gameObjects.rigidObjects
 		
 		private var hasBeenDropped:Boolean = false;
 		private var hasBeenRelocated:Boolean = true;
+		private var prevBodyBelow:b2Body;
 		protected function checkActivity(e:Event):void 
 		{
 			if (rigidBody.GetLinearVelocity().Length() == 0 && hasBeenRelocated) {
@@ -121,7 +122,16 @@ package gameObjects.rigidObjects
 				hasBeenDropped = true;
 				hasBeenRelocated = false;
 			}
-			
+			else {
+				var bodyBelow:b2Body = getBodyBelowMe();
+				if (prevBodyBelow != bodyBelow) {
+					if (bodyBelow != null) 
+						RigidObjectBase(bodyBelow.GetUserData()).addMassOnMe(getTotalMass());
+					if(prevBodyBelow != null)
+						RigidObjectBase(prevBodyBelow.GetUserData()).addMassOnMe(-getTotalMass());
+				}
+				prevBodyBelow = bodyBelow;
+			}
 			if (Math.abs(rigidBody.GetLinearVelocity().Length()) > 0) hasBeenRelocated = true;
 		}
 		
@@ -366,6 +376,19 @@ package gameObjects.rigidObjects
 		}
 		
 		public function isBlocked():Boolean { return redLayer.visible; }
+		
+		override public function addMassOnMe(addedMass:Number):void 
+		{
+			super.addMassOnMe(addedMass);
+			var bodyBelow:b2Body = getBodyBelowMe();
+			
+			try {
+				if (bodyBelow) 
+					RigidObjectBase(bodyBelow.GetUserData()).addMassOnMe(addedMass);
+			} catch (e:StackOverflowError) {
+				return;
+			}
+		}
 		
 		override public function destroyMe():void 
 		{

@@ -6,6 +6,7 @@ package builders
 	import Box2D.Dynamics.b2Fixture;
 	import flash.display.Shape;
 	import gameObjects.rigidObjects.CompoundObject;
+	import gameObjects.rigidObjects.GravityBlock;
 	import gameObjects.rigidObjects.NormalBoxObject;
 	import gameObjects.rigidObjects.RigidObjectBase;
 	import gameObjects.StarObject;
@@ -102,6 +103,19 @@ package builders
 			iceBeam.isBalanceBoard = true;
 			
 			return iceBeam;
+		}
+		
+		public function createGravityBlock(xx:Number, yy:Number):GravityBlock
+		{
+			var gravBlock:GravityBlock = new GravityBlock();
+			gravBlock.createDisplayBody(collection.gravBoxAsset);
+			gravBlock.setSize(55, 60);
+			gravBlock.setPosition(xx, yy);
+			gravBlock.changeShape(new ShapeBuilder().gravityBoxShape(gravBlock));
+			gravBlock.setFixtureProperties(0, 0.3, 0.5);
+			
+			return gravBlock;
+			
 		}
 		
 		public function createGoldenStar(xx:Number, yy:Number):StarObject

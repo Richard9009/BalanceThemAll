@@ -225,8 +225,8 @@ package builders
 
 		private function stage4(substg:int):void 
 		{
-			others.push(specialBuilder.createSnowPile(380, 415));
-			others.push(specialBuilder.createIceBeam(380, 408));
+			others.push(specialBuilder.createGravityBlock(200, 250));
+			others.push(specialBuilder.createGravityBlock(600, 250));
 		}
 		
 		private function stage4_1():void
@@ -266,8 +266,9 @@ package builders
 				othersContainer.addChild(other);
 			}
 			
-			stage.addChild(liftablesContainer);
 			stage.addChild(othersContainer);
+			stage.addChild(liftablesContainer);
+			
 		}
 		
 		public function getStage():Sprite
