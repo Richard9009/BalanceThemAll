@@ -112,7 +112,7 @@ package builders
 			gravBlock.setSize(55, 60);
 			gravBlock.setPosition(xx, yy);
 			gravBlock.changeShape(new ShapeBuilder().gravityBoxShape(gravBlock));
-			gravBlock.setFixtureProperties(0, 0.3, 0.5);
+			gravBlock.setFixtureProperties(0, 0, 0.5);
 			
 			return gravBlock;
 			

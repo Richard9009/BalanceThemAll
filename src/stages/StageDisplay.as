@@ -75,6 +75,7 @@ package stages
 			var builder:StageBuilder = new StageBuilder();
 			addChild(builder.buildAndGetStage(stageID, subStageIndex));
 			stars = builder.getStars();
+			showBalanceLine = false;
 			registerItems(builder.getLiftableItems());
 		}
 		

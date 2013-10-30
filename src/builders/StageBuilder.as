@@ -1,6 +1,7 @@
 package builders 
 {
 	import flash.display.Sprite;
+	import gameObjects.rigidObjects.DraggableObject;
 	import gameObjects.rigidObjects.RigidObjectBase;
 	import general.MusicManager;
 	/**
@@ -227,6 +228,7 @@ package builders
 		{
 			others.push(specialBuilder.createGravityBlock(200, 250));
 			others.push(specialBuilder.createGravityBlock(600, 250));
+			DraggableObject.calculate_mass_on_me = true;
 		}
 		
 		private function stage4_1():void
@@ -245,6 +247,7 @@ package builders
 		public function buildAndGetStage(stageIndex:int, substageIndex:int):Sprite
 		{
 			var stageID:String = stageIndex.toString() + "_" + substageIndex.toString();
+			DraggableObject.calculate_mass_on_me = false;
 			this["stage" + stageIndex.toString()](substageIndex);
 			this["stage" + stageID]();
 			

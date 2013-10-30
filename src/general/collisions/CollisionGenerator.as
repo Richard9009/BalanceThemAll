@@ -54,6 +54,8 @@ package general.collisions
 			var sizeA:Point = new Point(objA.width, objA.height);
 			var sizeB:Point = new Point(objB.width, objB.height);
 			
+			if (Math.abs(posA.x - posB.x) >= sizeA.x/2 + sizeB.x/4) return false;
+			
 			//======SET A AS HOST=================================================
 			posB.x -= posA.x;
 			posB.y -= posA.y;
@@ -65,8 +67,6 @@ package general.collisions
 			posB.y = posB_noRot.x * Math.sin(counterRotA) + posB_noRot.y * Math.cos(counterRotA);
 			
 			trace(posB.y);
-			if (posB.y > 0) trace(counterRotA * 180 / Math.PI);
-			
 			return posB.y < 0;
 		}
 		

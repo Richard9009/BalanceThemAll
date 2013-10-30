@@ -26,6 +26,8 @@ package gameObjects.rigidObjects
 	 */
 	public class DraggableObject extends RigidObjectBase
 	{	
+		public static var calculate_mass_on_me:Boolean = false;
+		
 		protected var redLayerClass:Class;
 		
 		protected var minLimit:b2Vec2;
@@ -122,7 +124,7 @@ package gameObjects.rigidObjects
 				hasBeenDropped = true;
 				hasBeenRelocated = false;
 			}
-			else {
+			else if(rigidBody.GetLinearVelocity().Length() > 0 && calculate_mass_on_me) {
 				var bodyBelow:b2Body = getBodyBelowMe();
 				if (prevBodyBelow != bodyBelow) {
 					if (bodyBelow != null) 
@@ -397,6 +399,7 @@ package gameObjects.rigidObjects
 			removeEventListener(MouseEvent.MOUSE_OVER, onMouseHover);
 			removeEventListener(MouseEvent.MOUSE_OUT, onMouseOut);
 			removeEventListener(Event.ENTER_FRAME, onEveryFrame);
+			removeEventListener(Event.ENTER_FRAME, checkActivity);
 			removeEventListener(MouseEvent.MOUSE_WHEEL, onMouseWhell);
 			removeEventListener(GrabObjectEvent.DROP_AN_OBJECT, dropped);
 		}

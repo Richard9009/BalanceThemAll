@@ -11,8 +11,9 @@ package gameObjects.rigidObjects
 	public class GravityBlock extends RigidObjectBase 
 	{
 		private static const FALL_RATE:Number = 0.1;
+		private static const MAXIMUM_FORCE:Number = 20;
 		private var originalPos:Point;
-		private var force:Number;
+		private var force:Number = 0;
 		private var afterFallY:Number;
 		private var startFallY:Number;
 		private var fallingSpd:Number = 2;
@@ -42,7 +43,10 @@ package gameObjects.rigidObjects
 		override public function addMassOnMe(addedMass:Number):void 
 		{
 			super.addMassOnMe(addedMass);
-			force = addedMass * Main._gravity.y;
+			force += addedMass * Main._gravity.y;
+			
+			//this if statement is added to fix stack overflow problem, I need a better solution for this!
+			if (Math.abs(force) > MAXIMUM_FORCE) force = MAXIMUM_FORCE * force / Math.abs(force);
 			
 			fallDown();
 		}
@@ -57,6 +61,10 @@ package gameObjects.rigidObjects
 			
 			if (goingDown) rigidBody.SetLinearVelocity(new b2Vec2(0, fallingSpd));
 			else rigidBody.SetLinearVelocity(new b2Vec2(0, -fallingSpd));
+			
+			trace("FORCE: " + force);
+			trace("startFall: " + startFallY);
+			trace("afterFall: " + afterFallY);
 			
 			addEventListener(Event.ENTER_FRAME, checkPosition);
 		}
@@ -77,6 +85,7 @@ package gameObjects.rigidObjects
 		
 		private function stopFalling():void 
 		{
+			force = 0;
 			rigidBody.GetPosition().y = afterFallY;
 			rigidBody.SetLinearVelocity(new b2Vec2());
 			removeEventListener(Event.ENTER_FRAME, checkPosition);
