@@ -1,5 +1,6 @@
 package builders 
 {
+	import Box2D.Collision.Shapes.b2CircleShape;
 	import Box2D.Collision.Shapes.b2PolygonShape;
 	import Box2D.Common.Math.b2Vec2;
 	import flash.display.Sprite;
@@ -172,6 +173,12 @@ package builders
 			
 			shape.SetAsVector(verArray, 5);
 			return shape;
+		}
+		
+		public function ballShape(userData:Sprite):b2CircleShape
+		{
+			return new b2CircleShape(userData.width / 2);
+			
 		}
 		private function matchSize(userData:Sprite):void
 		{

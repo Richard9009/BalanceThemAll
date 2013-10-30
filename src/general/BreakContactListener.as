@@ -5,6 +5,7 @@ package general
 	import Box2D.Dynamics.b2ContactImpulse;
 	import Box2D.Dynamics.b2ContactListener;
 	import Box2D.Dynamics.Contacts.b2Contact;
+	import gameEvents.CollisionEvent;
 	import gameEvents.ObjectBreakEvent;
 	import flash.display.Sprite;
 	import flash.media.Sound;
@@ -27,6 +28,16 @@ package general
 		{
 		}
 		
+		override public function BeginContact(contact:b2Contact):void 
+		{
+			super.BeginContact(contact);
+			
+			var objA:Sprite = contact.GetFixtureA().GetBody().GetUserData();
+			var objB:Sprite = contact.GetFixtureB().GetBody().GetUserData();
+			if(objA) objA.dispatchEvent(new CollisionEvent(CollisionEvent.COLLISION_START));
+			if(objB) objB.dispatchEvent(new CollisionEvent(CollisionEvent.COLLISION_START));
+		}
+		
 		override public function PostSolve(contact:b2Contact, impulse:b2ContactImpulse):void 
 		{
 			super.PostSolve(contact, impulse);
@@ -38,6 +49,14 @@ package general
 			
 			if (objA is IAudibleObject) generateSound(objA as IAudibleObject, impulse);
 			if (objB is IAudibleObject) generateSound(objB as IAudibleObject, impulse);
+			
+			if(objA) objA.dispatchEvent(new CollisionEvent(CollisionEvent.COLLISION_END));
+			if(objB) objB.dispatchEvent(new CollisionEvent(CollisionEvent.COLLISION_END));
+			
+			if (contact.IsContinuous()) {
+				if(objA) objA.dispatchEvent(new CollisionEvent(CollisionEvent.CONTINUOUS_COLLISION));
+				if(objB) objB.dispatchEvent(new CollisionEvent(CollisionEvent.CONTINUOUS_COLLISION));
+			}
 		}
 		
 		private function checkBreak(obj:NormalBoxObject, impulse:b2ContactImpulse):void

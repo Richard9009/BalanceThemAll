@@ -40,6 +40,7 @@ package general.collisions
 			return collision.hitTest(host, guest);
 		}
 		
+		
 		public static function isAbelowB(objA:Sprite, objB:Sprite):Boolean
 		{
 			

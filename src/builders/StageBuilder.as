@@ -245,6 +245,18 @@ package builders
 			stars.push(specialBuilder.createSilverStar(150, 350));
 			stars.push(specialBuilder.createBronzeStar(150, 190));
 		}
+		
+		private function stage4_2():void
+		{
+			liftables.push(itemBuilder.createLightBox(2));
+			liftables.push(itemBuilder.createLightTriangle(2));
+			
+			others.push(specialBuilder.createGravityBall(300, 220));
+			
+			stars.push(specialBuilder.createGoldenStar(650, 200));
+			stars.push(specialBuilder.createSilverStar(150, 350));
+			stars.push(specialBuilder.createBronzeStar(150, 190));
+		}
 
 //================================================== GENERAL ===========================================================================
 		public function buildAndGetStage(stageIndex:int, substageIndex:int):Sprite

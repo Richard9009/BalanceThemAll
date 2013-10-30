@@ -13,6 +13,7 @@ package stages
 		public static const BORDER_THICKNESS:Number = 10;
 		public static const FRAME_RATE:Number = 30;
 		public static const ITEMBOX_Y:Number = 450.0;
+		public static const WALL_THICKNESS:Number = 10;
 		
 		public function StageConfig() 
 		{
