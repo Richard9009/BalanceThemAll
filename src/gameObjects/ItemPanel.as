@@ -41,6 +41,8 @@ package gameObjects
 			panel = new collection.itemPanelAsset();
 			panel.width = 180;
 			panel.height = 100;
+			mouseEnabled = false;
+			mouseChildren = false;
 			addChild(panel);
 		}
 		
@@ -48,6 +50,7 @@ package gameObjects
 		{
 			var R_or_L:String = (isRightPanel) ? "R: " : "L: ";
 			nameTxt = new TextField();
+			nameTxt.selectable = false;
 			nameTxt.text = R_or_L + itemName;
 			nameTxt.width = panel.width;
 			var headerTF:TextFormat = new TextFormat("Arial", TEXT_SIZE, 0x000000, true);
@@ -55,12 +58,14 @@ package gameObjects
 			addChild(nameTxt);
 			
 			weightTxt = new TextField();
+			weightTxt.selectable = false;
 			weightTxt.text = BULLET + WEIGHT + weight;
 			weightTxt.width = panel.width;
 			weightTxt.setTextFormat(tFormat);
 			addChild(weightTxt);
 			
 			infoTxt = new TextField();
+			infoTxt.selectable = false;
 			infoTxt.text = "";
 			for each (var info:String in infoList)
 			{

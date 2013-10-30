@@ -227,8 +227,8 @@ package builders
 
 		private function stage4(substg:int):void 
 		{
-			var gBlock1:GravityBlock = specialBuilder.createGravityBlock(200, 250);
-			var gBlock2:GravityBlock = specialBuilder.createGravityBlock(600, 250);
+			var gBlock1:GravityBlock = specialBuilder.createGravityBlock(150, 200);
+			var gBlock2:GravityBlock = specialBuilder.createGravityBlock(650, 350);
 			gBlock1.setPair(gBlock2);
 	
 			others.push(gBlock1);
@@ -243,9 +243,9 @@ package builders
 			liftables.push(itemBuilder.createLightTriangle(2));
 			liftables.push(itemBuilder.createLightHolder(2));
 			
-			stars.push(specialBuilder.createGoldenStar(500, 275));
-			stars.push(specialBuilder.createSilverStar(258, 355));
-			stars.push(specialBuilder.createBronzeStar(340, 253));
+			stars.push(specialBuilder.createGoldenStar(650, 200));
+			stars.push(specialBuilder.createSilverStar(150, 350));
+			stars.push(specialBuilder.createBronzeStar(150, 190));
 		}
 
 //================================================== GENERAL ===========================================================================

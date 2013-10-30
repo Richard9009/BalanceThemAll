@@ -4,6 +4,7 @@ package gameObjects.rigidObjects
 	import Box2D.Dynamics.b2Body;
 	import flash.events.Event;
 	import flash.geom.Point;
+	import stages.StageConfig;
 	/**
 	 * ...
 	 * @author ...
@@ -60,6 +61,7 @@ package gameObjects.rigidObjects
 		{
 			var fallDistance:Number = force * FALL_RATE;
 			afterFallY = rigidBody.GetPosition().y + fallDistance;
+			validateAfterFallPosition();
 			startFallY = rigidBody.GetPosition().y;
 			goingDown = afterFallY > startFallY;
 			
@@ -90,6 +92,16 @@ package gameObjects.rigidObjects
 			rigidBody.GetPosition().y = afterFallY;
 			rigidBody.SetLinearVelocity(new b2Vec2());
 			removeEventListener(Event.ENTER_FRAME, checkPosition);
+		}
+		
+		private function validateAfterFallPosition():void {
+			if (afterFallY * Main._physScale > StageConfig.ITEMBOX_Y - height / 2 - 10) {
+				afterFallY = (StageConfig.ITEMBOX_Y - height / 2 - 10) / Main._physScale;
+			}
+			
+			if (afterFallY * Main._physScale < StageConfig.HEADER_HEIGHT + height / 2 + 10 ) {
+				afterFallY = (StageConfig.HEADER_HEIGHT + height / 2 + 10) / Main._physScale;
+			}
 		}
 		
 		public function setPair(gBlock:GravityBlock):void
