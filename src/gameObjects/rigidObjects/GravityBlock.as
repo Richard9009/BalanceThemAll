@@ -11,7 +11,7 @@ package gameObjects.rigidObjects
 	 */
 	public class GravityBlock extends RigidObjectBase 
 	{
-		private static const FALL_RATE:Number = 0.1;
+		private static const FALL_RATE:Number = 0.25;
 		private static const MAXIMUM_FORCE:Number = 20;
 		
 		private static const DIRECTION_UP:Number = -1;

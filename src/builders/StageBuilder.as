@@ -238,10 +238,8 @@ package builders
 		
 		private function stage4_1():void
 		{
-			liftables.push(itemBuilder.createAntiGravBox(2));
 			liftables.push(itemBuilder.createLightBox(2));
 			liftables.push(itemBuilder.createLightTriangle(2));
-			liftables.push(itemBuilder.createLightHolder(2));
 			
 			stars.push(specialBuilder.createGoldenStar(650, 200));
 			stars.push(specialBuilder.createSilverStar(150, 350));

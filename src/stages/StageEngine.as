@@ -276,6 +276,8 @@ package stages
 				sCounter.fallPenalty();
 				header.updateScore(sCounter);
 			}
+			
+			checkStarCollision(obj);
 		}
 		
 		protected function grabAnObject(e:GrabObjectEvent):String
