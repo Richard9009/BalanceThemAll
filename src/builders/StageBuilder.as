@@ -2,6 +2,7 @@ package builders
 {
 	import flash.display.Sprite;
 	import gameObjects.rigidObjects.DraggableObject;
+	import gameObjects.rigidObjects.GravityBlock;
 	import gameObjects.rigidObjects.RigidObjectBase;
 	import general.MusicManager;
 	/**
@@ -226,8 +227,12 @@ package builders
 
 		private function stage4(substg:int):void 
 		{
-			others.push(specialBuilder.createGravityBlock(200, 250));
-			others.push(specialBuilder.createGravityBlock(600, 250));
+			var gBlock1:GravityBlock = specialBuilder.createGravityBlock(200, 250);
+			var gBlock2:GravityBlock = specialBuilder.createGravityBlock(600, 250);
+			gBlock1.setPair(gBlock2);
+	
+			others.push(gBlock1);
+			others.push(gBlock2);
 			DraggableObject.calculate_mass_on_me = true;
 		}
 		

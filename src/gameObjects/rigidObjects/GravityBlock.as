@@ -12,12 +12,17 @@ package gameObjects.rigidObjects
 	{
 		private static const FALL_RATE:Number = 0.1;
 		private static const MAXIMUM_FORCE:Number = 20;
+		
+		private static const DIRECTION_UP:Number = -1;
+		private static const DIRECTION_DOWN:Number = 1;
+		
 		private var originalPos:Point;
 		private var force:Number = 0;
 		private var afterFallY:Number;
 		private var startFallY:Number;
 		private var fallingSpd:Number = 2;
 		private var goingDown:Boolean;
+		private var pair:GravityBlock;
 		
 		public function GravityBlock() 
 		{
@@ -30,7 +35,6 @@ package gameObjects.rigidObjects
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, addedToStage);
 			originalPos = new Point(rigidBody.GetPosition().x, rigidBody.GetPosition().y);
-			addEventListener(Event.ENTER_FRAME, checkPosition);
 		}
 		
 		override public function createRigidBody():void 
@@ -48,12 +52,12 @@ package gameObjects.rigidObjects
 			//this if statement is added to fix stack overflow problem, I need a better solution for this!
 			if (Math.abs(force) > MAXIMUM_FORCE) force = MAXIMUM_FORCE * force / Math.abs(force);
 			
+			if (pair) pair.reactToPair(force);
 			fallDown();
 		}
 		
 		private function fallDown():void
 		{
-			rigidBody.SetType(b2Body.b2_kinematicBody);
 			var fallDistance:Number = force * FALL_RATE;
 			afterFallY = rigidBody.GetPosition().y + fallDistance;
 			startFallY = rigidBody.GetPosition().y;
@@ -62,15 +66,12 @@ package gameObjects.rigidObjects
 			if (goingDown) rigidBody.SetLinearVelocity(new b2Vec2(0, fallingSpd));
 			else rigidBody.SetLinearVelocity(new b2Vec2(0, -fallingSpd));
 			
-			trace("FORCE: " + force);
-			trace("startFall: " + startFallY);
-			trace("afterFall: " + afterFallY);
-			
 			addEventListener(Event.ENTER_FRAME, checkPosition);
 		}
 		
 		private function checkPosition(e:Event):void
 		{
+			
 			if(goingDown) {			
 				if (rigidBody.GetPosition().y >= afterFallY) {
 					stopFalling();
@@ -89,6 +90,18 @@ package gameObjects.rigidObjects
 			rigidBody.GetPosition().y = afterFallY;
 			rigidBody.SetLinearVelocity(new b2Vec2());
 			removeEventListener(Event.ENTER_FRAME, checkPosition);
+		}
+		
+		public function setPair(gBlock:GravityBlock):void
+		{
+			pair = gBlock;
+			if (pair.pair == null) pair.setPair(this);
+		}
+
+		public function reactToPair(f:Number):void {
+			force = -f; 
+			rigidBody.SetAwake(true);
+			fallDown();
 		}
 		
 	}
