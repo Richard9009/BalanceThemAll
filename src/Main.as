@@ -210,9 +210,16 @@ package
 		private function destroyCurrentLevel():void
 		{
 			StageEngine(currentScene).destroyMe();
-			destroyWorld();
 			changeScene(); 
 			MousePhysic.destroyStage();
+			
+			var delayTimer:Timer = new Timer(100, 1);
+			delayTimer.start();
+			delayTimer.addEventListener(TimerEvent.TIMER, function delayListener(e:TimerEvent):void{
+				e.target.stop();
+				e.target.removeEventListener(TimerEvent.TIMER, delayListener);
+				destroyWorld();
+			});
 		}
 		
 		private function restartLevel(e:GameEvent):void 

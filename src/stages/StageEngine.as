@@ -98,15 +98,6 @@ package stages
 			removeEventListener(ObjectBreakEvent.GENERATE_PARTICLE, generateParticle);
 		}
 		
-		private function destroyAllObjects():void {
-			
-			while (record.itemList.length > 0) {
-				var obj:DraggableObject = record.itemList[0] as DraggableObject;
-				obj.destroyMe();
-				record.itemList.splice(0, 1);
-			}
-		}
-		
 		private function generateParticle(e:ObjectBreakEvent):void 
 		{
 			var particlesNum:int = Math.floor(Math.random() * 10 + 10);
@@ -365,7 +356,6 @@ package stages
 		{
 			removeAllListeners();
 			HandManager.reset();
-			destroyAllObjects();
 		}
 		
 	}

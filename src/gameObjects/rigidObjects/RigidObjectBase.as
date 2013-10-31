@@ -64,6 +64,13 @@ package gameObjects.rigidObjects
 			id = nextID;
 			
 			createRigidBody();
+			addEventListener(Event.REMOVED_FROM_STAGE, whenRemoved);
+		}
+		
+		private function whenRemoved(e:Event):void 
+		{
+			removeEventListener(Event.REMOVED_FROM_STAGE, whenRemoved);
+			destroyMe();
 		}
 		
 		protected function onEnterFrame(e:Event):void 

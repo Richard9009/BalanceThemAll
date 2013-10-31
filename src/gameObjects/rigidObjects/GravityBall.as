@@ -69,6 +69,7 @@ package gameObjects.rigidObjects
 		
 		protected function checkContact(e:Event):void 
 		{
+			
 			for (var bb:b2Body = Main.getWorld().GetBodyList(); bb; bb = bb.GetNext())
 			{
 				
@@ -99,6 +100,7 @@ package gameObjects.rigidObjects
 		override public function destroyMe():void 
 		{
 			super.destroyMe();
+			trace("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 			removeEventListener(Event.ENTER_FRAME, checkContact);
 		}
 		
