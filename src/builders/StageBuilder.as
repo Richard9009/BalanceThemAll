@@ -227,17 +227,19 @@ package builders
 
 		private function stage4(substg:int):void 
 		{
+			
+			DraggableObject.calculate_mass_on_me = true;
+		}
+		
+		private function stage4_1():void
+		{
 			var gBlock1:GravityBlock = specialBuilder.createGravityBlock(150, 200);
 			var gBlock2:GravityBlock = specialBuilder.createGravityBlock(650, 350);
 			gBlock1.setPair(gBlock2);
 	
 			others.push(gBlock1);
 			others.push(gBlock2);
-			DraggableObject.calculate_mass_on_me = true;
-		}
-		
-		private function stage4_1():void
-		{
+			
 			liftables.push(itemBuilder.createLightBox(2));
 			liftables.push(itemBuilder.createLightTriangle(2));
 			
@@ -248,8 +250,15 @@ package builders
 		
 		private function stage4_2():void
 		{
-			liftables.push(itemBuilder.createLightBox(2));
-			liftables.push(itemBuilder.createLightTriangle(2));
+			var gBlock1:GravityBlock = specialBuilder.createGravityBlock(150, 250);
+			var gBlock2:GravityBlock = specialBuilder.createGravityBlock(650, 250);
+			gBlock1.setPair(gBlock2);
+	
+			others.push(gBlock1);
+			others.push(gBlock2);
+			
+			liftables.push(itemBuilder.createLightBox(4));
+			//liftables.push(itemBuilder.createLightTriangle(2));
 			
 			others.push(specialBuilder.createGravityBall(300, 220));
 			

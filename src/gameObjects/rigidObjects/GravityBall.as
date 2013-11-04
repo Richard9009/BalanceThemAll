@@ -21,10 +21,12 @@ package gameObjects.rigidObjects
 		public static const VERTICAL:uint = 223344;
 		public static const ANGLED:uint = 334455;
 		
+		private var lastTurningTime:Number = 0;
+		private var turningThreshold:Number = 100;
+		
 		public function GravityBall() 
 		{
 			super();
-			
 		}
 		
 		public function setRoundSize(radius:Number, density:Number = 0.3):void 
@@ -63,13 +65,21 @@ package gameObjects.rigidObjects
 		
 		private function turning():void 
 		{
+			if (!allowTurning()) return;
 			var spdVec:b2Vec2 = rigidBody.GetLinearVelocity();
 			rigidBody.SetLinearVelocity( new b2Vec2( -spdVec.x, -spdVec.y));
 		}
 		
+		private function allowTurning():Boolean
+		{
+			var allowTurn:Boolean = (new Date().getTime() - lastTurningTime) > turningThreshold;
+			lastTurningTime = new Date().getTime();
+			return allowTurn;
+		}
+		
 		protected function checkContact(e:Event):void 
 		{
-			
+			if (Main.getWorld() == null) return;
 			for (var bb:b2Body = Main.getWorld().GetBodyList(); bb; bb = bb.GetNext())
 			{
 				
@@ -100,7 +110,6 @@ package gameObjects.rigidObjects
 		override public function destroyMe():void 
 		{
 			super.destroyMe();
-			trace("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 			removeEventListener(Event.ENTER_FRAME, checkContact);
 		}
 		

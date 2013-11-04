@@ -34,8 +34,7 @@ package general
 			
 			var objA:Sprite = contact.GetFixtureA().GetBody().GetUserData();
 			var objB:Sprite = contact.GetFixtureB().GetBody().GetUserData();
-			if(objA) objA.dispatchEvent(new CollisionEvent(CollisionEvent.COLLISION_START));
-			if(objB) objB.dispatchEvent(new CollisionEvent(CollisionEvent.COLLISION_START));
+			if(objA && objB) sendCollisionEvent(objA, objB, CollisionEvent.COLLISION_START);
 		}
 		
 		override public function PostSolve(contact:b2Contact, impulse:b2ContactImpulse):void 
@@ -50,12 +49,10 @@ package general
 			if (objA is IAudibleObject) generateSound(objA as IAudibleObject, impulse);
 			if (objB is IAudibleObject) generateSound(objB as IAudibleObject, impulse);
 			
-			if(objA) objA.dispatchEvent(new CollisionEvent(CollisionEvent.COLLISION_END));
-			if(objB) objB.dispatchEvent(new CollisionEvent(CollisionEvent.COLLISION_END));
+			if(objA && objB) sendCollisionEvent(objA, objB, CollisionEvent.COLLISION_END);
 			
-			if (contact.IsContinuous()) {
-				if(objA) objA.dispatchEvent(new CollisionEvent(CollisionEvent.CONTINUOUS_COLLISION));
-				if(objB) objB.dispatchEvent(new CollisionEvent(CollisionEvent.CONTINUOUS_COLLISION));
+			if (contact.IsContinuous() && objA && objB) {
+				sendCollisionEvent(objA, objB, CollisionEvent.CONTINUOUS_COLLISION);
 			}
 		}
 		
@@ -88,6 +85,16 @@ package general
 			}
 			
 			return maxImpulse;
+		}
+		
+		private function sendCollisionEvent(obj1:Sprite, obj2:Sprite, evtType:String):void {
+			var evt:CollisionEvent = new CollisionEvent(evtType, true);
+			evt.theOtherObject = obj2;
+			obj1.dispatchEvent(evt);
+			
+			var evt2:CollisionEvent = new CollisionEvent(evtType, true);
+			evt2.theOtherObject = obj1;
+			obj2.dispatchEvent(evt2);
 		}
 	}
 
