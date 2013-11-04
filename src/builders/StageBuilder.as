@@ -250,21 +250,92 @@ package builders
 		
 		private function stage4_2():void
 		{
-			var gBlock1:GravityBlock = specialBuilder.createGravityBlock(150, 250);
-			var gBlock2:GravityBlock = specialBuilder.createGravityBlock(650, 250);
+			var gBlock1:GravityBlock = specialBuilder.createGravityBlock(200, 350);
+			var gBlock2:GravityBlock = specialBuilder.createGravityBlock(600, 250);
 			gBlock1.setPair(gBlock2);
 	
 			others.push(gBlock1);
 			others.push(gBlock2);
 			
-			liftables.push(itemBuilder.createLightBox(4));
+			liftables.push(itemBuilder.createLightBox(3));
 			//liftables.push(itemBuilder.createLightTriangle(2));
 			
 			others.push(specialBuilder.createGravityBall(300, 220));
 			
-			stars.push(specialBuilder.createGoldenStar(650, 200));
-			stars.push(specialBuilder.createSilverStar(150, 350));
-			stars.push(specialBuilder.createBronzeStar(150, 190));
+			stars.push(specialBuilder.createGoldenStar(600, 200));
+			stars.push(specialBuilder.createSilverStar(200, 300));
+			stars.push(specialBuilder.createBronzeStar(200, 190));
+		}
+		
+		private function stage4_3():void
+		{
+			var gBlock1:GravityBlock = specialBuilder.createGravityBlock(180, 250);
+			var gBlock2:GravityBlock = specialBuilder.createGravityBlock(620, 250);
+			var gBlock3:GravityBlock = specialBuilder.createGravityBlock(400, 250)
+			gBlock3.setPair(gBlock2);
+			
+			others.push(gBlock1);
+			others.push(gBlock2);
+			others.push(gBlock3);
+			
+			liftables.push(itemBuilder.createLightBox(1));
+			liftables.push(itemBuilder.createLightTriangle(1));
+			liftables.push(itemBuilder.createLightHolder(1));
+			
+			others.push(specialBuilder.createGravityBall(275, 150));
+			others.push(specialBuilder.createGravityBall(725, 350));
+			
+			stars.push(specialBuilder.createGoldenStar(620, 125));
+			stars.push(specialBuilder.createSilverStar(400, 300));
+			stars.push(specialBuilder.createBronzeStar(180, 275));
+		}
+		
+		private function stage4_4():void
+		{
+			var gBlock1:GravityBlock = specialBuilder.createGravityBlock(180, 325);
+			var gBlock2:GravityBlock = specialBuilder.createGravityBlock(620, 325);
+			gBlock1.setPair(gBlock2);
+			var gBlock3:GravityBlock = specialBuilder.createGravityBlock(400, 175)
+			
+			others.push(gBlock1);
+			others.push(gBlock2);
+			others.push(gBlock3);
+			
+			liftables.push(itemBuilder.createLightBox(2));
+			liftables.push(itemBuilder.createLightTriangle(2));
+			
+			others.push(specialBuilder.createGravityBall(275, 250));
+			others.push(specialBuilder.createGravityBall(725, 250));
+			
+			stars.push(specialBuilder.createGoldenStar(600, 200));
+			stars.push(specialBuilder.createSilverStar(200, 275));
+			stars.push(specialBuilder.createBronzeStar(400, 190));
+		}
+		
+		private function stage4_5():void
+		{
+			var gBlock1:GravityBlock = specialBuilder.createGravityBlock(180, 325);
+			var gBlock2:GravityBlock = specialBuilder.createGravityBlock(620, 325);
+			var gBlock3:GravityBlock = specialBuilder.createGravityBlock(300, 175);
+			var gBlock4:GravityBlock = specialBuilder.createGravityBlock(500, 175);
+			gBlock1.setPair(gBlock3);
+			gBlock2.setPair(gBlock4);
+			
+			others.push(gBlock1);
+			others.push(gBlock2);
+			others.push(gBlock3);
+			others.push(gBlock4);
+			
+			liftables.push(itemBuilder.createLightBox(2));
+			liftables.push(itemBuilder.createLightTriangle(2));
+			liftables.push(itemBuilder.createLightHolder(1));
+			
+			others.push(specialBuilder.createGravityBall(75, 100));
+			others.push(specialBuilder.createGravityBall(725, 250));
+			
+			stars.push(specialBuilder.createGoldenStar(500, 120));
+			stars.push(specialBuilder.createSilverStar(400, 225));
+			stars.push(specialBuilder.createBronzeStar(180, 370));
 		}
 
 //================================================== GENERAL ===========================================================================

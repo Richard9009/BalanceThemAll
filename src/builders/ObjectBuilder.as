@@ -389,7 +389,7 @@ package builders
 			{
 				obj = new NormalBoxObject("Light Holder", minStageLimit, maxStageLimit);
 				obj.createDisplayBody(collection.lightHolderAsset);
-				obj.setFixtureProperties(0.2, 0, 10);
+				obj.setFixtureProperties(0.3, 0, 10);
 				obj.setSize(120 * scale, 220 * scale);
 				obj.changeShape(shape.lightHolderShape(obj));
 				obj.setRandomPositionInsideItemBox();

@@ -16,13 +16,13 @@ package gameObjects.rigidObjects
 	 */
 	public class GravityBall extends RigidObjectBase 
 	{
-		private static const MOVE_SPEED:Number = 3;
+		private static const MOVE_SPEED:Number = 4;
 		public static const HORIZONTAL:uint = 112233;
 		public static const VERTICAL:uint = 223344;
 		public static const ANGLED:uint = 334455;
 		
 		private var lastTurningTime:Number = 0;
-		private var turningThreshold:Number = 100;
+		private var turningThreshold:Number = 75;
 		
 		public function GravityBall() 
 		{
