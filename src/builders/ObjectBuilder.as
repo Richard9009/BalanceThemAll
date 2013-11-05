@@ -37,7 +37,7 @@ package builders
 			var obj:NormalRoundObject;
 			for (var i:int = 0; i < howMany; i++)
 			{
-				obj = new NormalRoundObject("Basket Ball", minStageLimit, maxStageLimit);
+				obj = new NormalRoundObject("names.basket", minStageLimit, maxStageLimit);
 				obj.createDisplayBody(collection.basketBallAsset);
 				obj.setFixtureProperties(0.4, 0.8, 0.4);
 				obj.setRoundSize(35 * scale);
@@ -56,7 +56,7 @@ package builders
 			var obj:NormalRoundObject;
 			for (var i:int = 0; i < howMany; i++)
 			{
-				obj = new NormalRoundObject("Tennis Ball", minStageLimit, maxStageLimit);
+				obj = new NormalRoundObject("names.tennis", minStageLimit, maxStageLimit);
 				obj.createDisplayBody(collection.tennisBallAsset);
 				obj.setFixtureProperties(0.2, 0.7, 0.1);
 				obj.setRoundSize(21 * scale);
@@ -75,7 +75,7 @@ package builders
 			var obj:NormalRoundObject;
 			for (var i:int = 0; i < howMany; i++)
 			{
-				obj = new NormalRoundObject("Bowling Ball", minStageLimit, maxStageLimit);
+				obj = new NormalRoundObject("names.bowling", minStageLimit, maxStageLimit);
 				obj.createDisplayBody(collection.bowlingBallAsset);
 				obj.setFixtureProperties(1, 0.8, 0.2);
 				obj.setRoundSize(50 * scale);
@@ -94,7 +94,7 @@ package builders
 			var obj:NormalBoxObject;
 			for (var i:int = 0; i < howMany; i++)
 			{
-				obj = new NormalBoxObject("Shoe", minStageLimit, maxStageLimit);
+				obj = new NormalBoxObject("names.shoe", minStageLimit, maxStageLimit);
 				obj.createDisplayBody(collection.shoeAsset);
 				obj.setFixtureProperties(0.3, 0.2, 0.5);
 				obj.setSize(180 * scale, 100 * scale);
@@ -114,7 +114,7 @@ package builders
 			var obj:NormalBoxObject;
 			for (var i:int = 0; i < howMany; i++)
 			{
-				obj = new NormalBoxObject("Glass Vase", minStageLimit, maxStageLimit, true);
+				obj = new NormalBoxObject("names.vase", minStageLimit, maxStageLimit, true);
 				obj.durability = 0.5;
 				obj.createDisplayBody(collection.glassVaseAsset);
 				obj.setFixtureProperties(0.1, 0.1, 0.1);
@@ -134,7 +134,7 @@ package builders
 			var obj:NormalBoxObject;
 			for (var i:int = 0; i < howMany; i++)
 			{
-				obj = new NormalBoxObject("Mug", minStageLimit, maxStageLimit);
+				obj = new NormalBoxObject("names.mug", minStageLimit, maxStageLimit);
 				obj.createDisplayBody(collection.mugAsset);
 				obj.setFixtureProperties(0.15, 0.1, 0.2);
 				obj.setSize(56 * scale, 125 * scale);
@@ -172,7 +172,7 @@ package builders
 			var obj:NormalBoxObject;
 			for (var i:int = 0; i < howMany; i++)
 			{
-				obj = new NormalBoxObject("Book", minStageLimit, maxStageLimit);
+				obj = new NormalBoxObject("names.book", minStageLimit, maxStageLimit);
 				obj.createDisplayBody(collection.blueBookAsset);
 				obj.setFixtureProperties(0.5, 0.1, 0.5);
 				obj.setSize(100 * scale, 40 * scale);
@@ -191,7 +191,7 @@ package builders
 			var obj:NormalBoxObject;
 			for (var i:int = 0; i < howMany; i++)
 			{
-				obj = new NormalBoxObject("Encyclopedia", minStageLimit, maxStageLimit);
+				obj = new NormalBoxObject("names.encyclopedia", minStageLimit, maxStageLimit);
 				obj.createDisplayBody(collection.encyclopediaAsset);
 				obj.setFixtureProperties(0.6, 0.1, 0.5);
 				obj.setSize(75 * scale, 150 * scale);
@@ -210,7 +210,7 @@ package builders
 			var obj:NormalBoxObject;
 			for (var i:int = 0; i < howMany; i++)
 			{
-				obj = new NormalBoxObject("Pillow", minStageLimit, maxStageLimit);
+				obj = new NormalBoxObject("names.pillow", minStageLimit, maxStageLimit);
 				obj.createDisplayBody(collection.pillowAsset);
 				obj.setFixtureProperties(0.3, 0, 0.9);
 				obj.setSize(200 * scale, 56 * scale);
@@ -230,7 +230,7 @@ package builders
 			var obj:NormalBoxObject;
 			for (var i:int = 0; i < howMany; i++)
 			{
-				obj = new NormalBoxObject("Heavy Object", minStageLimit, maxStageLimit);
+				obj = new NormalBoxObject("names.heavyObject", minStageLimit, maxStageLimit);
 				obj.createDisplayBody(collection.heavyObjectAsset);
 				obj.setFixtureProperties(1, 0, 1);
 				obj.setSize(150 * scale, 135 * scale);
@@ -250,7 +250,7 @@ package builders
 			var obj:NormalBoxObject;
 			for (var i:int = 0; i < howMany; i++)
 			{
-				obj = new NormalBoxObject("Frozen Fish", minStageLimit, maxStageLimit);
+				obj = new NormalBoxObject("names.fish", minStageLimit, maxStageLimit);
 				obj.createDisplayBody(collection.frozenFishAsset);
 				obj.setFixtureProperties(0.4, 0, 0.05);
 				obj.setSize(240 * scale, 75 * scale);
@@ -269,7 +269,7 @@ package builders
 			var obj:NormalBoxObject;
 			for (var i:int = 0; i < howMany; i++)
 			{
-				obj = new NormalBoxObject("Frozen Tomato", minStageLimit, maxStageLimit);
+				obj = new NormalBoxObject("names.tomato", minStageLimit, maxStageLimit);
 				obj.createDisplayBody(collection.frozenTomatoAsset);
 				obj.setFixtureProperties(0.3, 0, 0.05);
 				obj.setSize(120 * scale, 100 * scale);
@@ -288,7 +288,7 @@ package builders
 			var obj:NormalBoxObject;
 			for (var i:int = 0; i < howMany; i++)
 			{
-				obj = new NormalBoxObject("Fragile Ice", minStageLimit, maxStageLimit, true);
+				obj = new NormalBoxObject("names.ice", minStageLimit, maxStageLimit, true);
 				obj.durability = 0.7;
 				obj.createDisplayBody(collection.fragileIceAsset);
 				obj.setFixtureProperties(0.3, 0, 0.05);
@@ -308,7 +308,7 @@ package builders
 			var obj:NormalBoxObject;
 			for (var i:int = 0; i < howMany; i++)
 			{
-				obj = new NormalBoxObject("Penguin", minStageLimit, maxStageLimit);
+				obj = new NormalBoxObject("names.penguin", minStageLimit, maxStageLimit);
 				obj.createDisplayBody(collection.penguinAsset);
 				obj.setFixtureProperties(0.8, 0, 10);
 				obj.setSize(144 * scale, 204 * scale);
@@ -348,9 +348,9 @@ package builders
 			var obj:NormalBoxObject;
 			for (var i:int = 0; i < howMany; i++)
 			{
-				obj = new NormalBoxObject("Triangle of Light", minStageLimit, maxStageLimit);
+				obj = new NormalBoxObject("names.triangle", minStageLimit, maxStageLimit);
 				obj.createDisplayBody(collection.lightTriangleAsset);
-				obj.setFixtureProperties(0.5, 0, 10);
+				obj.setFixtureProperties(0.5, 0, 0.5);
 				obj.setSize(120 * scale, 102 * scale);
 				obj.changeShape(shape.triangleShape(obj));
 				obj.setRandomPositionInsideItemBox();
@@ -368,9 +368,9 @@ package builders
 			var obj:NormalBoxObject;
 			for (var i:int = 0; i < howMany; i++)
 			{
-				obj = new NormalBoxObject("Caged Light", minStageLimit, maxStageLimit);
+				obj = new NormalBoxObject("names.box", minStageLimit, maxStageLimit);
 				obj.createDisplayBody(collection.lightBoxAsset);
-				obj.setFixtureProperties(0.2, 0, 10);
+				obj.setFixtureProperties(0.2, 0, 0.5);
 				obj.setSize(120 * scale, 120 * scale);
 				obj.setRandomPositionInsideItemBox();
 				obj.setSound(new soundCol.pillowImpactSound());
@@ -387,9 +387,9 @@ package builders
 			var obj:NormalBoxObject;
 			for (var i:int = 0; i < howMany; i++)
 			{
-				obj = new NormalBoxObject("Light Holder", minStageLimit, maxStageLimit);
+				obj = new NormalBoxObject("names.holder", minStageLimit, maxStageLimit);
 				obj.createDisplayBody(collection.lightHolderAsset);
-				obj.setFixtureProperties(0.3, 0, 10);
+				obj.setFixtureProperties(0.3, 0, 0.5);
 				obj.setSize(120 * scale, 220 * scale);
 				obj.changeShape(shape.lightHolderShape(obj));
 				obj.setRandomPositionInsideItemBox();

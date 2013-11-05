@@ -258,13 +258,12 @@ package builders
 			others.push(gBlock2);
 			
 			liftables.push(itemBuilder.createLightBox(3));
-			//liftables.push(itemBuilder.createLightTriangle(2));
 			
 			others.push(specialBuilder.createGravityBall(300, 220));
 			
-			stars.push(specialBuilder.createGoldenStar(600, 200));
-			stars.push(specialBuilder.createSilverStar(200, 300));
-			stars.push(specialBuilder.createBronzeStar(200, 190));
+			stars.push(specialBuilder.createSilverStar(600, 200));
+			stars.push(specialBuilder.createBronzeStar(200, 300));
+			stars.push(specialBuilder.createGoldenStar(200, 190));
 		}
 		
 		private function stage4_3():void

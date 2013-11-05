@@ -1,3 +1,38 @@
+names.encyclopedia = Encyclopedia
+names.book = Book
+names.photo = Framed Photo
+names.pillow = Pillow
+names.shoe = Big Shoe
+names.vase = Glass Vase
+names.mug = Orange Mug
+names.heavyObject = 10kg Barbel
+names.bowling = Bowling Ball
+names.basket = Basket Ball
+names.tennis = Tennis Ball
+names.fish = Frozen Fish
+names.tomato = Frozen Tomato
+names.ice = Fragile Ice
+names.penguin = Penguin
+names.box = Caged Light
+names.triangle = Light Triangle
+names.holder = Light Holder
+
+=====================================================================================================================================================
+
+info.vLight = Very Light
+info.light = Light
+info.normal = Normal
+info.heavy = Heavy
+info.vHeavy = Very Heavy
+info.heaviest = Heaviest
+
+info.slippery = Slippery
+info.bouncy = Bouncy
+info.sticky = High Friction
+info.fragile = Fragile
+
+=====================================================================================================================================================
+
 opening.first = Once upon a time, there was an enormous lightning struck from heaven.
 opening.second = The lightning was so strong that it made all stars on the sky fell down onto earth.
 opening.third = Without the stars the moon will be swallowed by darkness. The moon granted<br />its power to the breavest people on earth to collect the fallen stars

@@ -8,7 +8,7 @@ package locales
 	 * ...
 	 * @author Herichard Stefanus Salim
 	 */
-	internal class LocalesManager extends EventDispatcher
+	public class LocalesManager extends EventDispatcher
 	{		
 		public var currentLanguageCode:int = 0;
 		public var localeArray:Array = new Array();
