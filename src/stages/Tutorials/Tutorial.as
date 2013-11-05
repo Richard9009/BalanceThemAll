@@ -32,7 +32,8 @@ package stages.Tutorials
 			if (characters == null) {
 				characters = [	collection.gavinAsset, 
 								collection.aviaAsset, 
-								collection.emmiAsset];
+								collection.emmiAsset,
+								collection.brockAsset];
 			}
 		}
 		

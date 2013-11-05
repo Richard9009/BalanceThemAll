@@ -303,6 +303,26 @@ package builders
 			new DialogHelper("stage3_5.last", [DialogCommand.allowSkip], [DialogPath.SUCCESS]),
 			new DialogHelper(DialogHelper.EMPTY, [EventCommand.stop], [DialogPath.ALL_PATHS])
 		];
+	
+	
+	//===================================================================================================================================================
+	//===================================================================================================================================================
+	
+		private var dialogList4_1:Array = 
+		[
+			new DialogHelper("stage3_5.start", [DialogCommand.allowSkip, EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_STAGE))]),
+			new DialogHelper("stage3_5.second", [DialogCommand.allowSkip]),
+			new DialogHelper("stage3_5.third", [DialogCommand.allowSkip]),
+			new DialogHelper(DialogHelper.EMPTY, [TutorialCommand.hideAll, EventCommand.promptSuccessFailed(TutorialEvent.TUTORIAL_CLEAR,
+								TutorialEvent.TUTORIAL_FAILED), EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_STAGE))]),
+			new DialogHelper("stage3.fail", [DialogCommand.promptYesNo, TutorialCommand.hideNPC], [DialogPath.FAILED]),
+			new DialogHelper(DialogHelper.EMPTY, [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.RESTART_TUTORIAL))]),
+			new DialogHelper("stage3_5.success", [DialogCommand.allowSkip, DialogCommand.changePath(DialogPath.SUCCESS)], [DialogPath.SUCCESS]),
+			new DialogHelper("stage3_5.brock", [DialogCommand.allowSkip], [DialogPath.SUCCESS]),
+			new DialogHelper("stage3_5.brockLocation", [DialogCommand.allowSkip], [DialogPath.SUCCESS]),
+			new DialogHelper("stage3_5.last", [DialogCommand.allowSkip], [DialogPath.SUCCESS]),
+			new DialogHelper(DialogHelper.EMPTY, [EventCommand.stop], [DialogPath.ALL_PATHS])
+		];
 	}
 }
 class SingletonEnforcer { }

@@ -147,6 +147,9 @@ package assets
 		[Embed(source = "AssetLibrary.swf", symbol = "GravityBall_Asset")]
 		public var gravBallAsset:Class;
 		
+		[Embed(source = "AssetLibrary.swf", symbol = "Brock_Asset")]
+		public var brockAsset:Class;
+		
 		public function AssetCollection() 
 		{
 			 
