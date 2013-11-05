@@ -54,7 +54,7 @@ stage1_1.getAnotherBook = Let's get another book there.<br />Drag it up here and
 stage1_1.moveBookToStar = Move your books to somewhere along the line<br />Make sure it would reach the stars when it fell
 stage1_1.releaseBooks = Good! Now you can use double click to release the books
 stage1_1.waitForIt = Wait until the books stop moving
-stage1_1.gotTheStars = That's it! Try to collect all the stars on every level.<br />I'll see you around, mate!
+stage1_1.gotTheStars = That's it!<br />YOU GOT THE STAR WHEN YOUR OBJECT TOUCHES IT.<br />I'll see you around, mate!
 stage1_1.didnotGetStars = Oh too bad, you missed the star. Do you want to try again?
 
 __________________________________________________________________________________________________________________________________________________________________
@@ -85,10 +85,10 @@ ________________________________________________________________________________
 
 stage1_5.failed = You didn't get all the stars<br />Why don't you try it again?
 stage1_5.thatsIt = Well, that's it from me<br />There's no doubt that you're the start collector we're looking for
-stage1_5.meetAvia = This is just the beginning<br />First, I want to meet my sister, Avia
-stage1_5.moreStars = You can find more stars in her house<br />You need to collect them to fulfill your destiny
-stage1_5.aviaPlace = This is where her house is<br />*Handing over a map*
-stage1_5.goodbye = I hope we could meet again, star collector<br />Goodbye....
+stage1_5.meetAvia = This is just the beginning<br />We found more stars in an abandoned house<br />We need you to go there, and get them
+stage1_5.moreStars = You will meet Avia there<br />She is our fellow star collector<br />She will assist you there
+stage1_5.aviaPlace = This is where the house is<br />*Drawing something on the map*
+stage1_5.goodbye = Go and get the stars<br />Goodbye....
 
 ====================================================================================================================================================================
 
@@ -121,11 +121,11 @@ stage2_4.fail = Don't feel bad, maybe it's just too hard<br />All you need is an
 
 _________________________________________________________________________________________________________________________________________
 
-stage2_5.start = I never thought that you would made it this far.<br />This is the last one from me
+stage2_5.start = I never thought that you would made it this far.<br />This is the last one here
 stage2_5.second = You surprised me a few times.<br />I expect something interesting this time
-stage2_5.success = You never let me down, star collector<br />I think I like you
-stage2_5.emmi = Let me tell you where you should go next<br />You need to see Emmi<br />She lives in the land of ice
-stage2_5.emmiLocation = It is here<br />(Drawing something on the map)
+stage2_5.success = You never let me down<br />I think I like you
+stage2_5.emmi = Let me tell you where you should go next<br />You need to see Emmi<br />She lives in the snowland
+stage2_5.emmiLocation = It is here<br />*Drawing something on the map*
 stage2_5.goodbye = Be careful, Emmi will not let you get the stars so easily<br />So long, star collector
 stage2_5.fail = You will need a lot more than luck here<br />Want to try again?
 
@@ -160,9 +160,9 @@ stage3_4.success = That was your last straw<br />Don't blame me of what happen t
 __________________________________________________________________________________________________________________________________________
 
 stage3_5.start = It is getting so much colder, isn't it?
-stage3_5.second = This is the heart of land of ice<br />You are the first star collector who has seen this place
+stage3_5.second = This is the heart of snowland<br />You are the first star collector who has seen this place
 stage3_5.third = You can try to collect the stars, I won't mind anymore<br />But if you fail, you and your penguin shall<br />stay here for eternity
 stage3_5.success = No... I lost to a star collector...<br />But the ice princess can't lose...<br />Not like this..
-stage3_5.brock = You are a true star collector.<br />There is one place you should go.<br />You have to defeat Brock, his star power is out of control
-stage3_5.brockLocation = You can find him here<br />*Drawing something on the map*
+stage3_5.brock = You are a true star collector.<br />There is one place you should go.<br />You have to defeat Brock, the rogue star collector
+stage3_5.brockLocation = Brock manipulated the star power to do evil<br />You have to stop him. He is here<br />*Drawing something on the map*
 stage3_5.last = Get his stars before he blew this world out of balance<br />So I won't lose my stars to you for nothing.

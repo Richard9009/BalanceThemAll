@@ -4,6 +4,7 @@ package
 	import Box2D.Dynamics.b2Body;
 	import Box2D.Dynamics.b2DebugDraw;
 	import Box2D.Dynamics.b2World;
+	import flash.display.StageDisplayState;
 	import flash.errors.IOError;
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
@@ -46,6 +47,8 @@ package
 		
 		protected function init(e:Event = null):void 
 		{
+			stage.displayState = StageDisplayState.FULL_SCREEN;
+			
 			stage.stageFocusRect = false;
 			cleanListener();
 			StageRecord.CreateRecordList();

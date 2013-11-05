@@ -333,7 +333,7 @@ package builders
 			others.push(specialBuilder.createGravityBall(725, 250));
 			
 			stars.push(specialBuilder.createGoldenStar(500, 120));
-			stars.push(specialBuilder.createSilverStar(400, 225));
+			stars.push(specialBuilder.createSilverStar(400, 200));
 			stars.push(specialBuilder.createBronzeStar(180, 370));
 		}
 
