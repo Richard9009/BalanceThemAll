@@ -43,7 +43,7 @@ package general
 		
 		public function stageStarted():void
 		{
-			stageStatus = ONGOING;
+			stageStatus = (stageStatus == CLEARED) ? CLEARED : ONGOING;
 			startTime = (new Date()).getTime();
 			
 			totalItemsCount = 0;

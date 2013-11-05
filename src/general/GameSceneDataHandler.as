@@ -24,6 +24,7 @@ package general
 					var selectLvStar:SelectLevelStar = starArray[i][j] as SelectLevelStar;
 					selectLvStar.setStatus(rec.stageStatus, rec.bestStar);
 					drawConnectingLines(i, j, starArray);
+					selectLvStar.mouseEnabled = true;
 				}
 			}
 		}

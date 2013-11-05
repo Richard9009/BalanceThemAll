@@ -34,7 +34,7 @@ info.fragile = Fragile
 =====================================================================================================================================================
 
 message.grab = Grab 2 objects
-message.noDrop.red = Can't drop object when it turns red
+message.noDrop.red = Can't drop object when it's colliding with something
 message.noDrop.empty = Nothing to drop
 message.handFull = Can't grab anymore objects
 

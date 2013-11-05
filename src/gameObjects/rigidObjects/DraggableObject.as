@@ -142,7 +142,7 @@ package gameObjects.rigidObjects
 		private function onMouseWhell(e:MouseEvent):void 
 		{
 			if (rigidBody.IsActive()) return;
-			rotateBody(10, e.delta > 0);	
+			rotateBody(5, e.delta > 0);	
 		}
 		
 		private function rotateBody(rotationAngle:Number, clockWise:Boolean):void
@@ -181,6 +181,11 @@ package gameObjects.rigidObjects
 					
 					this.rigidBody.SetPosition(MousePhysic.physMousePos);
 					checkLimit();
+				}
+				
+				else if (MousePhysic.isDown && hand.isFull() && insideItemBox()) {
+					SoundManager.getInstance().playDropFail();
+					MessageManager.getInstance().displayMessage("message.handFull");
 				}
 			
 				else if(MousePhysic.isDragging)
@@ -231,10 +236,6 @@ package gameObjects.rigidObjects
 			if(MousePhysic.isDown == false){
 				MousePhysic.pointedBody = this.rigidBody;
 			}
-			
-			if (insideItemBox() && HandManager.getInstance().isFull()) {
-				MessageManager.getInstance().displayMessage("message.handFull");
-			}
 		}
 		
 		private function onMouseUp(e:MouseEvent):void
@@ -275,7 +276,7 @@ package gameObjects.rigidObjects
 		
 		public function insideItemBox():Boolean
 		{
-			return (this.y - this.height/2 > StageConfig.STAGE_HEIGHT - StageConfig.ITEMBOX_HEIGHT)
+			return (this.y - this.height/4 > StageConfig.STAGE_HEIGHT - StageConfig.ITEMBOX_HEIGHT)
 		}
 		
 		private function updateRedLayer():void
