@@ -1,4 +1,4 @@
-package general 
+package managers 
 {
 	import assets.MusicCollection;
 	import flash.errors.IllegalOperationError;

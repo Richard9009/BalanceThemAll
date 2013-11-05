@@ -9,6 +9,8 @@ package general
 	import flash.events.MouseEvent;
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
+	import managers.MessageManager;
+	import managers.SoundManager;
 	import org.flashdevelop.utils.FlashConnect;
 	
 	/**
@@ -33,24 +35,20 @@ package general
 		public static var isHolding:Boolean = false;
 		public static var pointedBody:b2Body;
 		public static var scrollDelta:Number;
-		public static var allowDoubleClick:Boolean = true;
+		public static var allowDrop:Boolean = true;
 		
 		public function MousePhysic() 
 		{
 
 		}
 		
-		private static function onClick(e:MouseEvent):void 
-		{
-			if (!allowDoubleClick) return;
-			
-			if(isFirstClick){
-				dClickTimer.start();
-				isFirstClick = false;
-			}
-			else {
-				isFirstClick = true;
-				isHolding = false;
+		public static function releaseAll():void {
+			if(isHolding) {
+				if (allowDrop) isHolding = false;
+				else SoundManager.getInstance().playDropFail();
+			} else { 
+				SoundManager.getInstance().playDropFail();
+				MessageManager.getInstance().displayMessage("message.noDrop.empty")
 			}
 		}
 		
@@ -87,10 +85,6 @@ package general
 			stage.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
 			stage.addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
 			stage.addEventListener(MouseEvent.MOUSE_WHEEL, onMouseWheel);
-			stage.addEventListener(MouseEvent.CLICK, onClick);
-			
-			if(!dClickTimer.hasEventListener(TimerEvent.TIMER))
-				dClickTimer.addEventListener(TimerEvent.TIMER, function():void { isFirstClick = true; } );
 		}
 		
 		public static function destroyStage():void
@@ -101,9 +95,9 @@ package general
 			stageMc.removeEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
 			stageMc.removeEventListener(MouseEvent.MOUSE_UP, onMouseUp);
 			stageMc.removeEventListener(MouseEvent.MOUSE_WHEEL, onMouseWheel);
-			stageMc.removeEventListener(MouseEvent.CLICK, onClick);
 			
 			stageMc = null;
+			allowDrop = true;
 		}
 		
 		public static function get mousePos():b2Vec2

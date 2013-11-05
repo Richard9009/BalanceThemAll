@@ -1,9 +1,11 @@
-package locales 
+package managers 
 {
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
+	import locales.LocalesEvent;
+	import locales.LocalesSource;
 	/**
 	 * ...
 	 * @author Herichard Stefanus Salim
@@ -27,7 +29,7 @@ package locales
 		{
 			currentLanguageCode = (currentLanguageCode == 0) ? 1 : 0;
 			localeArray = LocalesSource.getInstance().getLocaleArrayByCode(currentLanguageCode);
-			dispatchEvent(new LocalesEvent(LocalesEvent.ON_LOCALE_CHANGE));
+			dispatchEvent(new LocalesEvent(LocalesEvent.ON_LOCALE_CHANGE)); 
 		}
 		
 		public static function getInstance():LocalesManager 

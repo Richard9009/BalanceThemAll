@@ -1,4 +1,4 @@
-package gameObjects 
+package managers 
 {
 	import gameObjects.rigidObjects.DraggableObject;
 	/**

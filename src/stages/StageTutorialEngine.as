@@ -33,8 +33,8 @@ package stages
 			tutorialHandler.addEventListener(TutorialEvent.DRAW_STAR_LINE, drawStarLine);
 			tutorialHandler.addEventListener(TutorialEvent.LOCK_STAGE, lockStage);
 			tutorialHandler.addEventListener(TutorialEvent.UNLOCK_STAGE, unlockStage);
-			tutorialHandler.addEventListener(TutorialEvent.LOCK_DOUBLE_CLICK, lockDoubleClick);
-			tutorialHandler.addEventListener(TutorialEvent.UNLOCK_DOUBLE_CLICK, unlockDoubleClick);
+			tutorialHandler.addEventListener(TutorialEvent.LOCK_DROP, lockDoubleClick);
+			tutorialHandler.addEventListener(TutorialEvent.UNLOCK_DROP, unlockDoubleClick);
 			tutorialHandler.addEventListener(TutorialEvent.RESTART_TUTORIAL, restartTutorial);
 		}
 		
@@ -45,8 +45,8 @@ package stages
 			tutorialHandler.removeEventListener(TutorialEvent.DRAW_STAR_LINE, drawStarLine);
 			tutorialHandler.removeEventListener(TutorialEvent.LOCK_STAGE, lockStage);
 			tutorialHandler.removeEventListener(TutorialEvent.UNLOCK_STAGE, unlockStage);
-			tutorialHandler.removeEventListener(TutorialEvent.LOCK_DOUBLE_CLICK, lockDoubleClick);
-			tutorialHandler.removeEventListener(TutorialEvent.UNLOCK_DOUBLE_CLICK, unlockDoubleClick);
+			tutorialHandler.removeEventListener(TutorialEvent.LOCK_DROP, lockDoubleClick);
+			tutorialHandler.removeEventListener(TutorialEvent.UNLOCK_DROP, unlockDoubleClick);
 			tutorialHandler.removeEventListener(TutorialEvent.RESTART_TUTORIAL, restartTutorial);
 		}
 		
@@ -57,12 +57,12 @@ package stages
 		
 		private function unlockDoubleClick(e:TutorialEvent):void 
 		{
-			MousePhysic.allowDoubleClick = true;
+			MousePhysic.allowDrop = true;
 		}
 		
 		private function lockDoubleClick(e:TutorialEvent):void 
 		{	
-			MousePhysic.allowDoubleClick = false;
+			MousePhysic.allowDrop = false;
 		}
 		
 		private function unlockStage(e:TutorialEvent):void 
@@ -103,7 +103,7 @@ package stages
 			}
 			
 			if (willGetAllStars) {
-				MousePhysic.allowDoubleClick = true;
+				MousePhysic.allowDrop = true;
 				removeEventListener(Event.ENTER_FRAME, checkStarTutorial);
 				clearStarLine();
 				tutorialHandler.dispatchEvent(new TutorialEvent(TutorialEvent.READY_TO_DROP));

@@ -8,13 +8,13 @@ package stages
 	import flash.text.TextFormat;
 	import flash.text.TextFormatAlign;
 	import gameEvents.GameEvent;
-	import gameEvents.MessageEvent;
 	import gameEvents.PowerEvent;
 	import gameEvents.TutorialEvent;
 	import general.dialogs.DialogEventHandler;
 	import general.Power;
 	import general.ScoreCounter;
 	import locales.LocalesTextField;
+	import managers.MessageManager;
 	
 	/**
 	 * ...
@@ -34,19 +34,6 @@ package stages
 		{
 			super();
 			addEventListener(Event.ADDED_TO_STAGE, addedToStage);
-			DialogEventHandler.getInstance().addEventListener(MessageEvent.SHOW_MESSAGE, showMessage);
-			DialogEventHandler.getInstance().addEventListener(MessageEvent.HIDE_MESSAGE, hideMessage);
-		}
-		
-		private function hideMessage(e:MessageEvent):void 
-		{
-			messageBox.visible = false;
-		}
-		
-		private function showMessage(e:MessageEvent):void 
-		{
-			messageBox.visible = true;
-			messageBox.setLocaleText(e.messageCode);
 		}
 		
 		private function addedToStage(e:Event):void 
@@ -72,6 +59,8 @@ package stages
 			messageBox.height = 30;
 			messageBox.visible = false;
 			addChild(messageBox);
+			
+			MessageManager.getInstance().setMsgBox(messageBox);
 		}
 		
 		private function createPauseButton():void 

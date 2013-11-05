@@ -4,7 +4,7 @@ package builders
 	import gameObjects.rigidObjects.DraggableObject;
 	import gameObjects.rigidObjects.GravityBlock;
 	import gameObjects.rigidObjects.RigidObjectBase;
-	import general.MusicManager;
+	import managers.MusicManager;
 	/**
 	 * ...
 	 * @author Herichard Stefanus Salim

@@ -1,7 +1,7 @@
 package general 
 {
 	import Box2D.Dynamics.b2Fixture;
-	import locales.LocalesManager;
+	import managers.LocalesManager;
 	/**
 	 * ...
 	 * @author ...

@@ -3,6 +3,7 @@ package locales
 	import flash.events.Event;
 	import flash.text.TextField;
 	import flash.text.TextFormat;
+	import managers.LocalesManager;
 	import org.flashdevelop.utils.FlashConnect;
 	
 	/**
@@ -25,8 +26,8 @@ package locales
 				_textFormat.leading = 5;
 			}
 			else _textFormat = textFormat;
-			
-			if(localeTextCode != "") setLocaleText(localeTextCode);
+	
+			if(localeTextCode != "") setLocaleText(localeTextCode); 
 			LocalesManager.getInstance().addEventListener(LocalesEvent.ON_LOCALE_CHANGE, updateLocale);
 		}
 		

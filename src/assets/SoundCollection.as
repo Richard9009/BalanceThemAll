@@ -43,6 +43,12 @@ package assets
 		[Embed(source = "sounds/GetStar_Sound.mp3")]
 		public var getStarSound:Class;
 		
+		[Embed(source = "sounds/DropButton-Success_Sound.mp3")]
+		public var dropSuccessSound:Class;
+		
+		[Embed(source = "sounds/DropButton-Fail_Sound.mp3")]
+		public var dropFailSound:Class;
+		
 		public function SoundCollection() 
 		{
 			

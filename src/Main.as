@@ -15,7 +15,7 @@ package
 	import gameEvents.SelectStageEvent;
 	import general.BreakContactListener;
 	import general.MousePhysic;
-	import general.MusicManager;
+	import managers.MusicManager;
 	import general.GameSceneDataHandler;
 	import general.ScoreRecord;
 	import general.StageRecord;

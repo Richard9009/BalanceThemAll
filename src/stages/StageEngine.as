@@ -17,12 +17,13 @@ package stages
 	import flash.display.Sprite;
 	import flash.text.TextField;
 	import flash.text.TextFormat;
-	import gameObjects.HandManager;
+	import managers.HandManager;
 	import gameObjects.rigidObjects.*;
 	import gameObjects.BalanceLine;
 	import gameObjects.FloatingText;
 	import gameObjects.Hand;
 	import gameObjects.StarObject;
+	import general.MousePhysic;
 	import general.ScoreCounter;
 	import general.StageRecord;
 	import org.flashdevelop.utils.FlashConnect;
@@ -86,6 +87,7 @@ package stages
 			addEventListener(ObjectBreakEvent.GENERATE_PARTICLE, generateParticle);
 			
 			createBorders();
+			createDropButton();
 		}
 		
 		public function removeAllListeners():void {
@@ -119,6 +121,20 @@ package stages
 			header.updateScore(sCounter);
 			
 			DraggableObject(e.brokenObject).destroyMe();
+		}
+		
+		private function createDropButton():void 
+		{
+			var dropBtn:DropButton = new DropButton();
+			dropBtn.width = 50;
+			dropBtn.height = 50;
+			dropBtn.x = StageConfig.STAGE_WIDTH / 2;
+			dropBtn.y = StageConfig.HEADER_HEIGHT + dropBtn.height / 2 + StageConfig.WALL_THICKNESS;
+			addChild(dropBtn);
+			
+			dropBtn.addEventListener(MouseEvent.MOUSE_UP, function drop(e:MouseEvent):void {
+				MousePhysic.releaseAll();
+			});
 		}
 		
 		protected function displayScore(e:GrabObjectEvent):void 
@@ -355,7 +371,7 @@ package stages
 		public function destroyMe():void
 		{
 			removeAllListeners();
-			HandManager.reset();
+			HandManager.reset(); 
 		}
 		
 	}

@@ -27,8 +27,8 @@ package gameEvents
 		public static const OUT_FROM_BALANCE_ZONE:String = "GOT OUT OF BALANCE ZONE";
 		public static const LOCK_STAGE:String = "LOCK STAGE";
 		public static const UNLOCK_STAGE:String = "UNLOCK STAGE";
-		public static const LOCK_DOUBLE_CLICK:String = "LOCK_DOUBLE_CLICK";
-		public static const UNLOCK_DOUBLE_CLICK:String = "UNLOCK_DOUBLE_CLICK";
+		public static const LOCK_DROP:String = "LOCK_DOUBLE_CLICK";
+		public static const UNLOCK_DROP:String = "UNLOCK_DOUBLE_CLICK";
 		public static const CHECK_BALANCE_LINE:String = "CHECK BALANCE LINE";
 		
 	//===============================================STAGE1_3==========================================================================

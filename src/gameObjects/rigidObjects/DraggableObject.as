@@ -11,10 +11,12 @@ package gameObjects.rigidObjects
 	import flash.events.MouseEvent;
 	import flash.geom.ColorTransform;
 	import gameEvents.TutorialEvent;
-	import gameObjects.HandManager;
+	import managers.HandManager;
 	import general.collisions.CollisionGenerator;
 	import general.MousePhysic;
 	import general.ObjectData;
+	import managers.MessageManager;
+	import managers.SoundManager;
 	import org.flashdevelop.utils.FlashConnect;
 	import stages.StageConfig;
 	import stages.Tutorials.Tutorial;
@@ -193,8 +195,11 @@ package gameObjects.rigidObjects
 			{
 				if (!hand.clearToDrop()) {
 					MousePhysic.isHolding = true;
+					SoundManager.getInstance().playDropFail();
+					MessageManager.getInstance().displayMessage("message.noDrop.red");
 				}
-				else {					
+				else {
+					SoundManager.getInstance().playDropSuccess();
 					releaseObject();
 					hand.drop(this);
 					isDraggable = false;
@@ -225,6 +230,10 @@ package gameObjects.rigidObjects
 			DialogEventHandler.getInstance().dispatchEvent(new TutorialEvent(TutorialEvent.OBJECT_POINTED));
 			if(MousePhysic.isDown == false){
 				MousePhysic.pointedBody = this.rigidBody;
+			}
+			
+			if (insideItemBox() && HandManager.getInstance().isFull()) {
+				MessageManager.getInstance().displayMessage("message.handFull");
 			}
 		}
 		

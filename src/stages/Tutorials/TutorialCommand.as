@@ -1,6 +1,7 @@
 package stages.Tutorials 
 {
 	import general.dialogs.commands.BaseCommandClass;
+	import managers.MessageManager;
 	import stages.Tutorials.Tutorial;
 	/**
 	 * ...
@@ -58,6 +59,20 @@ package stages.Tutorials
 			return new TutorialCommand(ENUM_PASS, "move dialog box up")
 					.addAction(function moveToItemBox_action():void {
 						tutorial.moveTo(Tutorial.ON_ITEM_BOX);
+					});
+		}
+		
+		public static function showMessage(code:String):TutorialCommand {
+			return new TutorialCommand(ENUM_PASS, "show message")
+					.addAction(function showMessage_action():void {
+						MessageManager.getInstance().displayMessage(code, false);
+					});
+		}
+		
+		public static function get hideMessage():TutorialCommand {
+			return new TutorialCommand(ENUM_PASS, "hide message")
+					.addAction(function hideMessage_action():void {
+						MessageManager.getInstance().hideMessage();
 					});
 		}
 	}
