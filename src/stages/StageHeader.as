@@ -6,12 +6,15 @@ package stages
 	import flash.events.MouseEvent;
 	import flash.text.TextField;
 	import flash.text.TextFormat;
+	import flash.text.TextFormatAlign;
 	import gameEvents.GameEvent;
+	import gameEvents.MessageEvent;
 	import gameEvents.PowerEvent;
 	import gameEvents.TutorialEvent;
 	import general.dialogs.DialogEventHandler;
 	import general.Power;
 	import general.ScoreCounter;
+	import locales.LocalesTextField;
 	
 	/**
 	 * ...
@@ -22,6 +25,7 @@ package stages
 		private var pauseBtn:Sprite;
 		private var replayBtn:Sprite;
 		private var scoreText:TextField;
+		private var messageBox:LocalesTextField;
 		private var tFormat:TextFormat;
 		private var bButton:BalanceButton;
 		private var assetCol:AssetCollection = new AssetCollection();
@@ -30,6 +34,19 @@ package stages
 		{
 			super();
 			addEventListener(Event.ADDED_TO_STAGE, addedToStage);
+			DialogEventHandler.getInstance().addEventListener(MessageEvent.SHOW_MESSAGE, showMessage);
+			DialogEventHandler.getInstance().addEventListener(MessageEvent.HIDE_MESSAGE, hideMessage);
+		}
+		
+		private function hideMessage(e:MessageEvent):void 
+		{
+			messageBox.visible = false;
+		}
+		
+		private function showMessage(e:MessageEvent):void 
+		{
+			messageBox.visible = true;
+			messageBox.setLocaleText(e.messageCode);
 		}
 		
 		private function addedToStage(e:Event):void 
@@ -40,8 +57,22 @@ package stages
 			createReplayButton();
 			createScoreCounter();
 			createBalanceButton();
+			createMessageBox();
 		}
 		
+		private function createMessageBox():void
+		{
+			var msgFormat:TextFormat = new TextFormat("Nueva Std", 20, 0x773333, true);
+			msgFormat.align = TextFormatAlign.CENTER;
+			
+			messageBox = new LocalesTextField("", msgFormat);
+			messageBox.x = 160;
+			messageBox.y = StageConfig.HEADER_HEIGHT / 2 - 10;
+			messageBox.width = StageConfig.STAGE_WIDTH - messageBox.x * 2;
+			messageBox.height = 30;
+			messageBox.visible = false;
+			addChild(messageBox);
+		}
 		
 		private function createPauseButton():void 
 		{
@@ -96,10 +127,11 @@ package stages
 		private function createScoreCounter():void
 		{
 			tFormat = new TextFormat("Nueva Std", 20, 0x333333, true);
-			tFormat
+			
 			scoreText = new TextField();
 			scoreText.selectable = false;
-			scoreText.width = 150;
+			scoreText.width = 130;
+			scoreText.height = 30;
 			scoreText.x = 25;
 			scoreText.y = StageConfig.HEADER_HEIGHT / 2 - 10;
 			addChild(scoreText);

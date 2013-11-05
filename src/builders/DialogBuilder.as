@@ -1,6 +1,7 @@
 package builders 
 {
 	import flash.errors.IllegalOperationError;
+	import gameEvents.MessageEvent;
 	import gameEvents.TutorialEvent;
 	import general.dialogs.*;
 	import general.dialogs.commands.*;
@@ -80,20 +81,25 @@ package builders
 		private var _dialogList1_2:Array = 
 			[
 				new DialogHelper(DialogHelper.EMPTY, [TutorialCommand.hideAll, EventCommand.promptSuccessFailed
-								(TutorialEvent.HANDS_ARE_FULL, TutorialEvent.TUTORIAL_FAILED)]),
+								(TutorialEvent.HANDS_ARE_FULL, TutorialEvent.TUTORIAL_FAILED),
+								EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_DOUBLE_CLICK)),
+								EventCommand.dispatchAnEvent(new MessageEvent(MessageEvent.SHOW_MESSAGE, "message.grab"))]),
 				
-				new DialogHelper("stage1_2.askNeedHelp", [DialogCommand.promptYesNo], [DialogPath.SUCCESS]),
+				new DialogHelper("stage1_2.askNeedHelp", [DialogCommand.promptYesNo,
+									EventCommand.dispatchAnEvent(new MessageEvent(MessageEvent.HIDE_MESSAGE))], [DialogPath.SUCCESS]),
 			
 				new DialogHelper("stage1_2.explainHand", [DialogCommand.allowSkip]),
 				new DialogHelper("stage1_2.explainItemPanel", [DialogCommand.allowSkip]),
 				new DialogHelper("stage1_2.explainWeight", [DialogCommand.allowSkip]),
-				new DialogHelper("stage1_2.getStars", [DialogCommand.allowSkip, TutorialCommand.hideAll,
+				new DialogHelper("stage1_2.getStars", [DialogCommand.allowSkip, TutorialCommand.hideAll, 
+														EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_DOUBLE_CLICK)),
 														EventCommand.promptSuccessFailed(TutorialEvent.TUTORIAL_CLEAR, TutorialEvent.TUTORIAL_FAILED)]),
 				
 				new DialogHelper("stage1_2.didnotGetStars", [DialogCommand.allowSkip], [DialogPath.FAILED]),
 				new DialogHelper(DialogHelper.EMPTY, [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.RESTART_TUTORIAL))]),
 				new DialogHelper("stage1_2.gotTheStars", [DialogCommand.allowSkip], [DialogPath.SUCCESS]),
-				new DialogHelper("stage1_2.skipTutorial", [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_STAGE)), 
+				new DialogHelper("stage1_2.skipTutorial", [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_STAGE)),
+															EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_DOUBLE_CLICK)),
 															DialogCommand.allowSkip, TutorialCommand.turnOffTutorial], [DialogPath.ANSWER_NO]),
 				new DialogHelper(DialogHelper.EMPTY, [EventCommand.stop], [DialogPath.ALL_PATHS])
 			]
@@ -104,9 +110,12 @@ package builders
 		private var _dialogList1_3:Array = 
 			[
 				new DialogHelper(DialogHelper.EMPTY, [TutorialCommand.hideAll, EventCommand.promptSuccessFailed
-												(TutorialEvent.HANDS_ARE_FULL, TutorialEvent.TUTORIAL_FAILED)]),
+												(TutorialEvent.HANDS_ARE_FULL, TutorialEvent.TUTORIAL_FAILED),
+												EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_DOUBLE_CLICK)),
+												EventCommand.dispatchAnEvent(new MessageEvent(MessageEvent.SHOW_MESSAGE, "message.grab"))]),
 												
-				new DialogHelper("stage1_3.askNeedHelp", [DialogCommand.promptYesNo, EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_STAGE))],
+				new DialogHelper("stage1_3.askNeedHelp", [DialogCommand.promptYesNo, EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_STAGE)),
+											EventCommand.dispatchAnEvent(new MessageEvent(MessageEvent.HIDE_MESSAGE))],
 											[DialogPath.SUCCESS]),
 				new DialogHelper("stage1_3.beginTutorial", [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_STAGE)), 
 															EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_DOUBLE_CLICK)),

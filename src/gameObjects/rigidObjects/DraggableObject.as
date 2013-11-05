@@ -161,6 +161,10 @@ package gameObjects.rigidObjects
 			updateItemsOnHands();
 			updateRedLayer();
 			
+			/*if (this.hitTestPoint(MousePhysic.mousePos.x, MousePhysic.mousePos.y) && MousePhysic.pointedBody != rigidBody) {
+				pointAtMe();
+			}*/
+			
 			if (MousePhysic.pointedBody == this.rigidBody && isDraggable) 
 			{
 				if (MousePhysic.isDown && (!hand.isFull() || !insideItemBox())) {
@@ -212,6 +216,11 @@ package gameObjects.rigidObjects
 		
 		private function onMouseHover(e:MouseEvent):void 
 		{
+			pointAtMe();
+		}
+		
+		private function pointAtMe():void 
+		{
 			stage.focus = this;
 			DialogEventHandler.getInstance().dispatchEvent(new TutorialEvent(TutorialEvent.OBJECT_POINTED));
 			if(MousePhysic.isDown == false){
@@ -257,7 +266,7 @@ package gameObjects.rigidObjects
 		
 		public function insideItemBox():Boolean
 		{
-			return (this.y + this.height/2 > StageConfig.STAGE_HEIGHT - StageConfig.ITEMBOX_HEIGHT)
+			return (this.y - this.height/2 > StageConfig.STAGE_HEIGHT - StageConfig.ITEMBOX_HEIGHT)
 		}
 		
 		private function updateRedLayer():void

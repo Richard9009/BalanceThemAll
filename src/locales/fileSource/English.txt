@@ -33,6 +33,10 @@ info.fragile = Fragile
 
 =====================================================================================================================================================
 
+message.grab = Grab 2 objects
+
+=====================================================================================================================================================
+
 opening.first = Once upon a time, there was an enormous lightning struck from heaven.
 opening.second = The lightning was so strong that it made all stars on the sky fell down onto earth.
 opening.third = Without the stars the moon will be swallowed by darkness. The moon granted<br />its power to the breavest people on earth to collect the fallen stars
