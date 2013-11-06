@@ -127,6 +127,8 @@ package
 			addChild(currentScene);
 			addEventListener(SelectStageEvent.STAGE_SELECTED, stageSelected);
 			addEventListener(GameEvent.BACK_TO_MAIN, back_to_main);
+			currentScene.visible = false;
+			blackFadeIn();
 			
 			var delayTimer:Timer = new Timer(100, 1);
 			delayTimer.start();
@@ -135,6 +137,7 @@ package
 				e.target.removeEventListener(TimerEvent.TIMER, delayListener);
 				GameSceneDataHandler.updateLevelMap(SelectStage_Movie(currentScene).starArray);
 				(currentScene as SelectStage_Movie).updateStatus();
+				currentScene.visible = true;
 			});
 		}
 		
