@@ -6,7 +6,6 @@ package stages
 	import flash.display.Sprite;
 	import gameEvents.GrabObjectEvent;
 	import gameEvents.PowerEvent;
-	import gameObjects.BlueLayer;
 	import gameObjects.ItemPanel;
 	import gameObjects.rigidObjects.DraggableObject;
 	import general.Power;
@@ -39,19 +38,10 @@ package stages
 			super();
 		}
 		
-		private function powerComplete_balance(e:PowerEvent):void 
-		{
-			bLine.visible = false;
-			removeEventListener(PowerEvent.POWER_COMPLETE, powerComplete_balance);
-		}
-		
 		private function handlePower(e:PowerEvent):void 
 		{
 			switch(e.power.type) {
-				case Power.BALANCE: bLine.visible = true;
-										addChild(new BlueLayer(e.power));
-										addEventListener(PowerEvent.POWER_COMPLETE, powerComplete_balance);
-										break;
+
 			}
 		}
 		
@@ -75,7 +65,6 @@ package stages
 			var builder:StageBuilder = new StageBuilder();
 			addChild(builder.buildAndGetStage(stageID, subStageIndex));
 			stars = builder.getStars();
-			showBalanceLine = false;
 			registerItems(builder.getLiftableItems());
 		}
 		

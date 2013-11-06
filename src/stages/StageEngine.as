@@ -10,7 +10,6 @@ package stages
 	import flash.events.MouseEvent;
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
-	import gameEvents.BalanceLineEvent;
 	import gameEvents.GameEvent;
 	import gameEvents.GrabObjectEvent;
 	import gameEvents.ObjectBreakEvent;
@@ -19,7 +18,6 @@ package stages
 	import flash.text.TextFormat;
 	import managers.HandManager;
 	import gameObjects.rigidObjects.*;
-	import gameObjects.BalanceLine;
 	import gameObjects.FloatingText;
 	import gameObjects.Hand;
 	import gameObjects.StarObject;
@@ -40,8 +38,6 @@ package stages
 		protected var groundBody:b2Body;
 		
 		protected var record:StageRecord;
-		protected var bLine:BalanceLine;
-		protected var showBalanceLine:Boolean = true;
 		protected var objectsOnHand:Array;
 		protected var header:StageHeader;
 		protected var sCounter:ScoreCounter;
@@ -65,8 +61,6 @@ package stages
 			sCounter = new ScoreCounter();
 			borderList = new Array();
 			objectsOnHand = new Array();
-			bLine = new BalanceLine();
-			addChild(bLine);
 			header = new StageHeader();
 			addChild(header);
 			
@@ -82,8 +76,6 @@ package stages
 			addEventListener(GrabObjectEvent.DROP_ALL_OBJECTS, dropAll);
 			addEventListener(GrabObjectEvent.OBJECT_RELOCATED, objectRelocated);
 			addEventListener(GrabObjectEvent.OBJECT_STOPS, displayScore);
-			addEventListener(BalanceLineEvent.START_DRAW_LINE, startDrawLine);
-			addEventListener(BalanceLineEvent.STOP_DRAW_LINE, stopDrawLine);
 			addEventListener(ObjectBreakEvent.GENERATE_PARTICLE, generateParticle);
 			
 			createBorders();
@@ -95,8 +87,6 @@ package stages
 			removeEventListener(GrabObjectEvent.DROP_AN_OBJECT, dropAnObject);
 			removeEventListener(GrabObjectEvent.DROP_ALL_OBJECTS, dropAll);
 			removeEventListener(GrabObjectEvent.OBJECT_STOPS, displayScore);
-			removeEventListener(BalanceLineEvent.START_DRAW_LINE, startDrawLine);
-			removeEventListener(BalanceLineEvent.STOP_DRAW_LINE, stopDrawLine);
 			removeEventListener(ObjectBreakEvent.GENERATE_PARTICLE, generateParticle);
 		}
 		
@@ -224,22 +214,11 @@ package stages
 		
 		protected function dropAll(e:GrabObjectEvent):void 
 		{
-			bLine.stopDrawLine();
 			objectsOnHand = new Array();
 			
 			rHand.stopHoldObject();
 			lHand.stopHoldObject();
 			rHandIsEmpty = true;
-		}
-		
-		private function stopDrawLine(e:BalanceLineEvent):void 
-		{
-			if(showBalanceLine) bLine.stopDrawLine();
-		}
-		
-		private function startDrawLine(e:BalanceLineEvent):void 
-		{
-			if(showBalanceLine) bLine.startDrawLine(objectsOnHand[0], objectsOnHand[1]);
 		}
 		
 		protected function dropAnObject(e:GrabObjectEvent):String
@@ -260,8 +239,6 @@ package stages
 			{
 				if (objectsOnHand[i] == e.object) {
 					objectsOnHand.splice(i, 1);
-					if (objectsOnHand.length < 2) 
-						dispatchEvent(new BalanceLineEvent(BalanceLineEvent.STOP_DRAW_LINE));
 					break;
 				}
 			}
@@ -302,9 +279,6 @@ package stages
 				lHand.startHoldObject(e.object.GetUserData());
 				whatHand = "left";
 			}
-			
-			if (objectsOnHand.length == 2) 
-				dispatchEvent(new BalanceLineEvent(BalanceLineEvent.START_DRAW_LINE));
 				
 			return whatHand;
 		}
