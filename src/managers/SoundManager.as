@@ -40,6 +40,7 @@ package managers
 		public function stopSound():void
 		{
 			sChannel.stop();
+			sChannel.soundTransform.volume = 0;
 		}
 		
 		private function playSound(sound:Class, vol:Number):void

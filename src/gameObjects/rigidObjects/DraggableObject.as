@@ -204,7 +204,7 @@ package gameObjects.rigidObjects
 					MessageManager.getInstance().displayMessage("message.noDrop.red");
 				}
 				else {
-					SoundManager.getInstance().playDropSuccess();
+					SoundManager.getInstance().playDropSuccess(0.5);
 					releaseObject();
 					hand.drop(this);
 					isDraggable = false;

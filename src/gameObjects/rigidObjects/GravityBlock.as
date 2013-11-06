@@ -87,6 +87,8 @@ package gameObjects.rigidObjects
 					stopFalling();
 				}
 			}
+
+			if (rigidBody.GetLinearVelocity().y == 0) stopFalling();
 		}
 		
 		private function stopFalling():void 
