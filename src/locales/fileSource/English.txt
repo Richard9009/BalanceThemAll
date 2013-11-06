@@ -169,3 +169,27 @@ stage3_5.success = No... I lost to a star collector...<br />But the ice princess
 stage3_5.brock = You are a true star collector.<br />There is one place you should go.<br />You have to defeat Brock, the rogue star collector
 stage3_5.brockLocation = Brock manipulated the star power to do evil<br />You have to stop him. He is here<br />*Drawing something on the map*
 stage3_5.last = Get his stars before he blew this world out of balance<br />So I won't lose my stars to you for nothing.
+
+=========================================================================================================================================
+
+stage4_1.start = What brings you here, star collector?<br />If you are coming for the stars, then just forget it<br />There's nothing you can do to stop me
+stage4_1.second = I am Brock, the master of gravity<br />These stars gave me power, I'm the strongest star collector<br />Gravity plays by my rules!
+stage4_1.third = Walk away while you still can<br />This place is where you will meet your doom
+stage4_1.fourth = My gravity won't be so kind to you
+stage4_1.success = Hmph... How was that as a warm up? 
+stage4.fail = Hahahaha.... Nothing can beat gravity!<br />*TRY AGAIN?*
+
+stage4_2.start = My gravity ball will knock every object you put,<br />before it catches the star
+stage4_2.second = You can never catch any stars, but I'll see you trying
+stage4_2.success = Not bad... You are more than what I expected<br />This is going to be so interesting
+
+stage4_3.start = If a gravity ball can't stop you, how about 2?<br />What are you gonna do now, star collector?
+stage4_3.success = I'll have to stop playing around now<br />I shouldn't have underestimated you
+
+stage4_4.start = This is it! You're gonna regret coming here<br />You will be crushed between these gravity balls
+stage4_4.success = Argh... I will make you pay for this
+
+stage4_5.start = This is as far as you go<br />Let me show you the true power of gravity!
+stage4_5.second = You and your stars shall be buried deep under this gravity field<br />You're not getting away from here
+stage4_5.success = What!? How could I lose?<br />My power is all gone
+stage4_5.end = No... No... No... My stars, my gravity!

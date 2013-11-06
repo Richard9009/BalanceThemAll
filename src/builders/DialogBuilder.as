@@ -310,17 +310,62 @@ package builders
 	
 		private var dialogList4_1:Array = 
 		[
-			new DialogHelper("stage3_5.start", [DialogCommand.allowSkip, EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_STAGE))]),
-			new DialogHelper("stage3_5.second", [DialogCommand.allowSkip]),
-			new DialogHelper("stage3_5.third", [DialogCommand.allowSkip]),
+			new DialogHelper("stage4_1.start", [DialogCommand.allowSkip, EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_STAGE))]),
+			new DialogHelper("stage4_1.second", [DialogCommand.allowSkip]),
+			new DialogHelper("stage4_1.third", [DialogCommand.allowSkip]),
+			new DialogHelper("stage4_1.fourth", [DialogCommand.allowSkip]),
 			new DialogHelper(DialogHelper.EMPTY, [TutorialCommand.hideAll, EventCommand.promptSuccessFailed(TutorialEvent.TUTORIAL_CLEAR,
 								TutorialEvent.TUTORIAL_FAILED), EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_STAGE))]),
-			new DialogHelper("stage3.fail", [DialogCommand.promptYesNo, TutorialCommand.hideNPC], [DialogPath.FAILED]),
+			new DialogHelper("stage4.fail", [DialogCommand.promptYesNo, TutorialCommand.hideNPC], [DialogPath.FAILED]),
 			new DialogHelper(DialogHelper.EMPTY, [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.RESTART_TUTORIAL))]),
-			new DialogHelper("stage3_5.success", [DialogCommand.allowSkip, DialogCommand.changePath(DialogPath.SUCCESS)], [DialogPath.SUCCESS]),
-			new DialogHelper("stage3_5.brock", [DialogCommand.allowSkip], [DialogPath.SUCCESS]),
-			new DialogHelper("stage3_5.brockLocation", [DialogCommand.allowSkip], [DialogPath.SUCCESS]),
-			new DialogHelper("stage3_5.last", [DialogCommand.allowSkip], [DialogPath.SUCCESS]),
+			new DialogHelper("stage4_1.success", [DialogCommand.allowSkip, DialogCommand.changePath(DialogPath.SUCCESS)], [DialogPath.SUCCESS]),
+			new DialogHelper(DialogHelper.EMPTY, [EventCommand.stop], [DialogPath.ALL_PATHS])
+		];
+		
+		private var dialogList4_2:Array = 
+		[
+			new DialogHelper("stage4_2.start", [DialogCommand.allowSkip, EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_STAGE))]),
+			new DialogHelper("stage4_2.second", [DialogCommand.allowSkip]),
+			new DialogHelper(DialogHelper.EMPTY, [TutorialCommand.hideAll, EventCommand.promptSuccessFailed(TutorialEvent.TUTORIAL_CLEAR,
+								TutorialEvent.TUTORIAL_FAILED), EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_STAGE))]),
+			new DialogHelper("stage4.fail", [DialogCommand.promptYesNo, TutorialCommand.hideNPC], [DialogPath.FAILED]),
+			new DialogHelper(DialogHelper.EMPTY, [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.RESTART_TUTORIAL))]),
+			new DialogHelper("stage4_2.success", [DialogCommand.allowSkip, DialogCommand.changePath(DialogPath.SUCCESS)], [DialogPath.SUCCESS]),
+			new DialogHelper(DialogHelper.EMPTY, [EventCommand.stop], [DialogPath.ALL_PATHS])
+		];
+		
+		private var dialogList4_3:Array = 
+		[
+			new DialogHelper("stage4_3.start", [DialogCommand.allowSkip, EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_STAGE))]),
+			new DialogHelper(DialogHelper.EMPTY, [TutorialCommand.hideAll, EventCommand.promptSuccessFailed(TutorialEvent.TUTORIAL_CLEAR,
+								TutorialEvent.TUTORIAL_FAILED), EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_STAGE))]),
+			new DialogHelper("stage4.fail", [DialogCommand.promptYesNo, TutorialCommand.hideNPC], [DialogPath.FAILED]),
+			new DialogHelper(DialogHelper.EMPTY, [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.RESTART_TUTORIAL))]),
+			new DialogHelper("stage4_3.success", [DialogCommand.allowSkip, DialogCommand.changePath(DialogPath.SUCCESS)], [DialogPath.SUCCESS]),
+			new DialogHelper(DialogHelper.EMPTY, [EventCommand.stop], [DialogPath.ALL_PATHS])
+		];
+		
+		private var dialogList4_4:Array = 
+		[
+			new DialogHelper("stage4_4.start", [DialogCommand.allowSkip, EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_STAGE))]),
+			new DialogHelper(DialogHelper.EMPTY, [TutorialCommand.hideAll, EventCommand.promptSuccessFailed(TutorialEvent.TUTORIAL_CLEAR,
+								TutorialEvent.TUTORIAL_FAILED), EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_STAGE))]),
+			new DialogHelper("stage4.fail", [DialogCommand.promptYesNo, TutorialCommand.hideNPC], [DialogPath.FAILED]),
+			new DialogHelper(DialogHelper.EMPTY, [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.RESTART_TUTORIAL))]),
+			new DialogHelper("stage4_4.success", [DialogCommand.allowSkip, DialogCommand.changePath(DialogPath.SUCCESS)], [DialogPath.SUCCESS]),
+			new DialogHelper(DialogHelper.EMPTY, [EventCommand.stop], [DialogPath.ALL_PATHS])
+		];
+		
+		private var dialogList4_5:Array = 
+		[
+			new DialogHelper("stage4_5.start", [DialogCommand.allowSkip, EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.LOCK_STAGE))]),
+			new DialogHelper("stage4_5.second", [DialogCommand.allowSkip]),
+			new DialogHelper(DialogHelper.EMPTY, [TutorialCommand.hideAll, EventCommand.promptSuccessFailed(TutorialEvent.TUTORIAL_CLEAR,
+								TutorialEvent.TUTORIAL_FAILED), EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_STAGE))]),
+			new DialogHelper("stage4.fail", [DialogCommand.promptYesNo, TutorialCommand.hideNPC], [DialogPath.FAILED]),
+			new DialogHelper(DialogHelper.EMPTY, [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.RESTART_TUTORIAL))]),
+			new DialogHelper("stage4_5.success", [DialogCommand.allowSkip, DialogCommand.changePath(DialogPath.SUCCESS)], [DialogPath.SUCCESS]),
+			new DialogHelper("stage4_5.end", [DialogCommand.allowSkip], [DialogPath.SUCCESS]),
 			new DialogHelper(DialogHelper.EMPTY, [EventCommand.stop], [DialogPath.ALL_PATHS])
 		];
 	}
