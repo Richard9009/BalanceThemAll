@@ -51,6 +51,7 @@ package general
 			droppedItemsCount = 0;
 			
 			scoreRecord.resetScore();
+			itemList = new Array();
 		}
 		
 		public function stageCleared():void

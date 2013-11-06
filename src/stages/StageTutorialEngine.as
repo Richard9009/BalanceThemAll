@@ -104,13 +104,12 @@ package stages
 			addChild(starLine);
 			
 			addEventListener(Event.ENTER_FRAME, checkStarTutorial);
-			tutorialHandler.removeEventListener(TutorialEvent.DRAW_STAR_LINE, drawStarLine);
 		}
 		
 		private function checkStarTutorial(e:Event):void 
 		{
 			var willGetAllStars:Boolean = true;
-		
+			
 			for each(var item:Sprite in record.itemList) {
 				if (!willGetTheStar(item)) willGetAllStars = false;
 			}
