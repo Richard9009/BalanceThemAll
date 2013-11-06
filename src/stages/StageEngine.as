@@ -154,7 +154,6 @@ package stages
 		
 		protected function levelClear():void 
 		{
-			FlashConnect.trace("level clear");
 			sCounter.sumUpScore();
 			record.stageCleared();
 			dispatchEvent(new GameEvent(GameEvent.STAGE_CLEAR));
