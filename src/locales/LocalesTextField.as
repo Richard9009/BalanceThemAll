@@ -20,6 +20,7 @@ package locales
 			super();
 			selectable = false;
 			multiline = true;
+			mouseEnabled = false;
 			
 			if (textFormat == null) {
 				_textFormat = new TextFormat('Nueva Std', 25, 0x000000, true);

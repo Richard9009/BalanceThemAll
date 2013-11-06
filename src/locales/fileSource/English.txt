@@ -19,6 +19,17 @@ names.holder = Light Holder
 
 =====================================================================================================================================================
 
+buttons.drop = Drop
+buttons.resume = Resume
+buttons.select = Select Level
+buttons.main = Main Menu
+buttons.quit = Quit
+buttons.play = Play
+buttons.credit = Credit
+buttons.back = Back
+
+=====================================================================================================================================================
+
 info.vLight = Very Light
 info.light = Light
 info.normal = Normal

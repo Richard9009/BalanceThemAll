@@ -17,6 +17,7 @@ package stages
 	import flash.display.Sprite;
 	import flash.text.TextField;
 	import flash.text.TextFormat;
+	import locales.LocalesTextField;
 	import managers.HandManager;
 	import gameObjects.rigidObjects.*;
 	import gameObjects.FloatingText;
@@ -126,7 +127,13 @@ package stages
 			
 			dropBtn.addEventListener(MouseEvent.MOUSE_UP, function drop(e:MouseEvent):void {
 				MousePhysic.releaseAll();
-			});
+			}); 
+	
+			var tFormat:TextFormat = new TextFormat("Hobo std", 16, 0xCCCCCC);
+			var dropText:LocalesTextField = new LocalesTextField("buttons.drop", tFormat);
+			addChild(dropText);
+			dropText.x = dropBtn.x - 19;
+			dropText.y = dropBtn.y - 14;
 
 		}
 		
