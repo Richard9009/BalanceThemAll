@@ -70,7 +70,7 @@ package stages
 			var stgID:String = stageID.toString() + "_" + subStageIndex.toString();
 			showIP = (stgID != "1_1");
 			initiateStage(stgID); 
-			if(hasTutorial) createTutorialDialog(stgID);
+			if(hasTutorial && record.stageStatus != StageRecord.COMPLETED) createTutorialDialog(stgID);
 			
 			var builder:StageBuilder = new StageBuilder();
 			addChild(builder.buildAndGetStage(stageID, subStageIndex));

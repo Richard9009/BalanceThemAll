@@ -16,6 +16,7 @@ package general
 		public static const LOCKED:String = "LOCKED";
 		public static const OPEN:String = "OPEN";
 		public static const CLEARED:String = "CLEARED";
+		public static const COMPLETED:String = "COMPLETED";
 		
 		public static var stageRecordList:Array = new Array();
 		public static var totalStages:int = 5;
@@ -43,7 +44,7 @@ package general
 		
 		public function stageStarted():void
 		{
-			stageStatus = (stageStatus == CLEARED) ? CLEARED : ONGOING;
+			if(stageStatus == OPEN) stageStatus = ONGOING;
 			startTime = (new Date()).getTime();
 			
 			totalItemsCount = 0;
@@ -54,7 +55,7 @@ package general
 		
 		public function stageCleared():void
 		{
-			stageStatus = CLEARED;
+			if(stageStatus != COMPLETED) stageStatus = CLEARED;
 			endTime = (new Date()).getTime();
 			var miliTimeCleared:Number = endTime - startTime;
 			timeCleared = new Date(0, 0, 0, 0, 0, 0, 0);
@@ -119,8 +120,8 @@ package general
 					var stage:StageRecord = new StageRecord(PASS_CODE);
 					stage.stageID = (stageCount + 1).toString() + "_" + (subStageCount + 1).toString();
 					
-					//if (stage.stageID == "1_1") stage.stageStatus = OPEN;
-					if (true) stage.stageStatus = CLEARED;
+					if (stage.stageID == "1_1") stage.stageStatus = OPEN;
+					//if (true) stage.stageStatus = CLEARED;
 					else stage.stageStatus = LOCKED;
 					
 					stageRecordList.push(stage);

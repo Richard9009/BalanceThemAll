@@ -138,6 +138,7 @@ package stages
 			super.checkStarCollision(item);
 			
 			if (stars.length == 0) {
+				record.stageStatus = StageRecord.COMPLETED;
 				tutorialHandler.dispatchEvent(new TutorialEvent(TutorialEvent.TUTORIAL_CLEAR));
 			}
 		}
