@@ -111,11 +111,11 @@ package builders
 
 		private function stage2_2():void
 		{
-			liftables.push(itemBuilder.createPillow(2));
-			liftables.push(itemBuilder.createMug(2));
+			liftables.push(itemBuilder.createPillow(1));
+			liftables.push(itemBuilder.createMug(1));
 			liftables.push(itemBuilder.createGlassVase(1));
 			
-			stars.push(specialBuilder.createGoldenStar(110, 225));
+			stars.push(specialBuilder.createGoldenStar(550, 185));
 			stars.push(specialBuilder.createSilverStar(550, 265));
 		}
 		

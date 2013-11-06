@@ -102,8 +102,8 @@ stage2_1.success = Not bad... You got a lot more to learn<br />But that will do 
 
 _________________________________________________________________________________________________________________________________________
 
-stage2_2.start = I'm not sure if you can do this,<br />just try to keep the items balanced, OK?
-stage2_2.warning = By the way, whatever you do just don't break my glass vase<br />It's really expensive
+stage2_2.start = I'm not sure if you can do this,<br />I'll give you a hint<br />The glasses won't slip on the pillow
+stage2_2.warning = By the way, whatever you do just don't break the glass vase<br />I don't want to clean up your mess
 stage2_2.success = You did it, but don't get cocky yet<br />We just started
 stage2_2.fail = That was really bad! Shall we give it another try?
 
