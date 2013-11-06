@@ -1,6 +1,7 @@
 package builders 
 {
 	import flash.errors.IllegalOperationError;
+	import gameEvents.CueEvent;
 	import gameEvents.TutorialEvent;
 	import general.dialogs.*;
 	import general.dialogs.commands.*;
@@ -56,11 +57,13 @@ package builders
 											EventCommand.promptSuccessFailed(TutorialEvent.READY_TO_DROP, TutorialEvent.BACK_TO_ITEMBOX)], [DialogPath.SUCCESS]),
 					
 					new DialogHelper("stage1_1.releaseBooks", [EventCommand.promptSuccessFailed(TutorialEvent.BOOKS_RELEASED, TutorialEvent.BACK_TO_ITEMBOX), 
+												EventCommand.dispatchAnEvent(new CueEvent(CueEvent.CUE_DROP_BUTTON)),
 												EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_DROP)), TutorialCommand.hideNPC], [DialogPath.SUCCESS]),
 					
-					new DialogHelper(DialogHelper.EMPTY, [DialogCommand.jumpToDialog(7)], [DialogPath.FAILED]),
+					new DialogHelper(DialogHelper.EMPTY, [DialogCommand.jumpToDialog(7),
+															EventCommand.dispatchAnEvent(new CueEvent(CueEvent.REMOVE_ALL))], [DialogPath.FAILED]),
 					
-					new DialogHelper("stage1_1.waitForIt", [TutorialCommand.hideNPC, 
+					new DialogHelper("stage1_1.waitForIt", [TutorialCommand.hideNPC, EventCommand.dispatchAnEvent(new CueEvent(CueEvent.REMOVE_ALL)),
 									EventCommand.promptSuccessFailed(TutorialEvent.TUTORIAL_CLEAR, TutorialEvent.TUTORIAL_FAILED)], [DialogPath.SUCCESS]),
 					
 					new DialogHelper("stage1_1.didnotGetStars", [DialogCommand.promptYesNo], [DialogPath.FAILED]),
@@ -88,8 +91,10 @@ package builders
 									TutorialCommand.hideMessage], [DialogPath.SUCCESS]),
 			
 				new DialogHelper("stage1_2.explainHand", [DialogCommand.allowSkip]),
-				new DialogHelper("stage1_2.explainItemPanel", [DialogCommand.allowSkip]),
-				new DialogHelper("stage1_2.explainWeight", [DialogCommand.allowSkip]),
+				new DialogHelper("stage1_2.explainItemPanel", [DialogCommand.allowSkip, 
+																EventCommand.dispatchAnEvent(new CueEvent(CueEvent.CUE_ITEM_PANEL))]),
+				new DialogHelper("stage1_2.explainWeight", [DialogCommand.allowSkip,
+																EventCommand.dispatchAnEvent(new CueEvent(CueEvent.REMOVE_ALL))]),
 				new DialogHelper("stage1_2.getStars", [DialogCommand.allowSkip, TutorialCommand.hideAll, 
 														EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.UNLOCK_DROP)),
 														EventCommand.promptSuccessFailed(TutorialEvent.TUTORIAL_CLEAR, TutorialEvent.TUTORIAL_FAILED)]),

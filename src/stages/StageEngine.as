@@ -6,6 +6,7 @@ package stages
 	import Box2D.Dynamics.b2Body;
 	import Box2D.Dynamics.b2BodyDef;
 	import Box2D.Dynamics.b2FixtureDef;
+	import flash.display.DisplayObject;
 	import flash.errors.IOError;
 	import flash.events.MouseEvent;
 	import flash.events.TimerEvent;
@@ -43,6 +44,7 @@ package stages
 		protected var sCounter:ScoreCounter;
 	
 		private var tFormat:TextFormat;
+		protected var dropBtn:DropButton;
 		
 		private var rHand:Hand = new Hand(true);
 		private var lHand:Hand = new Hand(false);
@@ -115,7 +117,7 @@ package stages
 		
 		private function createDropButton():void 
 		{
-			var dropBtn:DropButton = new DropButton();
+			dropBtn = new DropButton();
 			dropBtn.width = 50;
 			dropBtn.height = 50;
 			dropBtn.x = StageConfig.STAGE_WIDTH / 2;
@@ -125,6 +127,7 @@ package stages
 			dropBtn.addEventListener(MouseEvent.MOUSE_UP, function drop(e:MouseEvent):void {
 				MousePhysic.releaseAll();
 			});
+
 		}
 		
 		protected function displayScore(e:GrabObjectEvent):void 

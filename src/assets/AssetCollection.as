@@ -150,6 +150,9 @@ package assets
 		[Embed(source = "AssetLibrary.swf", symbol = "Brock_Asset")]
 		public var brockAsset:Class;
 		
+		[Embed(source = "AssetLibrary.swf", symbol = "CueArrow_Asset")]
+		public var arrowAsset:Class;
+		
 		public function AssetCollection() 
 		{
 			 

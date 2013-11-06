@@ -15,6 +15,7 @@ package
 	import gameEvents.SelectStageEvent;
 	import general.BreakContactListener;
 	import general.MousePhysic;
+	import managers.CueManager;
 	import managers.MusicManager;
 	import general.GameSceneDataHandler;
 	import general.ScoreRecord;
@@ -217,6 +218,7 @@ package
 		{
 			StageEngine(currentScene).destroyMe();
 			changeScene(); 
+			CueManager.getInstance().destroyStage();
 			MousePhysic.destroyStage();
 			destroyWorld();
 		

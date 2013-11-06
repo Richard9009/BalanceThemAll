@@ -1,18 +1,24 @@
 package gameObjects
 {
 	import assets.AssetCollection;
+	import flash.display.DisplayObject;
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
+	import flash.events.Event;
+	import flash.geom.Point;
 	import flash.text.TextField;
 	import flash.text.TextFormat;
+	import gameEvents.CueEvent;
+	import general.dialogs.DialogEventHandler;
 	import general.ObjectData;
 	import locales.LocalesTextField;
+	import managers.CueManager;
 	
 	/**
 	 * ...
 	 * @author ...
 	 */
-	public class ItemPanel extends MovieClip
+	public class ItemPanel extends Sprite
 	{
 		private static const BULLET:String = "- ";
 		private static const WEIGHT:String = "Weight: ";
@@ -44,6 +50,19 @@ package gameObjects
 			mouseEnabled = false;
 			mouseChildren = false;
 			addChild(panel);
+			
+			addEventListener(Event.ADDED_TO_STAGE, addedToStage);
+		}
+		
+		private function addedToStage(e:Event):void 
+		{
+			removeEventListener(Event.ADDED_TO_STAGE, addedToStage);
+			
+			DialogEventHandler.getInstance().addEventListener(CueEvent.CUE_ITEM_PANEL, function respond():void {
+				CueManager.getInstance().cueThis(new Point(x, y + height/2));
+			});
+			
+			trace(this as DisplayObject == null);
 		}
 		
 		private function printData():void

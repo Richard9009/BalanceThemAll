@@ -1,12 +1,16 @@
 package stages 
 {
+	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.geom.Point;
+	import gameEvents.CueEvent;
 	import gameEvents.GameEvent;
 	import gameEvents.GrabObjectEvent;
 	import gameEvents.TutorialEvent;
 	import general.MousePhysic;
 	import general.StageRecord;
+	import managers.CueManager;
 	import org.flashdevelop.utils.FlashConnect;
 	import general.dialogs.DialogEvent;
 	import resources.DashedLine;
@@ -24,6 +28,8 @@ package stages
 		public function StageTutorialEngine() 
 		{
 			super();
+			
+			CueManager.getInstance().setStage(this);
 		}
 		
 		public function createTutorialDialog(id:String):void {
@@ -36,6 +42,12 @@ package stages
 			tutorialHandler.addEventListener(TutorialEvent.LOCK_DROP, lockDoubleClick);
 			tutorialHandler.addEventListener(TutorialEvent.UNLOCK_DROP, unlockDoubleClick);
 			tutorialHandler.addEventListener(TutorialEvent.RESTART_TUTORIAL, restartTutorial);
+			tutorialHandler.addEventListener(CueEvent.CUE_DROP_BUTTON, cueDrop);
+		}
+		
+		private function cueDrop(e:CueEvent):void 
+		{
+			CueManager.getInstance().cueThis(new Point(dropBtn.x, dropBtn.y + dropBtn.height/2));
 		}
 		
 		override public function destroyMe():void 
@@ -48,6 +60,7 @@ package stages
 			tutorialHandler.removeEventListener(TutorialEvent.LOCK_DROP, lockDoubleClick);
 			tutorialHandler.removeEventListener(TutorialEvent.UNLOCK_DROP, unlockDoubleClick);
 			tutorialHandler.removeEventListener(TutorialEvent.RESTART_TUTORIAL, restartTutorial);
+			tutorialHandler.removeEventListener(CueEvent.CUE_DROP_BUTTON, cueDrop);
 		}
 		
 		private function restartTutorial(e:TutorialEvent):void 
