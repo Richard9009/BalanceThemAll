@@ -95,14 +95,7 @@ package managers
 		{
 			music = new musicClass();
 			sTrans.volume = volume;
-			sChannel = music.play();
-			sChannel.soundTransform = sTrans;
-			sChannel.addEventListener(Event.SOUND_COMPLETE, musicEnd);
-		}
-		
-		private function musicEnd(e:Event):void
-		{
-			sChannel = music.play();
+			sChannel = music.play(0, 1000);
 			sChannel.soundTransform = sTrans;
 		}
 		
