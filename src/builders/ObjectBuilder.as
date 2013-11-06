@@ -354,7 +354,7 @@ package builders
 				obj.setSize(120 * scale, 102 * scale);
 				obj.changeShape(shape.triangleShape(obj));
 				obj.setRandomPositionInsideItemBox();
-				obj.setSound(new soundCol.pillowImpactSound());
+				obj.setSound(new soundCol.metalSound());
 				objArray.push(obj);
 				obj.writeObjectData();
 			}
@@ -373,7 +373,7 @@ package builders
 				obj.setFixtureProperties(0.2, 0, 0.5);
 				obj.setSize(120 * scale, 120 * scale);
 				obj.setRandomPositionInsideItemBox();
-				obj.setSound(new soundCol.pillowImpactSound());
+				obj.setSound(new soundCol.metalSound());
 				objArray.push(obj);
 				obj.writeObjectData();
 			}
@@ -393,7 +393,7 @@ package builders
 				obj.setSize(120 * scale, 220 * scale);
 				obj.changeShape(shape.lightHolderShape(obj));
 				obj.setRandomPositionInsideItemBox();
-				obj.setSound(new soundCol.pillowImpactSound());
+				obj.setSound(new soundCol.metalSound());
 				objArray.push(obj);
 				obj.writeObjectData();
 			}

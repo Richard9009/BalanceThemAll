@@ -32,6 +32,16 @@ package managers
 			playSound(collection.dropFailSound, vol);
 		}
 		
+		public function playGravBoxMoving(vol:Number = DEFAULT_VOLUME):void
+		{
+			playSound(collection.gravBlockSound, vol);
+		}
+		
+		public function stopSound():void
+		{
+			sChannel.stop();
+		}
+		
 		private function playSound(sound:Class, vol:Number):void
 		{
 			var sfx:Sound = new sound();

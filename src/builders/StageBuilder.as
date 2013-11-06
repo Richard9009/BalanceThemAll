@@ -227,7 +227,7 @@ package builders
 
 		private function stage4(substg:int):void 
 		{
-			
+			MusicManager.getInstance().playStage4BGM();
 			DraggableObject.calculate_mass_on_me = true;
 		}
 		

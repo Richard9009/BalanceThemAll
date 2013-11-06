@@ -86,6 +86,11 @@ package managers
 			playMusic(MUSIC_COL.openingBGM, volume);
 		}
 		
+		public function playStage4BGM(volume:Number = DEFAULT_VOLUME):void
+		{
+			playMusic(MUSIC_COL.s4BGM, volume);
+		}
+		
 		private function playMusic(musicClass:Class, volume:Number):void 
 		{
 			music = new musicClass();

@@ -4,6 +4,7 @@ package gameObjects.rigidObjects
 	import Box2D.Dynamics.b2Body;
 	import flash.events.Event;
 	import flash.geom.Point;
+	import managers.SoundManager;
 	import stages.StageConfig;
 	/**
 	 * ...
@@ -68,6 +69,8 @@ package gameObjects.rigidObjects
 			if (goingDown) rigidBody.SetLinearVelocity(new b2Vec2(0, fallingSpd));
 			else rigidBody.SetLinearVelocity(new b2Vec2(0, -fallingSpd));
 			
+			SoundManager.getInstance().playGravBoxMoving();
+			
 			addEventListener(Event.ENTER_FRAME, checkPosition);
 		}
 		
@@ -92,6 +95,7 @@ package gameObjects.rigidObjects
 			rigidBody.GetPosition().y = afterFallY;
 			rigidBody.SetLinearVelocity(new b2Vec2());
 			removeEventListener(Event.ENTER_FRAME, checkPosition);
+			SoundManager.getInstance().stopSound();
 		}
 		
 		private function validateAfterFallPosition():void {

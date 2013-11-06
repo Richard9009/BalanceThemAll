@@ -49,6 +49,12 @@ package assets
 		[Embed(source = "sounds/DropButton-Fail_Sound.mp3")]
 		public var dropFailSound:Class;
 		
+		[Embed(source = "sounds/GravityBlock_Sound.mp3")]
+		public var gravBlockSound:Class;
+		
+		[Embed(source = "sounds/Metal_Sound.mp3")]
+		public var metalSound:Class;
+		
 		public function SoundCollection() 
 		{
 			

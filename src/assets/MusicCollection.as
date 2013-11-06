@@ -37,6 +37,9 @@ package assets
 		[Embed(source="musics/Stage3 - Second Half.mp3")]
 		public var s3SecondHalfBGM:Class;
 		
+		[Embed(source="musics/Stage4.mp3")]
+		public var s4BGM:Class;
+		
 		public function MusicCollection() 
 		{
 			
