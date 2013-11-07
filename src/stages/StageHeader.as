@@ -14,6 +14,7 @@ package stages
 	import general.Power;
 	import general.ScoreCounter;
 	import locales.LocalesTextField;
+	import managers.LocalesManager;
 	import managers.MessageManager;
 	
 	/**
@@ -49,7 +50,7 @@ package stages
 		
 		private function createMessageBox():void
 		{
-			var msgFormat:TextFormat = new TextFormat("Nueva Std", 20, 0x773333, true);
+			var msgFormat:TextFormat = new TextFormat("Hobo Std", 20, 0x773333, true);
 			msgFormat.align = TextFormatAlign.CENTER;
 			
 			messageBox = new LocalesTextField("", msgFormat);
@@ -115,7 +116,7 @@ package stages
 		
 		private function createScoreCounter():void
 		{
-			tFormat = new TextFormat("Nueva Std", 20, 0x333333, true);
+			tFormat = new TextFormat("Hobo Std", 20, 0x333333, true);
 			
 			scoreText = new TextField();
 			scoreText.selectable = false;
@@ -128,7 +129,8 @@ package stages
 		
 		public function updateScore(sCounter:ScoreCounter):void
 		{
-			scoreText.text = "Score: " + sCounter.getScore().toString();
+			var scoreString:String = LocalesManager.getInstance().getText("header.score");
+			scoreText.text = scoreString + sCounter.getScore().toString();
 			scoreText.setTextFormat(tFormat);
 		}
 		
