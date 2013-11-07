@@ -116,7 +116,7 @@ package stages
 		
 		private function createScoreCounter():void
 		{
-			tFormat = new TextFormat("Hobo Std", 20, 0x333333, true);
+			tFormat = new TextFormat("Hobo Std", 20, 0xCCFF00);
 			
 			scoreText = new TextField();
 			scoreText.selectable = false;
@@ -130,7 +130,8 @@ package stages
 		public function updateScore(sCounter:ScoreCounter):void
 		{
 			var scoreString:String = LocalesManager.getInstance().getText("header.score");
-			scoreText.text = scoreString + sCounter.getScore().toString();
+			scoreString = scoreString.substring(0, scoreString.length - 2);
+			scoreText.text = scoreString + " " +sCounter.getScore().toString();
 			scoreText.setTextFormat(tFormat);
 		}
 		
