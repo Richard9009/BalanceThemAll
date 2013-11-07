@@ -12,7 +12,7 @@ package managers
 	 */
 	public class LocalesManager extends EventDispatcher
 	{		
-		public var currentLanguageCode:int = 0;
+		public var currentLanguageCode:uint = 0;
 		public var localeArray:Array = new Array();
 		public var englishArray:Array = new Array();
 		public var chineseArray:Array = new Array();
@@ -22,12 +22,11 @@ package managers
 		public function LocalesManager() 
 		{							
 			localeArray = LocalesSource.getInstance().getLocaleArrayByCode(currentLanguageCode);
-			addEventListener(LocalesEvent.ON_LANGUAGE_SELECT, changeLocale);
 		}
 		
-		private function changeLocale(e:LocalesEvent):void 
+		public function changeLocaleTo(language:uint):void
 		{
-			currentLanguageCode = (currentLanguageCode == 0) ? 1 : 0;
+			currentLanguageCode = language;
 			localeArray = LocalesSource.getInstance().getLocaleArrayByCode(currentLanguageCode);
 			dispatchEvent(new LocalesEvent(LocalesEvent.ON_LOCALE_CHANGE)); 
 		}

@@ -1,0 +1,211 @@
+names.encyclopedia = Ensiklopedia
+names.book = Buku
+names.photo = Bingkai Foto
+names.pillow = Bantal
+names.shoe = Sepatu Besar
+names.vase = Vas Bunga
+names.mug = Mug Orange
+names.heavyObject = 10kg Barbel
+names.bowling = Bola Bowling
+names.basket = Bola Basket
+names.tennis = Bola Tenis
+names.fish = Ikan Beku
+names.tomato = Tomat Beku
+names.ice = Es Rapuh
+names.penguin = Penguin
+names.box = Kotak Cahaya
+names.triangle = Segitiga Cahaya
+names.holder = Prisma
+
+=====================================================================================================================================================
+
+buttons.drop = Lepas
+buttons.resume = Lanjut
+buttons.select = Pilih Level
+buttons.main = Main Menu
+buttons.quit = Keluar
+buttons.play = Mulai
+buttons.selectLev = Pilih<br />Level
+buttons.credit = Credit
+buttons.back = balik
+buttons.yes = Ya
+buttons.no = Tidak
+
+header.score = Skor: 
+
+=====================================================================================================================================================
+
+info.vLight = Sangat Ringan
+info.light = Ringan
+info.normal = Normal
+info.heavy = Berat
+info.vHeavy = Sangat Berat
+info.heaviest = Paling Berat
+
+info.slippery = Licin
+info.bouncy = Melambung
+info.sticky = Kesat
+info.fragile = Bisa Pecah
+
+=====================================================================================================================================================
+
+message.grab = Ambil 2 barang
+message.noDrop.red = Tidak bisa melepas barang jika barang bentrok dengan sesuatu
+message.noDrop.empty = Tidak ada yang akan dilepas
+message.handFull = Tidak bisa mengambil barang lagi
+
+=====================================================================================================================================================
+
+opening.first = Pada suatu masa, ada sebuah petir yang sangat besar menyambar dari langit
+opening.second = Petir tersebut sangat kuat hingga menyebabkan bintang - bintang jatuh ke bumi
+opening.third = Tanpa adanya bintang, bulan akan ditelan kegelapan. Karenanya bulan memberikan<br />kekuatan terakhirnya kepada orang - orang terpilih untuk mengumpulkan bintang
+opening.fourth = Orang - orang terpilih ini dikenal dengan nama, star collector<br />Hanya mereka lah yang dapat mengembalikan cahaya di langit malam
+
+=====================================================================================================================================================
+
+stage1_1.greeting = Halo, kamu star collector baru ya?<br />Namaku Gavin. aku juga star collector sepertimu<br />Perlu aku ajari cara mainnya ga?
+stage1_1.noTutorial = Oke... Good luck ya<br />Sampai jumpa
+stage1_1.beginTutorial = Oke... kita mulai aja
+stage1_1.dragBook = Pakai klik kiri untuk menggerakkan buku ini
+stage1_1.dragItToMe = Bagus! Sekarang coba bawa bukunya ke atas sini
+stage1_1.releaseDrag = Sekarang kamu sudah boleh lepasin<br />Bukunya tidak akan jatuh
+stage1_1.getAnotherBook = Coba ambil buku satunya lagi.<br />Bawa ke sini lagi seperti tadi
+stage1_1.moveBookToStar = Bawa bukunya ke garis merah<br />Agar kalau dilepasin bisa jatuh di depan bintang
+stage1_1.releaseBooks = Bagus! Sekarang coba tekan tombol lepas
+stage1_1.waitForIt = Tunggu sampai bukunya berhenti bergerak
+stage1_1.gotTheStars = Yup!<br />Kamu akan dapat bintang kalau objectmu menyentuhnya<br />Sampai jumpa
+stage1_1.didnotGetStars = Ah sayang sekali, tidak kena bintangnya<br />Mau coba lagi?
+
+__________________________________________________________________________________________________________________________________________________________________
+
+stage1_2.askNeedHelp = Ada yang baru nih.<br />Perlu aku jelasin ga?
+stage1_2.explainHand = Kamu cuma bisa membawa 2 barang sekaligus<br />1 di tangan kanan(R) dan 1 di tangan kiri(L)
+stage1_2.explainItemPanel = Keterangan tentang barang yang kamu pegang<br />bisa dilihat di sudut atas sana 
+stage1_2.explainWeight = Intinya gampang aja<br />letakkan barang yang ringan di ujung<br />Ayo, coba deh
+stage1_2.getStars = Try to balance your items here<br />And get the stars
+stage1_2.skipTutorial = Oke... Good luck ya...
+stage1_2.didnotGetStars = Ah... Ga dapat bintangnya. Coba lagi yuk?
+stage1_2.gotTheStars = Hore!!! Dapat dua-duanya
+__________________________________________________________________________________________________________________________________________________________________
+
+stage1_3.askNeedHelp = Perlu aku jelasin cara memutar barang ga?
+stage1_3.beginTutorial = Gampang aja....<br />Pertama arahkan mouse kamu ke salah satu barang
+stage1_3.rotateIt = Putar roda mousemu untuk memutar.<br />Atau pakai spacebar juga bisa
+stage1_3.rotateSuccess = Sampai sini dulu deh. Coba dapatkan semua bintangnya ya.<br />Good luck
+stage1_3.skipTutorial = Ok, tekan replay aja kalau butuh aku<br />Bye...
+stage1_3.success = Bagus... Kamu cepat belajar ya
+stage1_3.fail = Wah... Gagal... Mau coba lagi?
+___________________________________________________________________________________________________________________________________________________________________
+
+stage1_4.challenge = Mau coba tantangan ga?<br />Aku yakin kamu bisa sendirian<br />Good luck
+stage1_4.failed = Ah sayang sekali, coba lagi ya
+stage1_4.success = Aku tahu kamu pasti bisa! 
+____________________________________________________________________________________________________________________________________________________________________
+
+stage1_5.failed = Yahh... gagal...<br />Coba lagi ya
+stage1_5.thatsIt = Sekian dulu dari aku<br />Tidak salah lagi, kamu star collector yang kami cari
+stage1_5.meetAvia = Ini baru permulaan loh<br />Kami menemukan bintang di sebuah rumah kosong<br />Pergilah ke sana dan kumpulkan bintang-bintang itu
+stage1_5.moreStars = Kamu akan ketemu Avia di sana<br />Dia juga seorang star collector<br />Dia akan membantumu di sana
+stage1_5.aviaPlace = Rumah itu ada di sni<br />*Menggambar sesuatu di peta*
+stage1_5.goodbye = Berjuanglah, star collector<br />Sampai nanti....
+
+====================================================================================================================================================================
+
+stage2_1.start = Jadi kamu ya star collector yang Gavin bilang
+stage2_1.second = Ga meyakinkan nih<br />Tapi sebelum dilihat mana bisa tahu<br />Coba aja di sini dulu
+stage2_1.fail = Seperti yang aku kira, terlalu sulit untuk pemula.<br />Aku kasih kesempatan lagi<br />Mau coba lagi?
+stage2_1.success = Lumayanlah... tapi kamu masih perlu banyak belajar
+
+_________________________________________________________________________________________________________________________________________
+
+stage2_2.start = Yang ini ga gampang loh,<br />Aku kasih petunjuk<br />Gelas dan vasmu cuma bisa ditegakkan di atas bantal
+stage2_2.warning = Dan jangan pecahkan vas bunganya yah<br />Aku ga mau bersih-bersih di sini
+stage2_2.success = Berhasil! Tapi jangan sombong dulu<br />Ini masih belum apa-apa
+stage2_2.fail = Parah sekali... Coba sekali lagi ya?
+
+_________________________________________________________________________________________________________________________________________
+
+stage2_3.start = Dari sini baru mulai menantang.<br />Aku bakal kagum kalau kamu bisa yang ini loh
+stage2_3.needClue = Perlu petunjuk?
+stage2_3.clue = Aku kasih tahu ya...<br />Ga seimbang juga ga apa-apa kok<br />Coba think outside the box deh
+stage2_3.noClue = Oke... tersersah deh<br />Good luck aja sendirian
+stage2_3.success = Ternyata aku ga gampang kagum<br />Coba yang sesudah ini deh
+stage2_3.fail = Tuh... Ga gampang kan? Kalau mau coba lagi silahkan aja
+
+_________________________________________________________________________________________________________________________________________
+
+stage2_4.start = Ini kesukaanku, kayaknya susah loh<br />Di sini kamu harus berpikir pintar
+stage2_4.success = Nah ini baru keren!!<br />Memang ga bisa lihat orang dari penampilan nih<br />Kamu hebat juga
+stage2_4.fail = Ini memang susah kok<br />Coba aja lagi, mungkin nanti bisa
+
+_________________________________________________________________________________________________________________________________________
+
+stage2_5.start = Benar-benar ga nyangka kamu bakal sampai ke sini.<br />Ini yang terakhir
+stage2_5.second = Kamu beberapa kali mengejutkanku.<br />Aku harap ini bakal menarik
+stage2_5.success = Kamu ga pernah mengecewakan
+stage2_5.emmi = Aku kasih tahu ke mana kamu harus pergi<br />Pergilah ke snowland, temui Emmi
+stage2_5.emmiLocation = Di sini<br />*Menggambar sesuatu di peta*
+stage2_5.goodbye = Hati-hati, Emmi ga bakal gampang aja memberikan bintangnya padamu<br />Sampai jumpa, star collector
+stage2_5.fail = Kamu perlu lebih dari sekedar keberuntungan<br />Mau coba lagi?
+
+=========================================================================================================================================
+
+stage3_1.start = Kamu star collector ya<br />Akhir-akhir ini banyak sekali tamu tak diundang
+stage3_1.second = I am Emmi, Sang ratu es<br />Bintang-bintang ini adalah milikku
+stage3_1.third = Banyak yang datang mencari bintang ini sepertimu<br />Tapi selama ada aku, tidak ada yang bisa mendapatkannya<br />INI PUNYAKU!
+stage3_1.fourth = Kamu tidak akan bisa melewati es yang dingin dan licin ini
+stage3_1.success = Cuma beruntung... Nikmatilah keberuntunganmu selagi bisa
+stage3_1.fail = Kamu gagal. Coba saja berapa kalipun kamu mau<br />Kamu tidak akan pernah bisa<br />*COBA LAGI?*
+
+__________________________________________________________________________________________________________________________________________
+
+stage3_2.start = Lihat! Bintang emasnya tinggi sekali.<br />Bagaimana kamu akan mengambilnya, star collector?
+stage3_2.second = Dan aku harap penguin itu menggigit kakimu
+stage3_2.success = Sial! Ini tidak bagus.....
+stage3.fail = *COBA LAGI?*
+
+__________________________________________________________________________________________________________________________________________
+
+stage3_3.start = Aku tidak suka melihatmu bisa sampai ke sini<br />Tapi aku tahu kamu tidak akan pergi lebih jauh dari sini
+stage3_3.second = Banyak star collector yang pulang karena tempat ini.<br />Tidak ada yang pernah bisa menyentuh bintangku ini
+stage3_3.success = Tidak mungkin!!! Kenapa bisa???<br />Gara-gara penguin sial itu!!!
+
+__________________________________________________________________________________________________________________________________________
+
+stage3_4.start = Kenapa penguin bodoh ini terus mengikutimu?
+stage3_4.second = Pulanglah, star collector!<br />Jangan ambil bintangku!!!!
+stage3_4.success = Cukup sudah!<br />Jangan salahkan aku akan apa yang terjadi nanti<br />Ikutilah aku kalau kau mau
+
+__________________________________________________________________________________________________________________________________________
+
+stage3_5.start = Di sini jauh lebih dingin kan?
+stage3_5.second = Ini adalah tempat terdalam di snowland<br />Kau adalah star collector pertama yang pernah ke sini
+stage3_5.third = Kau boleh mengambil bintang ini, aku sudah tidak peduli<br />Tapi kalau gagal, kau dan penguinmu akan terkurung di sini selamanya
+stage3_5.success = Tidak.... Aku kalah...<br />Tapi ratu es tidak mungkin kalah....<br />tidak seperti ini..
+stage3_5.brock = Kau star collector sejati.<br />Ada 1 tempat yang kau harus pergi.<br />Kau harus mnegalahkan Brock, star collector jahat
+stage3_5.brockLocation = Brock menggunakan kekuatan bintang untuk berbuat jahat<br />Kau harus menghentikannya. Dia ada di sni<br />*Menggambar sesuatu di peta*
+stage3_5.last = Rebut bintangnya sebelum dia menghancurkan keseimbangan dunia<br />Dan aku tidak akan sia-sia kehilangan bintangku.
+
+=========================================================================================================================================
+
+stage4_1.start = Apa yang membawamu ke sini, star collector?<br />Kalau kamu mencari bintang, lupakanlah<br />Tidak ada yang bisa kamu lakukan
+stage4_1.second = Akulah Brock, Pengendali gravitasi<br />Bintang-bintang ini menjadikanku star collector terkuat<br />Gravitasi mendengarkan perintahku
+stage4_1.third = Pulanglah selagi bisa<br />Atau tempat ini akan menjadi kuburanmu
+stage4_1.fourth = Gravitasiku akan menghancurkanmu
+stage4_1.success = Hmph... Bagaimana pemanasannya? 
+stage4.fail = Hahahaha.... Tidak ada yang dapat mengalahkan gravitasi!<br />*COBA LAGI?*
+
+stage4_2.start = Gravity ball ini akan menghantam semua benda yang kamu gunakan,<br />sebelum dapat menyentuh bintang
+stage4_2.second = Kamu tidak ada akan dapat melakukan apa-apa<br />Tapi aku akan melihatmu mencoba
+stage4_2.success = Lumayan juga... Lebih dari yang kubayangkan<br />Ini akan menjadi sangat menarik
+
+stage4_3.start = Kalau 1 gravity ball tidak cukup, bagaimana dengan 2?<br />Apa yang akan kamu lakukan, star collector?
+stage4_3.success = Cukup bermain-mainnya<br />Tidak seharusnya aku meremehkanmu
+
+stage4_4.start = Bersiaplah! Kamu akan menyesal datang ke sini<br />Kamu akan gepeng dijepit gravity ballku
+stage4_4.success = Argh... Tunggu pembalasanku
+
+stage4_5.start = Cukup sampai di sini<br />Akan kutunjukkan padamu kekuatan gravitasi yang sebenarnya!
+stage4_5.second = Kamu dan bintangmu akan terkubur hidup-hidup di sini<br />Tidak ada yang dapat keluar dari sini
+stage4_5.success = Apa!? Kenapa aku bisa kalah oleh orang seperti ini?<br />Tidak... kekuatanku hilang...
+stage4_5.end = Tidak!!! Tidak!!! Bintangku... Gravitasiku... AArrghhh...

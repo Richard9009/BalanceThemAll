@@ -13,8 +13,8 @@
 	 */
 	public class LocalesTextField extends TextField 
 	{
-		private static const MARGIN_R:Number = 10;
-		private static const MARGIN_L:Number = 10;
+		private static const MARGIN_R:Number = 7;
+		private static const MARGIN_L:Number = 7;
 		private static const MARGIN_UP:Number = 5;
 		private static const MARGIN_LOW:Number = 5;
 		

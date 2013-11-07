@@ -15,6 +15,7 @@ package
 	import gameEvents.SelectStageEvent;
 	import general.BreakContactListener;
 	import general.MousePhysic;
+	import locales.LocalesEvent;
 	import managers.CueManager;
 	import managers.MusicManager;
 	import general.GameSceneDataHandler;
@@ -53,7 +54,7 @@ package
 			stage.stageFocusRect = false;
 			cleanListener();
 			StageRecord.CreateRecordList();
-			createMainMenu();
+			openSelectLanguage();
 			// entry point
 		}
 		
@@ -82,6 +83,16 @@ package
 			MusicManager.getInstance().stopAllMusic();
 			removeChild(currentScene);
 			cleanListener();
+		}
+		
+		private function openSelectLanguage():void
+		{
+			currentScene = new SelectLanguage_Movie();
+			addChild(currentScene);
+			addEventListener(LocalesEvent.ON_LANGUAGE_SELECT, function respond():void {
+				changeScene();
+				createMainMenu();
+			});
 		}
 		
 		private function createMainMenu():void 

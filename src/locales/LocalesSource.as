@@ -16,12 +16,17 @@ package locales
 		private var englishLocale:Class;
 		private var englishLocaleArray:Array;
 		
+		[Embed(source="fileSource/Indonesian.txt", mimeType="application/octet-stream")]
+		private var indoLocale:Class;
+		private var indoLocaleArray:Array;
+		
 		private static var instance:LocalesSource;
 		
 		public function LocalesSource() 
 		{
 			englishLocaleArray = LocaleData.generateArray(englishLocale);
 			chineseLocaleArray = LocaleData.generateArray(chineseLocale);
+			indoLocaleArray = LocaleData.generateArray(indoLocale);
 			defaultLocaleArray = englishLocaleArray;
 		}
 		
@@ -31,11 +36,12 @@ package locales
 			return instance;
 		}
 		
-		public function getLocaleArrayByCode(localeCode:int):Array
+		public function getLocaleArrayByCode(localeCode:uint):Array
 		{
 			switch(localeCode) {
-				case 0: return englishLocaleArray;
-				case 1: return chineseLocaleArray;
+				case LocaleLanguages.ENGLISH: return englishLocaleArray;
+				case LocaleLanguages.INDONESIAN: return indoLocaleArray;
+				case LocaleLanguages.CHINESE: return chineseLocaleArray;
 				default: return defaultLocaleArray;
 			}
 		}

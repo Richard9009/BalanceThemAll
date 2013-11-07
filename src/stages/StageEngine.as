@@ -10,6 +10,7 @@ package stages
 	import flash.errors.IOError;
 	import flash.events.MouseEvent;
 	import flash.events.TimerEvent;
+	import flash.text.TextFormatAlign;
 	import flash.utils.Timer;
 	import gameEvents.GameEvent;
 	import gameEvents.GrabObjectEvent;
@@ -119,8 +120,8 @@ package stages
 		private function createDropButton():void 
 		{
 			dropBtn = new DropButton();
-			dropBtn.width = 50;
-			dropBtn.height = 50;
+			dropBtn.width = 60;
+			dropBtn.height = 60;
 			dropBtn.x = StageConfig.STAGE_WIDTH / 2;
 			dropBtn.y = StageConfig.HEADER_HEIGHT + dropBtn.height / 2 + StageConfig.WALL_THICKNESS;
 			addChild(dropBtn);
@@ -130,10 +131,8 @@ package stages
 			}); 
 	
 			var tFormat:TextFormat = new TextFormat("Hobo std", 16, 0xCCCCCC);
-			var dropText:LocalesTextField = new LocalesTextField("buttons.drop", tFormat);
-			addChild(dropText);
-			dropText.x = dropBtn.x - 19;
-			dropText.y = dropBtn.y - 14;
+			tFormat.align = TextFormatAlign.CENTER;
+			LocalesTextField.addTextToButton("buttons.drop", this, dropBtn, tFormat);
 
 		}
 		
