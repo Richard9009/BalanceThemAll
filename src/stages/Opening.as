@@ -27,7 +27,7 @@ package stages
 			timer.addEventListener(TimerEvent.TIMER, blackFadeOut);
 			timer.start();
 			
-			var tFormat:TextFormat = new TextFormat("Nueva Std", 23, 0xFFFF33);
+			var tFormat:TextFormat = new TextFormat("Hobo Std", 20, 0xFFFF33);
 			tFormat.align = TextFormatAlign.CENTER;
 			
 			tField = new LocalesTextField("", tFormat);

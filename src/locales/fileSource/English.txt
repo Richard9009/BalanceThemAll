@@ -28,6 +28,8 @@ buttons.play = New<br />Game
 buttons.selectLev = Select<br />Level
 buttons.credit = Credit
 buttons.back = Back
+buttons.yes = Yes
+buttons.no = No
 
 header.score = Score: 
 

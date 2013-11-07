@@ -90,7 +90,6 @@ package general.dialogs
 	
 		protected function setDefaultCondition():void
 		{
-			FlashConnect.trace(uniqueID);
 			visible = true;
 			yesButton.visible = false;
 			noButton.visible = false; 

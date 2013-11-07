@@ -1,4 +1,4 @@
-package locales 
+﻿package locales 
 {
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
@@ -29,7 +29,7 @@ package locales
 			mouseEnabled = false;
 			
 			if (textFormat == null) {
-				_textFormat = new TextFormat('Nueva Std', 25, 0x000000, true);
+				_textFormat = new TextFormat('Hobo Std', 20, 0x000000);
 				_textFormat.leading = 5;
 			}
 			else _textFormat = textFormat;
@@ -48,7 +48,7 @@ package locales
 			this.setTextFormat(_textFormat);
 		}
 		
-		public static function addTextToButton(textCode:String, tParent:Sprite, btn:DisplayObject, tFormat:TextFormat):void
+		public static function addTextToButton(textCode:String, tParent:Sprite, btn:DisplayObject, tFormat:TextFormat):LocalesTextField
 		{
 			var tField:LocalesTextField = new LocalesTextField(textCode, tFormat);
 			tField.width = btn.width - MARGIN_L - MARGIN_R;
@@ -56,6 +56,7 @@ package locales
 			tField.x = btn.x - btn.width/2 + MARGIN_L;
 			tField.y = btn.y - Number(tFormat.size) * tField.numLines / 2 + MARGIN_UP;
 			tParent.addChild(tField);
+			return tField
 		}
 	}
 
