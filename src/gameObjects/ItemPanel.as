@@ -13,6 +13,7 @@ package gameObjects
 	import general.ObjectData;
 	import locales.LocalesTextField;
 	import managers.CueManager;
+	import managers.LocalesManager;
 	
 	/**
 	 * ...
@@ -21,7 +22,7 @@ package gameObjects
 	public class ItemPanel extends Sprite
 	{
 		private static const BULLET:String = "- ";
-		private static const WEIGHT:String = "Weight: ";
+		private static const WEIGHT:String = "info.weight";
 		
 		private static const PADDING:Number = 8;
 		private static const GAP:Number = 23;
@@ -76,9 +77,13 @@ package gameObjects
 			nameTxt.setTextFormat(headerTF);
 			addChild(nameTxt);
 			
+			
+			var weightString:String = LocalesManager.getInstance().getText(WEIGHT) + ": ";
+			//weightString = weightString.substring(0, weightString.length - 2);
+			
 			weightTxt = new TextField();
 			weightTxt.selectable = false;
-			weightTxt.text = BULLET + WEIGHT + weight;
+			weightTxt.text = BULLET + weightString + weight;
 			weightTxt.width = panel.width;
 			weightTxt.setTextFormat(tFormat);
 			addChild(weightTxt);

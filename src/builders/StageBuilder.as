@@ -175,9 +175,9 @@ package builders
 			liftables.push(itemBuilder.createFrozenTomato(2));
 			liftables.push(itemBuilder.createFragileIce(1));
 			
-			stars.push(specialBuilder.createGoldenStar(120, 200));
-			stars.push(specialBuilder.createSilverStar(640, 280));
-			stars.push(specialBuilder.createBronzeStar(380, 312));
+			stars.push(specialBuilder.createSilverStar(120, 200));
+			stars.push(specialBuilder.createBronzeStar(640, 280));
+			stars.push(specialBuilder.createGoldenStar(380, 312));
 		}
 		
 		private function stage3_2():void
@@ -196,7 +196,7 @@ package builders
 			liftables.push(itemBuilder.createFrozenFish(2));
 			liftables.push(itemBuilder.createPenguin(2));
 			
-			stars.push(specialBuilder.createGoldenStar(200, 200));
+			stars.push(specialBuilder.createGoldenStar(200, 230));
 			stars.push(specialBuilder.createSilverStar(536, 348));
 			stars.push(specialBuilder.createBronzeStar(662, 412));
 		}
@@ -218,9 +218,9 @@ package builders
 			liftables.push(itemBuilder.createPenguin(1));
 			liftables.push(itemBuilder.createFragileIce(1));
 			
-			stars.push(specialBuilder.createGoldenStar(500, 275));
-			stars.push(specialBuilder.createSilverStar(258, 355));
-			stars.push(specialBuilder.createBronzeStar(340, 253));
+			stars.push(specialBuilder.createGoldenStar(620, 245));
+			stars.push(specialBuilder.createBronzeStar(258, 355));
+			stars.push(specialBuilder.createSilverStar(340, 253));
 		}
 		
 //======================================================STAGE 4=========================================================================

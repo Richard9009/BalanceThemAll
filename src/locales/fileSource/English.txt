@@ -46,6 +46,7 @@ info.slippery = Slippery
 info.bouncy = Bouncy
 info.sticky = High Friction
 info.fragile = Fragile
+info.weight = Weight
 
 =====================================================================================================================================================
 
@@ -53,6 +54,12 @@ message.grab = Grab 2 objects
 message.noDrop.red = Can't drop object when it's colliding with something
 message.noDrop.empty = Nothing to drop
 message.handFull = Can't grab anymore objects
+
+tips.0 = Read the dialog, sometimes the character will drop a hint
+tips.1 = Bronze, Silver, and Golden, always get the stars by this order
+tips.2 = Avoid putting a heavy object on top of a lighter one
+tips.3 = It's safer to use the fragile object last
+tips.4 = Be careful of using slippery or round objects on uneven surface
 
 =====================================================================================================================================================
 
@@ -64,13 +71,13 @@ opening.fourth = People of the earth call these brave warriors, The star collect
 =====================================================================================================================================================
 
 stage1_1.greeting = Hello, you must be the new star collector<br />My name is Gavin. I am a star collector, just like you<br />Do you need me to show you how to play?
-stage1_1.noTutorial = Very well, I wish you luck.<br />See you later, mate
+stage1_1.noTutorial = Very well, I wish you luck.
 stage1_1.beginTutorial = Great! Let's begin, shall we?
 stage1_1.dragBook = Use left mouse button to drag one of the book below.
 stage1_1.dragItToMe = Good! Now drag the book up here to me
 stage1_1.releaseDrag = You can let go the left mouse button now.<br />The book won't fall, you have your hand holding it tight
 stage1_1.getAnotherBook = Let's get another book there.<br />Drag it up here and let go like what you just did
-stage1_1.moveBookToStar = Move your books to somewhere along the line<br />Make sure it would reach the stars when it fell
+stage1_1.moveBookToStar = Move your books to somewhere along the line<br />so they would fall onto the stars
 stage1_1.releaseBooks = Good! Now try to hit the drop button
 stage1_1.waitForIt = Wait until the books stop moving
 stage1_1.gotTheStars = That's it!<br />YOU GOT THE STAR WHEN YOUR OBJECT TOUCHES IT.<br />I'll see you around, mate!
@@ -83,7 +90,7 @@ stage1_2.explainHand = You can only carry 2 items at the same time<br />One on y
 stage1_2.explainItemPanel = The details of the items you are carrying will be shown<br />on the top corners. 
 stage1_2.explainWeight = The rule of balance is simple<br />Put lighter object closer to the edge<br />Come on, give it a try!
 stage1_2.getStars = Try to balance your items here<br />And get the stars
-stage1_2.skipTutorial = Very well, good luck. I'll see you later
+stage1_2.skipTutorial = Very well, good luck
 stage1_2.didnotGetStars = Oh too bad, you missed the star. Let's try again, shall we?
 stage1_2.gotTheStars = That's it! You got all the stars!!!
 __________________________________________________________________________________________________________________________________________________________________
@@ -92,14 +99,14 @@ stage1_3.askNeedHelp = Should I explain how to rotate an object?
 stage1_3.beginTutorial = Alright, actually it's really simple.<br />Try to point on an object first
 stage1_3.rotateIt = You can scroll your mouse wheel to rotate it.<br />Or you can just hold spacebar
 stage1_3.rotateSuccess = Well, that's it for now. Try to get all the stars. Good luck, mate
-stage1_3.skipTutorial = Ok, just click the replay button if you need me<br />Bye...
+stage1_3.skipTutorial = Ok, just click the replay button if you need me
 stage1_3.success = That was good. You learnt well 
 stage1_3.fail = Do you want to try again?
 ___________________________________________________________________________________________________________________________________________________________________
 
 stage1_4.challenge = How about a little challenge?<br />I'm sure you can do this on your own<br />Good luck
 stage1_4.failed = Oh too bad, You might wanna try it again
-stage1_4.success = Good! I knew you can do it!<br />I'll see you in the next level 
+stage1_4.success = Good! I knew you can do it!
 ____________________________________________________________________________________________________________________________________________________________________
 
 stage1_5.failed = You didn't get all the stars<br />Why don't you try it again?
@@ -126,8 +133,8 @@ stage2_2.fail = That was really bad! Shall we give it another try?
 _________________________________________________________________________________________________________________________________________
 
 stage2_3.start = The real challenge begins from here.<br />I would be impressed if you could clear this
-stage2_3.needClue = Do you want me to give you a clue?
-stage2_3.clue = I tell you what...<br />It doesn't always have to be balanced.<br />Try to think outside the box from now on
+stage2_3.needClue = Do you want me to give you a big clue?
+stage2_3.clue = I tell you what...<br />Always get the silver before golden star<br />And if you see a bronze star, get it the very first
 stage2_3.noClue = Alright, tough guy...<br />Good luck on your own
 stage2_3.success = It turns out that I'm not so easily impressed<br />We'll see what you can do for the next one
 stage2_3.fail = It wasn't so easy, was it? Feel free to try it again<br />So... Another try?

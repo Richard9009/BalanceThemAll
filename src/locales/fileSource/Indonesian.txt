@@ -46,11 +46,12 @@ info.slippery = Licin
 info.bouncy = Melambung
 info.sticky = Kesat
 info.fragile = Bisa Pecah
+info.weight = Massa
 
 =====================================================================================================================================================
 
 message.grab = Ambil 2 barang
-message.noDrop.red = Tidak bisa melepas barang jika barang bentrok dengan sesuatu
+message.noDrop.red = Tidak bisa melepas benda yang berhimpitan
 message.noDrop.empty = Tidak ada yang akan dilepas
 message.handFull = Tidak bisa mengambil barang lagi
 
@@ -126,8 +127,8 @@ stage2_2.fail = Parah sekali... Coba sekali lagi ya?
 _________________________________________________________________________________________________________________________________________
 
 stage2_3.start = Dari sini baru mulai menantang.<br />Aku bakal kagum kalau kamu bisa yang ini loh
-stage2_3.needClue = Perlu petunjuk?
-stage2_3.clue = Aku kasih tahu ya...<br />Ga seimbang juga ga apa-apa kok<br />Coba think outside the box deh
+stage2_3.needClue = Aku ada petunjuk penting, mau ku kasih tahu ga?
+stage2_3.clue = Aku kasih tahu ya...<br />Selalu ambil bintang perak dulu, baru yang emas<br />dan kalau ada bintang perunggu, ambil itu dulu
 stage2_3.noClue = Oke... tersersah deh<br />Good luck aja sendirian
 stage2_3.success = Ternyata aku ga gampang kagum<br />Coba yang sesudah ini deh
 stage2_3.fail = Tuh... Ga gampang kan? Kalau mau coba lagi silahkan aja
