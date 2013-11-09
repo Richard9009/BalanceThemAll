@@ -60,6 +60,8 @@ tips.1 = Bronze, Silver, and Golden, always get the stars by this order
 tips.2 = Avoid putting a heavy object on top of a lighter one
 tips.3 = It's safer to use the fragile object last
 tips.4 = Be careful of using slippery or round objects on uneven surface
+tips.5 = Avoid thinking too complicatedly, most of the time the solution is simpler than you think
+tips.6 = Sometimes you might want to drop the objects one by one
 
 =====================================================================================================================================================
 

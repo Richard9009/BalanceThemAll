@@ -50,7 +50,7 @@ package stages
 		
 		private function createMessageBox():void
 		{
-			var msgFormat:TextFormat = new TextFormat("Hobo Std", 18, 0x663333);
+			var msgFormat:TextFormat = new TextFormat("Hobo Std", 18, 0xCCCC33);
 			msgFormat.align = TextFormatAlign.CENTER;
 			
 			messageBox = new LocalesTextField("", msgFormat);

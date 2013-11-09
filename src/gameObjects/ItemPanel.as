@@ -62,8 +62,6 @@ package gameObjects
 			DialogEventHandler.getInstance().addEventListener(CueEvent.CUE_ITEM_PANEL, function respond():void {
 				CueManager.getInstance().cueThis(new Point(x, y + height/2));
 			});
-			
-			trace(this as DisplayObject == null);
 		}
 		
 		private function printData():void

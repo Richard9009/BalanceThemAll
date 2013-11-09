@@ -39,8 +39,8 @@ package builders
 			{
 				obj = new NormalRoundObject("names.basket", minStageLimit, maxStageLimit);
 				obj.createDisplayBody(collection.basketBallAsset);
-				obj.setFixtureProperties(0.4, 0.8, 0.4);
-				obj.setRoundSize(35 * scale);
+				obj.setFixtureProperties(10, 1, 1);
+				obj.setRoundSize(35 * scale, 0.8);
 				obj.setRandomPositionInsideItemBox();
 				obj.setSound(new soundCol.ballImpactSound(), null, new soundCol.ballRollingSound());
 				objArray.push(obj);
@@ -58,8 +58,8 @@ package builders
 			{
 				obj = new NormalRoundObject("names.tennis", minStageLimit, maxStageLimit);
 				obj.createDisplayBody(collection.tennisBallAsset);
-				obj.setFixtureProperties(0.2, 0.7, 0.1);
-				obj.setRoundSize(21 * scale);
+				obj.setFixtureProperties(0.2, 0.7, 0.5);
+				obj.setRoundSize(21 * scale, 0.2);
 				obj.setRandomPositionInsideItemBox();
 				obj.setSound(new soundCol.ballImpactSound(), null, new soundCol.ballRollingSound());
 				objArray.push(obj);
@@ -77,8 +77,8 @@ package builders
 			{
 				obj = new NormalRoundObject("names.bowling", minStageLimit, maxStageLimit);
 				obj.createDisplayBody(collection.bowlingBallAsset);
-				obj.setFixtureProperties(1, 0.8, 0.2);
-				obj.setRoundSize(50 * scale);
+				obj.setFixtureProperties(10, 0.2, 0.2);
+				obj.setRoundSize(55 * scale, 0.6);
 				obj.setRandomPositionInsideItemBox();
 				obj.setSound(new soundCol.heavyImpactSound());
 				objArray.push(obj);

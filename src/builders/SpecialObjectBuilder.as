@@ -62,7 +62,6 @@ package builders
 			bbBat.setSize(size.x, size.y);
 			bbBat.setFixtureProperties(0.2, 0.2, 0.8);
 			bbBat.changeShape(new ShapeBuilder().baseballBatShape(bbBat));
-			trace(bbBat.getBody().GetMass());
 			bbBat.setPosition(xx-70, yy);
 			bbBat.isBalanceBoard = true;
 			
