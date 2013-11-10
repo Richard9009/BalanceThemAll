@@ -4,6 +4,7 @@ package managers
 	import flash.events.EventDispatcher;
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
+	import locales.LocaleLanguages;
 	import locales.LocalesEvent;
 	import locales.LocalesSource;
 	/**
@@ -47,6 +48,19 @@ package managers
 			}
 
 			return "Text not found";
+		}
+		
+		public function getFontFamily():String
+		{
+			switch(currentLanguageCode) {
+				case LocaleLanguages.INDONESIAN:
+				case LocaleLanguages.ENGLISH: return "Hobo std";
+				
+				case LocaleLanguages.CHINESE:
+				case LocaleLanguages.JAPANESE: return "MS 明朝";
+				
+				default: return "Arial";
+			}
 		}
 		
 		

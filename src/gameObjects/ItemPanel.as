@@ -76,12 +76,12 @@ package gameObjects
 			addChild(nameTxt);
 			
 			
-			var weightString:String = LocalesManager.getInstance().getText(WEIGHT) + ": ";
-			//weightString = weightString.substring(0, weightString.length - 2);
+			var weightString:String = LocalesManager.getInstance().getText(WEIGHT);
+			weightString = weightString.substring(0, weightString.length - 1);
 			
 			weightTxt = new TextField();
 			weightTxt.selectable = false;
-			weightTxt.text = BULLET + weightString + weight;
+			weightTxt.text = BULLET + weightString + ": " + weight;
 			weightTxt.width = panel.width;
 			weightTxt.setTextFormat(tFormat);
 			addChild(weightTxt);

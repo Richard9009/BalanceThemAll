@@ -55,13 +55,13 @@ message.noDrop.red = Can't drop object when it's colliding with something
 message.noDrop.empty = Nothing to drop
 message.handFull = Can't grab anymore objects
 
-tips.0 = Read the dialog, sometimes the character will drop a hint
-tips.1 = Bronze, Silver, and Golden, always get the stars by this order
-tips.2 = Avoid putting a heavy object on top of a lighter one
-tips.3 = It's safer to use the fragile object last
-tips.4 = Be careful of using slippery or round objects on uneven surface
-tips.5 = Avoid thinking too complicatedly, most of the time the solution is simpler than you think
-tips.6 = Sometimes you might want to drop the objects one by one
+tips.1 = Tips: Bronze, Silver, and Golden, always get the stars by this order
+tips.2 = Tips: Avoid putting a heavy object on top of a lighter one
+tips.3 = Tips: It's safer to use the fragile object last
+tips.4 = Tips: Be careful when dropping slippery or round objects on uneven surface
+tips.5 = Tips: Most of the time the solution is simpler than you think
+tips.6 = Tips: Sometimes you might want to drop the objects one by one
+tips.7 = Tips: Read the dialog, sometimes the character will drop a hint
 
 =====================================================================================================================================================
 

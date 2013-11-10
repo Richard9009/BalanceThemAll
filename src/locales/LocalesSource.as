@@ -20,6 +20,10 @@ package locales
 		private var indoLocale:Class;
 		private var indoLocaleArray:Array;
 		
+		[Embed(source="fileSource/Japanese.txt", mimeType="application/octet-stream")]
+		private var japanLocale:Class;
+		private var japanLocaleArray:Array;
+		
 		private static var instance:LocalesSource;
 		
 		public function LocalesSource() 
@@ -27,6 +31,7 @@ package locales
 			englishLocaleArray = LocaleData.generateArray(englishLocale);
 			chineseLocaleArray = LocaleData.generateArray(chineseLocale);
 			indoLocaleArray = LocaleData.generateArray(indoLocale);
+			japanLocaleArray = LocaleData.generateArray(japanLocale);
 			defaultLocaleArray = englishLocaleArray;
 		}
 		
@@ -42,6 +47,7 @@ package locales
 				case LocaleLanguages.ENGLISH: return englishLocaleArray;
 				case LocaleLanguages.INDONESIAN: return indoLocaleArray;
 				case LocaleLanguages.CHINESE: return chineseLocaleArray;
+				case LocaleLanguages.JAPANESE: return japanLocaleArray;
 				default: return defaultLocaleArray;
 			}
 		}

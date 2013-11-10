@@ -27,6 +27,7 @@ package stages
 	import general.MousePhysic;
 	import general.ScoreCounter;
 	import general.StageRecord;
+	import managers.LocalesManager;
 	import org.flashdevelop.utils.FlashConnect;
 	
 	/**
@@ -129,8 +130,8 @@ package stages
 			dropBtn.addEventListener(MouseEvent.MOUSE_UP, function drop(e:MouseEvent):void {
 				MousePhysic.releaseAll();
 			}); 
-	
-			var tFormat:TextFormat = new TextFormat("Hobo std", 16, 0xCCCCCC);
+
+			var tFormat:TextFormat = new TextFormat(LocalesManager.getInstance().getFontFamily(), 16, 0xCCCCCC);
 			tFormat.align = TextFormatAlign.CENTER;
 			LocalesTextField.addTextToButton("buttons.drop", this, dropBtn, tFormat);
 

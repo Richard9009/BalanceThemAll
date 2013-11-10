@@ -153,7 +153,7 @@ package builders
 			var obj:NormalBoxObject;
 			for (var i:int = 0; i < howMany; i++)
 			{
-				obj = new NormalBoxObject("Photograph", minStageLimit, maxStageLimit);
+				obj = new NormalBoxObject("names.photo", minStageLimit, maxStageLimit);
 				obj.createDisplayBody(collection.photoAsset);
 				obj.setFixtureProperties(0.1, 0.1, 0.5);
 				obj.setSize(73 * scale, 91 * scale);

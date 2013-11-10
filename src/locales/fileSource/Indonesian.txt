@@ -55,6 +55,14 @@ message.noDrop.red = Tidak bisa melepas benda yang berhimpitan
 message.noDrop.empty = Tidak ada yang akan dilepas
 message.handFull = Tidak bisa mengambil barang lagi
 
+tips.1 = Tips: Perunggu, perak, dan emas, selalu ambil bintang dengan urutan ini
+tips.2 = Tips: Hindari meletakkan benda berat di atas benda ringan
+tips.3 = Tips: Lebih aman meletakkan benda mudah pecah terakhir
+tips.4 = Tips: Hati-hati saat meletakkan benda licin atau bulat di permukaan miring
+tips.5 = Tips: Biasanya solusinya lebih sederhana daripada yang kamu bayangkan
+tips.6 = Tips: Kadang-kadang kamu perlu meletakkan barangmu 1 per 1
+tips.7 = Tips: Baca dialognya, kadang-kadang karakter akan memberikan petunjuk
+
 =====================================================================================================================================================
 
 opening.first = Pada suatu masa, ada sebuah petir yang sangat besar menyambar dari langit
