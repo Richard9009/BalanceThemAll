@@ -108,7 +108,7 @@ ________________________________________________________________________________
 
 stage1_4.challenge = How about a little challenge?<br />I'm sure you can do this on your own<br />Good luck
 stage1_4.failed = Oh too bad, You might wanna try it again
-stage1_4.success = Good! I knew you can do it!
+stage1_4.wellDone = Good! I knew you can do it!
 ____________________________________________________________________________________________________________________________________________________________________
 
 stage1_5.failed = You didn't get all the stars<br />Why don't you try it again?

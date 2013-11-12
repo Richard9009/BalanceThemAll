@@ -78,7 +78,7 @@ package builders
 				obj = new NormalRoundObject("names.bowling", minStageLimit, maxStageLimit);
 				obj.createDisplayBody(collection.bowlingBallAsset);
 				obj.setFixtureProperties(10, 0.2, 0.2);
-				obj.setRoundSize(55 * scale, 0.6);
+				obj.setRoundSize(55 * scale, 0.5);
 				obj.setRandomPositionInsideItemBox();
 				obj.setSound(new soundCol.heavyImpactSound());
 				objArray.push(obj);

@@ -193,7 +193,7 @@ package builders
 		
 		private function stage3_3():void
 		{
-			liftables.push(itemBuilder.createFrozenFish(2));
+			liftables.push(itemBuilder.createFrozenFish(1));
 			liftables.push(itemBuilder.createPenguin(2));
 			
 			stars.push(specialBuilder.createGoldenStar(200, 230));
@@ -218,8 +218,8 @@ package builders
 			liftables.push(itemBuilder.createPenguin(1));
 			liftables.push(itemBuilder.createFragileIce(1));
 			
-			stars.push(specialBuilder.createGoldenStar(620, 245));
-			stars.push(specialBuilder.createBronzeStar(258, 355));
+			stars.push(specialBuilder.createGoldenStar(680, 245));
+			stars.push(specialBuilder.createBronzeStar(258, 375));
 			stars.push(specialBuilder.createSilverStar(340, 253));
 		}
 		
@@ -333,7 +333,7 @@ package builders
 			others.push(specialBuilder.createGravityBall(725, 250));
 			
 			stars.push(specialBuilder.createGoldenStar(500, 120));
-			stars.push(specialBuilder.createSilverStar(400, 200));
+			stars.push(specialBuilder.createSilverStar(400, 220));
 			stars.push(specialBuilder.createBronzeStar(180, 370));
 		}
 

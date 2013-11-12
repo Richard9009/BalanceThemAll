@@ -147,7 +147,7 @@ package builders
 														TutorialCommand.hideAll]),
 				new DialogHelper("stage1_4.failed", [DialogCommand.allowSkip, DialogCommand.changePath(DialogPath.FAILED)], [DialogPath.FAILED]),
 				new DialogHelper(DialogHelper.EMPTY, [EventCommand.dispatchAnEvent(new TutorialEvent(TutorialEvent.RESTART_TUTORIAL))], [DialogPath.FAILED]),
-				new DialogHelper("stage1_4.success", [DialogCommand.allowSkip], [DialogPath.SUCCESS]),
+				new DialogHelper("stage1_4.wellDone", [DialogCommand.allowSkip], [DialogPath.SUCCESS]),
 				new DialogHelper(DialogHelper.EMPTY, [EventCommand.stop], [DialogPath.ALL_PATHS])
 			];
 	
