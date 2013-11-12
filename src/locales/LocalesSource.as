@@ -20,7 +20,7 @@ package locales
 		private var indoLocale:Class;
 		private var indoLocaleArray:Array;
 		
-		[Embed(source="fileSource/Japanese.txt", mimeType="application/octet-stream")]
+		[Embed(source = "fileSource/Japanese.txt", mimeType = "application/octet-stream")]
 		private var japanLocale:Class;
 		private var japanLocaleArray:Array;
 		

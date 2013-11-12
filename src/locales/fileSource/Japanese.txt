@@ -74,7 +74,7 @@ opening.fourth = あの人達がスター　コレクターで呼ばれている
 
 stage1_1.greeting = 君は新しいスター　コレクターでしょう？<br />ギャビンと申します. 僕もスター　コレクターだ, 君と同じ<br />遊び方を教えましょうか？
 stage1_1.noTutorial = 分かった、　頑張って
-stage1_1.beginTutorial = よし。。。　始めましょう
+stage1_1.beginTutorial = よし。。。　始めましょう     
 stage1_1.dragBook = マウスの左ボタンで本を引き摺って
 stage1_1.dragItToMe = そうだ! 次はその本をここへ引き上げて
 stage1_1.releaseDrag = 今もうボタンを離しても大丈夫だ.<br />その本が落ちないよ

@@ -88,7 +88,7 @@ package
 			currentScene = new SelectLanguage_Movie();
 			addChild(currentScene);
 			addEventListener(LocalesEvent.ON_LANGUAGE_SELECT, function respond():void {
-				stage.displayState = StageDisplayState.FULL_SCREEN;
+				//stage.displayState = StageDisplayState.FULL_SCREEN;
 				changeScene();
 				createMainMenu();
 				blackFadeIn();

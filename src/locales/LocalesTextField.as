@@ -29,7 +29,7 @@
 			mouseEnabled = false;
 			
 			if (textFormat == null) {
-				_textFormat = new TextFormat('Hobo Std', 20, 0x000000);
+				_textFormat = new TextFormat(LocalesManager.getInstance().getFontFamily(), 20, 0x000000);
 				_textFormat.leading = 5;
 			}
 			else _textFormat = textFormat;

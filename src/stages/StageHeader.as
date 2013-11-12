@@ -50,7 +50,7 @@ package stages
 		
 		private function createMessageBox():void
 		{
-			var msgFormat:TextFormat = new TextFormat("Hobo Std", 18, 0xCCCC33);
+			var msgFormat:TextFormat = new TextFormat(LocalesManager.getInstance().getFontFamily(), 18, 0xCCCC33);
 			msgFormat.align = TextFormatAlign.CENTER;
 			
 			messageBox = new LocalesTextField("", msgFormat);
@@ -116,7 +116,7 @@ package stages
 		
 		private function createScoreCounter():void
 		{
-			tFormat = new TextFormat("Hobo Std", 20, 0xCCFF00);
+			tFormat = new TextFormat(LocalesManager.getInstance().getFontFamily(), 20, 0xCCFF00);
 			
 			scoreText = new TextField();
 			scoreText.selectable = false;

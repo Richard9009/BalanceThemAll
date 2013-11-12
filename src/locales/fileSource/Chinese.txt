@@ -28,8 +28,8 @@ buttons.play = 開始
 buttons.selectLev = 選擇<br />階段
 buttons.credit = 學分
 buttons.back = 回去
-buttons.yes = 是
-buttons.no = 不
+buttons.yes = 要
+buttons.no = 不要
 
 header.score = 分數: 
 
@@ -90,7 +90,7 @@ ________________________________________________________________________________
 stage1_2.askNeedHelp = 我們有新的事.<br />要不要聼我解釋?
 stage1_2.explainHand = 你一時只能帶最多兩個東西<br />一個在右手上(R) 一個在左手上(L)
 stage1_2.explainItemPanel = 那些東西的資料看到在上面的格子
-stage1_2.explainWeight = 在這裡你要維持平衡<br />你要把輕的東西放在最右邊<br />試試看吧！
+stage1_2.explainWeight = 在這裡你要維持平衡<br />你要把輕的東西放在最旁邊<br />試試看吧！
 stage1_2.skipTutorial = 好，沒關係， 加油
 stage1_2.didnotGetStars = 你抓不到那個星星. 在試一試， 好不好?
 stage1_2.gotTheStars = 好棒! 你抓到全部!!!

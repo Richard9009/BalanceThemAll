@@ -57,7 +57,7 @@ package managers
 				case LocaleLanguages.ENGLISH: return "Hobo std";
 				
 				case LocaleLanguages.CHINESE:
-				case LocaleLanguages.JAPANESE: return "MS 明朝";
+				case LocaleLanguages.JAPANESE: return "Meiryo UI";
 				
 				default: return "Arial";
 			}
