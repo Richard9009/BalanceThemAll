@@ -13,7 +13,7 @@ package managers
 	public class MusicManager 
 	{
 		private const MUSIC_COL:MusicCollection = new MusicCollection();
-		private const DEFAULT_VOLUME:Number = 0.1;
+		private const DEFAULT_VOLUME:Number = 0.5;
 		
 		private var sTrans:SoundTransform;
 		private var sChannel:SoundChannel;
@@ -27,7 +27,7 @@ package managers
 			
 			sTrans = new SoundTransform(DEFAULT_VOLUME);
 			sChannel = new SoundChannel();
-			sChannel.soundTransform = sTrans;
+			sChannel.soundTransform = sTrans; 
 		}
 		
 		public static function getInstance():MusicManager
@@ -44,11 +44,6 @@ package managers
 		public function playStage1FirstHalfBGM(volume:Number = DEFAULT_VOLUME):void
 		{
 			playMusic(MUSIC_COL.s1FirstHalfBGM, volume);
-		}
-		
-		public function playStage1SecondHalfBGM(volume:Number = DEFAULT_VOLUME):void
-		{
-			playMusic(MUSIC_COL.s1SecondHalfBGM, volume);
 		}
 		
 		public function playStage2FirstHalfBGM(volume:Number = DEFAULT_VOLUME):void
@@ -74,11 +69,6 @@ package managers
 		public function playSelectStageBGM(volume:Number = DEFAULT_VOLUME):void
 		{
 			playMusic(MUSIC_COL.selectLevelBGM, volume);
-		}
-		
-		public function playStageClearBGM(volume:Number = DEFAULT_VOLUME):void
-		{
-			playMusic(MUSIC_COL.stageClearBGM, volume);
 		}
 		
 		public function playOpeningBGM(volume:Number = DEFAULT_VOLUME):void

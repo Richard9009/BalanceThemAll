@@ -9,9 +9,6 @@ package assets
 		[Embed (source = "AssetLibrary.swf", symbol = "Stage_Asset")]
 		public var stageAsset:Class;
 		
-		[Embed (source = "AssetLibrary.swf", symbol = "BoxRedLayer_Asset")]
-		public var redLayerAsset:Class;
-		
 		[Embed (source = "AssetLibrary.swf", symbol = "Foundation_Asset")]
 		public var foundationAsset:Class;
 		

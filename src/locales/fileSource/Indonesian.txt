@@ -108,7 +108,7 @@ ________________________________________________________________________________
 
 stage1_4.challenge = Mau coba tantangan ga?<br />Aku yakin kamu bisa sendirian<br />Good luck
 stage1_4.failed = Ah sayang sekali, coba lagi ya
-stage1_4.wellDone = Aku tahu kamu pasti bisa! 
+stage1_4.success = Aku tahu kamu pasti bisa! 
 ____________________________________________________________________________________________________________________________________________________________________
 
 stage1_5.failed = Yahh... gagal...<br />Coba lagi ya

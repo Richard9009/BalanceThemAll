@@ -37,9 +37,6 @@ package assets
 		[Embed(source="sounds/WoodImpact_Sound.mp3")]
 		public var woodImpactSound:Class;
 		
-		[Embed(source="sounds/BallRolling_Sound.mp3")]
-		public var ballRollingSound:Class;
-		
 		[Embed(source = "sounds/GetStar_Sound.mp3")]
 		public var getStarSound:Class;
 		

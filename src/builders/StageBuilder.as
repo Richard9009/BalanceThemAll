@@ -38,8 +38,7 @@ package builders
 		{
 			var hardMode:Boolean = subStageIndex > 4;
 			
-			if (!hardMode) MusicManager.getInstance().playStage1FirstHalfBGM();
-			else MusicManager.getInstance().playStage1SecondHalfBGM(); 
+			MusicManager.getInstance().playStage1FirstHalfBGM();
 			
 			others.push(specialBuilder.createBroom(380, 395, hardMode ? 550 : 500));
 			others.push(specialBuilder.createMicrowave(380, 420, hardMode));

@@ -16,14 +16,8 @@ package assets
 		[Embed(source = "musics/Select Level BGM.mp3")]
 		public var selectLevelBGM:Class;
 		
-		[Embed(source = "musics/Stage Clear.mp3")]
-		public var stageClearBGM:Class;
-		
 		[Embed(source = "musics/Stage1 - First Half.mp3")]
 		public var s1FirstHalfBGM:Class;
-		
-		[Embed(source="musics/Stage1 - Second Half.mp3")]
-		public var s1SecondHalfBGM:Class;
 		
 		[Embed(source = "musics/Stage2 - First Half.mp3")]
 		public var s2FirstHalfBGM:Class;

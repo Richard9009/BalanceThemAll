@@ -44,7 +44,11 @@ package managers
 				var code:String = textPair.split(" = ")[0];
 				var text:String = textPair.split(" = ")[1];
 				if (code == textCode) return text;
+			}
 			
+			if (currentLanguageCode == LocaleLanguages.JAPANESE && textCode == "stage1_4.success") {
+				//for some unknown reason, this one particular text can't be found in japanese
+				return "やっぱり、君なら出来る!";
 			}
 
 			return "Text not found";

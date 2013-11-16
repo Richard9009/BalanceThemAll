@@ -42,7 +42,7 @@ package builders
 				obj.setFixtureProperties(10, 1, 1);
 				obj.setRoundSize(35 * scale, 0.8);
 				obj.setRandomPositionInsideItemBox();
-				obj.setSound(new soundCol.ballImpactSound(), null, new soundCol.ballRollingSound());
+				obj.setSound(new soundCol.ballImpactSound());
 				objArray.push(obj);
 				obj.writeObjectData();
 			}
@@ -61,7 +61,7 @@ package builders
 				obj.setFixtureProperties(0.2, 0.7, 0.5);
 				obj.setRoundSize(21 * scale, 0.2);
 				obj.setRandomPositionInsideItemBox();
-				obj.setSound(new soundCol.ballImpactSound(), null, new soundCol.ballRollingSound());
+				obj.setSound(new soundCol.ballImpactSound());
 				objArray.push(obj);
 				obj.writeObjectData();
 			}

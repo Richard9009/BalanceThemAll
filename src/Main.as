@@ -45,6 +45,7 @@ package
 		{
 			if (stage) init();
 			else addEventListener(Event.ADDED_TO_STAGE, init);
+			
 		} 
 		
 		protected function init(e:Event = null):void 
@@ -52,9 +53,12 @@ package
 			stage.stageFocusRect = false;
 			cleanListener();
 			StageRecord.CreateRecordList();
+
 			openSelectLanguage();
 			// entry point
 		}
+		
+		
 		
 		override public function addEventListener(type:String, listener:Function, useCapture:Boolean = false, priority:int = 0, useWeakReference:Boolean = false):void 
 		{
