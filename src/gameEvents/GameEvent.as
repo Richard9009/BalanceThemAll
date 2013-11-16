@@ -21,6 +21,7 @@ package gameEvents
 		public static const GOTO_NEXT_STAGE:String = "go to next stage";
 		public static const REPLAY_THIS_STAGE:String = "replay this stage";
 		public static const OPENING_COMPLETE:String = "opening complete";
+		public static const BASIC_TUTORIAL_COMPLETE:String = "basic tutorial complete";
 		
 		public function GameEvent(type:String) 
 		{

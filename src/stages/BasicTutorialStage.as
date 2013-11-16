@@ -9,9 +9,15 @@ package stages
 	import flash.events.MouseEvent;
 	import flash.text.TextFormat;
 	import flash.text.TextFormatAlign;
+	import gameEvents.GameEvent;
+	import gameEvents.GrabObjectEvent;
 	import gameObjects.rigidObjects.DraggableObject;
+	import gameObjects.rigidObjects.RigidObjectBase;
+	import gameObjects.StarObject;
+	import general.StageRecord;
 	import locales.LocalesTextField;
 	import managers.SoundManager;
+	import stages.Tutorials.Tutorial;
 	/**
 	 * ...
 	 * @author Herichard
@@ -19,7 +25,6 @@ package stages
 	public class BasicTutorialStage extends StageEngine
 	{
 		private var assetCol:AssetCollection = new AssetCollection();
-		private var titleBox:LocalesTextField;
 		private var instructionBox:LocalesTextField;
 		private var headerBox:LocalesTextField;
 		private var AssetClass:Class = assetCol.stageTutorialAsset;
@@ -34,8 +39,10 @@ package stages
 		{
 			super();
 			
+			Tutorial.tutorialOn = true;
+			
 			display = new AssetClass();
-			addChild(display);
+			addChildAt(display, 0);
 			
 			var tFormat:TextFormat = new TextFormat("Hobo std", 24, 0x66CC33);
 			tFormat.align = TextFormatAlign.CENTER;
@@ -46,17 +53,10 @@ package stages
 			headerBox.setTextFormat(tFormat);
 			addChild(headerBox);
 			
-			tFormat.color = 0x660000;
-			titleBox = new LocalesTextField("", tFormat);
-			titleBox.width = width;
-			titleBox.y = 70;
-			titleBox.setTextFormat(tFormat);
-			addChild(titleBox);
-			
 			tFormat.size = 18;
 			instructionBox = new LocalesTextField("", tFormat);
 			instructionBox.width = width;
-			instructionBox.y = 120;
+			instructionBox.y = 125;
 			instructionBox.setTextFormat(tFormat);
 			addChild(instructionBox);
 			
@@ -65,20 +65,27 @@ package stages
 			nextTxt = LocalesTextField.addTextToButton("tutorial.next", this, AssetClass(display).nextButton, tFormat);
 			showNextButton(false);
 			
+			record = StageRecord.getStageRecordByID("tutorial");
+			record.stageStarted();
+			removeChild(header);
+			
 			setTutorial1();
 		}
 		
 		private function setTutorial1():void {
-			shoeOutline = new SpecialObjectBuilder().createShoeOutline(700, 250);
+			shoeOutline = new SpecialObjectBuilder().createShoeOutline(500, 250);
 			addChild(shoeOutline);
 			
-			titleBox.setLocaleText("tutorial.movingObject.title");
-			instructionBox.setLocaleText("tutorial.movingObject.instruction");
+			instructionBox.setLocaleText("tutorial.movingObject");
 			
 			shoe = new ObjectBuilder().createShoes(1)[0];
-			shoe.getBody().SetPosition(new b2Vec2(3, 4));
+			shoe.getBody().SetPosition(new b2Vec2(3, 9));
 			shoe.getBody().SetActive(false);
 			addChild(shoe);
+			record.registerItem(shoe);
+			
+			DraggableObject.item_box_locked = true;
+			dropBtn.visible = false;
 			
 			addEventListener(Event.ENTER_FRAME, checkStatus);
 			clearFunction = shoeIsInPlace;
@@ -93,18 +100,67 @@ package stages
 			
 			shoeOutline.rotation = 90;
 			showNextButton(false);
-			titleBox.setLocaleText("tutorial.rotateObject.title");
-			instructionBox.setLocaleText("tutorial.rotateObject.instruction");
+			instructionBox.setLocaleText("tutorial.rotateObject");
 			
 			addEventListener(Event.ENTER_FRAME, checkStatus);
 			clearFunction = shoeRotateSuccess;
 			respondFunction = lockShoeRotation;
+			
+			AssetClass(display).nextButton.addEventListener(MouseEvent.MOUSE_UP, setTutorial3);
+		}
+		
+		private function setTutorial3(e:MouseEvent):void
+		{
+			AssetClass(display).nextButton.removeEventListener(MouseEvent.MOUSE_UP, setTutorial3);
+			
+			showNextButton(false);
+			dropBtn.visible = true;
+			instructionBox.setLocaleText("tutorial.dropObject");
+			
+			var platform:RigidObjectBase = new SpecialObjectBuilder(0.8).createMicrowave(0, 0, false);
+			platform.isBalanceBoard = true;
+			addChild(platform);
+			var platformPos:b2Vec2 = new b2Vec2(shoeOutline.x, StageConfig.ITEMBOX_Y - StageConfig.WALL_THICKNESS - platform.height / 3);
+			platform.setPosition(platformPos.x, platformPos.y);
+			
+			removeChild(shoeOutline);
+			
+			addEventListener(Event.ENTER_FRAME, checkStatus);
+			clearFunction = shoe.isOnBalanceBoard;
+			respondFunction = null;
+			
+			AssetClass(display).nextButton.addEventListener(MouseEvent.MOUSE_UP, setTutorial4);
+		}
+		
+		private var book:DraggableObject;
+		private var star:StarObject;
+		private function setTutorial4(e:MouseEvent):void 
+		{
+			AssetClass(display).nextButton.removeEventListener(MouseEvent.MOUSE_UP, setTutorial4);
+			showNextButton(false);
+			
+			star = new SpecialObjectBuilder().createGoldenStar(shoe.x, shoe.y - shoe.height / 2 - 40);
+			addChild(star);
+			stars.push(star);
+			instructionBox.setLocaleText("tutorial.getStar");
+			
+			book = new ObjectBuilder().createEncyclopedia(1)[0];
+			book.setPosition(shoe.x - 10, star.y - 70);
+			addChild(book);
+			book.getBody().SetActive(false);
+			record.registerItem(book);
+			book.movementLocked = true;
+			book.rotationLocked = true;
+			
+			addEventListener(Event.ENTER_FRAME, checkStatus);
+			clearFunction = gotTheStar;
+			respondFunction = finishTutorial;
 		}
 		
 		private function checkStatus(e:Event):void 
 		{
 			if (clearFunction()) {
-				respondFunction();
+				if(respondFunction != null) respondFunction();
 				showNextButton();
 				SoundManager.getInstance().playSuccess();
 				removeEventListener(Event.ENTER_FRAME, checkStatus);
@@ -139,6 +195,43 @@ package stages
 		private function lockShoeRotation():void {
 			shoe.rotationLocked = true;
 			shoe.getBody().SetAngle(shoeOutline.rotation * Math.PI / 180);
+		}
+		
+		private function finishTutorial():void {
+			nextTxt.setLocaleText("tutorial.play");
+			instructionBox.setLocaleText("tutorial.final");
+			DraggableObject.item_box_locked = false;
+			
+			AssetClass(display).nextButton.addEventListener(MouseEvent.MOUSE_UP, closeTutorial);
+		}
+		
+		private function closeTutorial(e:MouseEvent):void 
+		{
+			dispatchEvent(new GameEvent(GameEvent.BASIC_TUTORIAL_COMPLETE));
+		}
+		
+		private function gotTheStar():Boolean {
+			if (book == null || star == null) return false;
+			
+			if (book.getBody().GetLinearVelocity().Length() == 0 && star.hitTestObject(book)) {
+				return true;
+			}
+			
+			return false;
+		}
+		
+		override protected function displayScore(e:GrabObjectEvent):void 
+		{
+			//super.displayScore(e);
+			if(star != null) checkStarCollision(e.object.GetUserData());
+		}
+		
+		override protected function checkStarCollision(item:Sprite):void 
+		{
+			//super.checkStarCollision(item);
+			if (star.hitTestObject(book)) {
+				star.startFadeOut();
+			}
 		}
 	}
 

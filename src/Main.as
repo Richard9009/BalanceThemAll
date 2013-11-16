@@ -207,11 +207,13 @@ package
 			MousePhysic.setStage(currentScene);
 			addChild(currentScene);
 			blackFadeIn();
+			
+			currentScene.addEventListener(GameEvent.BASIC_TUTORIAL_COMPLETE, startGame);
 		}
 		
 		private function startGame(e:GameEvent):void
 		{
-			changeScene();
+			destroyCurrentLevel();
 			createLevelByID("1_1");
 		}
 		

@@ -128,6 +128,11 @@ package general
 					stageRecordList.push(stage);
 				}
 			}
+			
+			var tutorialStage:StageRecord = new StageRecord(PASS_CODE);
+			tutorialStage.stageID = "tutorial";
+			stage.stageStatus = OPEN;
+			stageRecordList.push(tutorialStage);
 		}
 		
 		public static function unlockAll():void {

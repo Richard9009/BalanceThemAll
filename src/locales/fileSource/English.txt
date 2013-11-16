@@ -74,10 +74,12 @@ opening.fourth = People of the earth call these brave warriors, The star collect
 
 tutorial.header = TUTORIAL
 tutorial.next = Next
-tutorial.movingObject.title = Moving an Object
-tutorial.movingObject.instruction = Drag the shoe to the given location
-tutorial.rotateObject.title = Rotating an Object
-tutorial.rotateObject.instruction = Use mouse wheel or SPACEBAR to rotate the shoe
+tutorial.play = Play
+tutorial.movingObject = Drag the shoe to the given location
+tutorial.rotateObject = Use mouse wheel or SPACEBAR to rotate the shoe
+tutorial.dropOject = Press the drop button to drop the shoe
+tutorial.takeStar = Press the drop button again, to drop the book, and see what happen
+tutorial.final = When an item stopped in front of a star, you can get that star
 
 =====================================================================================================================================================
 

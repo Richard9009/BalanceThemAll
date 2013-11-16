@@ -29,6 +29,7 @@ package gameObjects.rigidObjects
 	public class DraggableObject extends RigidObjectBase
 	{	
 		public static var calculate_mass_on_me:Boolean = false;
+		public static var item_box_locked:Boolean = false;
 		
 		protected var redLayerClass:Class;
 		
@@ -258,6 +259,8 @@ package gameObjects.rigidObjects
 			
 			var maxPoint:b2Vec2 = new b2Vec2(rigidBody.GetPosition().x * Main._physScale + this.width / 2, rigidBody.GetPosition().y * Main._physScale + this.height / 2);
 			var minPoint:b2Vec2 = new b2Vec2(rigidBody.GetPosition().x * Main._physScale - this.width / 2, rigidBody.GetPosition().y * Main._physScale - this.height / 2);
+			
+			if (item_box_locked) maxLimit.y = (StageConfig.ITEMBOX_Y - StageConfig.WALL_THICKNESS);
 			
 			if (maxPoint.x > maxLimit.x)
 			{

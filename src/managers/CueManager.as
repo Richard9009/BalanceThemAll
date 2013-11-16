@@ -66,6 +66,8 @@ package managers
 		
 		public function destroyStage():void
 		{
+			if (stage == null) return;
+			
 			removeAllCues();
 			stage.removeChild(cuesContainer);
 			stage = null;
