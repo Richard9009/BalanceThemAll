@@ -5,6 +5,7 @@ package builders
 	import Box2D.Dynamics.b2Body;
 	import Box2D.Dynamics.b2Fixture;
 	import flash.display.Shape;
+	import flash.display.Sprite;
 	import gameObjects.rigidObjects.CompoundObject;
 	import gameObjects.rigidObjects.GravityBall;
 	import gameObjects.rigidObjects.GravityBlock;
@@ -128,6 +129,16 @@ package builders
 			gravBall.setFixtureProperties(0, 0, 0.5);
 			
 			return gravBall;
+		}
+		
+		public function createShoeOutline(xx:Number, yy:Number):Sprite
+		{
+			var outline:Sprite = new collection.shoeOutlineAsset();
+			outline.width = 90;
+			outline.height = 50;
+			outline.x = xx;
+			outline.y = yy;
+			return outline;
 		}
 		
 		public function createGoldenStar(xx:Number, yy:Number):StarObject

@@ -150,6 +150,12 @@ package assets
 		[Embed(source = "AssetLibrary.swf", symbol = "CueArrow_Asset")]
 		public var arrowAsset:Class;
 		
+		[Embed(source = "AssetLibrary.swf", symbol = "StageTutorial_Asset")]
+		public var stageTutorialAsset:Class;
+		
+		[Embed(source = "AssetLibrary.swf", symbol = "ShoeOutline_Asset")]
+		public var shoeOutlineAsset:Class;
+		
 		public function AssetCollection() 
 		{
 			 

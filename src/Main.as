@@ -22,6 +22,7 @@ package
 	import general.ScoreRecord;
 	import general.StageRecord;
 	import org.flashdevelop.utils.FlashConnect;
+	import stages.BasicTutorialStage;
 	import stages.Opening;
 	import stages.StageDisplay;
 	import stages.StageEngine;
@@ -193,7 +194,19 @@ package
 			MusicManager.getInstance().playOpeningBGM(0.7);
 			currentScene = new Opening();
 			addChild(currentScene);
-			addEventListener(GameEvent.OPENING_COMPLETE, startGame);
+			//addEventListener(GameEvent.OPENING_COMPLETE, startGame);
+			addEventListener(GameEvent.OPENING_COMPLETE, showBasicTutorial);
+		}
+		
+		private function showBasicTutorial(e:GameEvent):void 
+		{
+			changeScene();
+			createWorld();
+			
+			currentScene = new BasicTutorialStage();
+			MousePhysic.setStage(currentScene);
+			addChild(currentScene);
+			blackFadeIn();
 		}
 		
 		private function startGame(e:GameEvent):void

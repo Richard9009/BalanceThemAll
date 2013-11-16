@@ -72,6 +72,13 @@ opening.fourth = People of the earth call these brave warriors, The star collect
 
 =====================================================================================================================================================
 
+tutorial.header = TUTORIAL
+tutorial.next = Next
+tutorial.movingObject.title = Moving an Object
+tutorial.movingObject.instruction = Drag the shoe to the given location
+
+=====================================================================================================================================================
+
 stage1_1.greeting = Hello, you must be the new star collector<br />My name is Gavin. I am a star collector, just like you<br />Do you need me to show you how to play?
 stage1_1.noTutorial = Very well, I wish you luck.
 stage1_1.beginTutorial = Great! Let's begin, shall we?
