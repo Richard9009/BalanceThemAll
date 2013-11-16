@@ -37,6 +37,11 @@ package managers
 			playSound(collection.gravBlockSound, vol);
 		}
 		
+		public function playSuccess(vol:Number = DEFAULT_VOLUME):void
+		{
+			playSound(collection.getStarSound, vol);
+		}
+		
 		public function stopSound():void
 		{
 			sChannel.stop();

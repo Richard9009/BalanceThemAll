@@ -49,6 +49,8 @@ package gameObjects.rigidObjects
 		
 		public var objectData:ObjectData;
 		public var handPosition:String = "bottom"; //bottom or side
+		public var movementLocked:Boolean = false;
+		public var rotationLocked:Boolean = false;
 					
 		public function DraggableObject(objName:String, minimumLimit:b2Vec2 = null, maximumLimit:b2Vec2 = null) 
 		{
@@ -81,7 +83,7 @@ package gameObjects.rigidObjects
 		private function onKeyDown(e:KeyboardEvent):void 
 		{
 			if (MousePhysic.pointedBody != this.rigidBody || rigidBody.IsActive()) return;
-			if(e.keyCode == 32) rotateBody(3, true);
+			if(e.keyCode == 32 && !rotationLocked) rotateBody(3, true);
 		}
 		
 		override public function createDisplayBody(assetClass:Class):void
@@ -141,7 +143,7 @@ package gameObjects.rigidObjects
 		
 		private function onMouseWhell(e:MouseEvent):void 
 		{
-			if (rigidBody.IsActive()) return;
+			if (rigidBody.IsActive() || rotationLocked) return;
 			rotateBody(5, e.delta > 0);	
 		}
 		
@@ -179,8 +181,10 @@ package gameObjects.rigidObjects
 						startCollisionDetection();
 					}
 					
-					this.rigidBody.SetPosition(MousePhysic.physMousePos);
-					checkLimit();
+					if(!movementLocked) {
+						this.rigidBody.SetPosition(MousePhysic.physMousePos);
+						checkLimit();
+					}
 				}
 				
 				else if (MousePhysic.isDown && hand.isFull() && insideItemBox()) {

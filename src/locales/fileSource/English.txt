@@ -76,6 +76,8 @@ tutorial.header = TUTORIAL
 tutorial.next = Next
 tutorial.movingObject.title = Moving an Object
 tutorial.movingObject.instruction = Drag the shoe to the given location
+tutorial.rotateObject.title = Rotating an Object
+tutorial.rotateObject.instruction = Use mouse wheel or SPACEBAR to rotate the shoe
 
 =====================================================================================================================================================
 
