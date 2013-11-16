@@ -118,6 +118,7 @@ package stages
 			DraggableObject(e.brokenObject).destroyMe();
 		}
 		
+		protected var dropTxt:LocalesTextField;
 		private function createDropButton():void 
 		{
 			dropBtn = new DropButton();
@@ -133,7 +134,7 @@ package stages
 
 			var tFormat:TextFormat = new TextFormat(LocalesManager.getInstance().getFontFamily(), 16, 0xCCCCCC);
 			tFormat.align = TextFormatAlign.CENTER;
-			LocalesTextField.addTextToButton("buttons.drop", this, dropBtn, tFormat);
+			dropTxt = LocalesTextField.addTextToButton("buttons.drop", this, dropBtn, tFormat);
 
 		}
 		

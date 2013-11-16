@@ -54,8 +54,9 @@ package stages
 			headerBox.setTextFormat(tFormat);
 			addChild(headerBox);
 			
-			tFormat.size = 18;
-			instructionBox = new LocalesTextField("", tFormat);
+			var tFormat2:TextFormat = new TextFormat(LocalesManager.getInstance().getFontFamily(), 18, 0xCCCC33);
+			tFormat2.align = TextFormatAlign.CENTER;
+			instructionBox = new LocalesTextField("", tFormat2);
 			instructionBox.width = width;
 			instructionBox.y = 125;
 			instructionBox.setTextFormat(tFormat);
@@ -87,6 +88,7 @@ package stages
 			
 			DraggableObject.item_box_locked = true;
 			dropBtn.visible = false;
+			dropTxt.visible = false;
 			
 			addEventListener(Event.ENTER_FRAME, checkStatus);
 			clearFunction = shoeIsInPlace;
@@ -116,6 +118,7 @@ package stages
 			
 			showNextButton(false);
 			dropBtn.visible = true;
+			dropTxt.visible = true;
 			instructionBox.setLocaleText("tutorial.dropObject");
 			
 			var platform:RigidObjectBase = new SpecialObjectBuilder(0.8).createMicrowave(0, 0, false);
