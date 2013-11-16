@@ -109,7 +109,7 @@ package gameObjects.rigidObjects
 			bDef.userData.height = DEF_HEIGHT;
 			bDef.userData.x = DEF_X;
 			bDef.userData.y = DEF_Y;
-			bDef.linearDamping = 0.5;
+			bDef.linearDamping = 1;
 			
 			rigidBody = Main.getWorld().CreateBody(bDef);
 			rigidBody.CreateFixture2(DEF_SHAPE, DEF_DENSITY);
