@@ -72,6 +72,17 @@ opening.fourth = Orang - orang terpilih ini dikenal dengan nama, star collector<
 
 =====================================================================================================================================================
 
+tutorial.header = TUTORIAL
+tutorial.next = Lanjut
+tutorial.play = Mulai
+tutorial.movingObject = Tarik sepatu itu ke tempat yang ditunjukkan
+tutorial.rotateObject = Gunakan roda mouse atau SPACEBAR untuk memutar sepatu
+tutorial.dropOject = Tekan tombol lepas untuk menjatuhkan sepatu
+tutorial.takeStar = Tekan tombol lepas lagi dan perhatikan apa yang terjadi
+tutorial.final = Jika bendamu berhenti di depan bintang, kamu akan mendapatkan bintang itu
+
+=====================================================================================================================================================
+
 stage1_1.greeting = Halo, kamu star collector baru ya?<br />Namaku Gavin. aku juga star collector sepertimu<br />Perlu aku ajari cara mainnya ga?
 stage1_1.noTutorial = Oke... Good luck ya<br />Sampai jumpa
 stage1_1.beginTutorial = Oke... kita mulai aja

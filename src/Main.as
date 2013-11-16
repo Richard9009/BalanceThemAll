@@ -203,6 +203,7 @@ package
 			changeScene();
 			createWorld();
 			
+			MusicManager.getInstance().playStage2SecondHalfBGM();
 			currentScene = new BasicTutorialStage();
 			MousePhysic.setStage(currentScene);
 			addChild(currentScene);

@@ -16,6 +16,7 @@ package stages
 	import gameObjects.StarObject;
 	import general.StageRecord;
 	import locales.LocalesTextField;
+	import managers.LocalesManager;
 	import managers.SoundManager;
 	import stages.Tutorials.Tutorial;
 	/**
@@ -44,7 +45,7 @@ package stages
 			display = new AssetClass();
 			addChildAt(display, 0);
 			
-			var tFormat:TextFormat = new TextFormat("Hobo std", 24, 0x66CC33);
+			var tFormat:TextFormat = new TextFormat(LocalesManager.getInstance().getFontFamily(), 24, 0x66CC33);
 			tFormat.align = TextFormatAlign.CENTER;
 			
 			headerBox = new LocalesTextField("tutorial.header", tFormat);

@@ -72,6 +72,17 @@ opening.fourth = 地球上的人叫這些英雄, The star collectors<br />只有
 
 =====================================================================================================================================================
 
+tutorial.header = 遊戲教程
+tutorial.next = 下一步
+tutorial.play = 開始玩
+tutorial.movingObject = 把鞋子拖到指定的地方
+tutorial.rotateObject = 用滑鼠的輪子或空格鍵轉那個鞋子
+tutorial.dropOject = 點[放下]按鈕
+tutorial.takeStar = 在點[放下]按鈕, 然後看看發生了什麽事
+tutorial.final = 你的東西在星星前停住的時候，你就抓得到那顆星星
+
+=====================================================================================================================================================
+
 stage1_1.greeting = 哈囉, 你是個新 star collector， 是不是？<br />我叫 Gavin. 我也是 star collector, 跟你一樣<br />要不要我教你怎麽玩？
 stage1_1.noTutorial = 好的, 加油.
 stage1_1.beginTutorial = 好! 我們就開始吧

@@ -51,7 +51,7 @@ package managers
 				return "やっぱり、君なら出来る!";
 			}
 
-			return "Text not found";
+			return textCode;
 		}
 		
 		public function getFontFamily():String
