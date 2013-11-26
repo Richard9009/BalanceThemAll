@@ -146,7 +146,7 @@ package stages
 			star = new SpecialObjectBuilder().createGoldenStar(shoe.x, shoe.y - shoe.height / 2 - 40);
 			addChild(star);
 			stars.push(star);
-			instructionBox.setLocaleText("tutorial.getStar");
+			instructionBox.setLocaleText("tutorial.takeStar");
 			
 			book = new ObjectBuilder().createEncyclopedia(1)[0];
 			book.setPosition(shoe.x - 10, star.y - 70);

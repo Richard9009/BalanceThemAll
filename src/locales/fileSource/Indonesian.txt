@@ -77,7 +77,7 @@ tutorial.next = Lanjut
 tutorial.play = Mulai
 tutorial.movingObject = Tarik sepatu itu ke tempat yang ditunjukkan
 tutorial.rotateObject = Gunakan roda mouse atau SPACEBAR untuk memutar sepatu
-tutorial.dropOject = Tekan tombol lepas untuk menjatuhkan sepatu
+tutorial.dropObject = Tekan tombol lepas untuk menjatuhkan sepatu
 tutorial.takeStar = Tekan tombol lepas lagi dan perhatikan apa yang terjadi
 tutorial.final = Jika bendamu berhenti di depan bintang, kamu akan mendapatkan bintang itu
 

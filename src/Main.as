@@ -7,6 +7,8 @@ package
 	import flash.display.StageDisplayState;
 	import flash.errors.IOError;
 	import flash.events.TimerEvent;
+	import flash.external.ExternalInterface;
+	import flash.text.TextField;
 	import flash.utils.Timer;
 	import gameEvents.GameEvent;
 	import flash.display.Sprite;
@@ -33,7 +35,7 @@ package
 	 */
 	public class Main extends Sprite 
 	{
-		
+		public static var ip_address:String;
 		public static var _gravity:b2Vec2;
 		public static var _physScale:Number = 30;
 		
@@ -54,7 +56,11 @@ package
 			stage.stageFocusRect = false;
 			cleanListener();
 			StageRecord.CreateRecordList();
-
+			
+			if (ExternalInterface.available) {
+				ExternalInterface.addCallback("setIP", setIP);
+				ExternalInterface.call("writeIP");
+			}
 			openSelectLanguage();
 			// entry point
 		}
@@ -155,6 +161,8 @@ package
 				GameSceneDataHandler.updateLevelMap(SelectStage_Movie(currentScene).starArray);
 				(currentScene as SelectStage_Movie).updateStatus();
 				currentScene.visible = true;
+				
+				StageRecord.updateSaveData();
 			});
 		}
 		
@@ -345,6 +353,11 @@ package
 			world.SetDebugDraw(dbgDraw);
 			addChild(debugSprite);
 		}
+		
+		private function setIP(ip:String):void {
+			ip_address = ip;
+		}
+		
 		private var debugSprite:Sprite = new Sprite();
 		private var debugMode:Boolean = false;
 	}

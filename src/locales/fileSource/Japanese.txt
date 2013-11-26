@@ -77,7 +77,7 @@ tutorial.next = 次へ
 tutorial.play = 始め
 tutorial.movingObject = 指差せる所までその靴を引き摺りなさい
 tutorial.rotateObject = マウスの輪とスペースバーを使って靴を回しなさい
-tutorial.dropOject = ｢落とす｣ボタンを押して、靴を落とすことに成ります
+tutorial.dropObject = ｢落とす｣ボタンを押して、靴を落とすことに成ります
 tutorial.takeStar = もう一度｢落とす｣ボタンを押しなさい、そしてどうなるか見ましょう
 tutorial.final = あなたのアイテムが星の前に止まったら、その星を取れます
 

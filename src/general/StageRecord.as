@@ -1,6 +1,7 @@
 package general 
 {
 	import flash.errors.IllegalOperationError;
+	import flash.external.ExternalInterface;
 	import gameObjects.rigidObjects.DraggableObject;
 	import gameObjects.StarObject;
 	import org.flashdevelop.utils.FlashConnect;
@@ -19,7 +20,7 @@ package general
 		public static const COMPLETED:String = "COMPLETED";
 		
 		public static var stageRecordList:Array = new Array();
-		public static var totalStages:int = 5;
+		public static var totalStages:int = 4;
 		public static var subStageinEveryStage:int = 5;
 		
 		public var stageID:String; //"1_1", "1_2", "1_3", etc
@@ -133,6 +134,8 @@ package general
 			tutorialStage.stageID = "tutorial";
 			stage.stageStatus = OPEN;
 			stageRecordList.push(tutorialStage);
+			
+			if(ExternalInterface.available) ExternalInterface.addCallback("loadRecord", loadRecord);
 		}
 		
 		public static function unlockAll():void {
@@ -155,5 +158,59 @@ package general
 			return null;
 		}
 		
+		public static function updateSaveData():void
+		{
+			var progress:String = "";
+			for each(var stage:StageRecord in stageRecordList)
+			{
+				switch(stage.stageStatus) {
+					case ONGOING:
+					case OPEN : progress += "O"; break;
+					case LOCKED : progress += "L"; break;
+					case COMPLETED : progress += "C"; break;
+					case CLEARED : 
+						{
+							switch(stage.bestStar) {
+								case StarObject.GOLDEN : progress += "3"; break;
+								case StarObject.SILVER : progress += "2"; break;
+								case StarObject.BRONZE : progress += "1"; break;
+							}
+						} break;
+					default: progress += "L"; break;
+				}
+			}
+			
+			var param:Object = new Object();
+			param.progress = progress;
+			param.score = ScoreRecord.totalScore;
+			
+			if(ExternalInterface.available) ExternalInterface.call("updateSave", param);
+		}
+		
+		public static function loadRecord(progress:String, score:int):void
+		{
+			var index:int = 0;
+			for each(var stage:StageRecord in stageRecordList) {
+				switch(progress.charAt(index)) {
+					case "O": stage.stageStatus = OPEN; break;
+					case "L": stage.stageStatus = LOCKED; break;
+					case "C": stage.stageStatus = COMPLETED; break;
+					
+					case "1": stage.stageStatus = CLEARED;
+							  stage.bestStar = StarObject.BRONZE;
+							  break;
+					
+					case "2": stage.stageStatus = CLEARED;
+							  stage.bestStar = StarObject.SILVER;
+							  break;
+					
+					case "3": stage.stageStatus = CLEARED;
+							  stage.bestStar = StarObject.GOLDEN;
+							  break;
+				}
+			}
+			
+			ScoreRecord.totalScore = score;
+		}
 	}
 }

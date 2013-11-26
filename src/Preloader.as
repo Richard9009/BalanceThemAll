@@ -7,6 +7,7 @@ package
 	import flash.events.Event;
 	import flash.events.IOErrorEvent;
 	import flash.events.ProgressEvent;
+	import flash.text.TextField;
 	import flash.utils.getDefinitionByName;
 	
 	/**
